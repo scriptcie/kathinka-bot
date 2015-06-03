@@ -79,7 +79,7 @@ irc.socket.on('connect', function()
                       }
                   });
 
-                  irc.on(/^:([^!@]+).*[^C,]JOIN([^#]+)(#.+)$/, function(info) {
+                  irc.on(/^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/, function(info) {
                       var user = info[1];
                       var channel = info[2];
                       irc.raw("PRIVMSG " + channel + " :m0i " + user);
