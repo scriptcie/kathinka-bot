@@ -6,19 +6,19 @@
 // CONFIGURATION                  //
 ////////////////////////////////////
 var net = require('net'),
-    irc = {},
-    config = {
-      user: {
+irc = {},
+config = {
+    user: {
         nick: 'Kathinka-bot',
         user: 'Kathinka-bot',
         real: 'Kathinka-bot',
         pass: ''
     },
-        server: {
-            addr: 'irc.freenode.net',
-            port: 6667
-        },
-  }
+    server: {
+        addr: 'irc.freenode.net',
+        port: 6667
+    },
+}
 
 
 
@@ -28,69 +28,75 @@ var net = require('net'),
 irc.socket = new net.Socket();
 // als er data binnenkomt
 irc.socket.on('data', function(data)
-{
-    // lees de data regel voor regel
-    data = data.split('\n');
-    for (var i = 0; i < data.length; i++)
-    {
-        // print wat er binnenkomt
-        //console.log('RECV -', data[i]);
-        // als het geen lege regel is haal dan even de extra enter weg. Dat doet IRC blijkbaar een \r\n situatie. mss hadden we ook kunnen splitten op \r\n?
-        if (data !== '')
-        {
-            irc.handle(data[i].slice(0, -1));
-        }
-    }
-});
+              {
+                  // lees de data regel voor regel
+                  data = data.split('\n');
+                  for (var i = 0; i < data.length; i++)
+                  {
+                      // print wat er binnenkomt
+                      //console.log('RECV -', data[i]);
+                      // als het geen lege regel is haal dan even de extra enter weg. Dat doet IRC blijkbaar een \r\n situatie. mss hadden we ook kunnen splitten op \r\n?
+                      if (data !== '')
+                      {
+                          irc.handle(data[i].slice(0, -1));
+                      }
+                  }
+              });
 
 
 irc.socket.on('connect', function()
-{
-    //zeg dat we connecten
-    console.log('Established connection, registering and misc...');
-    setTimeout(function(){  }, 2000);
-    // bouw listener: als PING, dan PONG. irc.on staat hieronder.
-    irc.on(/^PING :(.+)$/i, function(info)
-    {
-        irc.raw('PONG :' + info[1]);
-    });
+              {
+                  //zeg dat we connecten
+                  console.log('Established connection, registering and misc...');
+                  setTimeout(function(){  }, 2000);
+                  // bouw listener: als PING, dan PONG. irc.on staat hieronder.
+                  irc.on(/^PING :(.+)$/i, function(info)
+                         {
+                             irc.raw('PONG :' + info[1]);
+                         });
 
-  // laat zien wanneer je connected bent
-  irc.on(/End of \/MOTD command/i, function(info){
-    console.log("CONNECTED!");
-    irc.raw("PRIVMSG NickServ :IDENTIFY ***REMOVED***");
-    irc.raw("JOIN #script?cie");
-  })
+                  // laat zien wanneer je connected bent
+                  irc.on(/End of \/MOTD command/i, function(info){
+                      console.log("CONNECTED!");
+                      irc.raw("PRIVMSG NickServ :IDENTIFY ***REMOVED***");
+                      irc.raw("JOIN #script?cie");
+                  })
 
-////////////////////////////////////
-// CORE BUSINESS                  //
-////////////////////////////////////
-  irc.on(/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/, function(info) {
-    var user = info[1];
-    var data = info[3];
-    var channel = info[2];
-    if(!(/^.*#.*$/.test(channel))){
-    irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
-    } else if(/^.*[Kk]athinka(-bot)?[,:]{0,1} AF.*$/.test(data)) {
-    irc.raw("QUIT");
-    process.exit(1);
-    } else if(/^.*[Kk]athinka.*$/.test(data)) {
-    irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
-    }
-  });
+                  ////////////////////////////////////
+                  // CORE BUSINESS                  //
+                  ////////////////////////////////////
+                  irc.on(/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/, function(info) {
+                      var user = info[1];
+                      var data = info[3];
+                      var channel = info[2];
+                      if(!(/^.*#.*$/.test(channel))){
+                          irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
+                      } else if(/^.*[Kk]athinka(-bot)?[,:]{0,1} AF.*$/.test(data)) {
+                          irc.raw("QUIT");
+                          process.exit(1);
+                      } else if(/^.*[Kk]athinka.*$/.test(data)) {
+                          irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
+                      }
+                  });
+
+                  irc.on(/^:([^!@]+).*[^C,]JOIN([^#]+)(#.+)$/, function(info) {
+                      var user = info[1];
+                      var channel = info[2];
+                      irc.raw("PRIVMSG " + channel + " :m0i " + user);
+                  });
 
 
-////////////////////////////////////
-// IRC INTERNALS                  //
-////////////////////////////////////
+                  ////////////////////////////////////
+                  // IRC INTERNALS                  //
+                  ////////////////////////////////////
 
-// wacht heel even voor je de NICK informatie stuurt
-    setTimeout(function()
-    {
-        irc.raw('NICK ' + config.user.nick);
-        irc.raw('USER ' + config.user.user + ' 8 * :' + config.user.real);
-    }, 500);
-});
+                  // wacht heel even voor je de NICK informatie stuurt
+                  setTimeout(function()
+                             {
+                                 irc.raw('NICK ' + config.user.nick);
+                                 irc.raw('USER ' + config.user.user + ' 8 * :' + config.user.real);
+                             }, 500);
+              });
 
 // settings + connect
 irc.socket.setEncoding('ascii');
@@ -123,9 +129,9 @@ irc.on = function(data, callback)
 irc.raw = function(data)
 {
     irc.socket.write(data + '\n', 'ascii', function()
-    {
-        console.log('SENT :', data);
-    });
+                     {
+                         console.log('SENT :', data);
+                     });
 }
 ////////////////////////////////////
 // KATHINKA-BOT IRC               //
