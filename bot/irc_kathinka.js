@@ -76,6 +76,11 @@ irc.socket.on('connect', function()
                           process.exit(1);
                       } else if(/^.*[Kk]athinka.*$/.test(data)) {
                           irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
+                      } else if(/^[Kk]athinka.*\?$/.test(data)) {
+                          var eightball = [
+"It is certain", "It is decidedly so", "Without a doubt", "Yes definitely", "You may rely on it", "As I see it, yes", "Most likely", "Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again", "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"];
+                          irc.raw("PRIVMSG " + channel + " :" + eightball[data.length*13 % eightball.length);
+                      }
                       }
                   });
 
