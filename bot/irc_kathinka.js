@@ -81,7 +81,6 @@ irc.socket.on('connect', function()
                       } else if(/^.*[Kk]athinka.*$/.test(data)) {
                           irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
                       }
-                      }
                   });
 
                   irc.on(/^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/, function(info) {
