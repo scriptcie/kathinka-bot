@@ -67,12 +67,12 @@ irc.socket.on('connect', function() {
     ////////////////////////////////////
     irc.on(/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/, function(info) {
         var user = info[1];
-        var data = info[3];
         var channel = info[2];
+        var data = info[3];
         if (!(/^.*#.*$/.test(channel))) {
             irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
         } else if (/^[Kk]athinka(-bot)?(.*)$/.test(data)) {
-            var actual_data = data[1];
+            var actual_data = data[2];
             if (/^[,:]{0,1} AF.*$/.test(actual_data)) {
                 irc.raw("QUIT");
                 process.exit(1);
