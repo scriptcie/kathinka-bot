@@ -18,6 +18,7 @@ config = {
         addr: 'irc.freenode.net',
         port: 6667
     },
+    data: {}
 }
 
 
@@ -44,64 +45,72 @@ irc.socket.on('data', function(data)
               });
 
 
-irc.socket.on('connect', function()
-              {
-                  //zeg dat we connecten
-                  console.log('Established connection, registering and misc...');
-                  setTimeout(function(){  }, 2000);
-                  // bouw listener: als PING, dan PONG. irc.on staat hieronder.
-                  irc.on(/^PING :(.+)$/i, function(info)
-                         {
-                             irc.raw('PONG :' + info[1]);
-                         });
+irc.socket.on('connect', function() {
+    //zeg dat we connecten
+    console.log('Established connection, registering and misc...');
+    setTimeout(function(){  }, 2000);
+    // bouw listener: als PING, dan PONG. irc.on staat hieronder.
+    irc.on(/^PING :(.+)$/i, function(info)
+            {
+                irc.raw('PONG :' + info[1]);
+            });
 
-                  // laat zien wanneer je connected bent
-                  irc.on(/End of \/MOTD command/i, function(info){
-                      console.log("CONNECTED!");
-                      irc.raw("PRIVMSG NickServ :IDENTIFY ***REMOVED***");
-                      irc.raw("JOIN #script?cie");
-                  })
+    // laat zien wanneer je connected bent
+    irc.on(/End of \/MOTD command/i, function(info){
+        console.log("CONNECTED!");
+        irc.raw("PRIVMSG NickServ :IDENTIFY ***REMOVED***");
+        irc.raw("JOIN #script?cie");
+    })
 
-                  ////////////////////////////////////
-                  // CORE BUSINESS                  //
-                  ////////////////////////////////////
-                  irc.on(/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/, function(info) {
-                      var user = info[1];
-                      var data = info[3];
-                      var channel = info[2];
-                      if(!(/^.*#.*$/.test(channel))){
-                          irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
-                      } else if(/^.*[Kk]athinka(-bot)?[,:]{0,1} AF.*$/.test(data)) {
-                          irc.raw("QUIT");
-                          process.exit(1);
-                      } else if(/^[Kk]athinka.*\?$/.test(data)) {
-                          var eightball = [
-                              "It is certain", "It is decidedly so", "Without a doubt", "Yes definitely", "You may rely on it", "As I see it, yes", "Most likely", "Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again", "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"];
-                          irc.raw("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
-                      } else if(/^.*[Kk]athinka.*$/.test(data)) {
-                          irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
-                      }
-                  });
+    ////////////////////////////////////
+    // CORE BUSINESS                  //
+    ////////////////////////////////////
+    irc.on(/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/, function(info) {
+        var user = info[1];
+        var data = info[3];
+        var channel = info[2];
+        if (!(/^.*#.*$/.test(channel))) {
+            irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
+        } else if (/^[Kk]athinka(-bot)?(.*)$/.test(data)) {
+            var actual_data = data[1];
+            if (/^[,:]{0,1} AF.*$/.test(actual_data)) {
+                irc.raw("QUIT");
+                process.exit(1);
+            } else if (/^.*\?$/.test(actual_data)) {
+                var eightball = [
+                    "It is certain", "It is decidedly so", "Without a doubt",
+                    "Yes definitely", "You may rely on it", "As I see it, yes",
+                    "Most likely", "Outlook good", "Yes", "Signs point to yes",
+                    "Reply hazy try again", "Ask again later", "Better not tell you now",
+                    "Cannot predict now", "Concentrate and ask again", "Don't count on it",
+                    "My reply is no", "My sources say no", "Outlook not so good",
+                    "Very doubtful"];
+                irc.raw("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
+            }
+        } else if (/^.*[Kk]athinka.*$/.test(data)) {
+            irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
+        }
+    });
 
-                  irc.on(/^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/, function(info) {
-                      var user = info[1];
-                      var channel = info[2];
-                      if (user != config.user.nick) {
-                          irc.raw("PRIVMSG " + channel + " :m0i " + user);
-                      }
-                  });
+    irc.on(/^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/, function(info) {
+        var user = info[1];
+        var channel = info[2];
+        if (user != config.user.nick) {
+            irc.raw("PRIVMSG " + channel + " :m0i " + user);
+        }
+    });
 
-                  ////////////////////////////////////
-                  // IRC INTERNALS                  //
-                  ////////////////////////////////////
+    ////////////////////////////////////
+    // IRC INTERNALS                  //
+    ////////////////////////////////////
 
-                  // wacht heel even voor je de NICK informatie stuurt
-                  setTimeout(function()
-                             {
-                                 irc.raw('NICK ' + config.user.nick);
-                                 irc.raw('USER ' + config.user.user + ' 8 * :' + config.user.real);
-                             }, 500);
-              });
+    // wacht heel even voor je de NICK informatie stuurt
+    setTimeout(function()
+                {
+                    irc.raw('NICK ' + config.user.nick);
+                    irc.raw('USER ' + config.user.user + ' 8 * :' + config.user.real);
+                }, 500);
+});
 
 // settings + connect
 irc.socket.setEncoding('ascii');
