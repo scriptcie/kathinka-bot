@@ -69,13 +69,18 @@ irc.socket.on('connect', function() {
         var user = info[1];
         var channel = info[2];
         var data = info[3];
+
         if (!(/^.*#.*$/.test(channel))) {
             irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
-        } else if (/^[Kk]athinka(-bot)?(.*)$/.test(data)) {
-            var actual_data = data[2];
+            return;
+        }
+
+        if (var match = /^[Kk]athinka(-bot)?(.*)$/.match(data)) {
+            var actual_data = match[2];
             if (/^[,:]{0,1} AF.*$/.test(actual_data)) {
                 irc.raw("QUIT");
                 process.exit(1);
+                return;
             } else if (/^.*\?$/.test(actual_data)) {
                 var eightball = [
                     "It is certain", "It is decidedly so", "Without a doubt",
@@ -86,9 +91,13 @@ irc.socket.on('connect', function() {
                     "My reply is no", "My sources say no", "Outlook not so good",
                     "Very doubtful"];
                 irc.raw("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
+                return;
             }
-        } else if (/^.*[Kk]athinka.*$/.test(data)) {
+        }
+
+        if (/^.*[Kk]athinka.*$/.test(data)) {
             irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
+            return;
         }
     });
 
