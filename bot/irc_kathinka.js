@@ -5,6 +5,7 @@
 ////////////////////////////////////
 // CONFIGURATION                  //
 ////////////////////////////////////
+console.log(process.argv);
 var net = require('net'),
 irc = {},
 config = {
@@ -12,7 +13,7 @@ config = {
         nick: process.argv[2],
         user: process.argv[2],
         real: process.argv[2],
-        pass: process.argv[3]
+        pass: process.argv[3],
     },
     server: {
         addr: 'irc.freenode.net',
@@ -21,7 +22,7 @@ config = {
     data: {}
 }
 
-
+console.log(config.user);
 
 ////////////////////////////////////
 // create socket                  //
@@ -58,7 +59,7 @@ irc.socket.on('connect', function() {
     // laat zien wanneer je connected bent
     irc.on(/End of \/MOTD command/i, function(info){
         console.log("CONNECTED!");
-        irc.raw("PRIVMSG NickServ :IDENTIFY " . config.user.pass);
+        irc.raw("PRIVMSG NickServ :IDENTIFY " + config.user.pass);
         irc.raw("JOIN #script?cie");
     })
 
@@ -95,7 +96,7 @@ irc.socket.on('connect', function() {
             }
         }
 
-        if (/^(le[']ah)|(sl[ea][ea]p)|(later)$/.test(data)){
+        if (/^(le'?ah)|(sl[ea][ea]p)|(later)$/.test(data)){
             irc.raw("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
