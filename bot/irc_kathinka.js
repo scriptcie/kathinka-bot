@@ -95,7 +95,7 @@ irc.socket.on('connect', function() {
             }
         }
 
-        if (/^(le[']ah)|(sl[ea][ea]p)|(later)$/.test(data){
+        if (/^(le[']ah)|(sl[ea][ea]p)|(later)$/.test(data)){
             irc.raw("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
