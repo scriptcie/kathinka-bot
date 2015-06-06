@@ -5,7 +5,6 @@
 ////////////////////////////////////
 // CONFIGURATION                  //
 ////////////////////////////////////
-console.log(process.argv);
 var net = require('net'),
 irc = {},
 config = {
@@ -22,7 +21,6 @@ config = {
     data: {}
 }
 
-console.log(config.user);
 
 ////////////////////////////////////
 // create socket                  //
@@ -96,7 +94,7 @@ irc.socket.on('connect', function() {
             }
         }
 
-        if (/^(le'?ah)|(sl[ea][ea]p)|(later)$/.test(data)){
+        if (/^(le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?)$/.test(data)){
             irc.raw("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
