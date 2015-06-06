@@ -166,7 +166,7 @@ irc.on = function(data, callback)
     irc.listeners.push([data, callback, false])
 }
 irc.speak = function(data){
-    setTimeout(function(data){irc.raw(data);},data.length*5);
+    setTimeout(function(){irc.raw(data);},data.length*5);
 }
 
 irc.raw = function(data)
