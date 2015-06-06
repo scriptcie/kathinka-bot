@@ -70,7 +70,7 @@ irc.socket.on('connect', function() {
         var data = info[3];
         var match;
         if (!(/^.*#.*$/.test(channel))) {
-            irc.raw("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
+            irc.speak("PRIVMSG " + user + " :" + "* I AM KATHINKA-BOT *");
             return;
         }
 
@@ -91,7 +91,7 @@ irc.socket.on('connect', function() {
                     "Cannot predict now", "Concentrate and ask again", "Don't count on it",
                     "My reply is no", "My sources say no", "Outlook not so good",
                     "Very doubtful"];
-                irc.raw("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
+                irc.speak("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
                 return;
             }
 
@@ -100,7 +100,7 @@ irc.socket.on('connect', function() {
                 return;
             }
 
-            if (/^[,:]{0,1} agenda$/.test(actual_data)) {
+            if (/^[,:]? ?agenda$/.test(actual_data)) {
                 if ('agenda' in config.data) {
                     irc.raw("PRIVMSG " + channel + " :" + config.data['agenda']);
                 }
@@ -109,11 +109,11 @@ irc.socket.on('connect', function() {
         }
 
         if (/^(le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?)$/.test(data)){
-            irc.raw("PRIVMSG " + channel + " :" + data + ", " + user);
+            irc.speak("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
         if (/^.*[Kk]athinka.*$/.test(data)) {
-            irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
+            irc.speak("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
             return;
         }
     });
@@ -165,7 +165,10 @@ irc.on = function(data, callback)
 {
     irc.listeners.push([data, callback, false])
 }
-
+irc.speak = function(data){
+    return setTimeout(data.length*50, irc.raw(data));
+}
+}
 irc.raw = function(data)
 {
     irc.socket.write(data + '\n', 'ascii', function()
