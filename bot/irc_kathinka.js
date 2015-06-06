@@ -9,10 +9,10 @@ var net = require('net'),
 irc = {},
 config = {
     user: {
-        nick: 'Kathinka-bot',
-        user: 'Kathinka-bot',
-        real: 'Kathinka-bot',
-        pass: ''
+        nick: process.argv[2],
+        user: process.argv[2],
+        real: process.argv[2],
+        pass: process.argv[3]
     },
     server: {
         addr: 'irc.freenode.net',
@@ -58,7 +58,7 @@ irc.socket.on('connect', function() {
     // laat zien wanneer je connected bent
     irc.on(/End of \/MOTD command/i, function(info){
         console.log("CONNECTED!");
-        irc.raw("PRIVMSG NickServ :IDENTIFY ***REMOVED***");
+        irc.raw("PRIVMSG NickServ :IDENTIFY " . config.user.pw);
         irc.raw("JOIN #script?cie");
     })
 
@@ -95,6 +95,10 @@ irc.socket.on('connect', function() {
             }
         }
 
+        if (/^(le[']ah)|(sl[ea][ea]p)|(later)$/.test(data){
+            irc.raw("PRIVMSG " + channel + " :" + data + ", " + user);
+            return;
+        }
         if (/^.*[Kk]athinka.*$/.test(data)) {
             irc.raw("PRIVMSG " + channel + " :" + "* I AM KATHINKA-BOT *");
             return;
@@ -105,7 +109,7 @@ irc.socket.on('connect', function() {
         var user = info[1];
         var channel = info[2];
         if (user != config.user.nick) {
-            irc.raw("PRIVMSG " + channel + " :m0i " + user);
+            irc.raw("PRIVMSG " + channel + " :moi " + user);
         }
     });
 
