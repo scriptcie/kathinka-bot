@@ -58,7 +58,7 @@ irc.socket.on('connect', function() {
     // laat zien wanneer je connected bent
     irc.on(/End of \/MOTD command/i, function(info){
         console.log("CONNECTED!");
-        irc.raw("PRIVMSG NickServ :IDENTIFY " . config.user.pw);
+        irc.raw("PRIVMSG NickServ :IDENTIFY " . config.user.pass);
         irc.raw("JOIN #script?cie");
     })
 
