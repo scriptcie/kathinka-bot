@@ -80,7 +80,9 @@ irc.socket.on('connect', function() {
                 irc.raw("QUIT");
                 process.exit(1);
                 return;
-            } else if (/^.*\?$/.test(actual_data)) {
+            }
+
+            if (/^.*\?$/.test(actual_data)) {
                 var eightball = [
                     "It is certain", "It is decidedly so", "Without a doubt",
                     "Yes definitely", "You may rely on it", "As I see it, yes",
@@ -90,6 +92,18 @@ irc.socket.on('connect', function() {
                     "My reply is no", "My sources say no", "Outlook not so good",
                     "Very doubtful"];
                 irc.raw("PRIVMSG " + channel + " :" + eightball[data.split('').map(function(i){return i.charCodeAt(0);}).reduce(function(previousValue, currentValue){return previousValue + currentValue;})*13 % eightball.length]);
+                return;
+            }
+
+            if  (match = actual_data.match(/^[,:]{0,1} set (.*?) (.*)$/)) {
+                config.data[match[1]] = match[2];
+                return;
+            }
+
+            if (/^[,:]{0,1} agenda$/.test(actual_data)) {
+                if ('agenda' in config.data) {
+                    irc.raw("PRIVMSG " + channel + " :" + config.data['agenda']);
+                }
                 return;
             }
         }
