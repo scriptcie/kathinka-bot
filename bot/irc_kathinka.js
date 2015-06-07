@@ -96,9 +96,17 @@ irc.socket.on('connect', function() {
                 return;
             }
 
-            // ???
+            // set
             if  (match = actual_data.match(/^[,:]{0,1} set (.*?) (.*)$/)) {
                 config.data[match[1]] = match[2];
+                return;
+            }
+
+            // get
+            if  (match = actual_data.match(/^[,:]{0,1} get (.*)$/)) {
+                if (match[1] in config.data) {
+                    irc.raw("PRIVMSG " + channel + " :" + config.data[match[1]]);
+                }
                 return;
             }
 
