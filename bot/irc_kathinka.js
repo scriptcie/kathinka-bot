@@ -178,7 +178,7 @@ irc.on = function(data, callback) {
 
 // Wait a few seconds such that we get a realistic response
 irc.speak = function(data) {
-    return setTimeout(data.length*50, irc.raw(data));
+    return setTimeout(irc.raw(data), data.length*50);
 }
 
 // Send the message to irc and log it
