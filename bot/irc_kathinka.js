@@ -124,6 +124,22 @@ irc.socket.on('connect', function() {
             irc.speak("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
+        if (/^.*[Kk]athinka.*zeg( eens)? iets moois.*$/.test(data)) {
+            var exec = require('child_process').exec,
+            child;
+
+            child = exec('cd markov && bash generate.sh 1',
+              function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                  console.log('exec error: ' + error);
+                }
+                irc.speak("PRIVMSG " + channel + " :" + stdout);
+            });
+            
+            return;
+        }
 
         // I AM KATHINKA
         if (/^.*[Kk]athinka.*$/.test(data)) {

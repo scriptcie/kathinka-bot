@@ -1,0 +1,949 @@
+\documentclass[bestuur]{scrlttr2}
+\usepackage[dutch]{babel}
+\usepackage{pgffor}
+\newif\ifisre
+\edef\bbtitle{bitterballenborreldibsmachine, bitterballenborreldibsmachine en bitterballenborreldibsmachine}
+\isrefalse
+\newcount\pscount
+\newcommand{\newletter}{
+\pscount=1
+\global\ifisre
+	\edef\bbtitle{re: \bbtitle}
+	\setkomavar{bbtitle}{\bbtitle}
+\else
+	\global\isretrue
+\fi
+}
+
+\newcommand{\addps}[1]{
+\ps{\foreach \i in {1,...,\pscount} {P. }S. #1}
+\advance\pscount by 1
+}
+
+\newenvironment{plusletter}{
+\setkomavar{fromname}{s[ck]rip(t|t?c)ie der T.F.V. 'Professor Francken'}
+\setkomavar{fromemail}{scriptcie@professorFrancken.nl}
+\setkomavar{fromurl}{http://scriptcie.professorFrancken.nl}
+\setkomavar{signature}{Plus}
+\newletter
+\begin{letter}{Bestuur der T.F.V. 'Professor Francken'\\
+Nijenborgh 4\\9747 AG Groningen
+}
+}
+{\end{letter}}
+
+\newenvironment{svenletter}{
+\setkomavar{fromname}{s[ck]rip(t|t?c)ie der T.F.V. 'Professor Francken'}
+\setkomavar{fromemail}{scriptcie@professorFrancken.nl}
+\setkomavar{fromurl}{http://scriptcie.professorFrancken.nl}
+\setkomavar{signature}{Sven Baars\\Voorzitter der s[ck]rip(t|t?c)ie}
+\newletter
+\begin{letter}{Bestuur der T.F.V. 'Professor Francken'\\
+Nijenborgh 4\\9747 AG Groningen
+}
+}
+{\end{letter}}
+
+\newenvironment{bestuurletter}{
+\setkomavar{fromname}{Bestuur der T.F.V. 'Professor Francken'}
+\setkomavar{fromemail}{bestuur@professorFrancken.nl}
+\setkomavar{fromurl}{http://www.professorFrancken.nl}
+\setkomavar{signature}{Sjoerd Ferdinand Sjieuwe 'Sjieuwe' Meesters\\Penningmeester der T.F.V. 'Professor Francken'}
+\newletter
+\begin{letter}{s[ck]rip(t|t?c)ie der T.F.V. 'Professor Francken'\\
+Nijenborgh 4\\9747 AG Groningen
+}
+}
+{\end{letter}}
+\let\closingold\closing
+\renewcommand{\closing}[1]{\closingold{\raggedright #1}}
+\begin{document}
+\date{28 september 2012}
+\begin{plusletter}
+\setkomavar{signature}{Plus\\Actieve-Franckendonateur tevens actief-lid en megalomaan faculteitsbestuurder die in deze tijd ook een blogpost had kunnen schrijven}
+\opening{Geacht Bestuur,}
+Voor de volgende ALV adviseert het voltallige commissiebestuur van de s[ck]rip(t|t?c)ie Jeroen Ernesto Lanting 'penis nullae causa' (lid van geen enkele betekenis) te maken in de scriptie. Het bestuur heeft er echter ook vrede mee als u de voorgenoemd persoon gewoon 'lid' van deze bestuurscommissie maakt.
+
+Nu zal ik overgaan tot belangrijkere zaken. Buiten het feit dat ik een scrabblewoord heb dat potentieel DUIZEND punten waard is (zie onderwerp van deze mail), wil ik u graag mededelen dat er reeds 4950 bitterballen gedibst zijn. Dit escaleert. Als u lering heeft getrokken van de blunders van het gemeentebestuur van Haren ziet u in dat er op dit moment nog maar twee opties zijn.
+
+De eerste optie vereist dat u zich realiseert dat de aanblik van meer dan 4102 bitterballen kan leiden tot het spontaan uitbreken van rellen. Zeker wanneer een publiek dat in staat is zoveel bitterballen te consumeren, in beschonken toestand, zoals bijvoorbeeld op een borrel, teveel testosteron produceert en onschuldige ledenkamers aan gort gaat slaan. Om dit te voorkomen roept u de hulp in van het leger en voorkomt op die manier kreukels in de Playboy en de steunmuren van het gebouw.
+
+De tweede optie is realiseren dat er een aantal autistische mongolen uw vereniging zijn binnengedrongen en zonder dat het bestuur of de leden dit hebben opgemerkt waanzinnig vaak op de knop hebben gedrukt. De adequate reactie hierop is het daadwerkelijk aanbieden van de, ten tijde van de borrel waarschijnlijk meer dan 9000, bitterballen aan uw leden en deze te verorberen om aan de wereld te laten zien dat de trotse vereniging T.F.V. 'Professor Francken' niet zwicht voor dit soort terreur.
+
+Ik hoop dat u iets heeft aan mijn advies en de volgende keer, voordat u als bestuur dergelijke digitale gereedschappen inzet om de wellust naar bitterballen van uw leden in kaart te brengen, u uw programmatuur uitrust met een webcam opdat we digitaal bewijs hebben dat Bauke echt geen Bauke wil zijn.
+
+Tot slot is het zaak dat de vieruurbieruurcountdownklok feestelijk geopend gaat worden. Ik heb uit anonieme bronnen vernomen dat deze klok wellicht morgen al zijn eerste seconden zal aftellen. Het zou zeker gepast zijn als de s[ck]rip(t|t?c)ie hierin voor hard werk beloond zou worden met enkele mooie woorden van het bestuur â¦ en pilsch.
+
+\closing{\raggedright Hoogachtend,}
+
+\addps{Uiteraard zal bij het eren van de s[ck]rip(t|t?c)ie Sven Baars (JeMoeder) met naam en toenaam genoemd moeten worden voor zijn inzet in dit project en  mag het voetvolk eraan herinnerd worden dat Bauke deze bewerkstelliging heeft kunnen aangrijpen om een fust met bier te verdienen.}
+
+\addps{Tip: JeMoeder is een machine die bier omzet in computercode.}
+
+\addps{De s[ck]rip(t|t?c)ie is de enige commissie van T.F.V. 'Professor Francken' sinds de symposiumcommissie 'The Nature of Physics' die het predicaat 'genocideloos' heeft behaald en daartoe geaccrediteerd is door een internationaal expert op het gebied van genocideloosheid.}
+
+\addps{Misschien bedoelt het commissiebestuur in de benoemingskwestie ook wel 'mumbrum nullae cause'. uw penningmeester is een gediplomeerd gymnasiast en kan in deze zaak uitsluitsel geven.}
+\end{plusletter}
+
+\date{28 september 2012}
+\begin{bestuurletter}
+\opening{Geachte Paulus 'Plus' Meessen,}
+Helaas moeten wij als bestuur, zonder ook maar enige vorm van deliberatie, constateren dat het verzoek van de s[ck]rip(t|t?c)ie met betrekking tot toetreding van Jeroen Ernesto Lanting tot haar gelederen niet gehonoreerd kan worden. 
+Redenen hiervoor zijn meervoud, en zullen daarom ook per stuk behandeld worden opdat elke vorm van verwarring of twijfel vermeden wordt. 
+Allereerst is bij ons geen onderdeel van flora of fauna bekend onder de naam Jeroen Ernesto Lanting. Misschien een fout in de database, misschien een bewijs van slechte kennisneming van onze leden of misschien gewoon een teken van incorrecte informatieverschaffing uwer zijde. Wel is bij ons een persoon bekend onder de noemer Jeroen 'Lanting' Lanting, het kan zijn dat het uw bedoeling was in de voorgaande correspondentie aan hem te refereren. Mocht dat echter het geval zijn, moet ik helaas mededelen dat ook het verzoek tot toetreding van Jeroen 'Lanting' Lanting tot de binnencirkel van de s[ck]rip(t|t?c)ie afgewezen wordt.
+De reden hiervoor is ook meteen de tweede reden voor afwijzing van het eerste verzoek. Er bestaat eenvoudigweg niet een positie voor een lid van geen enkele betekenis binnen de s[ck]rip(t|t?c)ie, dat dit bij andere commissies wel zo is betekent niet dat we de professionaliteit van de s[ck]rip(t|t?c)ie in gevaar willen brengen. Daarnaast lijkt het ons evident dat de voorgenoemde bestuurscommissie alleen maar bijzondere leden bevat en dat de toetreding van een gewoon lid ons inziens de huidige sociale cohesie binnen de s[ck]rip(t|t?c)ie ernstig zou verstoren. Overigens betreurt het ons dat de terminologie penis dan wel mumbrum nullae causa gehanteerd wordt, daar wij ook weer zonder enige vorm van deliberatie er van overtuigd zijn dat mumbrum immaterialis beter op zijn plek zou zijn in dit geval.
+
+Om nu over te gaan op de orde van de dag, zouden we graag de s[ck]rip(t|t?c)ie het verzoek in willen dienen de heer Jeroen 'Lanting' Lanting toe te laten treden tot haar clique onder de noemer commissaris acquisitie. Dit betekent zowel dat wij nu de heer Jeroen Ernesto Lanting volledig passeren als dat wij de keuze nu bij de s[ck]rip(t|t?c)ie neerleggen. Voordat ons verzoek meteen afgewezen wordt zouden we graag een moment willen nemen om ons verhaal te doen opdat begrepen wordt waar wij onze keuze op baseren.
+Ten eerste kan gezegd worden dat de heer Jeroen 'Lanting' Lanting vrij recent heeft aangetoond dat hij iets kan betekenen voor de s[ck]rip(t|t?c)ie, doordat hij voorzien heeft in de aanschaf van de 'quote, unquote' 'TV-unit'. Hiermee heeft hij niet alleen laten zien dat hij instaat is de juiste knoppen aan te klikken in een internetbrowser, maar ook dat hij te vertrouwen is met geld dat hem gegeven wordt door derden. 
+Verder is het ons bekend gemaakt dat de Jeroen 'Lanting' Lanting bekwaamheid heeft vergaard in C++ door college te volgen bij doctor, vlieginstructeur en l'homme extraordinaire Frank B. Brokken. Alleen dat al is wat ons betreft reden genoeg tot toelating, maar daar laten we het natuurlijk niet bij want het blijkt dat meneer Lanting momenteel een schakeljaar informatica volgt. Wij nemen aan dat de waarde van het laatste statement geen verdere uitleg vereist en geven nu nog een laatste en waarschijnlijk beste argument voor toelating. Als commissaris acquisitie zal Jeroen 'Lanting' Lanting verantwoordelijk zijn voor het verkrijgen van allerlei zaken, een voorbeeld hiervan is de eerder genoemde 'quote, unquote' 'TV-unit'. Daar zal echter zijn verantwoordelijkheid niet stoppen, hij zal namelijk de aangewezen persoon zijn om bier te halen mocht het eerder genoemde aangeven dat het daar tijd voor is. Natuurlijk is het wel zo dat hij jullie commissaris pils, we bedoelen natuurlijk acquisitie, zal zijn en dat anderen dan geen aanspraak zullen kunnen maken op dergelijke diensten mits hij daar op tegen is natuurlijk. 
+Het grote voordeel is ook dat hij noch gewoon lid noch lid van geen betekenis is, wat automatisch onze eerdere bezwaren van tafel zou vegen.
+
+Maar voordat we helemaal verzeild raken in allerlei details lijkt het ons een goed idee over te gaan naar de belangrijke zaken. Allereerst moet opgemerkt worden dat een scrabblebord te beperkt is in zijn dimensionale vrijheden wat betekent dat het woord 'bitterballenborreldibsmachine' niet op het bord past en daarna niet als scrabblewoord aangemerkt kan en dient te worden.
+
+Dat er nu al zo'n 5000 bitterballen gedibst zijn, is voor ons niet meteen reden tot zorg aangezien er gewoon niet zoveel bitterballen aanwezig zullen zijn. Wat echter wel reden tot zorg is, is het feit dat dit hoogstwaarschijnlijk tot irritatie zal leiden onder de aanwezigen die verwachten dat er zoveel bitterballen zullen zijn. Verder is het nu onduidelijk wie recht heeft op de bitterballen, aangezien niet duidelijk is wie als eerste gedibst heeft. We verwachten dan dus ook complete escalatie en persoonlijk zou ik niet de persoon willen zijn die donderdagochtend met een doekje de bitterballen- of vomitusresten van de muur moet schrapen. We hekelen echter de instelling dat aan escalatie een negatieve connotatie verbonden dient te worden, gezien de mooiste feestjes altijd die waren waar het het meest uit de hand is gelopen. Daarnaast is aan ons niet de mening dat onze leden teveel testosteron produceren, er is immers wetenschappelijk aangetoond dat het dagelijks drinken van een aantal biertjes de testosteronproductie aanzienlijk omlaag brengt. Nou zou opgemerkt kunnen worden dat niet alle leden elke dag bier drinken, maar vrouwen hebben Ã¼berhaupt al een lagere testosteronproductie dus komen we weer terug bij ons standpunt.
+Er moet echter nu wel opgemerkt worden dat hoewel we geen 5000 bitterballen zullen hebben, er toch alles aan gedaan zal worden qua ordegrootte die tientotdemachtdrie te halen. 
+
+De realisatie dat de heer Bauke 'waar is die nou?' Steensma zichzelf niet wil zijn, is hard aangekomen bij ons. Voordat wij ook maar enig besluit nemen met betrekking tot het wel dan wel niet aanschaffen van een elektronisch oog, zullen we dit eerst goed in een bestuursvergadering moeten behandelen. Alle complicaties die hierbij om de hoek komen kijken, alle verder te nemen stappen als wel als de wetenschap dat Bauke Bauke niet meer wil zijn worden bij deze dan ook als confidentieel beschouwd en we verwachten van een s[ck]rip(t|t?c)ielid tevens faculteitsbestuurder dat deze kennis niet uitlekt en mocht dat wel gebeuren dat zal dat zeker ten straffe van een adje bestuursketel zijn.
+
+Een feestelijke opening van de vieruurbieruuraftelklok is natuurlijk een gegeven. Er zal nog met de voorzitter gecommuniceerd moeten worden met betrekking tot de inhoudelijke elementen van zijn speech, maar er mag zeer zeker van uitgegaan worden dat deze plaats zal vinden. Hierbij moet wel vermeld worden dat het hoogst ongebruikelijk en onfatsoenlijk is dat de s[ck]rip(t|t?c)ie een dankwoord dan wel beloning vraagt voor het harde werk. Wij zijn uiteraard van mening dat dat de juiste gang van zaken is, maar het moet geen bedelen worden om bedankjes. Daarnaast vinden we het uiterst betreurenswaardig dat het harde werk van de heer Jeroen 'Lanting' Lanting nergens terug te vinden is in jullie smeekbede om een bedankje.
+
+We hopen u hiermee voldoende geÃ¯nformeerd te hebben, maar mochten er nog vragen zijn dan kunt u ze sturen naar klagenalseenmohafohah@professorFrancken.nl 
+
+\closing{Met vriendelijke groet,\\
+Namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+\addps{Hoewel we niet van plan veel postscripten te gebruiken, moet toch opgemerkt worden dat de heer Sven 'JeMoeder' Baars niet vergeten zal worden.}
+
+\addps{Het predicaat 'genocideloos' heeft totaal geen betekenis binnen onze vereniging. Tegenwoordig hopen veel leden immers de fameuze "GENOCIDE" te halen in grand theft auto 2. Echter moet vanuit het bestuur gezegd worden dat dit predicaat niet vergeten zal worden.}
+
+\addps{Als gediplomeerd gymnasiast moet ik toch mijn haat jegens latijn betuigen, vandaar dit verder nutteloze puntje.}
+
+\addps{In plaats van een passende reactie op deze elektronische berichtgeving zouden we het op prijs stellen dat je besluit een blogstukje te schrijven, de reactie kan dan mondeling afgehandeld worden in kamer 5113.0002. }
+
+\addps{Overigens zou een leuk stukje ook over de s[ck]rip(t|t?c)ie kunnen gaan en het invoeren van de vieruurbieruuraftelklok, hoewel de bureaucratie binnen de FWN natuurlijk ook altijd boeiend is.}
+
+\addps{Vanuit enkele leden van de s[ck]rip(t|t?c)ie heb ik vernomen dat het op prijs gesteld wordt te gaan eten op de Dierenriemstraat 31, mocht je tijd hebben denk er dan over na of je honger hebt rond etenstijd.}
+\end{bestuurletter}
+\date{28 september 2012}
+\begin{plusletter}
+\opening{Geacht Bestuur,}
+
+Op basis van uw snelle reactie heeft het commissiebestuur van de
+s[ck]rip(t|t?c)ie de volgende mededelingen die bij het niet
+functioneren van uw e-mail diensten wederom aan het bestuur moet
+worden opgelegd.
+
+Graag wil ik u erop wijzen dat de s[ck]rip(t|t?c)ie geen genoegen kan
+nemen met het instellen van Jeroen Ernesto - 'Lanting' - Lanting
+(JELL) als commissaris acquisitie of ook maar binnen enige context van
+commercie en  kapitalisme. Daar waar JELL als erelid zou kunnen
+toetreden tot de compucie waar hij heeft kunnen bijdragen aan het
+verkrijgen van de kleinste computer die uw voorzitter, de heer Tom
+Bosma, heeft gezien sinds het ontbijt, gaat dit niet op voor zijn
+bijdragen aan onze verzameling scripts. Het bestuur van de
+s[ck]rip(t|t?c)ie waardeert echter de potentie die JELL heeft om de
+kwaliteit van de s[ck]rip(t|t?c)ie te verhogen. Zonder dat daar een
+enkele aanleiding voor is, die b zou blijken uit eerder geschreven
+programmatuur ter bevordering van het levensgenot van de Franckenleden
+en veelal ter beperking van de frustraties waar dit Bestuur er toch al
+teveel van kent, ziet het commissiebestuur dat de door U, niet meer
+dan door de andere voorstellen geprefereerde positie, 'penis nullae
+cause' een bijzonder passende functie zou zijn voor JELL. Het voorstel
+deze "membrum immaterialis" te maken moeten wij dan ook afwijzen. Daar
+waar de s[ck]rip(t|t?c)ie bereid is om in blind vertrouwen een lid toe
+te laten treden zonder dat deze zich heeft kunnen bewijzen als
+Francken-scripter moet een bewijs zijn voor de mensenkennis en
+vertrouwen in de medemens van de adviserende en benoemingsbevoegde
+besturen. Daarnaast zou een 'onbelangrijk lid' een
+contradictio-in-terminis zijn voor de buitensporige hoeveelheden
+eigendunk en prominentie die het leden van de scriptie betaamd te
+hebben. Wij zien toetreding tot de s[ck]rip(t|t?c)ie als de grootste
+eer die wij JELL op dit moment kunnen bewijzen maar leggen het bestuur
+daar geen strobreed mee in de weg om deze op persoonlijke titel te
+lauteren voor geleverde diensten en 'TV-Units'.
+
+Het feit dat "bitterballenborreldibsmachine" niet op een scrabblebord
+kan liggen bekent niet dat het als speler geen streven mag zijn dit
+woord neer te willen leggen. Zeker gezien de vruchtbare subsecties
+zoals "ballenborreldibs". Daarnaast ambieer ik dat ook het woord
+'bitterb' zijn weg vindt in de Van Dale, opdat
+bitterballenborreldibsmachine wel over de rand van het bord past.
+
+Op het feit na, dat, gezien de vereniging alleen werft onder de
+mooiste vrouwen aan onze universiteit en de genetische defectiviteit
+van de Franckenlui om invariant onder de geconsumeerde hoeveelheid
+alcoholische versnapering meer op natuurlijke wijze testosteron te
+produceren dan de gemiddelde tour de France winnaar zou durven toe te
+geven aan zijn eigen dopingarts -  Deze twee eigenschappen; mooie
+vrouwen en mooie gekken, zouden bij het bestuur toch wel bekend moeten
+zijn -, heeft de s[ck]rip(t|t?c)ie er nu voldoende vertrouwen in dat
+dit feest niet buiten de gebruikelijk escalatie zal escaleren.
+Escargots!
+
+De s[ck]rip(t|t?c)ie zal de verworven kennis over Bauke onder embargo
+houden totdat deze zijn positieve zelfbeeld weer heeft kunnen
+hervinden. Iets dat gezien zijn dagelijkse optimisme en zeer korte
+aandachtsspanne onwaarschijnlijk nog langer dan 34 seconden zal duren.
+Daarna zullen we kunnen terugverwijzen naar 'Weet je nog toen in het
+najaar van 2012 toen Bauke niet meer Bauke wilde wezen?".
+
+De scriptie functioneert uiteraard zonder dat daar in het bijzonder
+een lofuiting voor nodig zal zijn. Het project
+0xVierUurBierUurCountdownKlok echter is een project dat geÃ¯nitieerd is
+vanuit de s[ck]rip(t|t?c)ie zelf zonder dat dit in het kader valt van
+de gebruikelijke dienstverlening naar het bestuur en de andere
+bestuurscommissies toe zou zijn. Waar het hier om een advies ging dat
+zou voorkomen dat het bestuur gezichtsverlies zou lijden door in
+positivisme boven zijn commissies te staan, betreuren de 15 leden in
+de raad van toezicht van de s[ck]rip(t|t?c)ie dat het bestuur zo
+terughoudend is in zijn dagelijkse lofuiting naar al zijn
+bestuurscommissies toe is. Daarnaast duid het gebruik van een
+post-scriptum in een e-mail bericht dat het hier bijzonder gaat om het
+advies dat JeMoeder enkele veren in zijn achterwerk geponeerd krijgt.
+
+Ik hoop dat u bij deze zult inzien dat alle adviezen aangedragen door
+de s[ck]rip(t|t?c)ie verdienen om opgevolgd te worden.
+
+\closing{Hoogachtend,}
+
+\addps{JeMoeder.}
+
+\addps{Het predicaat genocideloosheid vereist uiteraard dat alle leden
+van commissies die dit predicaat bemachtigen een goed begrip hebben
+van genocide en adviseert met klem om deze ervaring op te doen in een
+virtuele omgeving zoals het door u genoemde videospel.}
+
+\addps{Haatbetuigingen zijn nooit zinloos.}
+
+\addps{Luiheid ververling en escalatie.}
+
+\addps{s[ck]rip(t|t?c)ie blogpost zijn autogenerated en dus een hel
+om te lezen. FWN kent uiteraard geen bureaucratie maar slechts een
+megalomaan studentbestuurder.}
+
+\addps{Zelfs zonder een warp-drive ga ik tijd maken voor
+intellectuele ontplooiing in de Dierenriemstraat.}
+\end{plusletter}
+\date{29 september 2012}
+\begin{bestuurletter}
+\opening{Beste Paulus,}
+\setkomavar{signature}{Sjoerd Ferdinand Sjieuwe 'Sjieuwe' Meesters\\Penningmeester(s) der T.F.V. 'Professor Francken'}
+
+Het spijt ons ten zeerste te vernemen dat jullie besloten hebben ons verzoek tot het toe laten treden van de heer J. Lanting tot jullie gelederen als commissaris acquisitie niet willen honoreren. Echter zijn wij mede door de te grote hoeveelheid Fries bloed dat door onze aderen stroom ook maar niet van plan een haar te wijken van ons eerdere standpunt met betrekking tot de functie 'lid van geen betekenis'. Dus hoewel jullie voorgenoemde 'penis nullae causa' als zeer passend beschouwen als functie voor de heer J. Lanting, zal hij niet als zodanig ingehamerd kunnen worden in de s[ck]rip(t|t?c)ie op de komende algemene ledenvergadering.
+
+Echter willen wij de beroerdsten ook niet zijn en willen we gaarne een volgende propositie doen: we maken de heer Lanting zonder twijfel lid onder functie die nader gespecificeerd wordt, mits hij jullie voldoende heeft overtuigd van zijn potentieel achter een toetsenbord. Zoals te zien is in de propositie, betekent dit dat jullie zijn potentie zullen moeten testen dan wel accepteren dat deze aanwezig zijn. Dit zouden wij dan aan jullie over willen laten. Echter het hebben van potentie is niet een garantie voor een goede aanvulling binnen een organisatie zo belangrijk als een bestuurscommissie, dus willen wij hem niet meteen volledig lid maken. Wij denken zelf meer aan een lid dat nog enige tijd in moet werken en mee moet draaien met de s[ck]rip(t|t?c)ie, voordat hij de volledige overstap zal maken. Iets als een pragmatisch inwerkend lid der s[ck]rip(t|t?c)ie, ofwel een PILS. Het is dan de bedoeling dat hij uiteindelijk promoveert tot bovenmatig ingewerkt en erkend redenaar der s[ck]rip(t|t?c)ie wordt, of wel een BIER der s[ck]rip(t|t?c)ie.
+Natuurlijk zijn de innerlijke werkingen en hiÃ«rarchie van de s[ck]rip(t|t?c)ie confidentieel en dus alles bekend bij jullie, en eventueel leden van bestuur, dus zullen dergelijke titels nooit gebruikt mogen worden buiten context en in aanwezigheid van lieden die misbruik zouden willen maken van de verwarring die mogelijk zou kunnen ontstaan door de gelijking van de functienamen op een zeker type gerstenat.
+
+Verder lijkt het ons nu zaak over te gaan tot de orde van de dag, aangezien wij het niet nodig achten deze correspondentie langer voort te zetten dan absoluut noodzakelijk, daar wij bewust zijn van de drukte die het dagelijks leven van een faculteitsbestuurder met zich meebrengt.
+
+Wij willen nu dan ook zeggen dat wij nooit van plan zijn geweest te impliceren dat het geen juist streven is het woord bitterballenborreldibsmachine op een scrablebord te krijgen. Uiteraard is het een goede zaak te streven naar woorden als bitterbal en borrel, ergo bitterballenborrel en dergelijke woorden zijn uitermate geschikt om als streefwoord te dienen. Aangezien wij niet het spel scrable bedacht hebben en de bedenkers weinig oor naar juiste verbeteringen hebben, zijn wij nu van mening dat het een 'quote, unquote' "stom spel" is, en daarmee willen we het nu graag laten.
+
+Wij zijn nu diep teleurgesteld in het blijkbaar afnemende vertrouwen vanuit de s[ck]rip(t|t?c)ie jegens het bestuur. De overtuiging dat de verwachte escalatie op de bitterballenborrel een extremum heeft, wetende de gebruikelijke escalatie, is op zijn zachts gezegd pijnlijk. Bij een dergelijk evenement waarbij zelfs de moeite genomen wordt inschrijflijsten op te hangen met als doel het werven van meer Franckenleden, wordt de gebruikelijke escalatie als bijzonder matig gezien en gehoopt op meer. Echter zijn wij wel blij met de openheid en eerlijkheid van de s[ck]rip(t|t?c)ie betreffende deze zaken, en wij zullen ook zeker de afgelopen promotieweek evalueren, opdat wij de volgende keer wel de juiste escalatieverwachting bereiken.
+
+Wij hebben voor onszelf besloten dat dingen onder embargo niet besproken dienen te worden, daartoe is vanaf nu het noemen van zaken gerelateerd aan datgene onder embargo ten strengste verboden. Met deze kennisgeving hopen we voldoende het standpunt van het bestuur duidelijke gemaakt te hebben, zelfs al zijn zekere van haar leden van een vorig standpunt afgestapt met een goede levenslust.
+
+Met betrekking tot de lofuiting richting de s[ck]rip(t|t?c)ie, gaan wij er stellig van uit dat nu het project 0xVierUurBierUurCountdownKlok een redelijk goed einde heeft genoten er ook zeker een treffende reactie op zal volgen. Het juiste moment hiervoor is echter wat onduidelijk, aangezien maandag de eerste keer zal zij dat de klok het op het juiste moment zal doen, maar er woensdag een groter publiek aanwezig zal zijn om gedane zaken te eren. We verklappen al wel dat we een juist moment hebben gekozen, maar om het verrassingselement enigszins bestaand te houden zal hier verder niet over gecommuniceerd worden met jullie.
+
+Wij hopen dat deze respons niet als een eenzijdige mededeling vanuit het bestuur overkomt, maar dat jullie er terdege van bewust zullen zijn dat jullie stem gehoord wordt. Wij nemen adviezen vanuit de commissies altijd ten harte en te zijner tijd zullen jullie daar misschien de vruchten van kunnen plukken.
+
+Hiermee hopen we jullie zorgen enigszins weg te hebben genomen en verder jullie voldoende te hebben geÃ¯nformeerd.
+
+\closing{Met vriendelijke groet,\\
+Namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+
+\addps{Dit zal het enige postscript zijn, daar ik verder niets te melden heb.}
+\end{bestuurletter}
+\date{30 september 2012}
+\begin{plusletter}
+\setkomavar{signature}{Paulus Nicolas - plus - Meessen}
+\opening{Ge8e Penises Tabulae,}
+
+Wij bedanken Sjoerd Ferdinand Sjieuwe 'Sjieuwe' Meesters (sjieuwe)
+voor het nu tot tweemaal toe zeer snel reageren op onze berichten.
+
+De commissie heeft er vrede mee wanneer Jeroen Ernesto - Lanting -
+Lanting (JELL) in de commissie gehamerd wordt als 'membrum quorum
+valor terminabitur postea'. Gezien het normaliter niet binnen de mores
+van deze vereniging past om iemand in een commissie te installeren
+zonder dat eerst de volledige E.U.L.A van deze persoon is doorgespit
+en dat dit lid op basis van getoonde kwaliteiten in het vizier van de
+commissaris intern is gekomen, zullen wij er genoegen mee nemen
+wanneer het bestuur JELL installeert in de functie commissaris
+cafeÃ¯ne-houdende-drank. De voorziening om in Pilsch te voorzien is
+voor ons namelijk een taak van een belang dat zo groot is dat deze
+verantwoordelijkheid niet op Ã©Ã©n enkel commissielid kan worden
+overgedragen. Bier, pilsch en in het bijzonder speciaalbier zijn zaken
+waarvan alleen een geheel verenigingsbestuur verantwoordelijk voor kan
+worden gehouden.
+
+Het is wel een zorg van de s[ck]rip(t|t?c)ie dat het bestuur de
+noodzaak voelt bij om de benoeming van een bestuurslid aan te geven
+wanneer er wel of geen twijfel is bij het benoemen van een lid. Het
+getuigd van een arrogante megalomane houding, waarvoor ik graag een
+voorbeeldfunctie in neem, van het bestuur om zonder de ALV om advies
+te vragen een benoeming met twijfels door te voeren. Als donateur of
+lid van de vereniging is het commissiebestuur hierop echter tegen en
+zou een bestuur een motie van wantrouwen aan zijn broek smeren. Wij
+adviseren het bestuur dan ook voorafgaand aan deze benoeming advies in
+te winnen bij de 'Wijze Heren' opdat de continuÃ¯teit van de vereniging
+niet in het geding komt door de uitgesproken twijfels van een
+voorzitter.
+
+In ons geliefde HJ (Hacker Jargon) gebruikt men niet acroniemen als
+PILS of BIER maar gaat het over GENOT. (Genocideloos en Elitair Nerden
+op OpgeÃ«iste Televisieschermen.) Daarnaast zal ik u verklappen dat een
+doorgewinterd s[ck]rip(t|t?c)ie-lid zijn eigen titel opeist zoals
+pokÃ©mon-master of opperprofessor.
+
+Aangaande het overgaan tot de orde van de dag, vraagt de
+s[ck]rip(t|t?c)ie het bestuur om ook wat vaker over te gaan tot de
+orde van de nacht, gezien dat de tijd is dat deze commissie het vaakst
+actief pretendeert te zijn.
+
+scrabble is uiteraard een bijzonder stom spel maar het is voor sommige
+mensen onontkoombaar om af en toe een woord te bestempelen als
+scrabblewoord. De intersectie tussen deze groep mensen en de mensen
+die door peers in de vroege uurtjes, terwijl er tequila wordt weggead,
+intellectueel worden genoemd is namelijk niet leeg.
+
+Bij Franckenleden is escalatie impliciet en mijn bijdrage aan de
+algemene escalatie is vaak de constatering dat ergens 'onvoldoende
+overkill' heeft plaatsgevonden, echter wanneer het woord 'escalatie'
+daadwerkelijk op papier of in een e-mailbericht wordt aangetroffen,
+gaat het om een situatie waarin zelfs de meeste geharde Franckenleden
+in paniek uitschreeuwen: "DIT ESCALEERT!". Zo'n situatie zou
+bijvoorbeeld kunnen ontstaan wanneer een lid met 40814 reeds gedibste
+bitterballen wordt geconfronteerd, temeer omdat dit er 31814 meer zijn
+dan 9000 maar vooral ook vanwege het feit dat er dus straks
+Franckenleden rondlopen op een bitterballenborrel zonder dat deze een
+bitterbal kunnen consumeren. Hoeveel bitterballen zijn er eigenlijk
+nodig om de gehele ledenkamer te vullen met bitterballenborrelaars en
+bitterballen? Ik neem aan dat het bestuur een goede idee heeft wat de
+packing-fraction van Franckenleden is en hoe deze gecombineerd is met
+knapperig gebakken bitterballen en wat het volume van de lege ruimte
+van die kamer is.
+
+De scriptie vraagt zich verder af, of bij deze definitie van 'embargo'
+alle persoonlijke informatie over het bestuur, verkregen van de
+bestuurscomputers en in de bestuurskamer rondslingerende smartphones
+en iPads, niet als bijlage moet worden meegestuurd in het nieuwe
+leden-mailingscript. Verder merkt de commissie op dat dit heel erg
+lijkt op censuur. De s[ck]rip(t|t?c)ie wil graag middels het bestuur
+aan de Francken Vrij alle hulp in de vorm van hackerskills aan te
+bieden om te voorkomen dat het bestuur ook die communicatiestroom zou
+willen inperken als de redactie zou besluiten dat het voor de
+informatievoorziening van het electoraat essentieel is dat de leden,
+donateurs, vrienden en sponsoren van T.F.V 'Professor Francken' op de
+hoogte van de intieme details, geruchten en de door mij om Bauke te
+feuten bedachte leugens op de hoogte is.
+
+Verassingen zijn altijd leuk, behalve als het gaat om verassingsijsjes
+waarbij de verassing is dat er een minuscuul, op een tandenstoker
+gebouwd, parapluutje in het ijsje steekt. Daarnaast houdt JeMoeder
+helemaal niet van toetjes. Dat laatste is uiteraard alleen maar
+verwarrend gezien JeMoeder wel van verassingen houd tenzij het
+verassingstoetje een appeltaart is. Maar appeltaart is in deze dan ook
+geen verassing. Paniek alom. Escargots!
+
+Veel zorgen zijn weggenomen en hebben plaatsgemaakt voor totale
+paniek. Gelukkig kan de s[ck]rip(t|t?c)ie uitstekend functioneren in
+geval van totale paniek. Net zolang tegen een black-box aan slaan
+totdat er iets onverwachts gebeurt, past uitstekend in de
+hacker-mindset. Voorlopig heeft de s[ck]rip(t|t?c)ie wel weer
+voldoende geÃ¯nformeerdheid om deze mindset te voeden. uw bestuur is in
+deze metafoor de black-box maar dient te weten dat de
+s[ck]rip(t|t?c)ie op de korte of lange termijn nog geen plannen heeft
+om geweld te gebruiken om spannende reacties uit te lokken.
+
+\closing{Vriendelijke groet,}
+
+\addps{Mag ik uit de ondertekening van uw brief concluderen dat sjieuwe
+[pen-ning-mees-ter-(ES)] is en zich wellustig maar dominant opstelt
+tegenover penningen? En een vrouw is?}
+
+\addps{DEXTER!}
+
+\addps{JeMoeder geniet al maanden van Dexter en gaat dat morgen weer doen!}
+
+\addps{post-scriptum escalatie!}
+
+\addps{stop!}
+
+\addps{Waar komt de meme 'stahp' op 9gag vandaan en waarom is deze
+kwalitatief uitermate teleurstellend maar wel waanzinnig populair.}
+
+\addps{Ik heb al wel twee regels voor de blog-post geschreven maar
+deze ook weer gedelete.}
+\end{plusletter}
+\date{30 september 2012}
+\begin{bestuurletter}
+\opening{Beste Paulus Nicolas 'Plus' Meessen,}
+\setkomavar{signature}{Sjoerd Ferdinand Sjieuwe 'Sjieuwe' Meesters\\Penningmeesters der T.F.V. 'Professor Francken'}
+
+Wij, als verenigingsbestuur, hebben er vrede mee dat jullie er vrede
+mee hebben wanneer Jeroen Ernesto 'Lanting' Lanting, hierna Lanting,
+ingehamerd wordt in de s[ck]rip(t|t?c)ie zijnde een 'membrum quorum
+valor terminabitur postea', gezien dit normafhankelijk relatief dicht
+bij onze voorgaande visie ligt.
+Echter willen wij niet zo ver gaan als tot het inhameren van Lanting
+in de s[ck]rip(t|t?c)ie als commissaris cafeÃ¯nehoudende drank, omdat
+de ervaringsdeskundige in het bestuur een bizarre situatie voor de
+geest wist te halen, waarin de heer Lanting een prominente rol had in
+de misbruik van enkele blikjes golden power. Dit misbruik heeft geleid
+tot een bijzonder zieke voorzitter tijdens de tweede nacht van een
+pienterkamp enkele jaren geleden. Bij dezen willen wij dan ook
+voorstellen ofwel de functie van commissaris koffie ofwel commissaris
+futura potential.
+Verder doet het ons deugt te constateren dat er niet licht gedacht
+wordt over distributie dan wel presentie dan wel consumptie van vele
+prominent aanwezige vormen van het ons allen heilig geachte gerstenat.
+
+Jullie zorg met betrekking tot de noodzaak, die wij blijkbaar hebben
+laten doorschemeren, die het bestuur voelt om aan te geven wanneer een
+lid wel of niet met argusogen bekeken wordt tijdens diens benoeming is
+gedeeltelijk gegrond.
+Het was uiteraard niet de bedoeling aan te geven dat bepaalde
+overwegingen in acht worden genomen bij de benoeming van welk lid dan
+ook tot functionaris binnen een commissie. Dat dergelijke overwegingen
+in beschouwing genomen worden en dat ook dienen te worden, zou als
+vanzelfsprekend moeten zijn voor een dergelijk megalomaan bestuurder
+als uzelf.
+Nou wil het toeval dat in dit geval een dergelijke benoeming al
+besproken is tijdens het wijzeherenoverleg op een recente maar niet
+nader te noemen datum. Dat deze benoeming uit een andere hoek ook naar
+voren komt, geeft alleen maar aan dat de wijze heren een terecht een
+defect geconstateerd hebben binnen de commissielaag van onze mooie
+vereniging. Verder moet gezegd worden, dat wij niet zozeer twijfelen
+aan de capabiliteit van Lanting, maar meer aan de integratie van hem
+binnen de commissie. Wij moeten ook eerlijk zeggen dat dit punt in de
+recente communicatie uit het zicht verloren is en dat het zeer wel
+mogelijk is dat we nu langs elkaar heen lopen te typen.
+
+Dat de s[ck]rip(t|t?c)ie nu aangeeft er vanuit te gaan dat de
+bitterballenborrel te tent uit zal escaleren heeft enigszins de tranen
+weggenomen van het eerder genoemde met betrekking tot een laf verloop
+van de borrel. Dat het een volle bak zal zijn komende woensdag zijn
+wij zelf ook al van overtuigd, en verschillende theoretische modellen
+geven allemaal aan dat de kans op escalatie rond de 140% ligt. Nou ben
+ik persoonlijk niet voorstander van het uitdrukken van kansen in
+procenten, nog is de rest van het bestuur voorstander van theoretische
+modellen daar zij technische natuurkundigen zijn, maar zijn we het er
+allen over eens dat dit een goed begin is. Helaas hebben we nergens
+vastgelegd wat de packing fraction is van Franckenleden, iets wat
+Ã¼berhaupt een vreemde eigenschap is. Wij zijn er van overtuigd dat de
+s[ck]rip(t|t?c)ie zich niet goed heeft ingelezen in de definitie van
+packing fraction en voelen ons nu genoodzaakt extra uitleg te
+verschaffen. Dat de s[ck]rip(t|t?c)ie begrijpt dat de packing fraction
+iets zegt over hoeveel van het aanwezige volume ook daadwerkelijk
+gebruikt kan worden door het gewenste materiaal, staat buiten kijf.
+Echter hangt de packing fraction meer af van de ordening, of beter de
+onderlinge oriÃ«ntatie van de onderlinge elementen van het materiaal,
+dan van wel materiaal gebruikt wordt. Zo stellen wij ook voor de
+bitterballen op te stapelen in hcp (hexagonal close packed) formatie,
+aangezien dit de theoretisch hoogste waarde van packing fraction
+oplevert. Een voorbeeld van een hcp-structuur is een stapel
+kanonskogels uit de iets minder recente historie. Er zijn oneindig
+veel manieren om ballen hcp te ordenen, maar de makkelijkste is door
+de tweede laag ballen op de gaten van de eerste laag te leggen en dan
+weer de derde laag in de gaten van de tweede.
+Om niet te veel af te dwalen, betekent dit dat 40000 bitterballen
+ongeveer $40000*4/3*pi*(0.015)^3/0.74 = 0.76 m^3$ aan ruimte innemen.
+Wat naast uiterst teleurstellend, ook niet praktisch haalbaar is
+gezien de onderste bitterballen zouden bezwijken onder het gewicht van
+de rest erboven. Bij het schrijven van deze zin realiseer ik me dat we
+moeten gaan lobbyen om de bitterballendruk in te voeren, namelijk de
+druk die een kuub bitterballen uitoefent op een vierkante meter.
+
+Natuurlijk moest het eerder gestelde embargo met een korreltje zout
+genomen worden, en is het absoluut niet de bedoeling censuur op te
+leggen aan leden van de s[ck]rip(t|t?c)ie of welke commissie dan ook.
+Dat Bauke Bauke niet meer wil zijn is zeker reden tot vragen op de
+komende BV, maar wordt verder afgedaan als weer een moment van
+concentratieverlies aan de kant van mijnheer Steensma. Het gestelde
+embargo had Ã¼berhaupt geen kans van slagen omdat het natuurlijk niet
+anders kon zijn dat de heer Steensma de s[ck]rip(t|t?c)ie er van op de
+hoogte wilde stellen dat hij een drietal duizend bitterballen had
+gedibst (Hoewel de authenticiteit van zijn hotmailadres sterk in
+twijfel getrokken wordt door een zekere penningmeester.)
+
+Verrassingen verrassend, en daarmee zou ik niet uw eerdere statement
+willen ondermijnen maar u toch met de neus op de feiten drukken. U
+geeft zelf immers al aan dat JeMoeder een zoete traktatie niet
+beschouwt als een leuke verrassing (daarentegen zou dat bij ons juist
+de mate van leukheid doen toenemen, sadisten dat we zijn.)
+
+Het spreken van totale paniek is alleen terecht als daar daadwerkelijk
+sprake van is, wij zijn echter van mening dat het hier om een gezonde
+spanning gaat. Het kan zijn dat wij nu in eufemismen praten, en om
+zeker te weten dat dit niet het geval is zullen we zeer spoedig met de
+voorzitter der s[ck]rip(t|t?c)ie om de tafel gaan zitten om dit op te
+helderen. Vooralsnog zullen we jullie niet weerhouden meer tegen de
+black-box aan te slaan, en hopen dat jullie daarmee een reactie gaan
+uitlokken. Daarbij moet echter wel opgemerkt worden dat we hopen dat
+jullie creatief zullen zijn met het slaan op de blackbox, en niet
+noodzakelijkerwijs geweld moeten gebruiken (vooral omdat jullie
+intenties daar niet liggen.)
+
+\closing{Met hartelijke dankbetuiging richting jullie spoedige correspondentie
+zou ik willen afsluiten met het doen van hartelijke groeten,\\
+Namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+
+\addps{Dat ik mij hard opstel jegens penningen is reeds gebleken
+tijdens menig bestuursvergadering. De conclusie dat ik vrouw schijn te
+zijn is gebaseerd op de misinterpretatie van de toegevoegde 's' achter
+de naam van mijn functie en de misvatting dat daar dan maar een 'e'
+tussen geschreven dient te worden. Dit is natuurlijk niet het geval en
+ik ben er absoluut ook niet van gediend.}
+
+\addps{Uiteraard zal DEXTER geÃ«xclameerd moeten worden morgen in de
+ledenkamer, wat gevolgd dient te worden met het gezamenlijk kijken
+naar voorgenoemde televisieserie. Helaas bevind ik mij dat in de
+contreien van de Utrecht op het moment dat dit gaande kan zijn, en zal
+mij moeten beroepen op de sadistische ironie die plaatsvindt wanneer
+ik morgen absent ben en de heer Jacobse naar mijn presentie vraagt.}
+
+\addps{Hoe meer zielen hoe meer vreugd, daartoe heb ik de altijd
+lastige Sander Blok aangezet tot het downloaden van DEXTER in HD
+kwaliteit en het reserveren van een zaal. Bekijk maar wat je ermee
+gaat doen.}
+
+\addps{Wat mij betreft komt elke referentie aan de verkrachte
+versie van het woord 'stop' op zekere internetsites niet terug in de
+volgende correspondentie en met die opmerking heb ik hier genoeg
+woorden aan vuil gemaakt.}
+
+\addps{Zonde om te vernemen dat genomen moeite afgedankt wordt
+als zijnde nutteloos, terecht of onterecht, en dat de referentie eraan
+ook twee regels reikwijdte heeft.}
+\end{bestuurletter}
+\date{1 oktober 2012}
+\begin{plusletter}
+\setkomavar{signature}{Paulus Nicolas 'plus' Meessen}
+\opening{Geacht achtentwintigste bestuur,}
+
+Het verheugd mij zeer het bestuur uitsluitsel heeft kunnen geven over het geslacht van de penningmeesters en dat daarvoor het vient-lied niet hoeft te worden uitgebreid met een voorbind-dildo.
+
+Daarnaast wil ik opmerken dat de via gmail geprinte versie van deze e-mailconversatie inmiddels meer dan 11 pagina's lang is.
+
+De s[ck]rip(t|t?c)ie is blij dat het bestuur onder de voorgestelde titel Jeroen Ernesto 'Lanting' Lanting (JELL) wil benoemen in deze bestuurscommissie. We zijn het echter oneens met de stelling dat JELL niet heer en meester is over het volledige spectrum van cafeÃ¯nehoudende drank en als enige kandidaat voor deze functie verder is gegaan dan welk Franckenlid dan ook. Het is juist het feit dat dhr. JELL als enige vertrouwd is met het consumeren van een overdosis aan energiedrank dat wij deze expertise kunnen gebruiken tijdens lange coding sessies. Voordat wij overgaan tot het instellen van een commissaris koffie dient de vereniging eerst een sponsorcontract af te sluiten met Illy of Nespresso waardoor we de garantie hebben nooit meet verwarmd slootwater te hoeven consumeren onder het voorwendsel: "Kijk een kop koffie!".
+
+Indien het bestuur en de wijze heren er op willen toezien, is de harde kern van de s[ck]rip(t|t?c)ie uiteraard bereidt om JELL eerst te ontgroenen voordat deze kan worden opgenomen in de groepsstructuur. Hoewel dit fenomeen bij de commissaris acquisitie van het huidige bestuur niet geheel vreemd en onwenselijk moet overkomen, ziet de raad van toezicht van de s[ck]rip(t|t?c)ie dit proces niet als noodzakelijk kwaad. De algemene norm is dat zodra een lid van de s[ck]rip(t|t?c)ie tien regels code heeft geschreven hij of zij volledig geÃ¯ntegreerd is in de commissie.
+
+Buiten de ambitie JELL lid te maken van de s[ck]rip(t|t?c)ie, staat de commissie volledig open voor voorstellen voor potentiÃ«le nieuwe leden. Zeker gezien uit recente communicatie is gebleken dat het toeziend lid van het bestuur voor deze commissie geen vrouw is en wij nu zwaar de verkeerde kant op hellen als het gaat om de geslachtsverhouding. Gezien het bestuur waarschijnlijk niet de financiÃ«le middelen heeft om de penningmeesters om te bouwen tot een penningmeesteres, lijkt het ons een interessante taak voor de commissaris intern om op zoek te gaan naar de script-godin binnen de vereniging. Als echter ook blijkt dat er extern vrouwen zijn met deze skillz die verder in het algemene belang van de vereniging een bijdragen kunnen leveren in de prominente, zou er moeten worden overwogen deze vrouwen een fellowship aan te bieden in onze vereniging. De eerste zoekopdracht zal ook zijn om te achterhalen of Doutzen Kroes kan coden. Daarna mag de commissaris extern naar eigen inzicht een volgorde bepalen voor het uitzoeken welke van de Victoria's Secret Angels dan ook kunnen coden.
+
+De s[ck]rip(t|t?c)ie stelt ook voor om in het kader van bitterballenescalatie een lobby te starten in Brussel om de minimale interne druk in de ragout in de bitterballen op te voeren naar tenminste 14 bar en dit middels Europese regelgeving te handhaven. Een kuub bitterballen is sowieso wel episch in de letterlijke zin van het woord; er zullen eeuwenlang verhalen worden geschreven, over die kuub bitterballen.
+
+Tot slot wil ik graag buiten mijn s[ck]rip(t|t?c)ie bevoegdheden treden en ervoor pleiten dat alle deurklinken toebehorend aan de prachtige vereniging T.F.V. 'Professor Francken' in de huiskleur van de vereniging moeten worden geschilderd. Ik heb het hierbij uiteraard over het kneiterse Francken-blauw. Daar waar de deuren van de vereniging niet ten alle tijd geopend kunnen zijn, is het vastpakken van de deurklink alvorens de verenigingsruimtes worden betreden een van de eerste contacten die binnen- en buitenstaanders hebben met de verenigingscultuur. Dit contact mag op geen enkele manier achteloosheid uitstralen door de vorm aan te nemen van een commercieel geproduceerde deurklink van fabrieksstaal of soortgelijk massaproduct. Daar waar mooie gekken verenigd worden in de krochten van een met asbest verpest gebouw, waar voorgaand aan de sloop sowieso in gepaintballd gaat worden, zal dit eerste contact representatief moeten zijn voor het Franckengevoel opdat niemand de kamer kan passeren, zonder de wederzijdse aantrekking op het gebied van intellect en escalatie tussen mooie gekken te hebben gemist. Ik hoop dat het bestuur deze overwegingen mee wil nemen in de eerstvolgende bestuursvergadering.
+
+\closing{Vriendelijke groet,}
+
+\addps{Ik zal dhr. P. Jacobse, wanneer ik deze tegenkom, confronteren met de absurdheid van diens ondernemingen in relatie tot jou geografische locatie.}
+\end{plusletter}
+\date{2 oktober 2012}
+\begin{bestuurletter}
+\opening{Beste Paulus Nicolas '+' Meessen,}
+
+In verband met de openheid van de s[ck]rip(t|t?c)ie, en de functie-omschrijving van haar voorzitter, hebben wij besloten deze toegang te geven tot deze correspondentie opdat hij zijn oordeel kan vellen over het eerder gezegde.
+
+Daartoe wil ik graag deze gelegenheid aangrijpen om JeMoeder te verwelkomen in deze elektronische berichtgeving en te bedanken voor de tot nu toe gedane zaken met betrekking tot het project 0xVierUurBierUurCountDownClock. Verder wil ik hem succes wensen met het doorspitten van de eerdere correspondentie, indien hij dat nog niet gedaan heeft en anders feliciteren met het spenderen van tijd die hij nooit meer in zijn leven terug zal krijgen.
+
+Om nu over te gaan op de orde van de nacht, gezien het reeds klokslag zes (zaz) uur is geweest, zou ik willen opmerken dat de duidelijkheid die verschaft is in de zaak omtrent zekere geslachtsbepalingen, hoewel mijn inziens overbodig blijkbaar genoten hebben van een goede receptie uwer zijde. Dat dit betekent dat de draak genaamd het VIENT-lied in ieder geval niet groter wordt, heeft naar mijn mening alleen maar positieve gedachten tot gevolg. 
+
+Wij zijn het niet eens met de stellingname dat de heer Jeroen Ernesto 'Lanting' Lanting, hierna Lanting, door zijn perikelen enkele jaren geleden juist een uitstekende kandidaat zal zijn voor de functie commissaris cafeÃ¯nehoudende dranken. Hoewel hij klaarblijkelijk de penibele situatie in Bakkeveen heeft overleeft valt niet te zeggen hoeveel permanente schade dat heeft aangericht. Dat de schade niet zichtbaar is hoeft niet te betekenen dat deze er niet is, en als die er wel blijkt te zijn willen we graag de volgende analogie aanhalen. Iemand die in een auto-ongeluk betrokken is geweest en twee armen verloren heeft zal je ook niet meer achter het stuur moeten zetten omdat deze een ervaringsdeskundige is. 
+Wij zien natuurlijk ook wel dat dit te kort door de bocht is, en stellen daarom voor om een rustig begin aan te moedigen waarbij de functie commissaris koffie uiteraard om de hoek komt kijken. Dat dit betekent dat de s[ck]rip(t|t?c)ie eist dat er een sponsorcontract afgesloten dient te worden met een willekeurig a-merk koffie, zal ook zeker meegenomen worden in het huidige beleid met betrekking tot bedrijvencontacten, hoewel we natuurlijk niets kunnen garanderen. Uiteindelijk hopen we dat de commissaris koffie zich zal bewijzen en zal uitgroeien tot commissaris cafeÃ¯nehoudende dranken, maar we willen niet zomaar iemand in het diepe gooien.
+
+Omdat wij als bestuur van mening zijn dat wij niet te corporaal moeten overkomen richting onze leden, en dat dat al behoorlijk moeilijk is met een rasalbertiaan in ons midden, vinden wij dat elke vorm van ontgroening binnen gesloten deuren en de commissie moet blijven. Indien jullie van mening zijn dat tien regels coden genoeg ontgroening is, dan is dat zo. Zij het dat jullie meer verlangen, dan zij dat zo en zullen jullie daarin moeten voorzien. Wij als bestuur distantiÃ«ren ons echter van elke vorm van ontgroening die mogelijk immoreel, abject of infaam kan zijn. Dit betekent echter niet dat wij geen voorstander zijn van een teste van bekwaamheid, en zouden we zelfs zo ver willen gaan dat Lanting een kopje koffie zal moeten drinken.
+
+Wij zijn bang dat de s[ck]rip(t|t?c)ie zich niet realiseert dat er binnen elke commissie en zelfs bestuur, de mogelijkheid bestaat iemand aan te wijzen als vrouw van die commissie of dat bestuur. Binnen ons bestuur was een dergelijk persoon aanwijzen een kwestie van het hardst en snelst 'no bitch' roepen om vervolgens tot de conclusie te komen dat het eigenlijk allang duidelijk was wie de spreekwoordelijke 'bitch' was. 
+Mochten jullie echter in staat zijn een aantrekkelijke vrouw de commissie in te praten, moedigen wij dit allen aan mits zij natuurlijk bereid is Franckenlid te worden. 
+
+Hoewel het natuurlijk een ongelofelijke smaaksensatie en -explosie moet zijn om een bitterbal te eten met een interne druk van 14 bar, streeft dit plan zijn doel volkomen voorbij. Allereerst is het gezondheidsrisico te groot, en dan met name met betrekking tot het verbranden van de hele binnenkant van de mondholte. Normaal gesproken zou men zeggen dat dat de sensatie wel waard is, ware het niet dat dit het verder eten van bitterballen ernstig in gevaar brengt. Daarnaast is het de bedoeling van de eerder genoemde lobby, om juist de eenheid bar te vervangen door bbd, ofwel bitterballendruk. Om dan ook te gaan lobbyen voor een interne druk in bitterballen uitgedrukt in een ouderwetse eenheid als bar is dan alleen maar gelijk aan het scheppen van onnodige verwarring. 
+Daarom zullen wij ook een negatief advies moeten afgeven met betrekking tot het lobbyen voor een interne druk van veel bbd in een bitterbal. 
+Gelukkig zijn we wel zeer positief gestemd over de epischheid van een kuub bitterballen, echter moet daar bij wel vermeld worden dat het onmogelijk is dat niet te zijn. Een kuub bitterballen is bijna onvoorstelbaar veel, wat inhoudt dat twee kuub bitterballen gelijk moet staan aan een instantane breinexplosie gelijk aan het kunnen visualiseren van een vierde ruimtelijke dimensie (uiteraard nog steeds rekening houdend met een minkowski metriek.)
+
+Het verzoek tot het verkleuren van alle toepasselijke deurklinken tot Franckenblauw zal komende bestuursvergadering zeker meegenomen worden. Dat niemand dit eerder bedacht heeft is eigenlijk een kwalijke zaak en betekent echter waarschijnlijk dat gebouwbeheer een dergelijk uitmuntend idee waarschijnlijk heeft gedwarsboomd. Wij zijn erg benieuwd naar de macht van de faculteitsbestuurder over een dergelijke stugge en lastige organisatie en vragen ons dan ook af of ook hij ondervonden heeft dat zijn macht slecht te vergelijken is met die van een muskiet die 's nachts hoopt niet doodgemaakt te worden door de persoon wiens slaap hij verstoort. 
+Daar wij eigenlijk complete schijt hebben aan het gebouwbeheer en zij waarschijnlijk aan ons, zijn wij van mening dat we stiekem kunnen proberen elke dag een klink een druppel Franckenblauw te geven, opdat zij niet doorhebben wat er gaande is. Daarnaast zijn we van plan met hulp van de ongeveer 10000 mislukte stickers ze af te leiden van de telkens iets blauwere deurklinken door dezen te deponeren op een steeds voller geplakte ledenkamer deur. 
+Een dergelijk plan vereist natuurlijk wel veel tijd, maar mocht het slagen hebben we toch zeker nog een half jaar te genieten van een mooie blauwe deurklink, voordat het gebouw volledig terecht tegen de vlakte gaat.
+
+Hiermee loop ik momenteel tegen het einde van mijn geduld, daar ik plannen heb moordzuchtige bloedspatanalisten te aanschouwen en diens relatie tot hun naaste familie. Gezien de tijdsspanne die hier voor nodig is en de concentratieboog die nu al af begint te brokkelen rest mij niets anders dan het wensen van de meest gemiddelde vriendelijke groeten in de geschiedenis van toch wel het afgelopen half uur.
+
+\closing{Met de meest gemiddelde vriendelijke groet van het afgelopen half uur,\\
+namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+
+\addps{Jammer dat de heer Jacobse er niet bij kon zijn, waardoor de meest terechte en kosmisch irrelevante ironie niet plaats heeft kunnen vinden. }
+\end{bestuurletter}
+\date{2 oktober 2012}
+\begin{plusletter}
+\setkomavar{signature}{Paulus Nicolas 'plus' Meessen}
+\opening{Geacht Bestuur,}
+
+ik zal in mijn repliek ditmaal kort zijn.
+
+Zoals het een goede barman, sommelier of flair-bartender betaamt geen alcoholische dranken te consumeren danwel intraveneus in te brengen tijdens het uitvoeren van hun professionele werkzaamheden, ziet de s[ck]rip(t|t?c)ie het essentieel voor het functioneren van een commissaris cafeÃ¯ne-houdende-drank om zelf niet onder invloed van dit pepmiddel te zijn. Om dan toch nog even terug te komen op uw metafoor aangaande het auto-ongeluk, zou het onzinnig zijn wanneer dat verkeersslachtoffer na reÃ¯ntegratie als bestuurder in het verkeer en een bewezen staat van bekwaamheid te hebben opgebouwd, niet gevraagd zou kunnen worden in een adviescommissie om dergelijke traumatische gebeurtenissen de wereld uit te helpen. Daarnaast neemt de s[ck]rip(t|t?c)ie uiteraard geen genoegen met een willekeurig a-merk maar heeft deze reeds duidelijk zijn voorkeuren kenbaar gemaakt.
+
+Verder merkt de s[ck]rip(t|t?c)ie op dat het bestuur geen waardering toont voor de nobele kunst van het coden door er vanuit lijkt te gaan dat het schrijven van 10 regels coden mag gelden als 'ontgroening'. Zeker in het kader van de bij u bekende Albertiaanse-ontgroeningen, welker bijbehorende vereniging op Wikipedia toch vooral bekend staat vanwege de vele incidenten. Het schrijven van een eerste script met een praktisch minimumaantal aan regels welk is aangeduid met het getal tien (10), is onderdeel van de initiatie en integratie in de commissie en heeft geheel niets te maken met het emotioneel uitkleden en psychisch kastijden van aspirantleden ten behoeve een verwrongen gevoel van eigenwaarde. Als het bestuur kennis wil maken met de praktijk van het coden, kan de s[ck]rip(t|t?c)ie bij voldoende animo binnen alle betrokken partijen een 'Crash and Compile' competitie organiseren. 
+
+Helaas moet ik u mededelen dat de s[ck]rip(t|t?c)ie in opzet, zoals overeengekomen met het bestuur, geen 'bitch' kent omdat deze vergadert op IRC. Daarbij blijkt het dus toch zaak te zijn dat het bestuur de verantwoordelijkheid voor het werven van de mooiste vrouwen weer oppakt.
+
+De bitterballenborrelescalatie-modellen die tot nu toe door het bestuur zijn gepresenteerd, waar deze modellen vaak zijn begeleid met bewijzen dat zij worden doordrenkt met kennis van zaken, heeft de s[ck]rip(t|t?c)ie weer het volle vertrouwen in dezen en genen die verantwoordelijkheid nemen voor de organisatie en kwaliteitsbewaking van de bitterballenborrel van woensdag aanstaande. Zelfs de 15-koppige Raad van Toezicht van de s[ck]rip(t|t?c)ie heeft unaniem aangegeven 'zin' te hebben in Ã©Ã©n bitterbal op de naar het voorgenoemde frituur-product vernoemde borrel.
+
+Bij mijn weten, hoeft een faculteitsbestuurder niet in te grijpen wanneer de deurklinken van ruim 50 jaar oude gebouwen langzamerhand door ouderdom en slijtage door gebruik, toevalligerwijs de kleur Franckenblauw aannemen. Daarnaast zou het gebouwbeheer slecht staan, averechtse acties te ondernemen jegens de laatste gebruiker van een deurklink, of de bewoner achter de desbetreffende deur, vanwege schade die ontstaat door regulier gebruik of slijtage. Laat het echter wel bekend zijn dat, tot nader order, de vereniging er goed aan doet om een zo veel mogelijk positief constructieve en amicale houding jegens gebouwbeheer aan te nemen gezien deze partijen nog langer met elkaar zullen moeten samenwerken dan dat de toon van uw laatste communiquÃ© misschien zou doen vermoeden.
+
+Ik hoop dat dit kort genoeg was en dat enkele van de in voorgaande brieven in woordvolume geÃ«scaleerde briefwisselingsthema's nu zijn afgesloten opdat men tijd overhoudt voor het overgaan tot de orde van het kijken naar een, door het Noord-Amerikaanse en commerciÃ«le Showtime geproduceerde, zeer snelle afgewisselde van fotografische beelden waarvoor geldt dat de compositie van deze foto's geÃ¯nspireerd is door de verhalen van Jeff Lindsay over de broer van Debra 'Deb'  Morgan.
+
+\closing{Vriendelijke groet,}
+
+\addps{JeMoeder is inderdaad ontzettend welkom in deze elektronische briefwisseling.}
+
+\addps{Moet het voorgenoemde  s[ck]rip(t|t?c)ie-lid en tevens voorzitter ook betrokken worden in de parallelle briefwisseling met daarin de screenshots die duidend zouden moeten zijn voor de mate waarin Bauke Bauke wil wezen?}
+\end{plusletter}
+\date{4 oktober 2012}
+\begin{bestuurletter}
+\opening{Geachte Paulus Nicolas '+' Meessen,}
+
+De nagestreefde bondigheid van uw repliek is opgemerkt en er zal getracht worden de lengte van dit communiquÃ© binnen de perken te houden, hoewel garanties helaas niet gegeven kunnen worden. Gelukkig is het begrip 'kort' een relatief begrip en dus onderhevig aan de subjectieve stellingname van het bestuur.
+
+Om dan maar met de spreekwoordelijke deur in huis te vallen, zullen we de s[ck]rip(t|t?c)ie vragen of zij begrepen heeft dat wanneer de heer Jeroen Ernesto 'Lanting' Lanting, hierna te noemen ' Lanting', benoemd wordt als commissaris cafeÃ¯nehoudende drank, dit zal gebeuren op nadrukkelijk verzoek van de s[ck]rip(t|t?c)ie en dat zij verantwoordelijk is voor de gevolgen wanneer blijkt dat Lanting weer in oude gewoontes terug valt.  
+Natuurlijk zijn wij als bestuur eindverantwoordelijk voor al onze commissies en zullen wij in principe in moeten staan voor alle consequenties, maar dat betekent niet dat wij de s[ck]rip(t|t?c)ie niet het vertrouwen willen geven de situatie in de hand te houden en zorgen dat een dergelijke cafeÃ¯neverslaving niet met zijn lelijke kop om de hoek komt kijken.
+Dat de s[ck]rip(t|t?c)ie al eisen heeft gesteld met betrekking tot de herkomst van cafeÃ¯nehoudende dranken kan ons inziens twee dingen betekenen. Enerzijds kan het zijn dat de s[ck]rip(t|t?c)ie een handreiking doet richting Lanting door bepaalde merken koffie te kiezen die niet zijn voorkeur genieten waardoor de kans op escalatie geminimaliseerd wordt. Anderzijds kan het echter ook zijn dat de s[ck]rip(t|t?c)ie persoonlijke motieven heeft met de keuze voor bepaalde a-merken en dat zij daarmee onbedoeld de intrede van Lanting binnen haar gelederen bemoeilijkt. 
+In beide gevallen stelt het bestuur de aanbeveling van de s[ck]rip(t|t?c)ie op prijs, maar zal niet geneigd zijn zich over te geven aan de eisen van de s[ck]rip(t|t?c)ie als aan het licht komt dat binnen het bestuur de voorkeur op een ander merk rust.
+
+Wij als bestuur betreuren de misinterpretatie aan de kant van de s[ck]rip(t|t?c)ie, hoewel wij waarschijnlijk ook wel enige blaam treffen door de mogelijk vage manier van communiceren. Daartoe proberen wij nu duidelijkheid te scheppen in wat blijkbaar als een kwalijke kwestie beschouwd wordt. In eerste instantie wilden we dat de s[ck]rip(t|t?c)ie niet aan enige vorm van ontgroening zou doen, maar we erkenden uiteraard ook dat zonder enige vorm van initiÃ«ring niet duidelijk is aan de s[ck]rip(t|t?c)ie of een nieuw lid daadwerkelijk capabel is met betrekking tot het coden, dan wel scripten van allerlei nuttige dan wel minder nuttige programmatuur. 
+Dat heeft ons doen besluiten de ontgroening over te laten aan de s[ck]rip(t|t?c)ie, aangezien zij het best weet hoe een dergelijke activiteit plaats zal moeten vinden. Het is dus juist omdat wij een ontgroening niet te licht nemen dat deze doorgeschoven is aan de s[ck]rip(t|t?c)ie. Dat verder uit ons communiceren de conclusie getrokken wordt, dat het bestuur geen waardering zou hebben voor de taken van de s[ck]rip(t|t?c)ie is gebaseerd op het lezen van een rode draad in ons schrijven zonder te realiseren dat deze helemaal geen presentie had. 
+   
+Om toch enigszins te compenseren voor dit kwalijke misverstand en om ook meteen de twee spreekwoordelijke vliegen met de even spreekwoordelijk klap te slaan zullen we gaan kijken naar mogelijke kandidaten voor de positie van vrouwelijk lid der s[ck]rip(t|t?c)ie. Echter zullen wij consequent moeten blijven in ons doen en laten en kunnen we niet zomaar iemand tot lid der s[ck]rip(t|t?c)ie benoemen, omdat dit ook niet de gang van zaken is die nu gehanteerd wordt. Daarnaast zijn wij van mening dat de s[ck]rip(t|t?c)ie ook zelf mogelijke vrouwelijke leden aan mag dragen, zolang het maar niet iemands moeder is. Dit is uiteraard om verwarring te voorkomen, aangezien er al een JeMoeder in de commissie gehamerd is. Nu we het toch over JeMoeder hebben, zullen we op moeten merken dat iemand niet een dergelijke naam kiest zonder aanspraak te willen maken op de titel van commissiebitch. Het is echter wel zo dat we ons verbaasd hebben over de mate waarin JeMoeder verbaasd (als in toenemende mate baas worden) is, en dat hij waarschijnlijk te prominent is nog bitch genoemd te worden.
+
+Deze correspondentie was eigenlijk bedoeld als een verslag van de bitterballenborrel, maar begint langzamerhand af te wijken van het eerder gestelde doel. Daarom lijkt het wenselijk door te gaan met de verslaglegging van de gedane zaken op 3 oktober jongstleden. De bitterballenborrel was uiteraard een groot succes, zoals natuurlijk te verwachten was. Dit zonder enige vorm van escalatie die binnen de Franckenkamer gebruikelijk is. Dit is waarschijnlijk toe te schrijven aan de gradatie van contentheid onder de bezoekende leden, geef ze een bitterbal en ineens hebben ze minder reden tot zeuren. Maar ook zonder de gebruikelijke muurafbrekende escalatie was er zeker te spreken van een kek feestje, dat zeker de moeite waard is te herhalen. 
+Het is dus misschien een idee de dibsmachine te laten bestaan zodat mensen bitterballen kunnen toe-eigenen voor een mogelijk toekomstige bitterballenborrel.
+
+We hebben helaas nog geen tijd gehad de voorgestelde deurklinkkleurwissel te bespreken in de bestuursvergadering, maar een dergelijk ingrijpend plan verdient zeker een paar minuten bespreking binnen de deuren van onze bestuurskamer. Wij zullen ook zeker in overweging nemen hoe gebouwbeheer zal reageren op een gebeurtenis die het gebouw in zijn grondvesten zal raken op een manier zo groots als deze. Gezien wij in de toekomst weer een zeer prominente locatie willen bemachtigen als dan toch eindelijk de Nijenborgh tegen de vlakte is gegaan, is dit een zaak waar we niet te licht over mogen denken. Een goed contact met gebouwbeheer is dan ook essentieel en hoewel we hun manier van doen hekelen zullen we ze niet op de tenen moeten trappen. 
+
+Net zoals wij er rekening moeten houden met de manier waarop anderen reageren op onze daden, ben ik ook heel benieuwd hoe Debra Morgan zal reageren komende maandag in de tweede aflevering van een serie die mijn inziens net niet zo goed is als breaking bad maar toch er een is waarvan ik geniet naar te kijken. Na een nadere blik geworpen te hebben op mijn agenda blijkt dat deze keer de mogelijkheid zeer goed aanwezig is dat we een gezamenlijke blik kunnen werpen op Dexters ondernemingen komende maandag. Dit is natuurlijk wel sterk afhankelijk van de agenda's van andere VIENT-leden en die van Blok, en ik zal uitkijken naar uw repliek hopende op op zijn minst enige verwijzing naar deze invitatie. 
+
+Na een korte inspectie van alle voorgaande elektronische berichtgevingen, blijkt dat we de achtduizendwoordengrens reeds gepasseerd zijn. Waarschijnlijk inmiddels als de negenduizendwoordengrens, maar dat zal nog nadere inspectie vereisen. 
+
+\closing{Met vriendelijke groet,\\
+Namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+
+
+\addps{De parallelle briefwisseling bevat dusdanig weinig informatie dat het ons inziens niet nodig lijkt JeMoeder erbij te betrekking, gezien alle nodige informatie afgeleid kan worden uit de context die zeker aanwezig is in deze correspondentie.}
+\end{bestuurletter}
+\date{5 oktober 2012}
+\begin{plusletter}
+\opening{Geacht Bestuur,}
+\setkomavar{signature}{Paulus Nicolas 'plus' Meessen}
+na langdurig overleg met de raad van toezicht heeft het commissiebestuur van de s[ck]rip(t|t?c)ie besloten Jeroen Ernesto 'Lanting' Lanting (JELL) onder de door het bestuur gestelde randvoorwaarden aan te nemen als lid. Bij het inwerktraject van JELL zal de s[ck]rip(t|t?c)ie erop toezien dat er duidelijk zal worden onderzocht wat de kaders zijn waarbinnen het voorgenoemde aspirantlid (AL-JELL) zelf in contact mag komen met het pepmiddel en zal er een script worden geschreven voor het omgaan met AL-JELL indien er sprake is van terugval in oude gewoontes. De keuze voor a-merken koffie is hierbij bewust in acht genomen opdat de relatieve 'accijns' op deze producten het overmatig gebruik ervan ontmoedigen. Dit met de inachtneming dat de historische gebeurtenis waarin AL-JELL zonder alcohol te consumeren op een Pienter kampt 'ontzettend hard' ging tot stand kwam door de massale beschikbaarheid van een ingeblikt pepmiddel dat verkocht was door een oorspronkelijk Duitse budget-supermarkt.
+
+De s[ck]rip(t|t?c)ie vraagt zich af of het bestuur hiermee afziet van een 'crash and compile' activiteit georganiseerd door het taskforce SMS\_CODEMODE\_AAN\_NAAR\_JEMOEDER van de s[ck]rip(t|t?c)ie.
+
+Het niet-iemand-zijn-of-haar-moeder-zijn dilemma lijkt me alleen maar problematisch wanneer de s[ck]rip(t|t?c)ie zou overgaan tot het werven van moeders van huidige commissieleden. Aangaande uw reactie op het voorgaande voorstel om uit de Victoria's Secret Angels te werven: Uiteraard laat de s[ck]rip(t|t?c)ie zich in beginsel niet verleiden tot het aannemen van beeldschone ondergoed- en bikinimodelen van internationale faam in de commissie wanneer deze geen enkele affiniteit met coden toont. Zeker wanneer deze expliciet te kennen geeft geÃ¯nteresseerd te zijn in het worden van de bitch de commissie is het een principekwestie dat de s[ck]rip(t|t?c)ie nooit zal overgaan tot het aanwijzen van een notulist van een vergadering en dat benoeming in dat geval nutteloos is. Er is echter wel besloten dat er in uitzonderlijke gevallen ruimte gemaakt kan worden in de vorm van tijdelijke posities in geval van promotionele activiteiten waarbij het bestuur de inzet van vrouwen noodzakelijk acht maar dat geen van beide partijen nog een script-godin heeft kunnen vinden en aandragen voor benoeming.
+
+De s[ck]rip(t|t?c)ie zal nog tenminste 15 werkdagen support bieden op de bitterballenborreldibsmachine waarna het project afgesloten wordt. Indien er bij het bestuur nog een uitgesproken verlangen bestaat om een willekeurige dibsmachine te bouwen waarbij het bestuur eenvoudig het te-dibsen kan instellen, zal hier in een apart communiquÃ© naar de voorzitter een formeel verzoek voor moeten worden gedaan. Dit geldt ook voor de eventuele noodzaak tot het verlengen van de support-termijn van de bitterballenborreldibsmachine.
+
+Verder is deze mail korter geworden dan eerder voorzien maar ben ik wel benieuwd of dit ondertussen de langste conversatie is tussen het Franckenbestuur en een van zijn bestuurscommissies.
+
+Verder herinnert de s[ck]rip(t|t?c)ie het bestuur eraan de komende maandagmiddag het NEXT openingssymposium gaat plaatsvinden en dat daarna, als mijn geheugen mij goed bedient, er een constitutieborrel is van de EBF (FEB). Het vinden van een zaal vÃ³Ã³r die tijd lijkt me, om in termen van de secretaris van het zevenentwintigste bestuur van T.F.V. 'Professor Francken' te spreken, "Waanzin!". Indien AL-JELL mij in de juiste kabel heeft voorzien heb ik vanaf vrijdag echter wel de mogelijkheid om een andere locatie te zoeken en zelf een projector naar toe te brengen. Deze locatie dient wel eerst gevonden te worden. Alternatief zou ook nog kunnen zijn om dinsdag aanstaande, na 1700 uur een locatie te zoeken.
+
+\closing{Met vriendelijke groet,\\
+Namens de s[ck]rip(t|t?c)ie in in het bijzonder namens JeMoeder,}
+
+\addps{Wanneer is het sympcieoverdrachtsdiner en waarom vergaderen ze niet jasje-dasje, of, bij gebrek aan een dasje, jasje? }
+
+\addps{Mijn reacties worden steeds korter. Ik hoop dat dit een positieven trend is en zal leiden tot het weer oppakken van het schrijven van een blogpost.}
+
+\addps{Er is vast een alfastudie waarin deze mailconversatie indien de negenduizend woorden zijn gepasseerd, representatief zou zijn voor het niveau en inhoud van een bachelorscriptie.}
+
+\addps{Enkele leden van de s[ck]rip(t|t?c)ie, waaronder tenminste de bovengetekende schrijver van deze brief, kunnen niet aanwezig zijn bij de audiovisuele presentatie van tamelijk interessante en vaak wetenschappelijke feiten door een panel van Britse experts op het gebied van humor en onder leiding van een veroordeeld crimineel met een goedgepubliceerde aversie jegens intermenselijke geslachtsgemeenschap.}
+\end{plusletter}
+\date{21 oktober 2012}
+\begin{bestuurletter}
+\opening{Geachte Paulus Nicolas '+' Meessen,}
+Het is al enige tijd geleden dat er vanuit onze kant gehoor gegeven is aan uw repliek van inmiddels alweer 16 dagen gelden. Naar aanleiding van uw voorgaande antwoord hebben wij doen besluiten dat er inmiddels al lang genoeg gecorrespondeerd is over de aanstaande intreding van de heer Jeroen 'Lanting' Lanting, hierna Lanting, tot uw gelederen. Gezien het feit dat deze intreding hopelijk in werking zal treden ergens in de avond dan wel nacht van komende dinsdag 23 oktober, zouden wij als bestuur, mits daar geen grote bezwaren tegen zijn, de huidige overeenkomst met de s[ck]rip(t|t?c)ie als wenselijk beschouwen en de genoemde inhamering onder die voorwaarden willen voltrekken. Dit betekent, als wij even kort door de bocht gaan, dat Lanting zijn plek in zal nemen als commissiefoet der s[ck]rip(t|t?c)ie, en dat u een gepaste manier zal aanhalen om hem in te werken.
+
+Dit gezegd hebbende, zouden wij op willen merken, bestuursleden zijnde, dat we zeer veer waarde hechten aan de voorgaande berichtwisseling, en dat ondanks het feit dat er bij ons dingen nog al eens vertraging oplopen, ze niet zomaar onder het tapijt geveegd worden. Wat wij hiermee zeggen willen, is dat er zeer zeker gekeken zal worden naar de mogelijkheid tot het verkrijgen van enig koffiezetapparaat onder het mom van sponsoring. Helaas moet opgemerkt worden dat er nu door ziekte een gebrek is aan mensen die capabel dan wel geÃ¯nteresseerd genoeg zijn de telefoon te pakken en te bellen naar bedrijven die graag geassocieerd willen worden met het voorgenoemde vloeibare middel. Het belang van een dergelijke sponsorovereenkomst wordt zeker niet onderschat. Om een quote van een niet nader te noemen oud-secretaris aan te halen: 'Als jullie een espresso-apparaat fiksen, maakt het de leden niet meer uit of jullie er met de verenigingskas vandoor gaan.' Uiteraard wordt de letterlijke inhoud van de quote door de persoon in kwestie niet gemeend, maar het geeft wel aan hoe sterk er gedacht wordt over dergelijke zaken door onze leden.
+
+Omdat het al enige tijd geleden is, en ondanks de eensgezindheid binnen het bestuur met betrekking tot mooie 'bitches', moet nu toch voorrang verleend worden aan zaken waarvan het realiteitsgehalte een aantal orde groottes hoger ligt. Dit betekent dat wij als bestuur helaas niet de moeite zullen nemen vrouwelijke (en daarmee bedoelen we geen manwijven) commissiefoeten te zoeken voor de s[ck]rip(t|t?c)ie, maar dat de taak volledig op jullie capabele schouders zal rusten. Uiteraard vinden wij dit wel een mooi streven, maar moet er wel opgemerkt worden dat de presentie van het zwakke geslacht veelal de theeconsumptie heeft opgedreven en de bierconsumptie omlaag.
+
+Na aanleiding van de vraag of dit de langste berichtwisseling is tussen het bestuur en Ã©Ã©n van haar commissies, is veel commotie ontstaan in een aantal bestuursvergaderingen. Uiteindelijk is besloten dat er niet voldoende duidelijk is wat nou precies met het woord lang bedoeld wordt, of met het woord commissie. Er zijn namelijk een veelvoud van correspondenties te vinden. Aan de ene kant is er een communicatie te vinden met het tijdsbestek van een aantal jaren, wel in verschillende emails en ook door verschillende commissies (bijvoorbeeld verschillende fraccies.) Aan de andere kant zijn zeer zeker lange communiquÃ©s te vinden tussen commissies en het bestuur, maar hebben ze vaak een eenmalig karakter. Dus voordat er verder gekeken kan worden naar de vraag of het hier de langste berichtwisseling tussen bestuur en commissie betreft zal antwoord verschaft moeten worden op een aantal vragen. Allereerst moet duidelijk gemaakt worden welke metriek, dan wel metrische ruimte gehanteerd wordt. Is het zo dat er sprake is van een lengte in woorden, wat zou betekenen dat we eenvoudigweg woorden kunnen tellen, of is het zo dat er gekeken moet worden naar de tijd die een communicatie in beslag genomen heeft? In het laatste geval moet nog afgevraagd worden wat er gedaan moet worden met correspondenties waarvan niet duidelijk is of ze al afgelopen zijn. Verder zal het begrip 'commissie' duidelijker geformuleerd moeten worden. Enerzijds kan het namelijk een groep mensen betreffen die samen een commissie vormen gedurende een heel bestuursjaar, anderzijds kan het een wisselende groep mensen zijn die gedurende meerdere jaren onder de zelfde noemer van commissie gevallen zijn. Dit laatste heeft natuurlijk alleen betrekking op commissie die meer dan Ã©Ã©n jaar lopen, denk bijvoorbeeld aan een symposiumcommissie.
+
+Jammerlijk moeten wij voordat we over kunnen gaan op de orde van de dag nog een aantal verzoeken indienen aan het adres van de s[ck]rip(t|t?c)ie. Wij zouden het bijzonder veel op prijs stellen wanneer de huidige vieruurbieruurklok dusdanig aangepast kan worden dat zij op de achtergrond dan wel voorgrond een analoge klok laat zien. Verder zou het leuker zijn als het aftellen vanaf een minuut voor tijd zou beginnen in plaats van de huidige twee minuten. Een ander ludiek idee dat ons enige tijd ter ore gekomen is is het idee de vier in de klok te vervangen voor een emoticon van een bierpul (misschien kan er ook iets gedaan worden met de jufgetallen?) Wij weten dat dit misschien veel is om in Ã©Ã©n keer te verwerken, maar we hebben ook al gehoord dat de heren Baars en Lanting na hun tentamens een halve week aan nonstop coden hebben gepland om te werken aan allerlei s[ck]rip(t|t?c)ie-gerelateerde dan wel s[ck]rip(t|t?c)ie-ongerelateerde zaken. Uiteraard wordt aangemoedigd dit te doen op een afstand van minder dan epsilon tot een mogelijke balmerpiek.
+
+We zouden nu alsnog graag over willen gaan tot de orde van de dag, helaas zijn we te autistisch om de volgende alinea over te slaan. Deze alinea zouden willen gebruiken voor een standaard kakverhaal over allerlei dingen. In welke verzameling deze dingen vallen, wordt overgelaten als een oefening voor de lezer. Het allereerst ding, eigenlijk evenement, dat we zouden willen aanhalen is de afgelopen diesborrel met bijbehorende dies. Het is ons opgevallen dat de voorzitter der s[ck]rip(t|t?c)ie een zeer prominent aandeel had in het eerstgenoemde. Het doet ons dan ook deugd te vermelden dat hij destijds zijn balmerpiek ver voorbij gestreefd was en dat de dappere man in een afgedankte flat in paddepoel, in de kou, slechts maximaal vier uur heeft kunnen slapen. De aanwezigheid van de s[ck]rip(t|t?c)ie geeft maar weer eens aan hoe sterk een verjaardag gevierd wordt binnen onze mooie vereniging. Niet alleen de s[ck]rip(t|t?c)ie is te danken voor hun inspanningen maar ook de traktaartcie voor hun epische taart, en de borrelcie voor het feit dat ze het bestuur alle hapjes hebben laten halen. Verder zouden we graag de Tata Steel excursie nog even willen noemen, omdat uit betrouwbare en betreurbare bron vernomen is dat toch zeker wel de helft van de s[ck]rip(t|t?c)ie ooit van dat bedrijf gehoord heeft. De Tata Steel excursie begon voor de die hards uit Groningen al om een uur of 6:30, aangezien ze met de bus om 6:45 zouden vertrekken van het station. Dat sommige mensen besloten hebben na het Prominent in de Tent feest niet te slapen, heeft de lol niet mogen drukken. De excursie was zeer geslaagd, en nu weet iedereen dat het een slecht idee is een gloeiende staalplaat aan te raken. Dit naar aanleiding van de enorme hitte de te voelen was op twintig meter van een platgewalste plaat gloeiend metaal. Om nu kort een blik in de toekomst te werpen, zouden we de leden der s[ck]rip(t|t?c)ie graag van harte uitnodigen plaats te nemen de komende algemene ledenvergadering. In deze vergadering zullen hopelijk een aantal commissies uitgehamerd kunnen worden, en een aantal mensen ingehamerd worden in nieuwe dan wel bestaande commissies. Verder moet vermeld worden dat donderdag een jamsessie plaats zal vinden, in het ons aller geliefde cafÃ© de Spieghel. Iedereen die muzikaal talent heeft of denkt dat hij dat heeft is welkom om onder genot van een biertje en zeer karige muziek een gezellige avond te beleven met andere Francken gekken.
+
+Nu we toch bezig zijn met blikken te werpen in de toekomst, lijkt het ons een goed moment om over te gaan tot de voorgenoemde orde van de dag. Deze kan uiteraard slecht slaan op een introverte bloedspatanalist, die zijn vrije tijd gebruikt om zijn messen en ander scherp gereedschap te testen op de minder aangename delen van onze samenleving. Uiteraard wordt hier de vertolking van een zeker Dexter Morgan bedoeld door een andere even zo zekere Michael Hall. Op dit moment is nog niet duidelijk waarover de volgende aflevering van het gelijknamige programma zal gaan, echter weten we al wel dat het de naam 'Run' zal dragen. Gezien de titel lijkt het mij zeer gepast morgen naar een bepaalde locatie te rennen om vervolgens de ogen te werpen op een snelle afwisseling van statische beelden, zodat van de inhoud van het programma meer duidelijk wordt en de link met de titel hopelijk goed gelegd kan worden. Een specifieke tijd zal nog afgesproken moeten worden, maar ons inziens is de mogelijkheid het best vlak na het afronden van de prÃ©-ALV. De verdere details van een dergelijk ondernemen zullen nog afgesproken moeten worden, maar dit zal voor slaafjes van vrij actuele slimme mobiele telefoons niet een hele grote belemmering moeten vormen.
+
+Hoewel deze mail kort en bondig gehouden is, zijn wij van mening dat er toch veel besproken is en veel ook niet. Mochten er addenda of errata zijn, verwacht deze dan in een repliek op uw repliek op deze mail. Met deze hopen wij u voldoende doch nietszeggend geÃ¯nformeerd te hebben.
+
+\closing{\raggedright Met vriendelijke groet,\\
+Namens het voltallige achtentwintigste bestuur der T.F.V. 'Professor Francken',}
+\end{bestuurletter}
+\date{22 oktober 2012}
+\begin{plusletter}
+\opening{Geachte lezers van deze briefwisseling die zich in het dagelijks leven
+voordoen als bestuurders van T.F.V. 'Professor Francken',}
+
+het doet de s[ck]rip(t|t?c)ie deugd, dat het bestuur na 16 dagen deze
+mailconversatie weer oppakt. Het was bijzonder fijn om op een zondag
+middag een kort en bondige repliek te krijgen op de vorige mail, zeker
+gezien de relevantie met de activiteiten die in de komende week
+ontplooid zullen worden. Het commissiebestuur van de s[ck]rip(t|t?c)ie
+zal bij veel van deze activiteiten aanwezig te zijn, al was het alleen
+maar om het bestuur erop te wijzen dat de hypothetische escalatie die
+plaatsvindt daar waar Franckenlui bijeenkomen, onvoldoende overkill
+is. Wij gaan er echter vanuit dat het bestuur op voorhand, zoals het
+bij de meeste activiteiten dit jaar al wel het geval was, maatregelen
+treft om te voorzien in een voldoende overkill aan overkill in
+escalatie.
+
+De scriptie zal trachten om in voldoende mankracht aanwezig te zijn om
+de Algemene LedenVergadering (ALV) opdat de inhamering van het
+aspirant lid Jeroen Ernesto 'Lanting' Lanting (JELL) in de scriptie
+voor middernacht te voltrekken. Voorwaarde is wel dat het bestuur een
+voldoende tempo aanhoud bij het adten van frisse versnaperingen -
+waarbij het respect voor dezer adt zeker in acht genomen dient te
+worden - tijdens deze ALV op straffe van een adt 'Golden Power'.
+
+Inzake sponsorcontracten met A-merk espresso-industriÃ«len, wil de
+s[ck]rip(t|t?c)ie na afloop van de tentamenperiode en ten tijde van de
+JELL/JeMoeder-coding-spree wel wat werk verzetten. De voltallige raad
+van toezicht van de s[ck]rip(t|t?c)ie hoopt echter wel dat het
+bestuurslid belast met de het takenpakket van de commissaris extern en
+dus verantwoordelijke voor de acquisitie voor de vereniging tegen die
+tijd weer in goede gezondheid verkeerd. Voor een sloot sjaars van het,
+zoals u het formuleert, zwakke geslacht hopen wij wel dat de
+aandoening waar het voorgenoemde bestuurslid onder lijdt, en nu even
+niet meer leidt dus, geen oorsprong heeft die ligt in de categorie
+'seksueel overdraagbare aandoeningen'. Wij hopen dat het meest senior
+bestuurslid met zijn verleden van het uitscheuren van anussen, waar
+nog met enige regelmaat liederen over worden gezongen, zijn kennis
+over de veilige manier van handelen in dit soort zaken tijdig heeft
+kunnen overdragen op de rest van het bestuur.
+
+De interne commissie van de s[ck]rip(t|t?c)ie die zich richt op het
+begeleiden en emanciperen van 'bitches' die zich ongeacht hun bewezen
+kwaliteiten in aantrekkelijk zijn voor het andere geslacht toch zouden
+willen inlaten met mensen die publiekelijk toegeven de vaardigheid te
+hebben om te programmeren, vindt het jammer dat het bestuur geen
+volledige fte (38 uur/week) kan inzetten voor de werving van
+supermodellen in de s[ck]rip(t|t?c)ie maar heeft begrip voor de
+argumenten. In conjunctie met de werving van de 'bitches' is het
+mogelijk dat de s[ck]rip(t|t?c)ie, eventueel in samenwerking met de
+oefensescie, een bijspijkeractiviteit organiseert voorafgaand aan een
+periode waarin vakken worden gegeven die programmeervaardigheden
+eisen, zoals numerieke wiskunde, speciaal voor mensen van het zwakke
+geslachten en andere 'bitches'.  Deze activiteit zou gevolgd kunnen
+worden door een 'crash and compile' competitie voor pr0's en 'bitches'
+die voldoende 'bijgespijkerd' zijn.
+
+Het pakket van eisen voor de 0xVierUurBierUurCountDownClock\_v2.0 is
+doorgegeven aan het coding/support team voor dit project. Het Juf
+voorstel zal niet in overweging worden genomen gezien de TV zelf niet
+kan adten en de meetellende leden die in onbeschonken toestand niet in
+staat zijn om achteruitjuffend mee te tellen met de countdown niet
+kunnen straf-adten omdat het nog geen bier uur is. Wellicht is het een
+goed idee om een brainstormsessie te organiseren tussen het bestuur en
+het design-team om af te stemmen wat precies de toekomst visie op de
+countdownclock is en welke implementatie hiertoe uitgewerkt dient te
+worden.
+
+Actueel blijven bij Amerikaanse dramaseries is een noodzaak van het
+moderne smartphone-gebonden leven. Ik zal proberen te voorzien in een
+geschikte ruimte en voldoende vrouwelijk gezelschap. Het is aan de
+penningmeester van het achtentwintigste bestuur der T.F.V. 'Professor
+Francken' om te voorzien in een verzameling bytes die bij elkaar
+genomen in benadering heel erg veel lijken op een zeer recente
+aflevering van de nieuwe serie van de chick van Chuck. Die chick van
+Chuck mag trouwens ook benaderd worden voor een screening of deze
+geschikt is als aspirant-lid van de s[ck]rip(t|t?c)ie.
+
+Gelukkig is deze mail kort gebleven maar we gaan zo in ieder geval,
+langzaam maar gestaag, over de grens waarbij deze conversatie veilig
+is voor MiTM aanvallen omdat men gewoon niet meer inziet waarom wij
+zoveel tijd willen verdoen met het onderhouden van deze dialoog.
+
+\closing{Vriendelijkere groeten dan je buurman's wieldoppen,}
+
+\addps{Deze mail is ook kort om Tom in verwarring te brengen.}
+\end{plusletter}
+\date{12 december 2012}
+\begin{bestuurletter}
+\opening{Beste voorzitter der s[ck]rip(t|t?c)ie, beste Paulus '+' Meessen,}
+
+Het is inmiddels al bijna anderhalve maand geleden dat de laatste digitale ideeÃ«nwisseling via deze route plaats gevonden heeft. Hoewel dit niet betekent dat het contact tussen bestuur en s[ck]rip(t|t?c)ie ook te wensen heeft overgelaten, betekent het echter wel dat er de afgelopen maand te weinig escalatie plaatsgevonden heeft in de digitale postbus van T.F.V. 'Professor Francken', want laten we wel wezen, er zijn maar weinig mensen gewillig genoeg en Ã¼berhaupt in staat dergelijke escalatieve lulverhalen op te hangen als leden van het illustere gezelschap der ex-praedinianen, dan wel VIENT-leden. 
+
+Ik moet eerlijk bekennen dat het oppakken van deze conversatie met enkele nostalgische gevoelens gepaard gaat, maar ook met de dubieuze toestand van verwondering. Ik vroeg me bijvoorbeeld af of er een limiet gesteld wordt door Google, het bedrijf waar u heden ten dage niet omheen kan en het bedrijf dat bijzondere interesse heeft in bepaalde lieden binnen de s[ck]rip(t|t?c)ie, aan het aantal woorden dat een bericht mag bevatten. Echter zal ik moeten erkennen en bekennen dat ik waarschijnlijk niet de zin dan wel tijd heb om op een niet-triviale wijze dit uit te testen.
+
+In de afgelopen anderhalve maand zijn er enkele memorabele, minder memorabele, escalerende, minder escalerende en in het bijzonder best gezellige gebeurtenissen voorbij gekomen in zowel de Franckenkamer als daarbuiten, die de noemer Franckenactiviteit mogen dragen. Zo doet het mij deugd te mogen concluderen dat de heer Lanting met verve de algemene ledenvergadering heeft weten te overleven. Verder heeft de crash-and-compile-competitie natuurlijk tot vele en typische verhalen geleid, maar dat hoef ik jullie niet te vertellen. Wat mij betreft is het evenement voor herhaling vatbaar, in sommige opzichten tenminste. Voor een volgende keer lijkt het me een goed idee dat s[ck]rip(t|t?c)ie voorziet in een fatsoenlijk team distraction. Wat bijzonder kneits was, was het scorebord dat tijdens de wedstrijd gebruikt werd, wij zien dan ook mogelijkheden voor toekomstige activiteiten. Verder is, naar horen zeggen, de boel overweldigend uit de hand geÃ«scaleerd, om maar eens met een contaminatie te spreken omdat anders de situatie niet juist weergegeven wordt. De vraag is of een dergelijke mate van escalatie wel te waarborgen is, of dat dit slechts een eenmalig voorval is geweest.
+
+Buiten kijf staat wel dat de s[ck]rip(t|t?c)ie zich een prominente, aanwezige en centrale positie heeft toegeÃ«igend binnen de vereniging. Niet alleen door het organiseren van het voorgenoemde evenement, of door het verzorgen van de mini-pc aan de televisie, maar juist door eigen inbreng, ideeÃ«n en extra-s[ck]rip(t|t?c)iaire activiteiten is de s[ck]rip(t|t?c)ie een commissie geworden waar men niet meer om heen kan. Wij wachten met smart de contactlegging met nespresso, de verdere ontwikkeling van de Franckenapp, de ontgroening van de heer Lanting en verdere activiteiten van de s[ck]rip(t|t?c)ie af. 
+
+Het praten over verwachting en smartelijke afwachtingen, vormt een heel natuurlijk bruggetje richting het volgende onderwerp. Uiteraard heb ik het hier over het drama dat zich afspeelt in de dramaserie die zich afspeelt in Miami, Florida, VS. De verwachtingen zijn bijzonder hoog gespannen dit maal, mede omdat deze preview weinig te wensen overlaat, mede omdat het de laatste aflevering van het seizoen is, mede omdat seizoen acht het laatste seizoen wordt en mede omdat Deb niet meer verliefd is op haar broer. Deze verwachtingen scheppen de verwachting dat komende maandag een gezamenlijke blik geworpen zal worden op de aflevering getiteld 'Surprise, Motherfucker'. Een korte blik op mijn agenda geeft aan dat komende maandag uitermate geschikt is om een zaaltje te gijzelen en ongeveer een uur lang toe te werken naar iets, dat waarschijnlijk een episch frustrerende cliffhanger zal worden.
+
+Maandag is overigens ook een uitermate geschikte dag om de Franckenwebsite te bezoeken en de nieuwste blog te lezen, oudere blogs lezen kan overigens ook best wel uit. De nieuwste blog wordt verzorgd door niemand minder dan Paulus '+' Meessen, iets wat de helft van de ontvangers van dit bericht sowieso al wist, en de andere helft vermoedelijk ook al. Inhoudelijk weet ik niets over de blog, maar ik vermoed dat er verwijzingen zullen zijn naar een eerdergenoemd evenement, eigenlijk hoop ik ook dat er subtiele verwijzingen zullen zijn naar of deze correspondentie of naar een zekere moordlustige introverte bloedspatanalist. 
+
+Bijna had ik het hier bij willen laten en de mail willen afsluiten, gelukkig ben ik op tijd tot bezinning gekomen want anders was ik vergeten te vermelden dat er meer reclame gemaakt dient te worden voor de Franckenapp. Ik heb hiervoor een aantal ideetjes, maar ik ben bang dat ik deze in moet dienen bij de feedbackknop, waar de app in voorziet. Gelukkig is daar ook een oplossing voor, ik stop namelijk deze hele correspondentie gewoon in de feedbackknop zodat de volgende ideetjes ook aan zullen komen bij de s[ck]rip(t|t?c)ie. Allereerst zou de app niet beperkt moeten blijven tot klaverjassen, maar zou een legendarische spellen als dertiggen ook een plekje verdienen in de app. Verder zou het natuurlijk mooi zijn wanneer het logo van de vereniging op de achtergrond zichtbaar is, of op een andere plek. Ook is het misschien een idee om in de nabijheid van bieruur jassende mensen er op te attenderen dat het nabij bieruur is middels de app zodat zij zich kunnen voorbereiden op de aftelklok.
+
+\closing{Met vriendelijke groet,}
+\end{bestuurletter}
+\date{16 december 2012}
+\begin{svenletter}
+\opening{Geachte leden van het bestuur der T.F.V. 'Professor Francken',}
+
+Het doet mij deugd om voor het eerst sinds het begin van deze conversatie namens de s[ck]rip(t|t?c)ie een kort en bondig sjoechem te mogen geven. Redenen dat dit niet eerder heeft plaatsgevonden betreffen onder meer dat het vorige antwoord van de kant van het bestuur vrij lang op zich liet wachten en dat deze conversatie eerst langs mij heen ging, maar vooral dat de heer Paulus Nicolas '+' Meessen binnen een verbazingwekkend korte tijd een antwoord klaar heeft die in deze mailconversatie zeer zeker niet misstaat. Het doet ons echter deugd dat het bestuur inmiddels de tijd heeft gevonden om ons van een antwoord te voorzien, en ik hoop dat mijn poging tot het evenaren van het niveau van de replieken van Paulus Nicolas '+' Meessen.
+
+Gezien mijn huidige staat van nuchterheid leek het mij een goed idee om u enig leesvoer te verschaffen om al dan niet tijdens het compileren te lezen. Allereerst wilde ik u laten weten dat de s[ck]rip(t|t?c)ie elk commentaar gretig ter harte neemt, en om die reden wilde ik bij u onder de aandacht brengen dat in ieder geval Ã©Ã©n van de aangevraagde toevoegingen al geÃ¯mplementeerd is. De overige voorstellen zijn in behandeling genomen en zullen ter zijner tijd met aan zekerheid grenzende waarschijnlijkheid verschijnen in versie n.* met n > 0, in acht nemende dat de huidige versienummering van de Franckenapp van de vorm 0.* is, daar de Franckenapp zich momenteel nog in een bÃ¨ta-stadium bevindt.
+
+Verder doet het ons een genoegen te horen dat de positie van onze commissie binnen de vereniging zeer gewaardeerd wordt. Wij zullen er alles aan doen om de graad van escalatie van activiteiten betreffende de s[ck]rip(t|t?c)ie hoog te houden, en daarmee ook de reputatie van de commissie. Hierbij moet opgemerkt worden dat in het geval van de s[ck]rip(t|t?c)ie escalatie niet altijd in combinatie hoeft te gaan met het nuttigen van versnaperingen, maar dat dit ook escalatie kan zijn in de vorm van technologisch vernuft, dan wel technologisch terreur. Dit neemt overigens niet weg dat de leden van de s[ck]rip(t|t?c)ie vaak wel behoefte hebben om tijdens deze bezigheden een versnapering te nuttigen.
+
+Het doet ons ook deugd dat Bauke weer met zekere regelmaat present is in de Franckenkamer en zijn taken als lid van het bestuur der T.F.V. 'Professor Francken' heeft hervat. We hopen dat ook hij zeer content is met de zaken die aangaande zijn taakomschrijving binnen het bestuur geregeld zijn door een van de leden van de s[ck]rip(t|t?c)ie. Verder hopen wij ook dat, indien deze zaken tot een succesvol einde worden gebracht, iedereen het "GENIETEN DIT!!!", wat op het huidige reservoir voor de vervanging dezer zaken staat, ook daadwerkelijk zal menen.
+
+Daarnaast nou de s[ck]rip(t|t?c)ie het een goed idee vinden om, nu ons ter ore is gekomen dat de server verplaatst wordt naar de serverruimte van professor Van der Giessen, ook alle andere pc's groter dan 20x10x5 cm naar de serverruimte te verplaatsen. Dit zodat er, in plaats het, onder het uitroepen van beschimpingen, virtueel liquideren van andere personen dan wel zombies, op meer plekken geklaverjast kan worden. Dit natuurlijk onder de voorwaarde dat er een toetsenbord en muis aanwezig blijven om, indien nodig, de nodige veranderingen te kunnen aanbrengen op de mini-pc die beeld verschaft aan de televisie. Op deze manier zullen mensen nog meer gebruik maken van de voorzieningen die de s[ck]rip(t|t?c)ie aanbiedt en zal het dan ook makkelijker worden om mensen erop te attenderen dat het bieruur geweest is. Dit alles ter bevordering van de genoeglijke stemming die over het algemeen in de Franckenkamer heerst, want laten we eerlijk wezen, bier zorgt voor veel plezier \footnote{In het verleden behaalde resultaten bieden geen garantie voor de toekomst, geld lenen kost geld, en de s[ck]rip(t|t?c)ie is op geen enkele manier aansprakelijk voor eventuele bijverschijnselen die alcohol kunnen hebben en zal niet garant staan voor een binnen de perken blijvende mate van escalatie. Drink met mate.}.
+
+Verder zijn ook hier de verwachtingen betreffende onze favoriete dramaserie die zich afspeelt in Miami, Florida, VS, waarmee ik niet doel op series als Burn Notice, Miami Vice of CSI: Miami, zeer hoog. Ik moet echter mededelen dat, voor mij, zoals gewoonlijk, maandag een uitermate ongeschikt moment is om deze serie te gaan bekijken, tenzij dit voor bieruur aanvangt. Het zou echter een mooi streven zijn om dit gedrieÃ«n, dan wel met meer mensen, te gaan kijken naar het verhaal dat wordt uitgebeeld door opeenvolgende stilstaande beelden betreffende het bovenstaande, waarbij uiteraard bij zekere onthullingen "HOER!" geÃ«xclameerd kan worden, zoals het bij elke soortgelijke Franckenactiviteit de gewoonte is. Daarom wilde ik voorstellen om deze grand finale op een andere, nader te overleggen dag te bekijken.
+
+Ik moet nu helaas concluderen dat sinds het begin van het schrijven van deze boodschap mijn staat van nuchterheid is toegenomen en daarna weer is afgenomen tot bij benadering dezelfde staat als wanneer ik begon, en daarom is dit misschien wel een mooi moment om deze boodschap te voltooien. Ik hoop dat ik aan enige verwachtingen die aan deze boodschap verbonden waren heb voldaan en dat geen deel van deze boodschap ambigu of lasterlijk kan worden opgevat indien daar niet de intentie toe was. Verder is de kans dat ik u morgen zie groot, dus met die gedachte zeg ik: "Tot morgen!".
+
+\closing{Met vriendelijke groet,}
+
+\addps{This message will terminate in 10... 9... 8... 7... ZAS... 5... 4... 3... 2... 1...}
+
+\addps{Bovenstaande postscriptum is geschreven in de hoop dat dit bericht gelezen wordt vlak voor het einde van de wereld. Indien dit het geval is ben je wel laat met lezen. Indien dit niet het geval is is ofwel de wereld niet vergaan (YAY!) en verwachten wij een spoedig antwoord, ofwel de wereld vergaat (waarschijnlijk) nog en verwachten wij een nog spoediger antwoord.}
+\end{svenletter}
+\date{28 januari 2013}
+\begin{bestuurletter}
+\opening{Beste s[ck]rip(t|t?c)ie, beste oudVIENTleden,}
+
+Allereerst zou ik willen zeggen dat het langzamerhand wel met enige zekerheid gezegd kan worden dat de wereld nog niet vergaan is op de datum waarvan gesteld was dat zij dit zou doen. Met gepaste euforie lijkt het me dan nu ook wel een mooi moment om over te gaan op de orde van de dag en deze indrukwekkende mailing weer nieuw leven in te blazen.
+
+Aangezien het bijna februari is en het toch zonde zou zijn in het nieuwe jaar niet eens in de eerste maand een antwoord gegeven te hebben op voorgaande mail lijkt het me verstandig dit bij deze te doen.
+Bovendien zal het nodig zijn deze conversatie weer op te pakken, aangezien we de vijfentwintigduizendwoordengrens willen breken voordat wij bestuur af zijn. Daar wij nu al beginnen met zoeken naar opvolgers, is de noodzaak de gemiddelde eindscriptie van een gemiddelde letterenstudent te overtreffend maar weer eens pijnlijk duidelijk geworden.
+
+Ik ga echter de volgende alinea gebruiken om op vele voorgaande gespreksonderwerpen te reageren, dus zal ik iets moeten verzinnen om de rest van de mail te vullen.
+
+Om de s[ck]rip(t|t?c)ie te bedanken voor hun aanwezigheid bij menige escalatie, voor de ontwikkeling van de kneitse app en allerlei kekke dingen voor op te TV en alsmede omdat het er op lijkt dat Bauke door zijn hernieuwde aanwezigheid meer geld binnen gaat halen dan wij stiekem hadden verwacht, willen wij graag de s[ck]rip(t|t?c)ie de mogelijkheid aanbieden commissiekleding aan te schaffen. In de wandelgangen heb ik reeds vernomen dat jullie hiervan op de hoogte zijn en dat er al plannen gesmeed zijn met betrekking tot dergelijke kledij. Ik wil daarom nu van de gelegenheid gebruik maken jullie de procedure, die niet zo strikt is als de code die Dexter hanteert, uit te leggen. Allereerst zoek je een doelwit uit, bijvoorbeeld een shirt dat er wel onschuldig wit uitziet maar dat om Ã©Ã©n of andere reden toch je aandacht vraagt. Vervolgens ga je informatie verzamelen, door bijvoorbeeld in de vertrouwde omgeving te kijken van je doelwit, of anders met behulp van internet. Als duidelijk is dat je doelwit voldoet aan je eisen, wordt het tijd stappen te ondernemen. Zorg dat je het doelwit te pakken krijgt, dit kan door op een slinkse manier het ervan te overtuigen dat het met je mee moet (dit kost waarschijnlijk geld, overleg hierover met de penningmeester), of door het op een onoplettend moment te overmeesteren. Vervolgens neem je het doelwit mee naar een locatie waar je het zal inwijden in de s[ck]rip(t|t?c)ie.
+
+Graag zou ik willen weten of het jongste lid der s[ck]rip(t|t?c)ie goed geÃ¯ntegreerd is in de commissie. Ik heb hem al met vlijt zien coden in de Franckenkamer, maar heb nog nimmer een reactie gekregen van hem op deze mail. Nu begrijp ik ook wel dat hij zich nog niet volledig heeft kunnen inlezen en dat zijn adres niet in de huidige mailinglijst staat, maar dat zou geen belemmering moeten vormen voor een doorgewinterd Franckenlid, dat met bluffen en irrelevante antwoorden zich door het leven wurmt. Reden dat ik hem in deze conversatie wil betrekken is namelijk de geweldige manier waarop we de heer Jacobse hebben weten te foeten vorige week. Ik heb net een sms gekregen met zijn dankbetuigingen voor het omwisselen van zijn vaders schilderijen, en dat die daar dus wel achter is gekomen.
+
+Over scheikundigen die van hun pad afdwalen gesproken. In hoeverre is iedereen in de commissie 'bij' met het kijken van Breaking Bad? Over nog geen 168 dagen gaat het verder, dus de tijd om te gaan speculeren over de uitkomst van de serie begint al bijna en dat kan niet op een fatsoenlijke manier als je niet 'bij' bent.
+
+Helaas moet ik zeggen dat mijn samenvattende toon in een eerdere alinea mij nu een beetje zonder stof heeft gelaten, daartoe moet ik helaas concluderen dat deze mail wat korter is geworden dan gebruikelijk. Een redelijk voorstel om dit te compenseren lijkt mij dan ook dat ik de komende mail sneller zal doen laten verschijnen, het alternatief is uiteraard een extra lange mail volgende keer, maar eerlijk gezegd zal dat leiden tot een informatiedichtheid die de voorgenoemde gemiddelde letterenstudent van haar stoel zal doen glibberen. 
+
+\closing{Met vriendelijke groet,}
+\end{bestuurletter}
+\date{3 maart 2013}
+\begin{svenletter}
+\opening{Beste leden van het bestuur, beste ex-GenÃ¨vegangers,}
+
+Daar het gisteren tijdens de borrel van de BÃ¨ta Bedrijvendagen minder hard geÃ«scaleerd is dan enkele jaren geleden doet het mij een genoegen om mijn anders verspilde tijd achteruitrijdend te utiliseren om een adequaat antwoord te produceren.
+
+Het is mij echter net opgevallen dat mijn laptop nog geen ondersteuning heeft voor het controleren van hetgeen ik nu aan het typen ben in de taal waarin deze conversatie plaatsvindt. Om deze reden wilde ik een talenpakket installeren, wat normaal heel makkelijk gaat, maar even ten zuiden van Assen is het internet blijkbaar net niet stabiel genoeg om dit voor elkaar te krijgen. Pogingen om dit alsnog te doen via de commandoregel middels het commando "sudo apt-get install `check-language-support -l nl`" liepen uit op nog verdere frustraties gezien het feit dat mijn eerdere pogingen de dpkg bibliotheken op slot hadden gezet. Dit heeft erin geresulteerd dat ik heb besloten deze brief te tikken zonder enige vorm van spellingscontrole.
+
+Terug komende op de BÃ¨ta Bedrijvendagen leek het mij misschien een goed idee om, aangezien de voorzitter de halfjaarlijkse algemene ledenvergadering toch ook al niet meer leidt, ook met een andere traditie te breken en een zekere Yide Zhu uit te nodigen om de voortgang van de vereniging te presenteren. Naast de voortreffelijke manier waarop dit individu een boodschap kan overbrengen, zou het onderhouden van contacten met de heer Zhu ook de s[ck]rip(t|t?c)ie ten goede kunnen komen gezien de contact die hij er op zijn beurt weer op na houdt met de Europees Commissaris die met het beleid voor ICT en Telecom belast is. Voor meer informatie hierover kan ik u verwijzen naar de facebook-pagina van het bedrijf waaraan eerdergenoemde werver verbonden is.
+
+Om te compenseren voor de geringe lengte van de alinea in de mail waarop deze mail een antwoord is die gaat over voorgaande gespreksonderwerpen zal ik nu trachten om over elke zin in die alinea te beantwoorden met minimaal Ã©Ã©n volledige alinea.
+
+Het doet ons deugd dat het bestuur ons wenst te belonen voor onze daden met betrekking tot de app en de TV-unit, dus laat ons eens beginnen informatie te verschaffen betreffende de voortgang van deze applicaties.
+
+De app heeft, zoals menigeen die niet een directe link naar de klaverjasapp op zijn thuisscherm heeft staan heeft gemerkt, een startscherm gekregen waar toegang verkregen kan worden tot verschillende andere onderdelen van de app. Momenteel wordt er nog hard gewerkt aan delen van de app die nog niet in een later stadium van voltooiing bevinden, daar zijnde alles behalve het klaverjasgedeelte, maar het concept zou nu duidelijk moeten zijn. We willen het bestuur dan ook vragen of, indien zij nog ideeÃ«n hebben met betrekking tot de app, wij dit graag horen.
+
+Verder zijn er icoontjes gegenereerd voor de daadwerkelijke app voor het Android platform, wat betekent dat deze nu ook door andere personen dan alleen de leden van de s[ck]rip(t|t?c)ie en de leden van een zekere Dropbox-share beschikbaar gemaakt zou kunnen worden.
+
+Ook de TV-unit heeft enkele dagen geleden een update gehad, waardoor wij nu, indien er iets mis gaat, precies terug kunnen vinden wat er gebeurd is. Wij hopen dit nooit nodig te zullen hebben, maar het schrijven hiervan was een goede oefening in het gebruik van zogenaamde Variadic Templates. Voor mensen die hier meer over willen weten kan ik deel 3 van de cursus genaamd "Programming in C/C++" van harte aanbevelen.
+
+Betreffende de beloning voor onze verrichte daden in de vorm van commissiekleding hebben wij Jeroen Ernesto 'Lanting' Lanting (JELL) ingeschakeld om met een, voor ons en voor het bestuur, zo voordelig mogelijk aanbod te komen. Wij hopen dat dit spoedig zal geschieden, en als voorzitter acht ik het mijn taak om JELL hiervoor goed achter de broek te zitten.
+
+Het idee voor onze commissiekleding komt niet uit de wereld van onze favoriete massamoordenaar uit Miami, maar uit de wereld van de digitale anarchie. Dit kledingstuk zal dan ook zeker representatief zijn voor wat wij als commissie willen uitdragen. Dat gezegd hebbende hebben wij ons doelwit dus gevonden.
+
+Het doet mij echter spijt om toe te geven dat ik over de volgende zin in de alinea uit de voorgaande mail geen alinea kan schrijven met een accuraat antwoord, daar JELL zich op dit moment met het onderzoeken van eventuele mogelijkheden met betrekking tot het uitzoeken van de commissiekleding bezig houdt. Daarom leek mij dit een goed moment om duidelijk te maken dat, zoals het bestuur al ter ore is gekomen, wij bezig zijn om het budget ietwat uit te breiden zodat wij niet met maar Ã©Ã©n kledingstuk op de volgende crash-and-compile hoeven te verschijnen. Dit zou namelijk waarschijnlijk geschokte reacties opwekken bij de (overige) deelnemers.
+
+Als dit ons lukt is dit natuurlijk een meevaller voor de penningmeester. Niet alleen door het gebrek aan naaktheid bij de volgende crash-and-compile, maar ook vanwege het geld dat bestemd was voor commissiekleding dat hierdoor bespaard wordt. Dit zal dan gebruikt kunnen worden voor het weggeven van versnaperingen tijdens een daartoe geschikte aangelegenheid. Het is mij echter ter ore gekomen dat ook dit al door de acquisitie van de s[ck]rip(t|t?c)ie geregeld is, en dat er dus, tenzij er hard genoeg geÃ«scaleerd wordt, geld over blijft, hoe graag de penningmeester ook zou willen dat dit niet zo was.
+
+Het moet echter nogmaals benadrukt worden hoe verheugd de s[ck]rip(t|t?c)ie is dat Bauke ons vaak verblijd met zijn aanwezigheid in de Franckenkamer, en dat de mogelijk excessieve hoeveelheid geld ook vooral aan hem te danken is. Ook zijn wij hem nog steeds dankbaar voor het opstartbudget dat hij ons verschaft heeft middels een sponsorcontract met cafÃ© Karakter. Zonder dit budget hadden wij onze huidige reputatie nooit kunnen realiseren. Omdat wij Bauke natuurlijk niet voor de voeten willen lopen wat betreft het aanschrijven van mogelijke geldschieters, zouden wij graag binnenkort een keer met hem overleggen wat onze plannen betreffende het opvijzelen van de financiÃ«le gesteldheid van de s[kc]rip(t|t?c)ie.
+
+Ons voorstel inzake de overvloedige hoeveelheid geld waarover het bestuur zal beschikken betreft het eerdergenoemde voorstel om sponsorcontracten met A-merk espresso-industriÃ«len aan te gaan. Gelet op de 'zure meuk' die nog steeds in de Franckenkamer geschonken wordt zouden wij graag zien dat er, als alternatief voor het bij benadering oneindig lange wachten op een sponsorcontact, een apparaat wordt aangeschaft die een goede bak zwart goud kan produceren, waarmee niet gedoeld wordt op een apparaat waar een alleen een sjeik of een bedrijf als Royal Dutch Shell behoefte aan heeft.
+
+Betreffende de heer Jacobse zou ik graag willen opmerken dat deze al voldoende duidelijk heeft gemaakt tegenover een zekere VIENT-delegatie met toevoeging van JELL, dat hij zich door de voorvallen betreffende schilderijen, dassen en bloempotten zeer gekwetst voelde. Uit de mate waarmee hij dit ter sprake bracht kan echter ook opgemaakt worden dat hij hier ook wel plezier aan had beleefd. Gezien het feit dat dit dus uitgebreid ter sprake is gekomen zien wij geen noodzaak om het jongste lid der s[ck]rip(c|tc?)ie in deze conversatie te betrekken.
+
+Een andere reden om JELL niet bij deze conversatie te betrekken is dat zijn vaardigheden met betrekking tot het schrijven van een correcte opeenvolging van irrelevante woorden te wensen overlaten. Een bekend voorbeeld, waarvoor hij door de heer Schepers genocideloos en genadeloos werd afgestraft is de zin: "Zij werd erg verlijd door zoon bakje patat.". Niet alleen viel de heer Schepers hierbij over de spelling van JELL, maar ook was hij geschokt door het feit dat de voorstelling van romantiek van JELL het lokken van vrouwen middels een bakje patat bevatte.
+
+Over mislukte liefdes gesproken zou ik u graag willen herinneren aan het feit dat de laatste aflevering van het vorige seizoen van Breaking Bad bekeken is in de bestuurskamer door zowel de twee leden van de s[ck]rip(t|t?c)ie die wel aan deze conversatie meedoen als door de penningmeester van het bestuur. Dit neemt niet weg dat het jongste lid van de s[ck]rip(t|t?c)ie hopeloos ver achter loopt daar deze nog steeds maar bij seizoen twee is. Aangezien 'bij' zijn meemaken is zal JELL er constant aan herinnerd moeten worden dat hij nog maar 131-n dagen heeft om 'bij' te kijken, waarbij n het aantal dagen is dat is verstreken sinds de halfjaarlijkse algemene ledenvergadering.
+
+Verder wilde ik nog eens kort terugkomen op het oorspronkelijke onderwerp van deze mailconversatie, de bitterballenborreldibsmachine. Het leek ons een puik plan om volgend jaar tijdens de BÃ¨ta Bedrijvendagen de bitterballenborreldibsmachine in te schakelen voor het dibsen van bitterballen tijdens de borrel. Gezien de connecties van het bestuur met de BÃ¨ta Bedrijvendagen middels de RVT leek ons de invloed van het bestuur ons toereikend om dit te realiseren. Het is evident dat de BÃ¨ta Bedrijvendagen van volgend jaar niet meer binnen de bestuursperiode van het huidige bestuur zullen vallen, en wij nemen dan ook aan dat dit onderwerp uitvoerig besproken zal worden tijdens de bestuursoverdracht. Uit het voorgaande kan inderdaad opgemaakt worden dat de s[ck]rip(t|t?c)ie zich niet per se wil beperken tot onze mooie studievereniging met de tentoonspreiding van digitale anarchie mits wij daar zelf gewin in willen constateren.
+
+Ondanks mijn gebruikelijke samenvattende toon doet het mij verdriet mede te delen dat deze mail bij mijn weten de langste tot nu toe is. Het is echter wel zo dat berichten van deze lengte ervoor kunnen zorgen dat de magische vijfentwintigduizendwoordengrens eerder gebroken zal worden, mits de berichten snel genoeg op elkaar volgen. Ik moet daarom mijn excuses aanbieden voor de lange tijd waarin er geen werk schrijfwerk verricht werd, maar mijn kostbare tijd in plaats daarvan vooruitrijdend besteedde aan het kijken van afleveringen van een vermakelijke Engelse serie waarin punten gegeven worden voor het geven van interessante antwoorden.
+
+Het gevoel dat ik iets van zeer groot belang vergeten ben te noemen overvalt mij op dit moment, maar ik wil de ontvangers van dit bericht niet langer in spanning laten. Vandaar dat ik nu afsluit in de hoop dat u genoeg informatie aan het bovenstaande heeft kunnen ontlenen en dat u zich bij het lezen ervan enigszins vermaakt heeft.
+
+\closing{Met vriendelijke groet,}
+
+\addps{Het late antwoorden was ook bedoeld om Tom in verwarring te brengen.}
+\end{svenletter}
+\date{27 maart 2013}
+\begin{bestuurletter}
+\setkomavar{signature}{Sjoerd Ferdinand Sjieuwe Meesters\\
+Penningmeester van het achtentwintigste bestuur der T.F.V. 'Professor Francken'}
+\opening{Beste co-auteurs, waarde lezers,}
+
+Ik meen me te herinneren gezegd te hebben dat er sneller gereageerd dient te worden op correspondentie tussen bestuur en s[ck]rip(t|t?c)ie. Ironisch genoeg, ben ik zelf redelijk in gebreke gebleven met betrekking tot voorgenoemde. Aangezien het oorspronkelijke doel van deze mail niet uit het oog verloren mag worden, lijkt het mij nu vrij evident dat te compenseren door overdadig woordgebruik en bizarre zinsconstructies. 
+
+Verder moet opgemerkt worden, dat ik het langzamerhand tijd vind worden voor een repliek op deze e-mail vanuit de zijde van de FB'er van deze faculteit (of indien hij een andere vindt die hiertoe bereid is, die). Een dergelijk antwoord zou opinies en inzichten kunnen bevatten met betrekking tot Glen Fiddich 15, de laatste afleveringen van The Walking Dead, digitale anarchie, de gifkikker, zwart goud of andere hersenspinsels die te zijner tijd hun weg kunnen vinden naar het digitale medium.
+
+Maar enfin, laat ik even terug komen op de huidige mail, want voordat je het weet ben ik zover afgedwaald dat ik geen idee meer heb waarover in eerste instantie deze berichtgeving bericht gaf. Alleen al denken aan de mogelijke disjunctie onderwerpen waar deze mail naartoe zou kunnen di- dan wel convergeren, leidt tot waanideeÃ«n als een blauwe spongebob, een koningsad met ei en brood, ekmek met egg en spek, vegetarische bitterballen, Ã¼berhaupt vegetarische "  ", een binnenstebuiten gekeerde veNijn, niet-chaotische fractals en ga zo maar door. 
+
+Oja, niet afdwalen, excuses. Yide Zhu. Laten we eerlijk zijn, juist omdat hij een geweldige baas is, zullen wij niet de enigen zijn die dat geconstateerd hebben. Er wordt dan ook niet vreemd opgekeken, wanneer blijkt dat mijnheer Zhu helemaal niet in staat is bij ons een ALV technisch voor te zitten. Verder is het ook niet vreemd dat onze connecties binnen ASML niet in staat zijn enige grip te hebben op die man. Daarnaast gebied eerlijkheid mij te zeggen, dat '+' een uitstekende technisch voorzitter is, en dat mijns inziens het niet nodig is de heer Zhu te belasten met het voorzitten van iets anders dan een intergalactische samenkomst met betrekking tot de toekomst van het multiversum. 
+
+Met betrekking tot de Franckenapp, zijn er momenteel nog een zeer zeker nog een aantal aanbevelingen. Zo lijkt het ons niet nodig dat men opgeeft welke soort zij biedt, tenzij deze soort sans is, in het klaverjasgedeelte van de app. Verder is het wellicht een idee de komende 4 a 5 wachtwoorden voor de caption contest, aan het begin van elke maand door te spelen aan het bestuur, zodat de secretaris in de maandelijkse mailing deze kan vermelden. Enkele suggesties voor wachtwoorden zijn: brownietaart, chocoladetaart, appelkruimelvlaai, shepherd's pie, quiche, hartige taart, rundertartaar(t) en koeienvlaai. Verder is het sowieso ook een idee om vanaf bier uur het adrad, hooguit Ã©Ã©n keer per cyclus, op de tv te laten verschijnen, mochten mensen er aan draaien. Daarnaast is de app bij uitstek het platform om gave dingen in te doen, wellicht een digitale versie van Russische roulette, een ranking van nare koningsadten of gewoon de wall of shame.
+
+Ik begrijp dat het onwenselijk is wanneer JELL enige brij van woorden typt, en vind het dan ook niet erg dat er vanuit Uithuizen geen antwoord hiernaartoe komt. Echter, zou het mij bijzonder storen, wanneer blijkt dat hij niet inhoudelijk mee kan praten over de dingen die tussen het bestuur en de s[ck]rip(t|t?c)ie spelen. Het lijkt met dan ook verstandig dat hij binnenkort een weekend de tijd neemt, zich in te lezen in deze correspondentie. Dit zou eventueel getoetst kunnen worden door het bestuur of van de s[ck]rip(t|t?c)ie, maar momenteel ben ik voorstander van het steekproefgewijs testen van zijn kennis. Gezien het feit dat hij niet betrokken is bij deze mailing, zou ik het van kameraadschap, en zekere mate van sadisme, doen getuigen wanneer jullie hem hier op wijzen.
+
+Dingen die spelen tussen de s[ck]rip(t|t?c)ie en het bestuur, vinden trouwens bizar genoeg niet altijd een weg naar deze mailing. Gelukkig beschikt iedereen over een zekere mate van geheugen, dus zijn vergeten dingen niet altijd vergeten. Zo weet ik dat jullie plan is een maatpak als kleding aan te schaffen, maar expliciet is dat nooit genoemd in de e-mail. Dat er nu plannen circuleren over hoeden, laat ik hier nog even buiten. Belangrijk is echter wel dat de sponsoring die benodigd is voor de pakken wel goed binnen gehaald wordt.
+Ik ben dan ook zeer benieuwd naar het geplande gesprek tussen jullie en de pythonbaas. Ik verwacht dan ook binnenkort een update over alle sponsorgesprekken en contacten.
+
+Over updates gesproken. Deze week kwam naar voren dat er een script gestolen is van Bryan Cranston. De dader is inmiddels gepakt, maar het script is niet gevonden. Ik zou het zeer spijtig vinden, wanneer het script uitlekt en blijkt dat het de series finale betreft. Ik hoop dat ik mijn nieuwsgierigheid in bedwang weet te houden, mocht dit gebeuren. Het kan natuurlijk niet zo zijn dat we de finale in de Nijenborgh zitten te kijken en alles kunnen meepraten.
+
+Ik begin langzaam het gevoel te krijgen aan het einde van mijn latijn te zitten, iets wat ironisch genoeg in de praktijk al 8 jaar geleden gebeurd is. Hoewel ik nu aan het afsluiten ben, overvalt ook mij het gevoel dat ik iets belangrijks niet genoemd heb. De spreekwoordelijke Engelse olifant in de kamer, maar ik neem aan dat dit binnen enige tijd me weer te binnen schiet. Mocht dan blijken dat ik de plank helemaal misgeslagen heb, verwacht ik een bevestigend dan wel ontkennend antwoord te krijgen. 
+
+Met deze woorden zou ik graag af willen sluiten.
+
+\closing{Met vriendelijke groet,}
+\end{bestuurletter}
+\date{5 mei 2013}
+\begin{plusletter}
+\setkomavar{signature}{Paulus Meessen\\
+Faculteitsbestuur FWN, oprichter S[ck]rip(t|t?c)ie etc. etc.}
+\opening{Geachte Penises Tabulae,}
+
+Om de traditie van deze mailwisseling levend te houden, heb ik tegen alle verwachtingen en beloftes in het beantwoorden van het jongste communiquÃ© vanuit het bestuur uitgesteld totdat zelfs de minst belanghebbende partner in dit communicatieproces zich genoodzaakt voelde mij te herinneren aan de potentie dat deze verbale wisseling van zinnen met bijzinnen die bijzinnen hebben, voorlopig nog geen stille dood mag sterven. De eventualiteit dat ik zelfs mijn belofte een nieuwe blogpost voor het Francken-blog zal schrijven komt hiermee ook dichter bij, daar het typen van deze woorden mij wellicht zal inspireren en ik wederom een woord heb moeten gebruiken dat noch in het woordenboek der Nederlandse taal, noch op Google te vinden is, terwijl de betekenis, in ieder geval in de ogen van een doorgewinterd Franckenlid, triviaal geacht wordt.
+
+Laat ik dan nu dit verhaal met een meer inhoudelijk schrijven continueren. Waar uiteraard primair de vragen en onjuistheden uit uw vorig bericht uitgebreid ter spraken zullen komen in het eerste deel van deze mail, wil ik nu al vooruitblikken op de nieuwigheden die tegen het einde van deze mail naar voren zullen komen. Te weten een update over onze contacten met wellicht twee nieuwe 'hoofdsponsoren' voor onze magnifieke vereniging, en ook een klein beetje over het aanstaande zijn van een crash and compile competitie met aanpalende programmeer-cursus. Laat het u opvallen dat ik in de vorige zin voor het eerst een nodeloze verwijzing heb gemaakt naar het mannelijke geslachtsdeel. Dit zal wellicht te maken hebben met een recent verblijf in Denemarken waar de bovengemiddeld slanke vrouwen in hun naÃ¯viteit maar in alle vriendelijkheid de "tak" regelmatig in de mond nemen.
+
+Enfin, zoals reeds verbaal tot u gebracht maar hier nu ook zwart-op-wit bevestigt, is de Glenfiddich 15 de eerste whisky waar, in het genieten daadwerkelijk het concept 'smooth' een onmiskenbare boventoon mag voeren. De Gifkikker is iets wat met zegen des voorgangers Tom's en de meest waarschijnlijke lezer van dit verhaal beschikbaar zal zijn voor de deelnemers van de volgende crash and compile. Ikzelf heb in deze zaken alle vertrouwen gelegd in de penningmeesters tabulae en het idee dat als het maar gratis is, de deelnemers klakkeloos een genoegen nemen met elk soort alcoholhoudende bocht. De voorgenoemde zegen blijft een bijzonder goed voorteken voor aanstaande escalatie.
+
+Over escalatie gesproken. Daar waar ik in eerdere mails mijn zorgen uitte over de mate van escalatie tijdens een Francken-event, ben ik, toen de vereniging sine regno opereerde, tot de conclusie gekomen dat de toestand waarin onze vereniging zich voordoet een attractor is in een cyclisch proces waarin eigenlijk altijd alles weer op zijn plek escaleert. In escalatie moet dan wellicht niet gestreefd worden naar een piek-niveau maar juist naar een verhoogde continue inzet. Het is aan uw bestuur om daarin een wijze beslissing te nemen daar het proces allicht chaotisch is voor onvoorziene parameterwaarden; bijvoorbeeld de kleur van de koffiemachine.
+
+Het technisch voorzitterschap waar u in de vorige mail naar verwees, hoewel buiten de s[ck]rip(t|t?c)ie aangelegenheden, lijkt me wel iets wat u een nieuw bestuur mee moet geven - wellicht moet men trachten hierin jaarlijks iemand vast aan te stellen. Als men dit doet kunt U, uw opvolgers wellicht adviseren om tijdens de O-ALV aan de ALV een kandidaat te presenteren; te weten dat ik weinig interesse heb om de functie langer dan dit bestuursjaar met mij mee te dragen. Mochten ALV's dan toch structureel te kort worden; tracht u dan voorzitter der s[ck]rip(t|t?c)ie te verzoeken een 'veelste-lange-motie-machine' te scripten.
+
+Continuerend, waar u in uw mail nieuwe vragen stelt, zal nu de app en app-gerelateerde dingen worden ingebracht. Daar u uiteraard maandagmiddag aanstaande bij de s[ck]rip(t|t?c)ie vergadering aanwezig kunt zijn, om hier zelf input in te hebben, zijn wij op dit moment redelijk content met het functioneren van de code. Waar de biertaart slechts behoevend is aan buixie-foto's, zien wij dat de app volop gebruikt wordt maar bijvoorbeeld het ad-rad gewoon nog te weinig. Hoewel uw voordrachten intelligent en kenmerkend van een buitensporige creativiteit zijn, laten we deze in de vergaarbak voor een koude nacht. Wellicht rond 23 mei, al is die hopelijk warm. De software op de TV draait inmiddels stabiel en is vrij van allerlei akelige, ongeanticipeerde bugs. De s[ck]rip(t|t?c)ie is wel nog steeds in afwachting van een goede soundtrack voor de countdown. Het bestuur dient hierbij een kwalitatief hoogwaardige versie van de droomshow countdown aan te leveren of een beter (tegen)voorstel te doen. We hebben uiteraard vernomen dat ondanks onze code, die een goddelijke perfectie begint te benaderen, de TV nogal eens wat kuren vertoont. Wij hebben hier onze koffiefeut aangehangen maar dit lijkt vooralsnog weinig effect te hebben. Mogelijk kunnen wij samen met de compucie het systeem stabiliseren of anders als brave kapitalisten investeren in nodeloze vernieuwing om de illusie van een markt draaiende te houden. (https://www.miniand.com/products/GK802%20Android%20Mini%20PC)
+
+Op dit moment heeft de s[ck]rip(t|t?c)ie het te druk met aanstaande activiteiten om onze commissaris cafeÃ¯nehoudende drank op te offeren dit historische verslag mede uit te breiden. Wel hopen wij hem voor de O-ALV ingelezen te krijgen. Dit is wel een risico aangezien Jeroen Ernesto "Lanting" Lanting (JE"L"L) vanaf volgende week aan de slag mag met a-merk espresso's voor zijn collega s[ck]rip(t|t?c)ie leden.
+
+Dan nu de nieuwigere dingen.Na een aangenaam verblijf in Deventer bij de Topiconf, hebben wij onze banden met het gelieerde en organiserende Topicus aangehaald. Er is een toezegging van Gifkikkers voor de aanstaande C\&C per mail. Verder hebben zij zelf verzocht dat wij hen een kopie van de sponsorbrochure toe zenden. Dit is gedaan.
+
+Ook bezochten het bijnavoltallige s[ck]rip(t|t?c)ie-bestuur de pythonbaas. Na een aangenaam gesprek van ongeveer een uur bleek dat wij inderdaad een gelijke mindset hadden aangaande s[ck]rip(t|t?c)ie zaken. Ter plekken kregen wij een toezegging voor de Pygrunn-deal waar wij op hadden ingezet. Tevens gaf hij aan geen onwelwillende houding te hebben tegen het hoofdsponsorschap van onze vereniging in relatie tot het aldaar genoemde sponsorbedrag. In voorbereiding van Pygrunn, waar Francken met een delegatie van 6! (zegge ZAS!) man heen zal gaan, hebben we nog geen reactie gehad over de specifieke wensen vanuit Paylogic voor een sponsorovereenkomst. Wel spreken wij tijdens Pygrunn met de verantwoordelijke binnen Paylogic.
+
+Ons valt het tempo van deze interacties goed. Met een fanatieke inzet maar uitgerekt tijdspad krijgt de s[ck]rip(t|t?c)ie van deze bedrijven alles wat haar hart begeert en ruim op tijd voor de geplande activiteiten. Aangaande de grotere financiÃ«le overeenkomsten zetten wij uiteraard kalm door. Mocht het bestuur hier andere ideeÃ«n over hebben, dan staat het hun vrij de verantwoordelijkheid voor dit proces op zich te nemen.
+
+Zoals overeengekomen zal de eerstvolgende Crash and Compile op donderdag 23 mei plaatsvinden. Wij zijn blij dat u bestuur heeft ingezien dat er een zeker invariantie is tussen dingen die de  s[ck]rip(t|t?c)ie doet en de planning van het bestuur. Gelukkig zal hier geen conflicterende escalatie plaatsvinden. Zorgt u ervoor dat de commissaris inschrijflijst van  het Franckenbestuur ons een dienst bewijst door de relevante handelingen te verrichten? (naam1,naam2, teamnaam, vega, controlgroup, afschrijfs/verantwoordelijkheid). Dan zullen wij de representatie voor posters porren. De tweede cursus zal spontaan verschijnen en passend gemaakt worden bij het wiskunde curriculum. Het zal een follow-up zijn van de eerste ronde.
+
+Aangaande onze audiovisuele verslaving moet er gewezen worden op Hannibal. Ik weet nog niet of ze de personages in deze serie voldoende gaan door ontwikkelen maar ben wel van mening dat Mad Mikkelsen een goede creep is. Bij gebrek aan nieuwe afleveringen van University Challenge moet ik mij daartoe beperken. Jaloers kijk ik nog wel naar onze voorzitter die nog UREN QI zou kunnen bij-kijken. Dit herinnert me aan het feit dat ik nog Ã©Ã©n aflevering Hustle niet gezien heb. Maar daar kent u de details van.
+
+\closing{Groet ook namens de raad van toezicht der s[ck]rip(t|t?c)ie,}
+
+\addps{Gmail lijkt het ook echt op te geven deze conversatie volledig weer te geven.}
+
+\addps{Nu ik merk dat Sven's laatste reply aanzienlijk groter is dan deze zal ik hier nog een honderdtal woorden neerplempen teneinde de boel weer op zijn plek te laten escaleren. Evenzo zie ik dat hij terecht opmerkt dat er al tijden geen bitterballen meer gedibst zijn met de bitterballendibsmachine. Dat is ontzettend zonde omdat het aanleiding zou kunnen zijn buitensporig veel bitterballen te eten met wat Franckenlui. Al kunnen we waarschijnlijk na het symposium, waar voor oud sympcie-leden blijkbaar een krokettengarantie is, nog een tijdje overleven. Een van de belangrijkste dingen van het overleven is eten en hoewel ik hier niet wil aanduiden dat ik sterf va de honger, toch wel bemerkt dat ik een gezonde trek begin te krijgen; zes uur na mijn laatste maaltijd.}
+
+\addps{Dit bericht komt nog slechts tweehonderd woorden tekort en daartoe zal ik een poging doen het woord glibberen een aantal keer te gebruiken in dit post-post-post-scriptum. In het bijzonder in de context die eerder is aangehaald door de Penningmeesters, in relatie tot een gemiddelde letterenstudente waarin een overdadig lubriek functioneren in haar onderlichaam zou kunnen worden aangewakkerd, leidend tot een frictieverlagende laag op haar stoeloppervlak dat zal resulteren in een wellicht charmante knieval en hevig blozen. Als ik mij goed herinner, en ik zal me slechts in het jaartal vergissen, was het de Nederlandse cabaretier Dolf Jansen die in het jaar tweeduizendennegen, en plein publique een poging gedaan om de vrouwen in zijn theatier middels het geveinsde verbale talent van de poÃ«zie tot een seksueel hoogtepunt te laten komen. Geheel tegen zijn eigen verwachtingen in, bleef het zompige pluche uit. Daar het u een nieuwe uitdaging zal zijn in de toekomst ook de gemiddelde rechtenstudent uit het rode pluche van de pathÃ© zalen te laten glibberen; heb ik er alle vertrouwen in Uwer vocabulaire talenten en flamboyance met de Nederlandse taal om in uw volgende mail een informatiedichtheid te naderen die de potentie heeft tenminste Ã©Ã©n glibber te kunnen bewerkstelligen bij voorgenoemde hypothetische studente. Het mag dan maar ook goed zijn dat u recentelijk afstand heeft gedaan van de ringbaard die een dergelijke onderneming zou kunnen laten escaleren naar de regionen van de Duitse porno. Laten we hopen dat uw repliek, die waarschijnlijk hemmingwayend tot stand zal komen een spiegeling zal zijn van de literaire prestaties van Oscar Wilde die erin slaagde in Victioriaanse eloquentie toch messcherp de botergeilheid van de situatie doen overkomen. Afsluitend en afrondend zal ik melden dat boter best wel glibberig kan zijn en dat wanneer je beweert dat de quote "a dirty mind is a joy forever" toe te kennen is aan de voorgenomen Britse dichter en toneelschrijver er bij een bepaald brits quizprogramma waarvan het seizoen 'K' deze maand word opgenomen misschien een zoemer afgaat.}
+\end{plusletter}
+\end{document}
+
+
