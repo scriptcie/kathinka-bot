@@ -120,7 +120,7 @@ irc.socket.on('connect', function() {
         }
 
         // Tell user goodbye
-        if (/^(le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?)$/.test(data)) {
+        if (/^((le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?))$/.test(data)) {
             irc.speak("PRIVMSG " + channel + " :" + data + ", " + user);
             return;
         }
