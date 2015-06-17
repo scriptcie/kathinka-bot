@@ -1,25 +1,10 @@
-var socket = new Socket;
-
-var IRC = function(socket, config) {
-    this.socket = socket;
-    this.bots = [new Kathinka];
-
-    var self = this;
-    this.socket.on('data', self.handleData);
-    this.socket.on('connect', self.connect);
-
-
-    // settings + connect
-    this.socket.setEncoding('ascii');
-    this.socket.setNoDelay();
-    setTimeout(function() {
-        this.socket.connect(config.server.port, config.server.addr);
-    }, 2000);
+// This is the network that is responsible for maintaining all bots
+//
+var BotNet = function(irc) {
+    this.irc = irc;
 };
 
-IRC.prototype = {
-
-    // Handles the receiving of a line of text
+BotNet.prototype = {
     handle: function(line) {
         var irc = this;
         var message = line;
@@ -30,32 +15,11 @@ IRC.prototype = {
                 };
             });
         };
-
-        // for (var i = 0; i < irc.listeners.length; i++) {
-        //     // check if the regex is satisfied
-        //     var info = irc.listeners[i][0].exec(data);
-        //     // Call the listener
-        //     if (info) {
-        //         //console.log(info);
-        //         irc.listeners[i][1](info, data);
-        //     }
-        // }
     },
-
-    // on: function(data, callback) {
-    //     irc.listeners.push([data, callback, false])
-    // },
 
     // Wait a few seconds such that we get a realistic response
-    speak: function(data) {
-        return setTimeout(data.length * 50, irc.raw(data));
-    },
-
-    // Send the message to irc and log it
-    raw: function(data) {
-        irc.socket.write(data + '\n', 'ascii', function() {
-            console.log('SENT :', data);
-        });
+    speak: function(message) {
+        return setTimeout(message.length * 50, this.irc.say(message));
     },
 
     connect: function() {
@@ -137,7 +101,6 @@ IRC.prototype = {
             }
         }
     },
-
 };
 
-module.exports = IRC;
+module.exports = BotNetwork;
