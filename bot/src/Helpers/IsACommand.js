@@ -1,4 +1,4 @@
-isACommand = function(message) {
+var isACommand = function(message) {
     var match = message.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
 
     // Return the command

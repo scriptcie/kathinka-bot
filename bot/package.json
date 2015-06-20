@@ -11,5 +11,8 @@
     "should": "~4.0.4",
     "gulp-util": "~3.0.5",
     "sinon": "~1.15.3"
+  },
+  "dependencies": {
+    "irc": "~0.3.12"
   }
 }
