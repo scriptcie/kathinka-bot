@@ -48,3 +48,11 @@ This problem can probably be solved if we let our interaction objects use a serv
 
 #### Keywords
 Interaction rules (specificaties die we wellicht kunnen gebruiken om resultaten van interacties te filteren)
+
+
+## Todo
+IRC Client instellen (gebruik makend van node-irc)
+BotNet
+Meer interacties
+- Agenda
+- Reminders
