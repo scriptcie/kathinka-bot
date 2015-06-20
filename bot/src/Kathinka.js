@@ -28,7 +28,7 @@ Kathinka.prototype = {
             var response = interaction.interact(message, from);
 
             // We don't want to return empty responses
-            if (response === undefined && response === null) {
+            if (response === undefined || response === null) {
                 return;
             }
 
