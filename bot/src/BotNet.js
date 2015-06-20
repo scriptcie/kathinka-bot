@@ -32,31 +32,22 @@ BotNet.prototype = {
         var irc = this;
         for (var i = 0; i < this.bots.length; i++) {
             this.bots[i].notify(message, from, function(messages) {
-                for (var m = 0; m < messages.length; m++) {
-                    irc.speak(to, messages[m]);
-                };
+                irc.speakMessages(to, messages);
             });
         };
     },
 
-    // Wait a few seconds such that we get a realistic response
-    speak: function(to, message) {
-        return setTimeout(this.irc.say(to, message), message.length * 50);
+    speakMessages: function(to, messages) {
+        if (messages === undefined || messages.length === 0) {
+            return;
+        }
+        var botNet = this;
+        var message = messages.shift();
+        setTimeout(function() {
+            botNet.irc.say(to, message);
+            botNet.speakMessages(to, messages);
+        }, message.length * (25 + 25 * Math.random()));
     },
-
-
-    // handleData: function(data) {
-    //     // lees de data regel voor regel
-    //     lines = data.split('\n');
-    //     // print wat er binnenkomt
-    //     //console.log('RECV -', data[idx]);
-    //     // als het geen lege regel is haal dan even de extra enter weg. Dat doet IRC blijkbaar een \r\n situatie. mss hadden we ook kunnen splitten op \r\n?
-    //     for (var idx = 0; idx < lines.length; idx++) {
-    //         if (lines !== '') {
-    //             irc.handle(lines[idx].slice(0, -1));
-    //         }
-    //     }
-    // },
 };
 
 module.exports = BotNet;
