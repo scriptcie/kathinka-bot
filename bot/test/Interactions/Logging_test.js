@@ -11,7 +11,7 @@ describe("The logging interaction", function() {
     it("Does nothing when its not asked something", function() {
         var logging = someLogger();
         var response = logging.interact("Moi", sender);
-        (response === null).should.be.true;
+        (response === undefined).should.be.true;
     });
 
     it("Starts logging when asked to log a conversation", function() {
@@ -60,6 +60,18 @@ describe("The logging interaction", function() {
         response.should.eql([
             "Mark said: \"Hee hallo\"",
             "Moi said: \"Moi\""
+        ]);
+    });
+
+    it("Logs messages that were interpreted as commands, but were not commands", function() {
+        var logging = someLogger();
+        logging.interact("Kathinka start logging", sender);
+        logging.interact("Kathinka kan je dit voor me loggen?", sender);
+
+        var response = logging.interact("Kathinka show logs", "Mark");
+
+        response.should.eql([
+            "Mark said: \"Kathinka kan je dit voor me loggen?\"",
         ]);
     });
 

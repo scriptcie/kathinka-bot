@@ -11,14 +11,17 @@ Logging.prototype = {
     interact: function(message, from) {
         var command = isACommand(message);
         if (command !== null) {
-            return this.handleCommand(command, from);
+            var response = this.handleCommand(command, from);
+            if (response !== undefined) {
+                return response;
+            }
         }
 
         if (this.shouldLog) {
             this.logMessage(message, from);
         }
 
-        return null;
+        return undefined;
     },
 
     handleCommand: function(command, sender) {
@@ -50,7 +53,7 @@ Logging.prototype = {
             return logs;
         }
 
-        return null;
+        return undefined;
     },
 
     logMessage: function(m, f) {
