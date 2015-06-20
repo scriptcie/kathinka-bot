@@ -17,7 +17,7 @@ describe("A Kathinka bot with basic interactions", function() {
         kathinka.notify(
             "Kathinka start logging",
             "Mark", function(response) {
-                response.should.equal("Started logging");
+                response.should.eql(["Started logging"]);
         });
     });
 
@@ -25,7 +25,7 @@ describe("A Kathinka bot with basic interactions", function() {
         kathinka.notify(
             "Kathinka wat is het nut van het leven?",
             "Mark", function(response) {
-                response.should.equal("Concentrate and ask again");
+                response.should.eql(["Concentrate and ask again"]);
         });
     });
 
@@ -33,7 +33,7 @@ describe("A Kathinka bot with basic interactions", function() {
         kathinka.notify(
             "welterusten",
             "Mark", function(response) {
-                response.should.equal("welterusten Mark");
+                response.should.eql(["welterusten Mark"]);
         });
     });
 
