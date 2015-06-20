@@ -8,7 +8,7 @@ describe("A BotNet", function() {
         var channels = {};
         var kathinka = new Kathinka;
 
-        var botNet = new BotNet(client, channels, kathinka);
+        // var botNet = new BotNet(client, channels, kathinka);
     });
 
     it("Receives messages from a client and sents it to its bots", function() {
