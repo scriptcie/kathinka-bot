@@ -2,19 +2,18 @@ var Kathinka = require('./Kathinka.js');
 // This is the network that is responsible for maintaining all bots
 // it initiates new bots, sends messages and commands to each bot
 // and sends their responses to irc.
-var BotNet = function(irc, channels) {
+var BotNet = function(irc, channels, bots) {
     this.irc = irc;
     this.channels = channels;
 
-    this.bots = [new Kathinka];
+    this.bots = bots || [];
 };
 
 BotNet.prototype = {
-    handle: function(line) {
+    handle: function(message, from) {
         var irc = this;
-        var message = line;
         for (var i = 0; i < this.bots.length; i++) {
-            this.bots[i].notify(message, function(messages) {
+            this.bots[i].notify(message, from, function(messages) {
                 for (var m = 0; m < messages.length; m++) {
                     irc.speak(messages[m]);
                 };

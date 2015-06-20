@@ -1,4 +1,4 @@
-var isAQuestion = require('../../src/helpers/isAQuestion.js');
+var isAQuestion = require('../../src/Helpers/IsAQuestion.js');
 
 describe("A question for kathinka", function() {
 

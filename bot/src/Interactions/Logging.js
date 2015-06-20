@@ -1,4 +1,4 @@
-var isACommand = require('../helpers/isACommand.js');
+var isACommand = require('../Helpers/IsACommand.js');
 
 var Logging = function() {
     this.shouldLog = false;

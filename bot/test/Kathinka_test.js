@@ -22,20 +22,8 @@ describe("Kathinka", function() {
         });
     });
 
-    it("Chooses a responses from multiple interactions", function() {
 
-    });
-
-    // describe("With simple interactions", function() {
-    //     it("Has a set of interactions", function() {
-    //         var interactions = [];
-
-    //         var kathinka = new Kathinka(interactions);
-    //     });
-
-    // })
-
-
+    // TODO: add observer and dispatcher stuff
 
     // Some test ideas:
     // it prioritizes grouped interacitons

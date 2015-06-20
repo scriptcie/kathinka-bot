@@ -1,9 +1,9 @@
 var Kathinka = require('../../src/Kathinka.js');
-var Eightball = require ('../../src/Interactions/Eightball.js');
-var Goodbye = require ('../../src/Interactions/Goodbye.js');
-var Logging = require ('../../src/Interactions/Logging.js');
+var Eightball = require('../../src/Interactions/Eightball.js');
+var Goodbye = require('../../src/Interactions/Goodbye.js');
+var Logging = require('../../src/Interactions/Logging.js');
 
-var askForAdvice = require('../../src/helpers/isAQuestion.js');
+var askForAdvice = require('../../src/Helpers/IsAQuestion.js');
 
 
 describe("A Kathinka bot with basic interactions", function() {
