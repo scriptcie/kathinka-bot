@@ -21,27 +21,27 @@ var BotNet = function(irc, bots) {
 
     this.irc.addListener('message', function(from, to, message) {
         console.log("Heuj er komt iets binnen");
-        this.handle(message, from);
+        this.handle(from, to, message);
     }.bind(this));
 
     this.bots = bots || [];
 };
 
 BotNet.prototype = {
-    handle: function(message, from) {
+    handle: function(from, to, message) {
         var irc = this;
         for (var i = 0; i < this.bots.length; i++) {
             this.bots[i].notify(message, from, function(messages) {
                 for (var m = 0; m < messages.length; m++) {
-                    irc.speak(messages[m]);
+                    irc.speak(to, messages[m]);
                 };
             });
         };
     },
 
     // Wait a few seconds such that we get a realistic response
-    speak: function(message) {
-        return setTimeout(this.irc.say('#script?cie', message), message.length * 50);
+    speak: function(to, message) {
+        return setTimeout(this.irc.say(to, message), message.length * 50);
     },
 
 
