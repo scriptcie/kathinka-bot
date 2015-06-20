@@ -2,15 +2,6 @@
 //
 var Kathinka = function(interactions) {
     this.interactions = interactions || [];
-
-    // // Any command activated by /^[Kk]athinka(-bot)?(.*)$/
-    // //
-    // this.commands = commands || [];
-
-    // // General commands, such as goodbye,
-    // // I AM KATHINKA-BOT
-    // // reactions on private messages
-    // this.responses = responses || [];
 };
 
 Kathinka.prototype = {
@@ -24,10 +15,15 @@ Kathinka.prototype = {
     },
 
     // handles a message (one line of text)
-    handle: function(message, from) {
-        var responses = [];
+    handle: function(message, sender) {
+        var responses = this.responsesFrom(message, sender);
 
-        // Get any valid re
+        return this.prioritizedResponse(responses);
+    },
+
+    responsesFrom: function(message, from) {
+        // Get any valid response and remember its prioirty
+        var responses = [];
         this.interactions.forEach(function(interaction, index) {
             var response = interaction.interact(message, from);
 
@@ -44,7 +40,7 @@ Kathinka.prototype = {
             });
         }, this);
 
-        return this.prioritizedResponse(responses);
+        return responses;
     },
 
     prioritizedResponse: function(responses) {
@@ -63,34 +59,6 @@ Kathinka.prototype = {
 
     basePriorityOf: function(index) {
         return index;
-    },
-
-    handleCommands: function(message) {
-
-    },
-
-    handleResponses: function(message) {
-
-        var info = /^PING :(.+)$/i.exec(message);
-        if (info) {
-            irc.raw('PONG :' + info[1]);
-        }
-
-        info = /^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/.exec(message);
-        if (info) {
-            console.log("CONNECTED!");
-            irc.raw("PRIVMSG NickServ :IDENTIFY " + config.user.pass);
-            irc.raw("JOIN #script?cie");
-        }
-
-        info = /^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/.exec(message);
-        if (info) {
-            var user = info[1];
-            var channel = info[2];
-            if (user != config.user.nick) {
-                irc.raw("PRIVMSG " + channel + " :moi " + user);
-            }
-        };
     },
 };
 
