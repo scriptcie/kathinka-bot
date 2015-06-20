@@ -32,6 +32,11 @@ Kathinka.prototype = {
                 return;
             }
 
+            // Convert to an array of messages
+            if (typeof response === 'string') {
+                response = [response];
+            }
+
             // Remember the response and its priority such that we can
             // determine which response to return based on priority
             responses.push({
@@ -45,7 +50,7 @@ Kathinka.prototype = {
 
     prioritizedResponse: function(responses) {
         // By default we won't return a response
-        var prioritized = { message: null, priority: -1 };
+        var prioritized = { message: [], priority: -1 };
 
         // Return the response with the heighest priority
         responses.forEach(function(res) {

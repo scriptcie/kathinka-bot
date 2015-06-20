@@ -18,7 +18,7 @@ describe("Kathinka", function() {
         var from = "Mark";
 
         kathinka.notify(message, from, function(response) {
-            response.should.equal("Hallo Mark");
+            response.should.eql(["Hallo Mark"]);
         });
     });
 
