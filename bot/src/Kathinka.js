@@ -1,37 +1,44 @@
-// Constructor
-var Kathinka = function(commands, responses) {
-    // Any command activated by /^[Kk]athinka(-bot)?(.*)$/
-    //
-    this.commands = commands || [];
+// Kathinka is a bot that can interact with messages
+//
+var Kathinka = function(interactions) {
+    this.interactions = interactions || [];
 
-    // General commands, such as goodbye,
-    // I AM KATHINKA-BOT
-    // reactions on private messages
-    this.responses = responses || [];
+    // // Any command activated by /^[Kk]athinka(-bot)?(.*)$/
+    // //
+    // this.commands = commands || [];
+
+    // // General commands, such as goodbye,
+    // // I AM KATHINKA-BOT
+    // // reactions on private messages
+    // this.responses = responses || [];
 };
 
 Kathinka.prototype = {
 
     // Process a request, create
-    notify: function(message, respond) {
+    notify: function(message, from, respond) {
         // Get the messages returned by the handlers
-        var responses = this.handle(message);
+        var responses = this.handle(message, from);
 
         respond(responses);
-    }
+    },
 
     // handles a message (one line of text)
-    handle: function(message) {
-        // Check if the message was a command to kathinka bot
-        var command = message.match(/^[Kk]athinka(-bot)?(.*)$/);
-        if (command)
-        {
-            return this.handleCommands(command);
-        }
+    handle: function(message, from) {
+        var responses = [];
 
-        // todo have it handle a set of requests
-        return ['hallo, dit is een test', 'hier is een ander bericht'];
-    }
+        for (var idx = 0; idx < this.interactions.length; idx++) {
+            var interaction = this.interactions[idx];
+            responses.push({
+                message: interaction.interact(message, from),
+                priority: idx
+            });
+        };
+
+        return responses[0].message;
+
+        return null;
+    },
 
     handleCommands: function(message) {
 
@@ -40,27 +47,25 @@ Kathinka.prototype = {
     handleResponses: function(message) {
 
         var info = /^PING :(.+)$/i.exec(message);
-        if (info)
-        {
+        if (info) {
             irc.raw('PONG :' + info[1]);
         }
 
-        if (/^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/.exec(message))
-        {
+        info = /^:([^!@]+).*[^C,]PRIVMSG([^\:]+):(.+)$/.exec(message);
+        if (info) {
             console.log("CONNECTED!");
             irc.raw("PRIVMSG NickServ :IDENTIFY " + config.user.pass);
             irc.raw("JOIN #script?cie");
         }
 
-        if (/^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/.exec(message) {
+        info = /^:([^!@]+).*[^C,]JOIN[^#]+(#.+)$/.exec(message);
+        if (info) {
             var user = info[1];
             var channel = info[2];
             if (user != config.user.nick) {
                 irc.raw("PRIVMSG " + channel + " :moi " + user);
             }
-        });
-
-
+        };
     },
 };
 
