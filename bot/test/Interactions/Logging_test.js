@@ -1,6 +1,7 @@
 var Logging = require ('../../src/Interactions/Logging.js');
 
 function someLogger() {
+    // a helper for if we want to provide a log repository for the logger
     return new Logging;
 }
 
@@ -10,7 +11,6 @@ describe("The logging interaction", function() {
     it("Does nothing when its not asked something", function() {
         var logging = someLogger();
         var response = logging.interact("Moi", sender);
-        console.log(response);
         (response === null).should.be.true;
     });
 
@@ -23,8 +23,10 @@ describe("The logging interaction", function() {
         logging.interact("World", sender);
 
         logging.log.length.should.equal(2);
-        logging.log[0].should.equal("Hello");
-        logging.log[1].should.equal("World");
+        logging.log.should.eql([
+            { message: "Hello", from: "Mark" },
+            { message: "World", from: "Mark" }
+        ]);
     });
 
     it("Notifies if its already logging", function() {
@@ -47,12 +49,19 @@ describe("The logging interaction", function() {
         response.should.equal("I haven't been logging");
     });
 
-    // it("The log files are empty upon initialization", function() {
-    //     var logging = new Logging;
+    it("Shows its current log when asked for", function() {
+        var logging = someLogger();
+        logging.interact("Kathinka start logging", sender);
+        logging.interact("Hee hallo", sender);
+        logging.interact("Moi", "Moi");
 
+        var response = logging.interact("Kathinka show logs", "Mark");
 
-    // });
-
+        response.should.eql([
+            "Mark said: \"Hee hallo\"",
+            "Moi said: \"Moi\""
+        ]);
+    });
 
     // it should start logging when an meeting is started
     // note: dit doen met observer dispatcher
