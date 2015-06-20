@@ -15,7 +15,7 @@ Logging.prototype = {
         }
 
         if (this.shouldLog) {
-            this.logMessage(message);
+            this.logMessage(message, from);
         }
 
         return null;
@@ -42,11 +42,22 @@ Logging.prototype = {
             }
         }
 
+        var shouldShowLogs = /show logs/;
+        if (shouldShowLogs.test(command)) {
+            var logs = this.log.map(function(log) {
+                return log.from + " said: \"" + log.message + "\"";
+            });
+            return logs;
+        }
+
         return null;
     },
 
-    logMessage: function(message) {
-        this.log.push(message);
+    logMessage: function(m, f) {
+        this.log.push({
+            message: m,
+            from: f
+        });
     },
 }
 
