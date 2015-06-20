@@ -20,7 +20,14 @@ Eightball.prototype = {
         // If the senders asks for some advice, then we give it
         // some random advice
         if (this.askedForAdvice(message)) {
-            var idx = Math.floor(Math.random() * (this.eightball.length - 1));
+            var idx = message.split('')
+                .map(function(i){
+                    return i.charCodeAt(0);
+                })
+                .reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue;}
+                ) * 13 % this.eightball.length;
+
             return this.eightball[idx];
         }
 
