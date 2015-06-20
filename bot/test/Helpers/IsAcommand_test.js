@@ -1,4 +1,4 @@
-var isACommand = require('../../src/helpers/isACommand.js');
+var isACommand = require('../../src/Helpers/IsACommand.js');
 
 describe("A kathinka command", function() {
 

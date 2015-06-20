@@ -10,7 +10,7 @@ npm install
 ## Tests
 To run tests we need gulp.
 ```
-npm install --global gulp
+npm install -g gulp
 ```
 
 Then run `gulp mocha` to run the tests once.
