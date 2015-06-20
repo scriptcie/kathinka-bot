@@ -15,7 +15,7 @@ console.error = function (args) {
  }
 
 gulp.task('mocha', function() {
-    return gulp.src(['test/*.js'], { read: false })
+    return gulp.src(['test/**/*.js'], { read: false })
         .pipe(mocha({
             reporter: 'spec', // list ?
             globals: {
