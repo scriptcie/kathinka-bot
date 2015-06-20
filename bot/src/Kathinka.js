@@ -27,17 +27,42 @@ Kathinka.prototype = {
     handle: function(message, from) {
         var responses = [];
 
-        for (var idx = 0; idx < this.interactions.length; idx++) {
-            var interaction = this.interactions[idx];
+        // Get any valid re
+        this.interactions.forEach(function(interaction, index) {
+            var response = interaction.interact(message, from);
+
+            // We don't want to return empty responses
+            if (response === undefined && response === null) {
+                return;
+            }
+
+            // Remember the response and its priority such that we can
+            // determine which response to return based on priority
             responses.push({
-                message: interaction.interact(message, from),
-                priority: idx
+                message: response,
+                priority: this.basePriorityOf(index)
             });
-        };
+        }, this);
 
-        return responses[0].message;
+        return this.prioritizedResponse(responses);
+    },
 
-        return null;
+    prioritizedResponse: function(responses) {
+        // By default we won't return a response
+        var prioritized = { message: null, priority: -1 };
+
+        // Return the response with the heighest priority
+        responses.forEach(function(res) {
+            if (prioritized.priority < res.priority) {
+                prioritized = res;
+            }
+        });
+
+        return prioritized.message;
+    },
+
+    basePriorityOf: function(index) {
+        return index;
     },
 
     handleCommands: function(message) {
