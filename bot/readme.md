@@ -16,6 +16,10 @@ npm install -g gulp
 Then run `gulp mocha` to run the tests once.
 Use `gulp` to run the tests and watch for any changes.
 
+## Start BotNet
+```
+nodejs Bootstrap/Start.js
+```
 
 ## Documentation
 Next follows some of the ideas considered when writing Kathinka-Bot
