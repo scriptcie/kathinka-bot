@@ -7,6 +7,7 @@ function buildKathinka() {
     var Goodbye = require('../src/Interactions/Goodbye.js');
     var Logging = require('../src/Interactions/Logging.js');
     var SayMyName = require('../src/Interactions/SayMyName.js');
+    var GetSet = require('../src/Interactions/GetSet.js');
 
     var askForAdvice = require('../src/Helpers/IsAQuestion.js');
 
@@ -17,6 +18,7 @@ function buildKathinka() {
         new Goodbye,
         new Eightball(askForAdvice),
         new Logging(dataStore),
+        new GetSet({}),
     ]);
 
     return kathinka;
