@@ -1,10 +1,10 @@
 var isACommand = require('../Helpers/IsACommand.js');
 
-var GetSet = function(data) {
+var Properties = function(data) {
     this.data = data;
 }
 
-GetSet.prototype = {
+Properties.prototype = {
     interact: function(message, from) {
         var command = isACommand(message);
         if (command !== null) {
@@ -18,14 +18,14 @@ GetSet.prototype = {
     },
 
     handleCommand: function(command, sender) {
-	var match = command.match(/^set (\w+) (.+)$/);
+        var match = command.match(/^set (\w+) (.+)$/);
         if (match) {
             this.data[match[1]] = match[2];
-	    return undefined;
+            return undefined;
         }
 
-	match = command.match(/^get (.*)$/);
-	if (match) {
+        match = command.match(/^get (.*)$/);
+        if (match) {
             if (match[1] in this.data) {
                 return this.data[match[1]];
             }
@@ -35,4 +35,4 @@ GetSet.prototype = {
     },
 }
 
-module.exports = GetSet
+module.exports = Properties
