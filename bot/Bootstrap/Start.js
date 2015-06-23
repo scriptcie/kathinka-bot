@@ -11,14 +11,17 @@ function buildKathinka() {
 
     var askForAdvice = require('../src/Helpers/IsAQuestion.js');
 
-    var dataStore = {};
+    var dataStore = {
+        logging: {},
+        properties: {},
+    };
 
     var kathinka = new Kathinka([
         new SayMyName,
         new Goodbye,
         new Eightball(askForAdvice),
-        new Logging(dataStore),
-        new Properties({}),
+        new Logging(dataStore.logging),
+        new Properties(dataStore.properties),
     ]);
 
     return kathinka;
