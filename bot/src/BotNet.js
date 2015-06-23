@@ -24,6 +24,11 @@ var BotNet = function(irc, bots) {
         this.handle(from, to, message);
     }.bind(this));
 
+    this.irc.addListener('join', function(channel, who) {
+        console.log('%s has joined %s', who, channel);
+        this.irc.say(channel, "Moi " + who);
+    });
+
     this.bots = bots || [];
 };
 
