@@ -24,10 +24,14 @@ var BotNet = function(irc, bots) {
         this.handle(from, to, message);
     }.bind(this));
 
-    this.irc.addListener('join', function(channel, who) {
-        console.log('%s has joined %s', who, channel);
-        this.irc.say(channel, "Moi " + who);
-    });
+    this.irc.addListener('join', function(channel, from) {
+        console.log('%s has joined %s', from, channel);
+
+        // Dit is kut, moet straks op een andere manier
+        if (from !== this.irc.nick) {
+            this.irc.say(channel, "m0i " + from);
+        }
+    }.bind(this));
 
     this.bots = bots || [];
 };
