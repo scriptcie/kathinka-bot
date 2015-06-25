@@ -4,5 +4,5 @@ echo "THIS IS KATHINKA-BOT RUNNING!"
 cd ~/Kathinka/bot
 git pull origin master
 echo "NEW RUN OF KATHINKA-BOT IRC" >> kathinkalog.txt
-node irc_kathinka.js Kathinka-bot ***REMOVED*** >> kathinkalog.txt
+node Bootstrap/Start.js Kathinka-bot ***REMOVED*** >> kathinkalog.txt
 

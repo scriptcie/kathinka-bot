@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 // Build kathinka bot with some interactions
-function buildKathinka() {
+function buildKathinka(client) {
     var Kathinka = require('../src/Kathinka.js');
     var Eightball = require('../src/Interactions/Eightball.js');
     var Goodbye = require('../src/Interactions/Goodbye.js');
     var Logging = require('../src/Interactions/Logging.js');
     var SayMyName = require('../src/Interactions/SayMyName.js');
     var Properties = require('../src/Interactions/Properties.js');
+    var Quit = require('../src/Interactions/Quit.js');
 
     var askForAdvice = require('../src/Helpers/IsAQuestion.js');
 
@@ -22,18 +23,23 @@ function buildKathinka() {
         new Eightball(askForAdvice),
         new Logging(dataStore.logging),
         new Properties(dataStore.properties),
+        new Quit(client),
     ]);
 
     return kathinka;
 }
 
+var username = process.argv[2] || "Kathinka-Bot-test";
+var password = process.argv[3] || "";
+
 var irc = require('irc');
-var client = new irc.Client('irc.freenode.net', 'Kathinka-2', {
+var client = new irc.Client('irc.freenode.net', username, {
     debug: true,
-    channels: ['#script?cie']
+    channels: ['#script?cie'],
+    password: password,
 });
 
 var BotNet = require('../src/BotNet.js');
 
-var kathinka = buildKathinka();
+var kathinka = buildKathinka(client);
 var botNet = new BotNet(client, [kathinka]);
