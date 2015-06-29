@@ -29,7 +29,7 @@ var BotNet = function(irc, bots) {
 
         // Dit is kut, moet straks op een andere manier
         if (from !== this.irc.nick) {
-            this.irc.say(channel, "m0i " + from);
+            this.irc.say(channel, "moi " + from);
         }
     }.bind(this));
 
