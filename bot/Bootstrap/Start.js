@@ -9,6 +9,7 @@ function buildKathinka(client) {
     var SayMyName = require('../src/Interactions/SayMyName.js');
     var Properties = require('../src/Interactions/Properties.js');
     var Quit = require('../src/Interactions/Quit.js');
+    var Actiepuntjes = require('../src/Interactions/Actiepuntjes.js');
 
     var askForAdvice = require('../src/Helpers/IsAQuestion.js');
 
@@ -24,6 +25,7 @@ function buildKathinka(client) {
         new Logging(dataStore.logging),
         new Properties(dataStore.properties),
         new Quit(client),
+        new Actiepuntjes,
     ]);
 
     return kathinka;
