@@ -9,6 +9,11 @@ describe("The Actiepuntjes interaction", function() {
         AP.data.should.equal({"plus": ["fix actiepuntjes"]});
     });
 
+    it("ignores AP anywhere else than at the start of a sentence",function(){
+        AP.interact("hoi hoi AP hoi hoi", "mark");
+        AP.data.should.equal({"plus": ["fix actiepuntjes"]});       
+    });
+
     it("Displays all actiepuntjes", function() {
     	var response = AP.interact("AP", "mark");
         response.should.equal(["AP plus fix actiepuntjes"]);

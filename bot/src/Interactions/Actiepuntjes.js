@@ -7,6 +7,9 @@ var Actiepuntjes = function() {
 Actiepuntjes.prototype = {
 	interact: function(message, from) {
 		var matched = message.match(/^([Aa]ctiepunt[a-z]*|AP[a-z]*) ?(.*)/);
+		if(!matched) {
+			return; 
+		}
 		var command = matched[2];
 		if ( command === "" ) {
 			return this.displayAll();
