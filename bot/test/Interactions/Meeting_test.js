@@ -9,4 +9,15 @@ describe("Meeting interaction", function() {
 
         (response === undefined).should.be.true;
     });
+
+    it("Starts a meeting when the agenda is set", function() {
+        var meeting = new Meeting({'agenda': 'test'});
+        var response = meeting.interact("start meeting", sender);
+
+        (response === undefined).should.be.false;
+
+        response.should.equal("Staring meeting");
+
+        meeting.started.should.be.true;
+    });
 });

@@ -2,6 +2,7 @@ var isACommand = require('../Helpers/IsACommand.js');
 
 var Meeting = function(data) {
     this.data = data;
+    this.started = false;
 }
 
 Meeting.prototype = {
