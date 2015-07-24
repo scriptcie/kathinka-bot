@@ -19,6 +19,10 @@ Meeting.prototype = {
     },
 
     handleCommand: function(command, sender) {
+        if (command === "start meeting" || command === "start vergadering") {
+            this.started = true;
+            return "Starting meeting";
+        }
         return undefined;
     },
 }
