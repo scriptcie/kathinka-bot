@@ -12,11 +12,11 @@ describe("Meeting interaction", function() {
 
     it("Starts a meeting when the agenda is set", function() {
         var meeting = new Meeting({'agenda': 'test'});
-        var response = meeting.interact("start meeting", sender);
+        var response = meeting.interact("Kathinka, start meeting", sender);
 
         (response === undefined).should.be.false;
 
-        response.should.equal("Staring meeting");
+        response.should.equal("Starting meeting");
 
         meeting.started.should.be.true;
     });
