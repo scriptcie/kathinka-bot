@@ -12,7 +12,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Starts a meeting when the agenda is set", function() {
-        var meeting = new Meeting({'agenda': 'test'});
+        var meeting = new Meeting({'agenda': ['test']});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -21,7 +21,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Stops a meeting when one is started", function() {
-        var meeting = new Meeting({'agenda': 'test'});
+        var meeting = new Meeting({'agenda': ['test']});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -34,7 +34,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda after starting", function() {
-        var meeting = new Meeting({'agenda': 'test'});
+        var meeting = new Meeting({'agenda': ['test']});
         meeting.started.should.be.false;
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
