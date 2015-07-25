@@ -24,20 +24,8 @@ Meeting.prototype = {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
-            this.agenda = ['1. Opening', '2. Vaststellen agenda'];
             var response = ['Staring meeting', 'Agenda:'];
-            var agendaData = this.data['agenda'];
-            var index = 3;
-            if (typeof agendaData === 'string') {
-                this.agenda.push((index++) + '. ' + agendaData);
-            } else {
-                for (var i = 0; i < agendaData.length; i++) {
-                    this.agenda.push('' + (index++) + '. ' + agendaData[i]);
-                }
-            }
-            var end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
-                       (index++) + '. Sluiting'];
-            this.agenda.push.apply(this.agenda, end);
+            this.setAgenda();
             this.index = 0;
             response.push.apply(response, this.agenda);
             return response;
@@ -56,7 +44,30 @@ Meeting.prototype = {
             this.started = false;
             return "End of the meeting";
         }
+
+        if ('agenda' in this.data && command === "agenda") {
+            this.setAgenda();
+            return this.agenda;
+        }
         return undefined;
+    },
+
+    setAgenda: function () {
+        if ('agenda' in this.data) {
+            this.agenda = ['1. Opening', '2. Vaststellen agenda'];
+            var agendaData = this.data['agenda'];
+            var index = 3;
+            if (typeof agendaData === 'string') {
+                this.agenda.push((index++) + '. ' + agendaData);
+            } else {
+                for (var i = 0; i < agendaData.length; i++) {
+                    this.agenda.push('' + (index++) + '. ' + agendaData[i]);
+                }
+            }
+            var end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
+                       (index++) + '. Sluiting'];
+            this.agenda.push.apply(this.agenda, end);
+        }
     },
 }
 
