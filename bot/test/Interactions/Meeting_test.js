@@ -29,7 +29,7 @@ describe("Meeting interaction", function() {
 
         response = meeting.interact("Kathinka, stop meeting", sender);
         (response === undefined).should.be.false;
-        response.should.equal("Stopping meeting");
+        response.should.equal("End of the meeting");
         meeting.started.should.be.false;
     });
 
@@ -63,5 +63,20 @@ describe("Meeting interaction", function() {
         for (var i = 0; i < expected.length; i++) {
             response[i].should.equal(expected[i]);
         }
+    });
+
+    it("Goes to the next item after receiving next", function() {
+        var meeting = new Meeting({'agenda': 'test'});
+        meeting.started.should.be.false;
+
+        var response = meeting.interact("Kathinka, start meeting", sender);
+
+        response = meeting.interact("Kathinka, next", sender);
+        (response === undefined).should.be.false;
+        response.should.equal("2. Vaststellen agenda");
+
+        response = meeting.interact("Kathinka, next", sender);
+        (response === undefined).should.be.false;
+        response.should.equal("3. test");
     });
 });

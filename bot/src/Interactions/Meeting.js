@@ -3,6 +3,8 @@ var isACommand = require('../Helpers/IsACommand.js');
 var Meeting = function(data) {
     this.data = data;
     this.started = false;
+    this.index = 0;
+    this.agenda = [];
 }
 
 Meeting.prototype = {
@@ -22,25 +24,37 @@ Meeting.prototype = {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
-            var response = ['Staring meeting', 'Agenda:', '1. Opening',
-                            '2. Vaststellen agenda'];
-            var agenda = this.data['agenda'];
+            this.agenda = ['1. Opening', '2. Vaststellen agenda'];
+            var response = ['Staring meeting', 'Agenda:'];
+            var agendaData = this.data['agenda'];
             var index = 3;
-            if (typeof agenda === 'string') {
-                response.push((index++) + '. ' + agenda);
+            if (typeof agendaData === 'string') {
+                this.agenda.push((index++) + '. ' + agendaData);
             } else {
-                for (var i = 0; i < agenda.length; i++) {
-                    response.push('' + (index++) + '. ' + agenda[i]);
+                for (var i = 0; i < agendaData.length; i++) {
+                    this.agenda.push('' + (index++) + '. ' + agendaData[i]);
                 }
             }
             var end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
                        (index++) + '. Sluiting'];
-            response.push.apply(response, end);
+            this.agenda.push.apply(this.agenda, end);
+            this.index = 0;
+            response.push.apply(response, this.agenda);
             return response;
         }
+
+        if (this.started && command === "next") {
+            this.index++;
+            if (this.index >= this.agenda.length) {
+                command = "stop meeting";
+            } else {
+                return this.agenda[this.index];
+            }
+        }
+
         if (command === "stop meeting" || command === "stop vergadering") {
             this.started = false;
-            return "Stopping meeting";
+            return "End of the meeting";
         }
         return undefined;
     },
