@@ -1,17 +1,8 @@
-var Kathinka = require('../../src/Kathinka.js');
-var Eightball = require('../../src/Interactions/Eightball.js');
-var Goodbye = require('../../src/Interactions/Goodbye.js');
-var Logging = require('../../src/Interactions/Logging.js');
-
-var askForAdvice = require('../../src/Helpers/IsAQuestion.js');
-
+var buildKathinka = require('../../src/Helpers/KathinkaFactory');
 
 describe("A Kathinka bot with basic interactions", function() {
-    var kathinka = new Kathinka([
-        new Goodbye,
-        new Eightball(askForAdvice),
-        new Logging
-    ]);
+
+    var kathinka = new buildKathinka();
 
     it("Starts to do some logging", function() {
         kathinka.notify(
