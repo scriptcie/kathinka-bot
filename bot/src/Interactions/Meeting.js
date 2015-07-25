@@ -23,6 +23,10 @@ Meeting.prototype = {
             this.started = true;
             return "Starting meeting";
         }
+        if (command === "stop meeting" || command === "stop vergadering") {
+            this.started = false;
+            return "Stopping meeting";
+        }
         return undefined;
     },
 }
