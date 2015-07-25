@@ -19,7 +19,8 @@ Meeting.prototype = {
     },
 
     handleCommand: function(command, sender) {
-        if (command === "start meeting" || command === "start vergadering") {
+        if ('agenda' in this.data &&
+            (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
             return "Starting meeting";
         }
