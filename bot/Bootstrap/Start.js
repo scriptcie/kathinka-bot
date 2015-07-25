@@ -8,6 +8,7 @@ function buildKathinka(client) {
     var Logging = require('../src/Interactions/Logging.js');
     var SayMyName = require('../src/Interactions/SayMyName.js');
     var Properties = require('../src/Interactions/Properties.js');
+    var Meeting = require('../src/Interactions/Meeting.js');
     var Quit = require('../src/Interactions/Quit.js');
     var Actiepuntjes = require('../src/Interactions/Actiepuntjes.js');
 
@@ -24,6 +25,7 @@ function buildKathinka(client) {
         new Eightball(askForAdvice),
         new Logging(dataStore.logging),
         new Properties(dataStore.properties),
+        new Meeting(dataStore.properties),
         new Quit(client),
         new Actiepuntjes,
     ]);
