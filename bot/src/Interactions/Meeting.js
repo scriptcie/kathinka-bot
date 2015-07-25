@@ -25,10 +25,16 @@ Meeting.prototype = {
             var response = ['Staring meeting', 'Agenda:', '1. Opening',
                             '2. Vaststellen agenda'];
             var agenda = this.data['agenda'];
-            for (var i = 0; i < agenda.length; i++) {
-                response.push('' + (i+3) + '. ' + agenda[i]);
+            var index = 3;
+            if (typeof agenda === 'string') {
+                response.push((index++) + '. ' + agenda);
+            } else {
+                for (var i = 0; i < agenda.length; i++) {
+                    response.push('' + (index++) + '. ' + agenda[i]);
+                }
             }
-            var end = ['4. W.v.t.t.k', '5. Rondvraag', '6. Sluiting'];
+            var end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
+                       (index++) + '. Sluiting'];
             response.push.apply(response, end);
             return response;
         }
