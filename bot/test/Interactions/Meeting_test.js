@@ -39,7 +39,7 @@ describe("Meeting interaction", function() {
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
                         '2. Vaststellen agenda', '3. test', '4. W.v.t.t.k',
-                        '5. Rondvraag', '6.Sluiting'];
+                        '5. Rondvraag', '6. Sluiting'];
         var response = meeting.interact("Kathinka, start meeting", sender);
         (response === undefined).should.be.false;
         response.length.should.equal(expected.length);

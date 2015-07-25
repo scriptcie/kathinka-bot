@@ -22,7 +22,15 @@ Meeting.prototype = {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
-            return "Starting meeting";
+            var response = ['Staring meeting', 'Agenda:', '1. Opening',
+                            '2. Vaststellen agenda'];
+            var agenda = this.data['agenda'];
+            for (var i = 0; i < agenda.length; i++) {
+                response.push('' + (i+3) + '. ' + agenda[i]);
+            }
+            var end = ['4. W.v.t.t.k', '5. Rondvraag', '6. Sluiting'];
+            response.push.apply(response, end);
+            return response;
         }
         if (command === "stop meeting" || command === "stop vergadering") {
             this.started = false;
