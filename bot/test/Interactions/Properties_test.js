@@ -12,8 +12,6 @@ describe("Properties interaction", function() {
         var getset = someProperties();
         var response = getset.interact("", sender);
         getset.data.should.eql({});
-
-        (response === undefined).should.be.true;
     });
 
     it("Should get able to get after a set", function() {
@@ -24,5 +22,11 @@ describe("Properties interaction", function() {
 
         response = getset.interact("Kathinka get blyat", sender);
         (response === undefined).should.be.true;
+    });
+
+    it("Handles arrays", function() {
+        var getset = someProperties();
+        var response = getset.interact("Kathinka set blaat [1, 2, 3, a, b, c]", sender);
+        getset.data['blaat'].should.eql(['1', '2', '3', 'a', 'b', 'c']);
     });
 });
