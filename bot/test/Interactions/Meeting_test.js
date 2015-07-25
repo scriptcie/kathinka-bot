@@ -5,9 +5,10 @@ describe("Meeting interaction", function() {
 
     it("Can't start a meeting when the agenda is not set", function() {
         var meeting = new Meeting({});;
-        var response = meeting.interact("start meeting", sender);
+        var response = meeting.interact("Kathinka, start meeting", sender);
 
         (response === undefined).should.be.true;
+        meeting.started.should.be.false;
     });
 
     it("Starts a meeting when the agenda is set", function() {
