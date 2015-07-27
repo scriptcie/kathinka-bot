@@ -8,10 +8,7 @@ Properties.prototype = {
     interact: function(message, from) {
         var command = isACommand(message);
         if (command !== null) {
-            var response = this.handleCommand(command, from);
-            if (response !== undefined) {
-                return response;
-            }
+            return response = this.handleCommand(command, from);
         }
 
         return undefined;
