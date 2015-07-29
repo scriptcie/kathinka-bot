@@ -8,6 +8,9 @@ var password = process.argv[3] || "";
 
 var client = new irc.Client('irc.freenode.net', username, {
     debug: true,
+    showErrors: true,
+    autoRejoin: true,
+    autoConnect: true,
     channels: ['#script?cie'],
     password: password,
 });
