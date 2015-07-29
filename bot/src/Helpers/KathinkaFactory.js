@@ -5,7 +5,7 @@ var KathinkaFactory = function(client) {
     var Logging = require('../Interactions/Logging.js');
     var SayMyName = require('../Interactions/SayMyName.js');
     var Properties = require('../Interactions/Properties.js');
-    var Actiepuntjes = require('../src/Interactions/Actiepuntjes.js');
+    var Actiepuntjes = require('../Interactions/Actiepuntjes.js');
     var Quit = require('../Interactions/Quit.js');
 
     var askForAdvice = require('../Helpers/IsAQuestion.js');
