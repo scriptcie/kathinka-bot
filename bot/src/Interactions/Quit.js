@@ -9,13 +9,11 @@ Quit.prototype = {
         var command = isACommand(message);
         if (command && /^af!?$/.test(command)) {
             this.client.disconnect("Is goed, doei!", function() {
-                    setTimeout(function() {
+                setTimeout(function() {
                     process.exit(1);
                 }, 1000);
             });
-            // return "QUIT";
         }
-
         return undefined;
     },
 }

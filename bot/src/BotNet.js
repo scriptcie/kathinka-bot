@@ -38,10 +38,10 @@ var BotNet = function(irc, bots) {
 
 BotNet.prototype = {
     handle: function(from, to, message) {
-        var irc = this;
+        var self = this;
         for (var i = 0; i < this.bots.length; i++) {
             this.bots[i].notify(message, from, function(messages) {
-                irc.speakMessages(to, messages);
+                self.speakMessages(to, messages);
             });
         };
     },
@@ -50,11 +50,11 @@ BotNet.prototype = {
         if (messages === undefined || messages.length === 0) {
             return;
         }
-        var botNet = this;
+        var self = this;
         var message = messages.shift();
         setTimeout(function() {
-            botNet.irc.say(to, message);
-            botNet.speakMessages(to, messages);
+            self.irc.say(to, message);
+            self.speakMessages(to, messages);
         }, message.length * (25 + 25 * Math.random()));
     },
 };
