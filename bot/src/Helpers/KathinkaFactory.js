@@ -33,10 +33,12 @@ var KathinkaFactory = function(client) {
         new SayMyName,
         new Language(dataStore),
         new Goodbye,
+
         new Eightball(dataStore),
         new Logging(dataStore),
         new Properties(dataStore),
-        new Actiepuntjes,
+        new Actiepuntjes(dataStore),
+
         new Quit(client),
     ]);
 
