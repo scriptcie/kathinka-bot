@@ -1,26 +1,22 @@
 var Actiepuntjes = require ('../../src/Interactions/Actiepuntjes.js');
 
-var AP = new Actiepuntjes;
+var data = {};
+var AP = new Actiepuntjes(data);
 
 describe("The Actiepuntjes interaction", function() {
 
     it("Saves new actiepuntjes", function() {
-        var response = AP.interact("AP plus fix actiepuntjes", "mark");
-        AP.data.should.eql({"plus": ["fix actiepuntjes"]});
-    });
-
-    it("ignores AP anywhere else than at the start of a sentence",function(){
-        AP.interact("hoi hoi AP hoi hoi", "mark");
-        AP.data.should.eql({"plus": ["fix actiepuntjes"]});
+        var response = AP.interact("kathinka AP plus fix actiepuntjes", "mark");
+        AP.data.should.eql({"plus": [" fix actiepuntjes"]});
     });
 
     it("Displays all actiepuntjes", function() {
-    	var response = AP.interact("AP", "mark");
+    	var response = AP.interact("kathinka AP ls", "mark");
         response.should.eql(["AP plus fix actiepuntjes"]);
     });
 
-    it("Displays one person's actiepuntjes", function() {
-    	var response = AP.interact("AP plus", "mark[1]");
-    	response.should.eql(["AP plus fix actiepuntjes"]);
+    it("Removes a person actiepuntje", function() {
+    	var response = AP.interact("kathinka AP rm fix actiepuntjes", "mark[1]");
+        AP.data.should.eql({"plus": []});
     });
 });

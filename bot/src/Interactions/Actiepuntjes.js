@@ -1,51 +1,54 @@
 var isACommand = require('../Helpers/IsACommand.js');
 
-var Actiepuntjes = function() {
-	this.data = {};
+var Actiepuntjes = function(data) {
+	this.data = data;
 }
 
 Actiepuntjes.prototype = {
 	interact: function(message, from) {
-		var matched = message.match(/^([Aa]ctiepunt[a-z]*|AP[a-z]*) ?(.*)/);
-		if(!matched) {
-			return; 
+		var matched = message.match(/^[Kk]athinka(?:-bot)?[,:]{0,1}\s+([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
+		if(matched) {
+			switch(matched[2]){
+				case "ls":
+					return this.displayAll();
+
+				case "rm":
+				case "voltooid":
+				case "gedaan":
+					return this.rm(matched[3]);
+
+				default:
+					return this.save(matched[2], matched[3])
+			}
 		}
-		var command = matched[2];
-		if ( command === "" ) {
-			return this.displayAll();
-		}
-		var matched2 = command.match(/(\S+) ?(.*)/);
-		console.log(matched2[1]);
-		if ( matched2[2] === "" ) {
-			return this.displayOne(matched2[1]);
-		}
-		this.save(matched2);
 	},
 
 	displayAll: function() {
 		var response = [];
 		for(name in this.data) {
-			this.data[name].forEach(function(res) {
-				response.push("AP " + name + " " + res);
+			this.data[name].forEach(function(a) {
+				response.push("AP " + name + a);
 			});
 		}
 		return response;
 	},
 
-	displayOne: function(name) {
-		var response = [];
-		this.data[name].forEach(function(res) {
-			response.push("AP " + name + " " + res);
-		});
-		return response;
-	},
-
-	save: function(matched) {
-		if (this.data[matched[1]] === undefined) {
-			this.data[matched[1]] = [matched[2]];
+	save: function(name, ap) {
+		if (this.data[name] === undefined) {
+			this.data[name] = [ap];
 			return;
 		}
-		this.data[matched[1]].push(matched[2]);
+		this.data[name].push(ap);
+	},
+
+	rm: function(ap) {
+		for(name in this.data){
+			var idx = this.data[name].indexOf(ap);
+			if (idx != -1) {
+				this.data[name].splice(idx, 1)
+				return "Goed bezig " + name;	
+			}
+		}
 	},
 }
 
