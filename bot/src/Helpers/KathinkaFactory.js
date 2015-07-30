@@ -9,19 +9,33 @@ var KathinkaFactory = function(client) {
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
-    var state = {
-        logging: {},
-        properties: {},
-        language: 'english'
-    };
+    var askForAdvice = require('../Helpers/IsAQuestion.js');
+
+    fs = require('fs');
+
+    var dataStore;
+    try {
+        dataStore = require('../../Bootstrap/data.json');
+    } catch(err) {
+        dataStore = {
+            logging: {},
+            properties: {},
+            actiepuntjes: {},
+            language: 'english'
+        };
+    }
+
+    setInterval(function(){
+        fs.writeFile('data.json', JSON.stringify(dataStore));
+    },60000)
 
     var kathinka = new Kathinka([
         new SayMyName,
-        new Language(state),
+        new Language(dataStore),
         new Goodbye,
-        new Eightball(state),
-        new Logging(state),
-        new Properties(state),
+        new Eightball(dataStore),
+        new Logging(dataStore),
+        new Properties(dataStore),
         new Actiepuntjes,
         new Quit(client),
     ]);
