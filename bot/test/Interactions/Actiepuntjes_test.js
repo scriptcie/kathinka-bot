@@ -12,11 +12,18 @@ describe("The Actiepuntjes interaction", function() {
 
     it("Displays all actiepuntjes", function() {
     	var response = AP.interact("kathinka AP ls", "mark");
-        response.should.eql(["AP plus fix actiepuntjes"]);
+        response.should.eql(["1. AP plus fix actiepuntjes"]);
     });
 
     it("Removes a person actiepuntje", function() {
     	var response = AP.interact("kathinka AP rm fix actiepuntjes", "mark[1]");
         AP.data.should.eql({"plus": []});
     });
+
+    it("Removes a person actiepuntje given a nr", function() {
+        AP.data = {"plus": [" ap1", " ap2"], "mark": [" ap3", " ap4"]};
+        AP.interact("kathinka AP rm 3", "mark[1]");
+        AP.data.should.eql({"plus": [" ap1", " ap2"], "mark": [" ap4"]});
+    });
+
 });

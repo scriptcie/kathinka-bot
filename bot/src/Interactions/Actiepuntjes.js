@@ -25,9 +25,11 @@ Actiepuntjes.prototype = {
 
 	displayAll: function() {
 		var response = [];
+		var idx = 0;
 		for(name in this.data) {
 			this.data[name].forEach(function(a) {
-				response.push("AP " + name + a);
+				++idx;
+				response.push(idx + ". AP " + name + a);
 			});
 		}
 		return response;
@@ -42,6 +44,18 @@ Actiepuntjes.prototype = {
 	},
 
 	rm: function(ap) {
+		var toInt = parseInt(ap);
+		if(toInt != NaN && toInt > 0) {
+			for(name in this.data){
+				if(toInt < this.data[name].length) {
+					this.data[name].splice(toInt - 1, 1);
+					return "Goed bezig " + name;
+				} else {
+					toInt -= this.data[name].length;
+				}
+			}
+		}
+
 		for(name in this.data){
 			var idx = this.data[name].indexOf(ap);
 			if (idx != -1) {
