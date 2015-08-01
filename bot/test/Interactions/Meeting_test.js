@@ -1,4 +1,5 @@
 var Meeting = require ('../../src/Interactions/Meeting.js');
+var sinon = require('sinon');
 
 describe("Meeting interaction", function() {
     var sender = "Mark";
@@ -79,4 +80,26 @@ describe("Meeting interaction", function() {
         (response === undefined).should.be.false;
         response.should.equal("3. test");
     });
+
+    it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
+        var meeting = new Meeting({'agenda': 'test'});
+        var response = meeting.interact("Kathinka, start meeting", sender);
+        var clock = sinon.useFakeTimers();
+
+        // After 2 minutes nothing should happen
+        clock.tick(2 * 60 * 1000);
+        meeting.index.should.equal(0);
+        var response = meeting.interact("say something", sender);
+
+        // After 3 more minutes we should still be there because someone
+        // said something 3 minutes ago
+        clock.tick(3 * 60 * 1000);
+        meeting.index.should.equal(0);
+
+        // After 2 more minutes we had 5 minutes of inactivity so we should be
+        // at the next item
+        clock.tick(2 * 60 * 1000);
+        meeting.index.should.equal(1);
+        clock.restore();
+    }));
 });
