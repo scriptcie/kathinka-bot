@@ -5,6 +5,7 @@ var Meeting = function(data) {
     this.started = false;
     this.index = 0;
     this.agenda = [];
+    this.lastActivity = 0;
 }
 
 Meeting.prototype = {
@@ -13,6 +14,10 @@ Meeting.prototype = {
         if (command !== null) {
             return response = this.handleCommand(command, from);
         }
+
+        var self = this;
+        this.lastActivity = (new Date()).getTime() / 1000;
+        setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
 
         return undefined;
     },
@@ -29,12 +34,7 @@ Meeting.prototype = {
         }
 
         if (this.started && command === "next") {
-            this.index++;
-            if (this.index >= this.agenda.length) {
-                command = "stop meeting";
-            } else {
-                return this.agenda[this.index];
-            }
+            return this.goNext(true);
         }
 
         if (command === "stop meeting" || command === "stop vergadering") {
@@ -49,7 +49,7 @@ Meeting.prototype = {
         return undefined;
     },
 
-    setAgenda: function () {
+    setAgenda: function() {
         if ('agenda' in this.data) {
             this.agenda = ['1. Opening', '2. Vaststellen agenda'];
             var agendaData = this.data['agenda'];
@@ -66,6 +66,19 @@ Meeting.prototype = {
             this.agenda.push.apply(this.agenda, end);
         }
     },
+
+    goNext: function(force) {
+        var time = (new Date()).getTime();
+        if (force || this.lastActivity + 60 * 5 - 1 <= time) {
+            this.index++;
+            if (this.index >= this.agenda.length) {
+                this.started = false;
+                return "End of the meeting";
+            } else {
+                return this.agenda[this.index];
+            }
+        }
+    }
 }
 
 module.exports = Meeting
