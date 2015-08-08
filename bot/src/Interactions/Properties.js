@@ -1,7 +1,8 @@
 var isACommand = require('../Helpers/IsACommand.js');
 
-var Properties = function(data) {
-    this.data = data;
+var Properties = function(state) {
+    this.state = state;
+    this.data = state.properties;
 }
 
 Properties.prototype = {

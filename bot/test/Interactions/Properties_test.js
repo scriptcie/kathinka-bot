@@ -1,8 +1,8 @@
 var Properties = require ('../../src/Interactions/Properties.js');
 
 function someProperties() {
-    var data = {};
-    return new Properties(data);
+    var state = {properties: {}};
+    return new Properties(state);
 }
 
 describe("Properties interaction", function() {
