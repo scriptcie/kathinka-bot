@@ -1,6 +1,7 @@
 var isACommand = require('../Helpers/IsACommand.js');
 
-var Logging = function() {
+var Logging = function(state) {
+    this.state = state;
     this.shouldLog = false;
     this.log = [];
 

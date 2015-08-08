@@ -6,21 +6,23 @@ var KathinkaFactory = function(client) {
     var SayMyName = require('../Interactions/SayMyName.js');
     var Properties = require('../Interactions/Properties.js');
     var Actiepuntjes = require('../Interactions/Actiepuntjes.js');
+    var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
     var askForAdvice = require('../Helpers/IsAQuestion.js');
 
-    var dataStore = {
+    var state = {
         logging: {},
         properties: {},
     };
 
     var kathinka = new Kathinka([
         new SayMyName,
+        new Language(state),
         new Goodbye,
         new Eightball(askForAdvice),
-        new Logging(dataStore.logging),
-        new Properties(dataStore.properties),
+        new Logging(state),
+        new Properties(state),
         new Actiepuntjes,
         new Quit(client),
     ]);
