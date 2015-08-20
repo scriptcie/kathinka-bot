@@ -9,18 +9,17 @@ var KathinkaFactory = function(client) {
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
-    var askForAdvice = require('../Helpers/IsAQuestion.js');
-
     var state = {
         logging: {},
         properties: {},
+        language: 'english'
     };
 
     var kathinka = new Kathinka([
         new SayMyName,
         new Language(state),
         new Goodbye,
-        new Eightball(askForAdvice),
+        new Eightball(state),
         new Logging(state),
         new Properties(state),
         new Actiepuntjes,
