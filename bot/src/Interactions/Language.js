@@ -12,7 +12,7 @@ Language.prototype = {
 
         for (var i = 0; i < list.length; i++) {
             if (list[i][0] === 'english' || list[i][0] === 'dutch') {
-                this.state['language'] = list[i][0];
+                this.state.language = list[i][0];
                 break;
             }
         }

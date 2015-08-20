@@ -14,9 +14,9 @@ describe("A Kathinka bot with basic interactions", function() {
 
     it ("Responds with eightball questions", function() {
         kathinka.notify(
-            "Kathinka wat is het nut van het leven?",
+            "Kathinka what is the meaning of life?",
             "Mark", function(response) {
-                response.should.eql(["Concentrate and ask again"]);
+                response.should.eql(["Ask again later"]);
         });
     });
 
@@ -33,9 +33,22 @@ describe("A Kathinka bot with basic interactions", function() {
             "Kathinka show logs",
             "Mark", function(response) {
                 response.should.eql([
-                    "Mark said: \"Kathinka wat is het nut van het leven?\"",
+                    "Mark said: \"Kathinka what is the meaning of life?\"",
                     "Mark said: \"welterusten\""
                 ]);
+        });
+    });
+
+    it("Can answer questions in different languages", function() {
+        kathinka.notify(
+            "Kathinka does this work?",
+            "Mark", function(response) {
+                response.should.eql(["You may rely on it"]);
+        });
+        kathinka.notify(
+            "Kathinka werkt dit?",
+            "Mark", function(response) {
+                response.should.eql(["Ja"]);
         });
     });
 
