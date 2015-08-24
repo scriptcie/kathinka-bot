@@ -20,10 +20,10 @@ Actiepuntjes.prototype = {
 				case "rm":
 				case "voltooid":
 				case "gedaan":
-					return this.remove(matched[3]);
+					return this.remove(matched[3].trim());
 
 				default:
-					return this.save(matched[2], matched[3])
+					return this.save(matched[2], matched[3].trim())
 			}
 		}
 	},
@@ -34,7 +34,7 @@ Actiepuntjes.prototype = {
 		for(name in this.data) {
 			this.data[name].forEach(function(a) {
 				++idx;
-				response.push(idx + ". AP " + name + a);
+				response.push(idx + ". AP " + name + " " + a);
 			});
 		}
 		return response;
@@ -50,17 +50,16 @@ Actiepuntjes.prototype = {
 
 	remove: function(ap) {
 		var toInt = parseInt(ap);
+
+		// Remove the ith APtje
 		if(toInt != NaN && toInt > 0) {
-			for(name in this.data){
-				if(toInt < this.data[name].length) {
-					this.data[name].splice(toInt - 1, 1);
-					return "Goed bezig " + name;
-				} else {
-					toInt -= this.data[name].length;
-				}
-			}
+			return this.removeByIndex(toInt);
 		}
 
+		return this.removeBySubject(ap);
+	},
+
+	removeBySubject: function(ap) {
 		for(name in this.data){
 			var idx = this.data[name].indexOf(ap);
 			if (idx != -1) {
@@ -69,6 +68,17 @@ Actiepuntjes.prototype = {
 			}
 		}
 	},
+
+	removeByIndex: function(idx) {
+		for(name in this.data){
+			if(idx < this.data[name].length) {
+				this.data[name].splice(idx - 1, 1);
+				return "Goed bezig " + name;
+			} else {
+				idx -= this.data[name].length;
+			}
+		}
+	}
 }
 
 module.exports = Actiepuntjes;
