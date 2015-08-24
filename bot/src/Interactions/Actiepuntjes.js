@@ -6,7 +6,12 @@ var Actiepuntjes = function(data) {
 
 Actiepuntjes.prototype = {
 	interact: function(message, from) {
-		var matched = message.match(/^[Kk]athinka(?:-bot)?[,:]{0,1}\s+([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
+		var command = isACommand(message);
+		if (! command) {
+			return;
+		}
+
+		var matched = command.match(/([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
 		if(matched) {
 			switch(matched[2]){
 				case "ls":
@@ -15,7 +20,7 @@ Actiepuntjes.prototype = {
 				case "rm":
 				case "voltooid":
 				case "gedaan":
-					return this.rm(matched[3]);
+					return this.remove(matched[3]);
 
 				default:
 					return this.save(matched[2], matched[3])
@@ -43,7 +48,7 @@ Actiepuntjes.prototype = {
 		this.data[name].push(ap);
 	},
 
-	rm: function(ap) {
+	remove: function(ap) {
 		var toInt = parseInt(ap);
 		if(toInt != NaN && toInt > 0) {
 			for(name in this.data){
@@ -60,7 +65,7 @@ Actiepuntjes.prototype = {
 			var idx = this.data[name].indexOf(ap);
 			if (idx != -1) {
 				this.data[name].splice(idx, 1)
-				return "Goed bezig " + name;	
+				return "Goed bezig " + name;
 			}
 		}
 	},
