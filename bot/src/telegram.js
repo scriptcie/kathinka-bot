@@ -14,9 +14,6 @@ var Telegram = function(config, bots) {
     var self = this;
 
     this.api.on('message', function(message){
-        var data = {from: message.chat.id, name: message.from.first_name, text: message.text};
-        //var Telegram = this;
-        console.log(message.text);
         self.bot[0].notify(message.text,message.from.first_name, function(messages) {
                 for (var m = 0; m < messages.length; m++) {
 		    console.log(messages[m]);
