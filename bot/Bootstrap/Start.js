@@ -2,7 +2,6 @@
 var buildKathinka = require('../src/Helpers/KathinkaFactory');
 var BotNet = require('../src/BotNet.js');
 var irc = require('irc');
-var Telegram = require('../src/telegram.js');
 
 var username = process.argv[2] || "Kathinka-Bot-test";
 var password = process.argv[3] || "";

@@ -1,6 +1,5 @@
 var telegram = require('telegram-bot-api');
 var util = require('util');
-var Kathinka = require('../src/Kathinka.js');
 
 var Telegram = function(config, bots) {
     this.api = new telegram({
