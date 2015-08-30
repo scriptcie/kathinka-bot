@@ -15,7 +15,7 @@ var KathinkaFactory = function(client) {
 
     var dataStore;
     try {
-        dataStore = require('../../Bootstrap/data.json');
+        dataStore = require('../../data.json');
     } catch(err) {
         dataStore = {
             logging: {},
