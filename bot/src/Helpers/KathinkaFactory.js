@@ -6,6 +6,7 @@ var KathinkaFactory = function(client) {
     var SayMyName = require('../Interactions/SayMyName.js');
     var Properties = require('../Interactions/Properties.js');
     var Actiepuntjes = require('../Interactions/Actiepuntjes.js');
+    var Meeting = require('../Interactions/Meeting.js');
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
@@ -41,6 +42,7 @@ var KathinkaFactory = function(client) {
         new Eightball(dataStore),
         new Logging(dataStore),
         new Properties(dataStore),
+        new Meeting(dataStore.properties),
         new Actiepuntjes(dataStore),
 
         new Quit(client),
