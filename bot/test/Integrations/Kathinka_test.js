@@ -1,4 +1,5 @@
 var buildKathinka = require('../../src/Helpers/KathinkaFactory');
+var Message = require('../../src/Message.js');
 
 describe("A Kathinka bot with basic interactions", function() {
 
@@ -36,7 +37,7 @@ describe("A Kathinka bot with basic interactions", function() {
                     "Mark said: \"Kathinka what is the meaning of life?\"",
                     "Mark said: \"welterusten\""
                 ]);
-        });
+            });
     });
 
     it("Can answer questions in different languages", function() {
@@ -44,11 +45,20 @@ describe("A Kathinka bot with basic interactions", function() {
             "Kathinka does this work?",
             "Mark", function(response) {
                 response.should.eql(["You may rely on it"]);
-        });
+            });
         kathinka.notify(
             "Kathinka werkt dit?",
             "Mark", function(response) {
                 response.should.eql(["Ja"]);
+            });
+    });
+
+    it("Can handle Message objects", function() {
+        var message = new Message(Message.Type.IRC,
+                                  "Kathinka does this work?",
+                                  "Mark");
+        kathinka.notify(message, "Mark", function(response) {
+            response.should.eql(["You may rely on it"]);
         });
     });
 

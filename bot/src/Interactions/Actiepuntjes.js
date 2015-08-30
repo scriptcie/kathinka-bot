@@ -8,7 +8,7 @@ var Actiepuntjes = function(state) {
 Actiepuntjes.prototype = {
     interact: function(message, from) {
         var command = isACommand(message);
-        if (! command) {
+        if (!command) {
             return;
         }
 

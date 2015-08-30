@@ -1,4 +1,5 @@
 var SteamAPI = require('steam');
+var Message = require('./Message.js');
 
 var Steam = function(config, bots) {
     this.client = new SteamAPI.SteamClient();
@@ -15,7 +16,7 @@ var Steam = function(config, bots) {
         self.user.logOn({
             account_name: config.username.replace(/\W/g, ''),
             password: config.password
-        });
+        });6
     });
 
     this.client.on('logOnResponse', function() {
@@ -42,7 +43,8 @@ Steam.prototype = {
     handle: function(from, to, message) {
         var self = this;
         for (var i = 0; i < this.bots.length; i++) {
-            this.bots[i].notify(message, from, function(messages) {
+            var messageObj = new Message(Message.Type.Steam, message, to);
+            this.bots[i].notify(messageObj, from, function(messages) {
                 self.speakMessages(to, messages);
             });
         };

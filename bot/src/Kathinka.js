@@ -1,5 +1,6 @@
 // Kathinka is a bot that can interact with messages
 //
+
 var Kathinka = function(interactions) {
     this.interactions = interactions || [];
 };
@@ -25,7 +26,16 @@ Kathinka.prototype = {
         // Get any valid response and remember its prioirty
         var responses = [];
         this.interactions.forEach(function(interaction, index) {
-            var response = interaction.interact(message, from);
+            var response = null;
+
+            // Try giving both a Message object and a string to
+            // the message handlers
+            try {
+                response = interaction.interact(message, from);
+            }
+            catch(err) {
+                response = interaction.interact(message.contents, from);
+            }
 
             // We don't want to return empty responses
             if (response === undefined || response === null) {
