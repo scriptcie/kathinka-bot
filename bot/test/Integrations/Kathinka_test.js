@@ -66,7 +66,7 @@ describe("A Kathinka bot with basic interactions", function() {
         var message = new Message(Message.Type.IRC,
                                   "Test",
                                   "Mark");
-        var stubbedInterface = {say: function(messages, to) {
+        var stubbedInterface = {say: function(to, messages) {
             messages[0].should.eql("Test");
             to.should.eql("Mark");
             }};

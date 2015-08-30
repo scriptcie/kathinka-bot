@@ -35,7 +35,7 @@ MessageBus.prototype.handle = function() {
     while (this.queue.length > 0) {
         var message = this.queue.shift();
         if (message.type in this.interfaces) {
-            this.interfaces[message.type].say([message.contents], message.to);
+            this.interfaces[message.type].say(message.to, [message.contents]);
         } else {
             console.log("No interface found for a message of type "+message.type);
         }

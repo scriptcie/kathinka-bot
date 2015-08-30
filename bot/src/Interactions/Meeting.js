@@ -1,37 +1,50 @@
 var isACommand = require('../Helpers/IsACommand.js');
+var Message = require('../Message.js');
 
-var Meeting = function(data) {
-    this.data = data;
+var Meeting = function(state, bus) {
+    this.state = state
+    this.data = state.properties;
     this.started = false;
     this.index = 0;
     this.agenda = [];
     this.lastActivity = 0;
+    this.bus = bus;
+    this.protocol = '';
 }
 
 Meeting.prototype = {
-    interact: function(message, from) {
-        var command = isACommand(message);
-        if (command !== null) {
-            return response = this.handleCommand(command, from);
+    interact: function(messageIn, from) {
+        var message = messageIn;
+        if (!(messageIn instanceof Message)) {
+            message = new Message(Message.Type.Null, message, from);
         }
 
-        var self = this;
-        this.lastActivity = (new Date()).getTime() / 1000;
-        setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+        var command = isACommand(message.contents);
+        var response = undefined;
+        if (command !== null) {
+            response = this.handleCommand(command, from, message);
+        }
 
-        return undefined;
+        if (this.started && this.protocol.type === message.type) {
+            var self = this;
+            this.lastActivity = (new Date()).getTime() / 1000;
+            setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+        }
+
+        return response;
     },
 
-    handleCommand: function(command, sender) {
+    handleCommand: function(command, sender, protocol) {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
             var response = ['Staring meeting', 'Agenda:'];
             this.setAgenda();
             this.index = 0;
+            this.protocol = protocol;
             response.push.apply(response, this.agenda);
             return response;
-        }
+       }
 
         if (this.started && command === "next") {
             return this.goNext(true);
@@ -68,14 +81,33 @@ Meeting.prototype = {
     },
 
     goNext: function(force) {
-        var time = (new Date()).getTime();
-        if (force || this.lastActivity + 60 * 5 - 1 <= time) {
+        var time = (new Date()).getTime() / 1000;
+        if (!this.started) {
+            return;
+        }
+
+        if (force) {
             this.index++;
             if (this.index >= this.agenda.length) {
                 this.started = false;
                 return "End of the meeting";
             } else {
                 return this.agenda[this.index];
+            }
+        } else if (this.lastActivity + 60 * 5 - 1 <= time) {
+            this.index++;
+            if (this.index >= this.agenda.length) {
+                this.started = false;
+                var message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
+                this.bus.add(message);
+            } else {
+                var message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
+                this.bus.add(message);
+
+                // And restart the timeout
+                var self = this;
+                this.lastActivity = time;
+                setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
             }
         }
     }

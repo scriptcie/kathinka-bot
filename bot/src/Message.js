@@ -6,6 +6,7 @@ var Message = function(type, contents, to) {
 }
 
 var MessageType = {
+    Null: 'Null',
     IRC: 'IRC',
     Telegram: 'Telegram',
     Steam: 'Steam'
