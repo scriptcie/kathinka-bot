@@ -9,10 +9,7 @@ Properties.prototype = {
     interact: function(message, from) {
         var command = isACommand(message);
         if (command !== null) {
-            var response = this.handleCommand(command, from);
-            if (response !== undefined) {
-                return response;
-            }
+            return response = this.handleCommand(command, from);
         }
 
         return undefined;
@@ -21,8 +18,21 @@ Properties.prototype = {
     handleCommand: function(command, sender) {
         var match = command.match(/^set (\w+) (.+)$/);
         if (match) {
-            this.data[match[1]] = match[2];
-            return undefined;
+            var data = match[2];
+            if (data.length > 2 &&
+                data.substring(0, 1) == '[' &&
+                data.substring(data.length - 1, data.length) == ']') {
+                data = data.substring(1, data.length-1);
+                data = data.split(',');
+                var newdata = [];
+                for (var i = 0; i < data.length; i++) {
+                    newdata[i] = data[i].replace(/^\s+|\s+$/g, '');
+                }
+                this.data[match[1]] = newdata;
+            } else {
+                this.data[match[1]] = match[2];
+            }
+            return '' + match[1] + ' = ' + this.data[match[1]];
         }
 
         match = command.match(/^get (.*)$/);
