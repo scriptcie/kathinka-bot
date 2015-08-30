@@ -72,7 +72,7 @@ Actiepuntjes.prototype = {
 
     removeByIndex: function(idx) {
         for(name in this.data){
-            if(idx < this.data[name].length) {
+            if(idx <= this.data[name].length) {
                 this.data[name].splice(idx - 1, 1);
                 return "Goed bezig " + name;
             } else {
