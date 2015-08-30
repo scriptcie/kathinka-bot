@@ -62,4 +62,16 @@ describe("A Kathinka bot with basic interactions", function() {
         });
     });
 
+    it("Can handle send messages through the bus", function() {
+        var message = new Message(Message.Type.IRC,
+                                  "Test",
+                                  "Mark");
+        var stubbedInterface = {say: function(messages, to) {
+            messages[0].should.eql("Test");
+            to.should.eql("Mark");
+            }};
+        kathinka.bus.addInterface(Message.Type.IRC, stubbedInterface);
+        kathinka.bus.add(message);
+    });
+
 });

@@ -9,6 +9,8 @@ var KathinkaFactory = function(client) {
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
+    var MessageBus = require('../MessageBus.js');
+
     var askForAdvice = require('../Helpers/IsAQuestion.js');
 
     fs = require('fs');
@@ -27,7 +29,9 @@ var KathinkaFactory = function(client) {
 
     setInterval(function(){
         fs.writeFile('data.json', JSON.stringify(dataStore));
-    },60000)
+    }, 60000);
+
+    var bus = new MessageBus({});
 
     var kathinka = new Kathinka([
         new SayMyName,
@@ -40,7 +44,7 @@ var KathinkaFactory = function(client) {
         new Actiepuntjes(dataStore),
 
         new Quit(client),
-    ]);
+    ], bus);
 
     return kathinka;
 }
