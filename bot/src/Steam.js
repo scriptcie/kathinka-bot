@@ -45,12 +45,12 @@ Steam.prototype = {
         for (var i = 0; i < this.bots.length; i++) {
             var messageObj = new Message(Message.Type.Steam, message, to);
             this.bots[i].notify(messageObj, from, function(messages) {
-                self.speakMessages(to, messages);
+                self.say(to, messages);
             });
         };
     },
 
-    speakMessages: function(to, messages) {
+    say: function(to, messages) {
         if (messages === undefined || messages.length === 0) {
             return;
         }
@@ -59,7 +59,7 @@ Steam.prototype = {
         var message = messages.shift();
         setTimeout(function() {
             self.friends.sendMessage(to, message, SteamAPI.EChatEntryType.ChatMsg);
-            self.speakMessages(to, messages);
+            self.say(to, messages);
         }, message.length * (25 + 25 * Math.random()));
     },
 };

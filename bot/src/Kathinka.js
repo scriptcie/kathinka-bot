@@ -1,8 +1,8 @@
 // Kathinka is a bot that can interact with messages
-//
 
-var Kathinka = function(interactions) {
+var Kathinka = function(interactions, bus) {
     this.interactions = interactions || [];
+    this.bus = bus;
 };
 
 Kathinka.prototype = {

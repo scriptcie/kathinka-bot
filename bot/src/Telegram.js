@@ -14,20 +14,37 @@ var Telegram = function(config, bots) {
     var self = this;
 
     this.api.on('message', function(message) {
-        if (message.text) {
-            var messageObj = new Message(Message.Type.Telegram, message.text || "", message.chat.id);
-            self.bot[0].notify(messageObj, message.from.first_name, function(messages) {
-                for (var m = 0; m < messages.length; m++) {
-                    console.log(messages[m]);
-                    self.api.sendMessage({chat_id: message.chat.id, text: messages[m]}, function(err, data) {
-                        console.log(err);
-                        console.log(util.inspect(data, false, null));
-                    });
-                };
-            });
-        }
-        return;
+        console.log('Received message on Telegram: ' + message);
+        self.handle(message.from.first_name, message.chat.id, message.text || "");
     });
+};
+
+Telegram.prototype = {
+    handle: function(from, to, message) {
+        var self = this;
+        for (var i = 0; i < this.bots.length; i++) {
+            var messageObj = new Message(Message.Type.Telegram, message, to);
+            this.bots[i].notify(messageObj, from, function(messages) {
+                self.say(to, messages);
+            });
+        };
+    },
+
+    say: function(to, messages) {
+        if (messages === undefined || messages.length === 0) {
+            return;
+        }
+
+        var self = this;
+        var message = messages.shift();
+        setTimeout(function() {
+            self.api.sendMessage({chat_id: to, text: message}, function(err, data) {
+                console.log(err);
+                console.log(util.inspect(data, false, null));
+            });
+            self.say(to, messages);
+        }, message.length * (25 + 25 * Math.random()));
+    },
 };
 
 module.exports = Telegram;
