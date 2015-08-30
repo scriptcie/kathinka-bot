@@ -1,11 +1,13 @@
 var Meeting = require ('../../src/Interactions/Meeting.js');
+var Message = require('../../src/Message.js');
+var MessageBus = require('../../src/MessageBus.js');
 var sinon = require('sinon');
 
 describe("Meeting interaction", function() {
     var sender = "Mark";
 
     it("Can't start a meeting when the agenda is not set", function() {
-        var meeting = new Meeting({});;
+        var meeting = new Meeting({properties: {}});;
         var response = meeting.interact("Kathinka, start meeting", sender);
 
         (response === undefined).should.be.true;
@@ -13,7 +15,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Starts a meeting when the agenda is set", function() {
-        var meeting = new Meeting({'agenda': ['test']});
+        var meeting = new Meeting({properties: {'agenda': ['test']}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -22,7 +24,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Stops a meeting when one is started", function() {
-        var meeting = new Meeting({'agenda': ['test']});
+        var meeting = new Meeting({properties: {'agenda': ['test']}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -35,7 +37,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda after starting", function() {
-        var meeting = new Meeting({'agenda': 'test'});
+        var meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
@@ -51,7 +53,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda after starting with multiple elements", function() {
-        var meeting = new Meeting({'agenda': ['test 1', 'test 2']});
+        var meeting = new Meeting({properties: {'agenda': ['test 1', 'test 2']}});
         meeting.started.should.be.false;
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
@@ -67,7 +69,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Goes to the next item after receiving next", function() {
-        var meeting = new Meeting({'agenda': 'test'});
+        var meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -82,14 +84,14 @@ describe("Meeting interaction", function() {
     });
 
     it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
-        var meeting = new Meeting({'agenda': 'test'});
-        var response = meeting.interact("Kathinka, start meeting", sender);
+        var meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
         var clock = sinon.useFakeTimers();
+        var response = meeting.interact("Kathinka, start meeting", sender);
 
         // After 2 minutes nothing should happen
         clock.tick(2 * 60 * 1000);
         meeting.index.should.equal(0);
-        var response = meeting.interact("say something", sender);
+        response = meeting.interact("say something", sender);
 
         // After 3 more minutes we should still be there because someone
         // said something 3 minutes ago
@@ -99,6 +101,30 @@ describe("Meeting interaction", function() {
         // After 2 more minutes we had 5 minutes of inactivity so we should be
         // at the next item
         clock.tick(2 * 60 * 1000);
+        meeting.index.should.equal(1);
+
+        // and after 5 more minutes at the 3rd
+        clock.tick(5 * 60 * 1000);
+        meeting.index.should.equal(2);
+
+        clock.restore();
+    }));
+
+    it("Gets a message after 5 minutes of inactivity", sinon.test(function() {
+        var bus = new MessageBus({});
+        var stubbedInterface = {say: function(to, messages) {
+            messages[0].should.eql("2. Vaststellen agenda");
+            to.should.eql("Mark");
+        }};
+        bus.addInterface(Message.Type.IRC, stubbedInterface);
+
+        var clock = sinon.useFakeTimers();
+        var meeting = new Meeting({properties: {'agenda': 'test'}}, bus);
+
+        var message = new Message(Message.Type.IRC, "Kathinka, start meeting", sender);
+        var response = meeting.interact(message, sender);
+
+        clock.tick(5 * 60 * 1000);
         meeting.index.should.equal(1);
         clock.restore();
     }));

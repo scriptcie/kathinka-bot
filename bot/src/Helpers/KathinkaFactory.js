@@ -42,7 +42,7 @@ var KathinkaFactory = function(client) {
         new Eightball(dataStore),
         new Logging(dataStore),
         new Properties(dataStore),
-        new Meeting(dataStore.properties),
+        new Meeting(dataStore, bus),
         new Actiepuntjes(dataStore),
 
         new Quit(client),
