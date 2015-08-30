@@ -1,4 +1,5 @@
 var Goodbye = require ('../../src/Interactions/Goodbye.js');
+var Message = require ('../../src/Message.js');
 
 describe("The goodbye interaction", function() {
     var goodbye = new Goodbye;
@@ -23,7 +24,8 @@ describe("The goodbye interaction", function() {
         ];
 
         messages.forEach(function(message) {
-            var response = goodbye.interact(message[0], sender);
+            var messageObj = new Message(Message.Type.Null, message[0], sender);
+            var response = goodbye.interact(messageObj, sender);
             response.should.equal(message[1]);
         }, this);
     });

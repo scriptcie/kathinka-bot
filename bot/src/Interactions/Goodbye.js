@@ -2,8 +2,8 @@ var Goodbye = function() {}
 
 Goodbye.prototype = {
     interact: function(message, from) {
-        if (this.tellsGoodbye(message)) {
-            return message + " " + from;
+        if (this.tellsGoodbye(message.contents)) {
+            return message.contents + " " + from;
         }
 
         return undefined;

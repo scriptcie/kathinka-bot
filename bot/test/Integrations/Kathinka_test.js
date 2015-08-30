@@ -23,7 +23,7 @@ describe("A Kathinka bot with basic interactions", function() {
 
     it("Says goodbye", function() {
         kathinka.notify(
-            "welterusten",
+            new Message(Message.Type.Null, "welterusten", "Mark"),
             "Mark", function(response) {
                 response.should.eql(["welterusten Mark"]);
         });
@@ -41,13 +41,16 @@ describe("A Kathinka bot with basic interactions", function() {
     });
 
     it("Can answer questions in different languages", function() {
+        
+        var message = new Message(Message.Type.Null, "Kathinka does this work?", "Mark");
         kathinka.notify(
-            "Kathinka does this work?",
+            message,
             "Mark", function(response) {
                 response.should.eql(["You may rely on it"]);
             });
+        message = new Message(Message.Type.Null, "Kathinka werkt dit?", "Mark");
         kathinka.notify(
-            "Kathinka werkt dit?",
+            message,
             "Mark", function(response) {
                 response.should.eql(["Ja"]);
             });
