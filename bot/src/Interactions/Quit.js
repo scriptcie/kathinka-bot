@@ -1,4 +1,6 @@
 var isACommand = require('../Helpers/IsACommand.js');
+var Message = require('../Message.js');
+
 var Quit = function(client) {
     // Meh lelijk, maar werkt voorlopig
     this.client = client;
@@ -6,7 +8,8 @@ var Quit = function(client) {
 
 Quit.prototype = {
     interact: function(message, from) {
-        var command = isACommand(message);
+        var message = Message.fromMessage(message, from);
+        var command = isACommand(message.contents);
         if (command && /^af!?$/.test(command)) {
             this.client.disconnect("Is goed, doei!", function() {
                 setTimeout(function() {

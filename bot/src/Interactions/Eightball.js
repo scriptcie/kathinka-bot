@@ -2,6 +2,7 @@
 // which the isAQuestion function returns true
 
 var isAQuestion = require('../Helpers/IsAQuestion.js');
+var Message = require('../Message.js');
 
 var Eightball = function(state) {
     this.state = state;
@@ -31,13 +32,14 @@ Eightball.prototype = {
     interact: function(message, sender) {
         // If the senders asks for some advice, then we give it
         // some random advice
-        if (isAQuestion(message)) {
+        var message = Message.fromMessage(message, sender);
+        if (isAQuestion(message.contents)) {
             // Response based on language
             var language = "english";
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
-            var idx = message.split('')
+            var idx = message.contents.split('')
                 .map(function(i){
                     return i.charCodeAt(0);
                 })
