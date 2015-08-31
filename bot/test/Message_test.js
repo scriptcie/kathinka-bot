@@ -1,24 +1,24 @@
 var Message = require ('../src/Message.js');
 
 describe("Message", function() {
+    var prefixes = [
+        "Kathinka-bot",
+        "kathinka-bot",
+        "Kathinka",
+        "kathinka",
+
+        "Kathinka-bot, ",
+        "kathinka-bot, ",
+        "Kathinka, ",
+        "kathinka, ",
+
+        "Kathinka-bot: ",
+        "kathinka-bot: ",
+        "Kathinka: ",
+        "kathinka: ",
+    ];
+
     it("can recognize questions", function() {
-        var prefixes = [
-            "Kathinka-bot",
-            "kathinka-bot",
-            "Kathinka",
-            "kathinka",
-
-            "Kathinka-bot, ",
-            "kathinka-bot, ",
-            "Kathinka, ",
-            "kathinka, ",
-
-            "Kathinka-bot: ",
-            "kathinka-bot: ",
-            "Kathinka: ",
-            "kathinka: ",
-        ];
-
         prefixes.forEach(function(prefix) {
             var message = new Message(Message.Type.Null,
                                       prefix + " kan ik jou dit vragen?",
@@ -35,23 +35,6 @@ describe("Message", function() {
     });
 
     it("car recognize commands", function() {
-        var prefixes = [
-            "Kathinka-bot",
-            "kathinka-bot",
-            "Kathinka",
-            "kathinka",
-
-            "Kathinka-bot, ",
-            "kathinka-bot, ",
-            "Kathinka, ",
-            "kathinka, ",
-
-            "Kathinka-bot: ",
-            "kathinka-bot: ",
-            "Kathinka: ",
-            "kathinka: ",
-        ];
-
         prefixes.forEach(function(prefix) {
             var message = new Message(Message.Type.Null,
                                       prefix + " doe dit",
@@ -65,5 +48,11 @@ describe("Message", function() {
         var message = new Message(Message.Type.Null, "Hallo!", "Mark");
         var command = message.command();
         (command === null).should.be.true;
+    });
+
+    it("unless it's a Steam message", function() {
+        var message = new Message(Message.Type.Steam, "Hallo!", "Mark");
+        var command = message.command();
+        command.should.equal("Hallo!");
     });
 });

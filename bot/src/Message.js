@@ -5,6 +5,13 @@ var Message = function(type, contents, to) {
     this.priority = -1;
 }
 
+var MessageType = {
+    Null: 'Null',
+    IRC: 'IRC',
+    Telegram: 'Telegram',
+    Steam: 'Steam'
+}
+
 Message.prototype.command = function() {
     var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
 
@@ -13,6 +20,10 @@ Message.prototype.command = function() {
         return match[2];
     }
 
+    if (this.type === MessageType.Steam) {
+        // Steam only has commands since it's private chat
+        return this.contents;
+    }
     return null;
 }
 
@@ -25,13 +36,6 @@ Message.prototype.question = function() {
     }
 
     return false;
-}
-
-var MessageType = {
-    Null: 'Null',
-    IRC: 'IRC',
-    Telegram: 'Telegram',
-    Steam: 'Steam'
 }
 
 Message.fromString = function(message, to) {
