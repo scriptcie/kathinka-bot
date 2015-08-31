@@ -12,8 +12,6 @@ var KathinkaFactory = function(client) {
 
     var MessageBus = require('../MessageBus.js');
 
-    var askForAdvice = require('../Helpers/IsAQuestion.js');
-
     fs = require('fs');
 
     var dataStore;
