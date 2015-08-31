@@ -13,11 +13,8 @@ var Meeting = function(state, bus) {
 }
 
 Meeting.prototype = {
-    interact: function(messageIn, from) {
-        var message = messageIn;
-        if (!(messageIn instanceof Message)) {
-            message = new Message(Message.Type.Null, message, from);
-        }
+    interact: function(message, from) {
+        var message = Message.fromMessage(message, from);
 
         var command = isACommand(message.contents);
         var response = undefined;

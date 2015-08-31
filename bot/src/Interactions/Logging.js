@@ -1,4 +1,5 @@
 var isACommand = require('../Helpers/IsACommand.js');
+var Message = require('../Message.js');
 
 var Logging = function(state) {
     this.state = state;
@@ -10,7 +11,8 @@ var Logging = function(state) {
 
 Logging.prototype = {
     interact: function(message, from) {
-        var command = isACommand(message);
+        var message = Message.fromMessage(message, from);
+        var command = isACommand(message.contents);
         if (command !== null) {
             var response = this.handleCommand(command, from);
             if (response !== undefined) {
@@ -19,7 +21,7 @@ Logging.prototype = {
         }
 
         if (this.shouldLog) {
-            this.logMessage(message, from);
+            this.logMessage(message.contents, from);
         }
 
         return undefined;

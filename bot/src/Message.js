@@ -12,5 +12,18 @@ var MessageType = {
     Steam: 'Steam'
 }
 
+Message.fromString = function(message, to) {
+    return new Message(MessageType.Null, message, to);
+}
+
+Message.fromMessage = function(message, to) {
+    if (message instanceof Message) {
+        return message;
+    }
+
+    return Message.fromString(message, to);
+}
+
+
 module.exports = Message;
 module.exports.Type = MessageType;

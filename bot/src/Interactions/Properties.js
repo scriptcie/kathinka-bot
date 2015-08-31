@@ -1,4 +1,5 @@
 var isACommand = require('../Helpers/IsACommand.js');
+var Message = require('../Message.js');
 
 var Properties = function(state) {
     this.state = state;
@@ -7,7 +8,8 @@ var Properties = function(state) {
 
 Properties.prototype = {
     interact: function(message, from) {
-        var command = isACommand(message);
+        var message = Message.fromMessage(message, from);
+        var command = isACommand(message.contents);
         if (command !== null) {
             return response = this.handleCommand(command, from);
         }

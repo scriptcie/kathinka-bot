@@ -1,7 +1,9 @@
 var Goodbye = function() {}
+var Message = require('../Message.js');
 
 Goodbye.prototype = {
     interact: function(message, from) {
+        var message = Message.fromMessage(message, from);
         if (this.tellsGoodbye(message.contents)) {
             return message.contents + " " + from;
         }
