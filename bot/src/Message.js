@@ -16,6 +16,17 @@ Message.prototype.command = function() {
     return null;
 }
 
+Message.prototype.question = function() {
+    var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)\?$/);
+
+    // Return the question
+    if (match !== undefined && match !== null) {
+        return match[2];
+    }
+
+    return false;
+}
+
 var MessageType = {
     Null: 'Null',
     IRC: 'IRC',

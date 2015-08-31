@@ -1,7 +1,6 @@
 // The eighball returns a random message for messages for
 // which the isAQuestion function returns true
 
-var isAQuestion = require('../Helpers/IsAQuestion.js');
 var Message = require('../Message.js');
 
 var Eightball = function(state) {
@@ -33,7 +32,7 @@ Eightball.prototype = {
         // If the senders asks for some advice, then we give it
         // some random advice
         var message = Message.fromMessage(message, sender);
-        if (isAQuestion(message.contents)) {
+        if (message.question()) {
             // Response based on language
             var language = "english";
             if (this.state.language !== undefined) {
