@@ -10,7 +10,7 @@ var Telegram = function(config, bots) {
         }
     });
 
-    this.bot = bots;
+    this.bots = bots;
     var self = this;
 
     this.api.on('message', function(message) {
