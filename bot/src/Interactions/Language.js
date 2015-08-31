@@ -1,4 +1,3 @@
-var isACommand = require('../Helpers/IsACommand.js');
 var languagedetect = require('languagedetect');
 var Message = require('../Message.js');
 

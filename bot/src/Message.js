@@ -5,6 +5,17 @@ var Message = function(type, contents, to) {
     this.priority = -1;
 }
 
+Message.prototype.command = function() {
+    var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
+
+    // Return the command
+    if (match !== undefined && match !== null) {
+        return match[2];
+    }
+
+    return null;
+}
+
 var MessageType = {
     Null: 'Null',
     IRC: 'IRC',
@@ -23,6 +34,8 @@ Message.fromMessage = function(message, to) {
 
     return Message.fromString(message, to);
 }
+
+
 
 
 module.exports = Message;

@@ -1,4 +1,3 @@
-var isACommand = require('../Helpers/IsACommand.js');
 var Message = require('../Message.js');
 
 var Meeting = function(state, bus) {
@@ -16,7 +15,7 @@ Meeting.prototype = {
     interact: function(message, from) {
         var message = Message.fromMessage(message, from);
 
-        var command = isACommand(message.contents);
+        var command = message.command();
         var response = undefined;
         if (command !== null) {
             response = this.handleCommand(command, from, message);
