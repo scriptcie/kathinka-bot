@@ -1,4 +1,3 @@
-var isACommand = require('../Helpers/IsACommand.js');
 var Message = require('../Message.js');
 
 var Actiepuntjes = function(state) {
@@ -9,7 +8,7 @@ var Actiepuntjes = function(state) {
 Actiepuntjes.prototype = {
     interact: function(message, from) {
         var message = Message.fromMessage(message, from);
-        var command = isACommand(message.contents);
+        var command = message.command();
         if (!command) {
             return;
         }
