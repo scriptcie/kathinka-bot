@@ -34,7 +34,13 @@ describe("Message", function() {
         (question === false).should.be.true;
     });
 
-    it("car recognize commands", function() {
+    it("always answers Steam questions", function() {
+        var message = new Message(Message.Type.Steam, "hallo?", "Mark");
+        var question = message.question();
+        question.should.equal("hallo");
+    });
+
+    it("can recognize commands", function() {
         prefixes.forEach(function(prefix) {
             var message = new Message(Message.Type.Null,
                                       prefix + " doe dit",

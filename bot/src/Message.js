@@ -28,11 +28,15 @@ Message.prototype.command = function() {
 }
 
 Message.prototype.question = function() {
-    var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)\?$/);
+    var command = this.command();
+    if (!command) {
+        return false;
+    }
+    var match = command.match(/^(.*)\?$/)
 
     // Return the question
     if (match !== undefined && match !== null) {
-        return match[2];
+        return match[1];
     }
 
     return false;
