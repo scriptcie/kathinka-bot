@@ -7,7 +7,7 @@ var Quit = function(client) {
 
 Quit.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
         var command = message.command();
         if (command && /^af!?$/.test(command)) {
             this.client.disconnect("Is goed, doei!", function() {

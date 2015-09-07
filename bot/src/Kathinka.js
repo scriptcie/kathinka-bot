@@ -51,7 +51,7 @@ Kathinka.prototype = {
             // determine which response to return based on priority
             responses.push({
                 message: response,
-                priority: this.basePriorityOf(index)
+                priority: this.basePriorityOf(index),
             });
         }, this);
 

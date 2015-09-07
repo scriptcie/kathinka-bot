@@ -25,7 +25,7 @@ describe("The logging interaction", function() {
         logging.log.length.should.equal(2);
         logging.log.should.eql([
             { message: "Hello", from: "Mark" },
-            { message: "World", from: "Mark" }
+            { message: "World", from: "Mark" },
         ]);
     });
 
@@ -59,7 +59,7 @@ describe("The logging interaction", function() {
 
         response.should.eql([
             "Mark said: \"Hee hallo\"",
-            "Moi said: \"Moi\""
+            "Moi said: \"Moi\"",
         ]);
     });
 

@@ -15,7 +15,7 @@ var Steam = function(config, bots) {
     this.client.on('connected', function() {
         self.user.logOn({
             account_name: config.username.replace(/\W/g, ''),
-            password: config.password
+            password: config.password,
         });6
     });
 
@@ -33,7 +33,7 @@ var Steam = function(config, bots) {
         }
     });
 
-    this.friends.on('message', function(source, message, type, chatter) {
+    this.friends.on('message', function(source, message) {
         console.log('Received message on steam: ' + message);
         self.handle(self.friends.personaStates[source].player_name, source, message);
     });
@@ -47,7 +47,7 @@ Steam.prototype = {
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
-        };
+        }
     },
 
     say: function(to, messages) {

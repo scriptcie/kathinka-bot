@@ -10,7 +10,7 @@ describe("Properties interaction", function() {
 
     it("Is empty when nothing happened", function() {
         var getset = someProperties();
-        var response = getset.interact("", sender);
+        getset.interact("", sender);
         getset.data.should.eql({});
     });
 
@@ -26,7 +26,7 @@ describe("Properties interaction", function() {
 
     it("Handles arrays", function() {
         var getset = someProperties();
-        var response = getset.interact("Kathinka set blaat [1, 2, 3, a, b, c]", sender);
+        getset.interact("Kathinka set blaat [1, 2, 3, a, b, c]", sender);
         getset.data['blaat'].should.eql(['1', '2', '3', 'a', 'b', 'c']);
     });
 });
