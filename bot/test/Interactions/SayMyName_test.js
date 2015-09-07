@@ -8,7 +8,7 @@ describe("Say my name interaction", function() {
         var response = sayMyName.interact("Wie is kathinka?", sender);
         response.should.equal("* I AM KATHINKA-BOT *");
 
-        var response = sayMyName.interact("Wie is Kathinka-bot?", sender);
+        response = sayMyName.interact("Wie is Kathinka-bot?", sender);
         response.should.equal("* I AM KATHINKA-BOT *");
     });
 

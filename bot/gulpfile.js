@@ -1,11 +1,10 @@
 var gulp = require('gulp');
-var browserify = require('gulp-browserify');
 var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
 
 // Remove ugly stack trace (this is an ugly solution to an ugly problem)
 console.oldError = console.error;
-console.error = function (args) {
+console.error = function() {
     if (typeof arguments.stack !== 'undefined') {
         console.oldError.call(console, arguments.stack);
     } else {
@@ -19,8 +18,8 @@ gulp.task('mocha', function() {
         .pipe(mocha({
             reporter: 'spec', // list ?
             globals: {
-                should: require('should')
-            }
+                should: require('should'),
+            },
         }))
         .on('error', gutil.log);
 });
