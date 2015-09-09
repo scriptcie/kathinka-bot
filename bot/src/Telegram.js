@@ -6,8 +6,8 @@ var Telegram = function(config, bots) {
     this.api = new telegram({
         token: config.token,
         updates: {
-            enabled: true
-        }
+            enabled: true,
+        },
     });
 
     this.bots = bots;
@@ -27,7 +27,7 @@ Telegram.prototype = {
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
-        };
+        }
     },
 
     say: function(to, messages) {

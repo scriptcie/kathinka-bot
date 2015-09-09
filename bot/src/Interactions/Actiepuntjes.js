@@ -7,7 +7,7 @@ var Actiepuntjes = function(state) {
 
 Actiepuntjes.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
         var command = message.command();
         if (!command) {
             return;
@@ -33,7 +33,7 @@ Actiepuntjes.prototype = {
     displayAll: function() {
         var response = [];
         var idx = 0;
-        for(name in this.data) {
+        for(var name in this.data) {
             this.data[name].forEach(function(a) {
                 ++idx;
                 response.push(idx + ". AP " + name + " " + a);
@@ -54,7 +54,7 @@ Actiepuntjes.prototype = {
         var toInt = parseInt(ap);
 
         // Remove the ith APtje
-        if(toInt != NaN && toInt > 0) {
+        if(! isNaN(toInt) && toInt > 0) {
             return this.removeByIndex(toInt);
         }
 
@@ -62,7 +62,7 @@ Actiepuntjes.prototype = {
     },
 
     removeBySubject: function(ap) {
-        for(name in this.data){
+        for(var name in this.data){
             var idx = this.data[name].indexOf(ap);
             if (idx != -1) {
                 this.data[name].splice(idx, 1)
@@ -72,7 +72,7 @@ Actiepuntjes.prototype = {
     },
 
     removeByIndex: function(idx) {
-        for(name in this.data){
+        for(var name in this.data){
             if(idx <= this.data[name].length) {
                 this.data[name].splice(idx - 1, 1);
                 return "Goed bezig " + name;
@@ -80,7 +80,7 @@ Actiepuntjes.prototype = {
                 idx -= this.data[name].length;
             }
         }
-    }
+    },
 }
 
 module.exports = Actiepuntjes;

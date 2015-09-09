@@ -46,7 +46,7 @@ BotNet.prototype = {
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
-        };
+        }
     },
 
     say: function(to, messages) {

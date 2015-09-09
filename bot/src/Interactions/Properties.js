@@ -7,16 +7,16 @@ var Properties = function(state) {
 
 Properties.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
         var command = message.command();
         if (command !== null) {
-            return response = this.handleCommand(command, from);
+            return this.handleCommand(command);
         }
 
         return undefined;
     },
 
-    handleCommand: function(command, sender) {
+    handleCommand: function(command) {
         var match = command.match(/^set (\w+) (.+)$/);
         if (match) {
             var data = match[2];

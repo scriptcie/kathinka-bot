@@ -35,13 +35,13 @@ describe("A Kathinka bot with basic interactions", function() {
             "Mark", function(response) {
                 response.should.eql([
                     "Mark said: \"Kathinka what is the meaning of life?\"",
-                    "Mark said: \"welterusten\""
+                    "Mark said: \"welterusten\"",
                 ]);
             });
     });
 
     it("Can answer questions in different languages", function() {
-        
+
         var message = new Message(Message.Type.Null, "Kathinka does this work?", "Mark");
         kathinka.notify(
             message,

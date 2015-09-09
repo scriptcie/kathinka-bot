@@ -12,7 +12,7 @@ var KathinkaFactory = function(client) {
 
     var MessageBus = require('../MessageBus.js');
 
-    fs = require('fs');
+    var fs = require('fs');
 
     var dataStore;
     try {
@@ -22,7 +22,7 @@ var KathinkaFactory = function(client) {
             logging: {},
             properties: {},
             actiepuntjes: {},
-            language: 'english'
+            language: 'english',
         };
     }
 
