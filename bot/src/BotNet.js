@@ -13,16 +13,14 @@ var BotNet = function(irc, bots) {
         console.error('ERROR: %s: %s', message.command, message.args.join(' '));
     });
 
-    this.irc.addListener('message#script?cie', function(from, message) {
-        console.log('<%s> %s', from, message);
-    });
-
     this.irc.addListener('message', function(from, to, message) {
-        console.log('%s => %s: %s', from, to, message);
-    });
+        console.log('IRC: %s => %s: %s', from, to, message);
 
-    this.irc.addListener('message', function(from, to, message) {
-        console.log("Heuj er komt iets binnen");
+        // Private messages
+        if (to === this.irc.nick) {
+            to = from;
+        }
+
         this.handle(from, to, message);
     }.bind(this));
 
