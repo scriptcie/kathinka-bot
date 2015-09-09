@@ -14,7 +14,8 @@ var Eightball = function(state) {
             "Reply hazy try again", "Ask again later", "Better not tell you now",
             "Cannot predict now", "Concentrate and ask again", "Don't count on it",
             "My reply is no", "My sources say no", "Outlook not so good",
-            "Very doubtful"],
+            "Very doubtful",
+        ],
         'dutch': [
             "Het is zeker", "Het is beslist zo", "Zonder twijfel",
             "Zeer zeker", "Je kunt erop vertrouwen", "Volgens mij wel",
@@ -22,16 +23,15 @@ var Eightball = function(state) {
             "Reactie is wazig, probeer opnieuw", "Vraag later opnieuw", "Beter je nu niet te zeggen",
             "Niet nu te voorspellen", "Concentreer en vraag opnieuw", "Reken er niet op",
             "Mijn antwoord is nee", "Mijn bronnen zeggen nee", "Vooruitzicht is niet zo goed",
-            "Zeer twijfelachtig"
-        ]
+            "Zeer twijfelachtig",
+        ],
     };
 }
 
 Eightball.prototype = {
     interact: function(message, sender) {
-        // If the senders asks for some advice, then we give it
-        // some random advice
-        var message = Message.fromMessage(message, sender);
+        // If the senders asks for some advice, then we give it some random advice
+        message = Message.fromMessage(message, sender);
         if (message.question()) {
             // Response based on language
             var language = "english";

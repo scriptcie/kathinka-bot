@@ -7,7 +7,7 @@ describe("Meeting interaction", function() {
     var sender = "Mark";
 
     it("Can't start a meeting when the agenda is not set", function() {
-        var meeting = new Meeting({properties: {}});;
+        var meeting = new Meeting({properties: {}});
         var response = meeting.interact("Kathinka, start meeting", sender);
 
         (response === undefined).should.be.true;
@@ -86,12 +86,12 @@ describe("Meeting interaction", function() {
     it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
         var meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
         var clock = sinon.useFakeTimers();
-        var response = meeting.interact("Kathinka, start meeting", sender);
+        meeting.interact("Kathinka, start meeting", sender);
 
         // After 2 minutes nothing should happen
         clock.tick(2 * 60 * 1000);
         meeting.index.should.equal(0);
-        response = meeting.interact("say something", sender);
+        meeting.interact("say something", sender);
 
         // After 3 more minutes we should still be there because someone
         // said something 3 minutes ago
@@ -122,7 +122,7 @@ describe("Meeting interaction", function() {
         var meeting = new Meeting({properties: {'agenda': 'test'}}, bus);
 
         var message = new Message(Message.Type.IRC, "Kathinka, start meeting", sender);
-        var response = meeting.interact(message, sender);
+        meeting.interact(message, sender);
 
         clock.tick(5 * 60 * 1000);
         meeting.index.should.equal(1);

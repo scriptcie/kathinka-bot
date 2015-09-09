@@ -4,7 +4,7 @@ describe("The Actiepuntjes interaction", function() {
 
     it("Saves new actiepuntjes", function() {
         var AP = new Actiepuntjes({actiepuntjes: {}});
-        var response = AP.interact("kathinka AP plus fix actiepuntjes", "mark");
+        AP.interact("kathinka AP plus fix actiepuntjes", "mark");
         AP.data.should.eql({"plus": ["fix actiepuntjes"]});
     });
 

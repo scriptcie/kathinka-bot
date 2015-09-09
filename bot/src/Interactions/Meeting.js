@@ -13,7 +13,7 @@ var Meeting = function(state, bus) {
 
 Meeting.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
 
         var command = message.command();
         var response = undefined;
@@ -97,7 +97,7 @@ Meeting.prototype = {
                 var message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
                 this.bus.add(message);
             } else {
-                var message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
+                message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
                 this.bus.add(message);
 
                 // And restart the timeout
@@ -106,7 +106,7 @@ Meeting.prototype = {
                 setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
             }
         }
-    }
+    },
 }
 
 module.exports = Meeting

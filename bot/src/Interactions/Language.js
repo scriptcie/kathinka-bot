@@ -8,7 +8,7 @@ var Language = function(state) {
 
 Language.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
         var list = this.detector.detect(message.contents);
 
         for (var i = 0; i < list.length; i++) {

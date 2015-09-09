@@ -10,7 +10,7 @@ var Logging = function(state) {
 
 Logging.prototype = {
     interact: function(message, from) {
-        var message = Message.fromMessage(message, from);
+        message = Message.fromMessage(message, from);
         var command = message.command();
         if (command !== null) {
             var response = this.handleCommand(command, from);
@@ -58,10 +58,10 @@ Logging.prototype = {
         return undefined;
     },
 
-    logMessage: function(m, f) {
+    logMessage: function(message, from) {
         this.log.push({
-            message: m,
-            from: f
+            message: message,
+            from: from,
         });
     },
 }
