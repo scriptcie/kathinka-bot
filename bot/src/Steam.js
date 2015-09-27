@@ -6,6 +6,7 @@ var Steam = function(config, bots) {
     this.user = new SteamAPI.SteamUser(this.client);
     this.friends = new SteamAPI.SteamFriends(this.client);
 
+    this.config = config;
     this.bots = bots;
 
     this.client.connect();
@@ -13,15 +14,21 @@ var Steam = function(config, bots) {
     var self = this;
 
     this.client.on('connected', function() {
-        self.user.logOn({
-            account_name: config.username.replace(/\W/g, ''),
-            password: config.password,
-        });6
+        self.logOn();
     });
 
-    this.client.on('logOnResponse', function() {
-        console.log('Logged in on Steam');
-        self.friends.setPersonaState(SteamAPI.EPersonaState.Online);
+    this.client.on('logOnResponse', function(response) {
+        if (response.eresult == SteamAPI.EResult.OK) {
+            console.log('Logged in on Steam');
+            self.friends.setPersonaState(SteamAPI.EPersonaState.Online);
+        }
+    });
+
+    this.client.on('error', function(error) {
+        console.log('Steam error: ' + error);
+        if (!self.user.loggedOn) {
+            self.client.connect();
+        }
     });
 
     this.friends.on('personaState', function(friend) {
@@ -61,6 +68,13 @@ Steam.prototype = {
             self.friends.sendMessage(to, message, SteamAPI.EChatEntryType.ChatMsg);
             self.say(to, messages);
         }, message.length * (25 + 25 * Math.random()));
+    },
+
+    logOn: function() {
+        this.user.logOn({
+            account_name: this.config.username.replace(/\W/g, ''),
+            password: this.config.password,
+        });
     },
 };
 
