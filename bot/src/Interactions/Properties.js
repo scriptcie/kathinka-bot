@@ -17,7 +17,21 @@ Properties.prototype = {
     },
 
     handleCommand: function(command) {
-        var match = command.match(/^set (\w+) (.+)$/);
+        var properties = this.state.properties;
+
+        // Handle properties from a protected list differently
+        var protectedList = {'user': "users", 'property': "properties"};
+        var match = command.match(/^(set|get) (\w+) (.*)$/);
+        if (match && match[2] in protectedList) {
+            var name = protectedList[match[2]];
+            if (!(name in this.state)) {
+                this.state[name] = {};
+            }
+            properties = this.state[protectedList[match[2]]];
+            command = match[1] + ' ' + match[3];
+        }
+
+        match = command.match(/^set (\w+) (.+)$/);
         if (match) {
             var data = match[2];
             if (data.length > 2 &&
@@ -29,17 +43,17 @@ Properties.prototype = {
                 for (var i = 0; i < data.length; i++) {
                     newdata[i] = data[i].replace(/^\s+|\s+$/g, '');
                 }
-                this.data[match[1]] = newdata;
+                properties[match[1]] = newdata;
             } else {
-                this.data[match[1]] = match[2];
+                properties[match[1]] = match[2];
             }
-            return '' + match[1] + ' = ' + this.data[match[1]];
+            return '' + match[1] + ' = ' + properties[match[1]];
         }
 
         match = command.match(/^get (.*)$/);
         if (match) {
-            if (match[1] in this.data) {
-                return this.data[match[1]];
+            if (match[1] in properties) {
+                return properties[match[1]];
             }
         }
 
