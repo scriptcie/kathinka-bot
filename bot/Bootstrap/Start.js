@@ -4,13 +4,15 @@ var BotNet = require('../src/BotNet.js');
 var irc = require('irc');
 var Telegram = require('../src/Telegram.js');
 var Steam = require('../src/Steam.js');
-
 var Message = require('../src/Message.js');
 
-var username = process.argv[2] || "Kathinka-Bot-test";
-var password = process.argv[3] || "";
-var token = process.argv[4] || "";
+var nconf = require('nconf');
+nconf.argv()
+   .env()
+   .file({ file: __dirname + '/../config.json' });
 
+var username = nconf.get('irc_username');
+var password = nconf.get('irc_password');
 var client = new irc.Client('irc.freenode.net', username, {
     debug: true,
     showErrors: true,
@@ -27,8 +29,13 @@ var kathinka = buildKathinka(client);
 var botNet = new BotNet(client, [kathinka]);
 kathinka.bus.addInterface(Message.Type.IRC, botNet);
 
-var telegram = new Telegram({token: token}, [kathinka]);
+var telegram = new Telegram({
+    token: nconf.get('telegram_token')
+}, [kathinka]);
 kathinka.bus.addInterface(Message.Type.Telegram, telegram);
 
-var steam = new Steam({username: username, password: password}, [kathinka]);
+var steam = new Steam({
+    username: nconf.get('steam_username'),
+    password: nconf.get('steam_password')
+}, [kathinka]);
 kathinka.bus.addInterface(Message.Type.Steam, steam);
