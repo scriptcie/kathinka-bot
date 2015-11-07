@@ -10,6 +10,7 @@ var nconf = require('nconf');
 nconf.argv()
    .env()
    .file({ file: __dirname + '/../config.json' });
+var kathinka = buildKathinka();
 
 var username = nconf.get('irc_username');
 var password = nconf.get('irc_password');
@@ -21,8 +22,6 @@ var client = new irc.Client('irc.freenode.net', username, {
     channels: ['#script?cie'],
     password: password,
 });
-
-var kathinka = buildKathinka(client);
 
 // Adding some circular references in the bus to itself, so this probably
 // causes memory leaks or something

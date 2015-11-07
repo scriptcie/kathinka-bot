@@ -76,6 +76,10 @@ Steam.prototype = {
             password: this.config.password,
         });
     },
+
+    quit: function() {
+        this.client.disconnect();
+    },
 };
 
 module.exports = Steam;

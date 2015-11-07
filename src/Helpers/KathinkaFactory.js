@@ -1,4 +1,4 @@
-var KathinkaFactory = function(client) {
+var KathinkaFactory = function() {
     var Kathinka = require('../Kathinka.js');
     var Eightball = require('../Interactions/Eightball.js');
     var Goodbye = require('../Interactions/Goodbye.js');
@@ -48,7 +48,7 @@ var KathinkaFactory = function(client) {
         new Issues(github, bus),
         new Actiepuntjes(dataStore),
 
-        new Quit(client),
+        new Quit(bus),
     ], bus);
 
     return kathinka;

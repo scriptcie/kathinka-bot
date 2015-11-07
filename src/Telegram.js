@@ -45,6 +45,9 @@ Telegram.prototype = {
             self.say(to, messages);
         }, message.length * (25 + 25 * Math.random()));
     },
+
+    quit: function() {
+    },
 };
 
 module.exports = Telegram;
