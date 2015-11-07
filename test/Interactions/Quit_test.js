@@ -5,11 +5,9 @@ describe("Quit interaction", function() {
     var sender = "Mark";
 
     it("Stops running when asked to stop", sinon.test(function() {
-        var client = { disconnect: function(message, callback) {
-            callback();
-        }};
+        var bus = { quit: function() {}};
 
-        var quit = new Quit(client);
+        var quit = new Quit(bus);
         var clock = sinon.useFakeTimers();
 
         // We want to check if Kathinka exits herself.

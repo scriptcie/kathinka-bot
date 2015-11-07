@@ -58,6 +58,10 @@ BotNet.prototype = {
             self.say(to, messages);
         }, message.length * (25 + 25 * Math.random()));
     },
+
+    quit: function() {
+        this.irc.disconnect("Is goed, doei!");
+    },
 };
 
 module.exports = BotNet;

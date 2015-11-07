@@ -43,6 +43,16 @@ MessageBus.prototype.handle = function() {
     this.locked = false;
 }
 
+MessageBus.prototype.quit = function(callback) {
+    for (var iface in this.interfaces) {
+        this.interfaces[iface].quit();
+    }
+    this.interfaces = {};
+    if (callback !== undefined) {
+        callback();
+    }
+}
+
 MessageBus.prototype.addInterface = function(type, iface) {
     this.interfaces[type] = iface;
 }
