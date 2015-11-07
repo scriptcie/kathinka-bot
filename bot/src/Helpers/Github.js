@@ -9,25 +9,51 @@ var Github = function() {
     this.repo = "kathinka-bot";
 };
 
+/**
+ * Converts a http response from the github api to an issue object
+ * @param  result
+ * @return issue object
+ */
+var convertToIssue = function(issue) {
+    return {
+        title:    issue.title,
+        number:   issue.number,
+        state:    issue.state,
+        body:     issue.body,
+        assignee: issue.assignee,
+    }
+}
+
 Github.prototype = {
     // Show all issues from the
     issues: function(callback) {
         return this.github.issues.repoIssues(
              {
-                user: this.user,
-                repo: this.repo,
-                sort: "updated",
-                direction: "asc",
+                user:       this.user,
+                repo:       this.repo,
+                sort:       "updated",
+                direction:  "asc",
             },
-            function(err, res) {
-                callback(res.map(function(issue) {
-                    return {
-                        title:    issue.title,
-                        number:   issue.number,
-                        state:    issue.state,
-                        body:     issue.body,
-                        assignee: issue.assignee,
-                    }
+            function(errro, response) {
+                callback(response.map(function(issue) {
+                    return convertToIssue(issue);
+                }));
+           }
+        );
+    },
+
+    issuesAssignedFor: function(username, callback) {
+        return this.github.issues.repoIssues(
+             {
+                user:       this.user,
+                repo:       this.repo,
+                sort:       "updated",
+                direction:  "asc",
+                assignee:   username,
+            },
+            function(error, response) {
+                callback(response.map(function(issue) {
+                    return convertToIssue(issue);
                 }));
            }
         );

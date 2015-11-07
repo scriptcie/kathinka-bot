@@ -24,6 +24,15 @@ Issues.prototype = {
         if (AskForIssues.indexOf(command) >= 0) {
             this.api.issues(this.showIssues.bind(this));
         }
+
+        var match = command.match(/^wat heeft (\w+) jou aangedaan\?$/);
+        if (match !== null && match.length > 0) {
+            var username = match[1];
+            this.api.issuesAssignedFor(
+                username,
+                this.showIssues.bind(this)
+            );
+        }
     },
 
     showIssues: function(issues) {
