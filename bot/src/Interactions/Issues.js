@@ -1,5 +1,13 @@
 var Message = require('../Message.js');
 
+var AskForIssues = [
+    'show issues',
+    'waarom kijk je zo sip?',
+    'wat is er aan de hand?',
+    'hoe voel je je?',
+    'waarom ben je zo stil?',
+];
+
 var Issues = function(api, bus) {
     this.api = api;
     this.bus = bus;
@@ -13,7 +21,7 @@ Issues.prototype = {
             return;
         }
 
-        if (command === 'show issues') {
+        if (AskForIssues.indexOf(command) >= 0) {
             this.api.issues(this.showIssues.bind(this));
         }
     },
