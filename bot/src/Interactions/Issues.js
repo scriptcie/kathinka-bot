@@ -21,6 +21,9 @@ Issues.prototype = {
             return;
         }
 
+        // Save the current protocol type and to
+        this.protocol = message;
+
         if (AskForIssues.indexOf(command) >= 0) {
             this.api.issues(this.showIssues.bind(this));
         }
@@ -33,6 +36,8 @@ Issues.prototype = {
                 this.showIssues.bind(this)
             );
         }
+
+        return "Laat me even nadenken";
     },
 
     showIssues: function(issues) {
@@ -44,7 +49,8 @@ Issues.prototype = {
     },
 
     formatIssueMessage: function(issue) {
-        return "Issue: #" + issue.number + ': ' + issue.title;
+        var message = "Issue: #" + issue.number + ': ' + issue.title;
+        return new Message(this.protocol.type, message, this.protocol.to);
     },
 }
 
