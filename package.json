@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:scriptcie/kathinka-bot.git"
+    "url": "git@github.com:scriptcie/kathinka-bot.git"
   },
   "devDependencies": {
     "gulp": "~3.9",
