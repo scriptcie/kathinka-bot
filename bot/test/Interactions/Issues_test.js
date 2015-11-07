@@ -33,4 +33,28 @@ describe("Github integration with kathinka", function() {
             bus.add.calledWith('Issue: #1: Mijn issue').should.be.true;
         });
     });
+
+
+    it("Shows a list of someone's open issues", function() {
+        var username = "MarkRedeman";
+
+        var bus = { add: sinon.spy() }
+        var api = {
+            issuesAssignedFor: function(username, callback) {
+                callback([
+                    {
+                        title:    "Issue voor mark",
+                        number:   1,
+                        state:    "open",
+                        body:     null,
+                        assignee: username,
+                    },
+                ])
+            },
+        }
+
+        var issues = new Issues(api, bus);
+        issues.interact("Kathinka wat heeft " + username + " jou aangedaan?");
+        bus.add.calledWith('Issue: #1: Issue voor mark').should.be.true;
+    });
 });

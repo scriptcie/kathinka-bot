@@ -9,6 +9,16 @@ describe("Github API", function() {
 
         api.issues(function(issues) {
             issues.should.be.instanceof(Array);
+                    });
+    });
+
+    it("It gets a list of issues from github assigned by username", function() {
+        var api = new API;
+
+        api.issuesAssignedFor("MarkRedeman", function(issues) {
+            issues.should.be.instanceof(Array);
+            issues[0].assignee.login.should.be.equal("MarkRedeman");
         });
     });
+
 });
