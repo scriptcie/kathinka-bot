@@ -1,4 +1,5 @@
 var Issues = require ('../../src/Interactions/Issues.js');
+var Message = require('../../src/Message.js');
 var sinon = require('sinon');
 
 describe("Github integration with kathinka", function() {
@@ -30,7 +31,9 @@ describe("Github integration with kathinka", function() {
 
             var issues = new Issues(api, bus);
             issues.interact("Kathinka " + message, "Mark");
-            bus.add.calledWith('Issue: #1: Mijn issue').should.be.true;
+            bus.add.calledWith(
+                Message.fromMessage("Issue: #1: Mijn issue", "Mark")
+            ).should.be.true;
         });
     });
 
@@ -55,6 +58,8 @@ describe("Github integration with kathinka", function() {
 
         var issues = new Issues(api, bus);
         issues.interact("Kathinka wat heeft " + username + " jou aangedaan?");
-        bus.add.calledWith('Issue: #1: Issue voor mark').should.be.true;
+        bus.add.calledWith(
+            Message.fromMessage("Issue: #1: Issue voor mark")
+        ).should.be.true;
     });
 });

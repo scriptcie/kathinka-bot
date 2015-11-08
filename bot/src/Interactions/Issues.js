@@ -26,6 +26,7 @@ Issues.prototype = {
 
         if (AskForIssues.indexOf(command) >= 0) {
             this.api.issues(this.showIssues.bind(this));
+            return "Laat me even nadenken";
         }
 
         var match = command.match(/^wat heeft (\w+) jou aangedaan\?$/);
@@ -35,9 +36,8 @@ Issues.prototype = {
                 username,
                 this.showIssues.bind(this)
             );
+            return "Laat me even nadenken";
         }
-
-        return "Laat me even nadenken";
     },
 
     showIssues: function(issues) {
