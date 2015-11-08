@@ -1,4 +1,4 @@
-var Message = require('../Message.js');
+var Message = require('./../Message.js');
 
 var AskForIssues = [
     'show issues',
