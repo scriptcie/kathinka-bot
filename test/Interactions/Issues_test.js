@@ -1,5 +1,5 @@
-var Issues = require ('../../src/Interactions/Issues.js');
-var Message = require('../../src/Message.js');
+var Issues = require('./../../src/Interactions/Issues.js');
+var Message = require('./../../src/Message.js');
 var sinon = require('sinon');
 
 describe("Github integration with kathinka", function() {
