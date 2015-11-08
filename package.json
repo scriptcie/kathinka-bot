@@ -23,6 +23,6 @@
     "telegram-bot-api": ">=0.3.2"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "gulp mocha"
   }
 }
