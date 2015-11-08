@@ -6,11 +6,14 @@ var KathinkaFactory = function(client) {
     var SayMyName = require('../Interactions/SayMyName.js');
     var Properties = require('../Interactions/Properties.js');
     var Actiepuntjes = require('../Interactions/Actiepuntjes.js');
+    var Issues = require('../Interactions/Issues.js');
     var Meeting = require('../Interactions/Meeting.js');
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
 
     var MessageBus = require('../MessageBus.js');
+    var Github = require("./Github");
+
 
     var fs = require('fs');
 
@@ -31,6 +34,7 @@ var KathinkaFactory = function(client) {
     }, 60000);
 
     var bus = new MessageBus({});
+    var github = new Github;
 
     var kathinka = new Kathinka([
         new SayMyName,
@@ -41,6 +45,7 @@ var KathinkaFactory = function(client) {
         new Logging(dataStore),
         new Properties(dataStore),
         new Meeting(dataStore, bus),
+        new Issues(github, bus),
         new Actiepuntjes(dataStore),
 
         new Quit(client),
