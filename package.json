@@ -24,6 +24,6 @@
     "telegram-bot-api": ">=0.3.2"
   },
   "scripts": {
-    "test": "gulp mocha"
+    "test": "mocha --recursive"
   }
 }
