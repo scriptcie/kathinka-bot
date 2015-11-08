@@ -21,5 +21,8 @@
     "nconf": "^0.8.2",
     "steam": "~1.1.0",
     "telegram-bot-api": ">=0.3.2"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
   }
 }
