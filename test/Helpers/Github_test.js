@@ -1,4 +1,4 @@
-var API = require('./../../src/Helpers/Github');
+import API from './../../src/Helpers/Github';
 
 
 describe("Github API", function() {

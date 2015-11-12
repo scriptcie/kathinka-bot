@@ -1,5 +1,5 @@
 var Goodbye = function() {}
-var Message = require('../Message.js');
+import Message from '../Message.js';
 
 Goodbye.prototype = {
     interact: function(message, from) {

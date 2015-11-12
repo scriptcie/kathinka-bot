@@ -1,5 +1,5 @@
-var Language = require ('../../src/Interactions/Language.js');
-var Message = require ('../../src/Message.js');
+import Language from '../../src/Interactions/Language.js';
+import Message from '../../src/Message.js';
 
 function someDetector() {
     // a helper for if we want to provide a log repository for the logger

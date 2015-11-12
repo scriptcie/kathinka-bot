@@ -1,4 +1,4 @@
-var Logging = require ('../../src/Interactions/Logging.js');
+import Logging from '../../src/Interactions/Logging.js';
 
 function someLogger() {
     // a helper for if we want to provide a log repository for the logger

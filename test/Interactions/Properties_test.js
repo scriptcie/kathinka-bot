@@ -1,4 +1,4 @@
-var Properties = require ('../../src/Interactions/Properties.js');
+import Properties from '../../src/Interactions/Properties.js';
 
 function someProperties() {
     var state = {properties: {}};

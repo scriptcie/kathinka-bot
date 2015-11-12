@@ -1,4 +1,4 @@
-var Eightball = require ('../../src/Interactions/Eightball.js');
+import Eightball from '../../src/Interactions/Eightball.js';
 
 describe("The eightball interaction", function() {
 

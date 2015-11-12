@@ -1,7 +1,7 @@
-var Meeting = require ('../../src/Interactions/Meeting.js');
-var Message = require('../../src/Message.js');
-var MessageBus = require('../../src/MessageBus.js');
-var sinon = require('sinon');
+import Meeting from '../../src/Interactions/Meeting.js';
+import Message from '../../src/Message.js';
+import MessageBus from '../../src/MessageBus.js';
+import sinon from 'sinon';
 
 describe("Meeting interaction", function() {
     var sender = "Mark";

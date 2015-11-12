@@ -1,4 +1,4 @@
-var Message = require('../Message.js');
+import Message from '../Message.js';
 
 var Meeting = function(state, bus) {
     this.state = state

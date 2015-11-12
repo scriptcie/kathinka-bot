@@ -1,7 +1,7 @@
 // The eighball returns a random message for messages for
 // which the isAQuestion function returns true
 
-var Message = require('../Message.js');
+import Message from '../Message.js';
 
 var Eightball = function(state) {
     this.state = state;

@@ -1,7 +1,7 @@
 // This is the network that is responsible for maintaining all bots
 // it initiates new bots, sends messages and commands to each bot
 // and sends their responses to irc.
-var Message = require('./Message.js');
+import Message from './Message.js';
 
 var BotNet = function(irc, bots) {
     this.irc = irc;

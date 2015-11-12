@@ -1,4 +1,5 @@
-var SayMyName = require ('../../src/Interactions/SayMyName.js');
+import SayMyName from '../../src/Interactions/SayMyName.js';
+import should from 'should';
 
 describe("Say my name interaction", function() {
     var sayMyName = new SayMyName;

@@ -1,5 +1,5 @@
-var languagedetect = require('languagedetect');
-var Message = require('../Message.js');
+import languagedetect from 'languagedetect';
+import Message from '../Message.js';
 
 var Language = function(state) {
     this.state = state;

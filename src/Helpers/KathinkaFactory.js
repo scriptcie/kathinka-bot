@@ -1,21 +1,23 @@
+import SayMyName from '../Interactions/SayMyName.js';
+
+import Kathinka from '../Kathinka.js';
+import Eightball from '../Interactions/Eightball.js';
+import Goodbye from '../Interactions/Goodbye.js';
+import Logging from '../Interactions/Logging.js';
+import Properties from '../Interactions/Properties.js';
+import Actiepuntjes from '../Interactions/Actiepuntjes.js';
+import Issues from '../Interactions/Issues.js';
+import Meeting from '../Interactions/Meeting.js';
+import Language from '../Interactions/Language.js';
+import Quit from '../Interactions/Quit.js';
+
+import MessageBus from '../MessageBus.js';
+import fs from 'fs';
+import Github from './Github';
+
 var KathinkaFactory = function(client) {
-    var Kathinka = require('../Kathinka.js');
-    var Eightball = require('../Interactions/Eightball.js');
-    var Goodbye = require('../Interactions/Goodbye.js');
-    var Logging = require('../Interactions/Logging.js');
-    var SayMyName = require('../Interactions/SayMyName.js');
-    var Properties = require('../Interactions/Properties.js');
-    var Actiepuntjes = require('../Interactions/Actiepuntjes.js');
-    var Issues = require('../Interactions/Issues.js');
-    var Meeting = require('../Interactions/Meeting.js');
-    var Language = require('../Interactions/Language.js');
-    var Quit = require('../Interactions/Quit.js');
-
-    var MessageBus = require('../MessageBus.js');
-    var Github = require("./Github");
 
 
-    var fs = require('fs');
 
     var dataStore;
     try {

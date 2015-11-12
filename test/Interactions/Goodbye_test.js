@@ -1,5 +1,5 @@
-var Goodbye = require ('../../src/Interactions/Goodbye.js');
-var Message = require ('../../src/Message.js');
+import Goodbye from '../../src/Interactions/Goodbye.js';
+import Message from '../../src/Message.js';
 
 describe("The goodbye interaction", function() {
     var goodbye = new Goodbye;

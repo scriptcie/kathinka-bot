@@ -1,4 +1,4 @@
-var Kathinka = require ('../src/Kathinka.js');
+import Kathinka from '../src/Kathinka.js';
 
 describe("Kathinka", function() {
 

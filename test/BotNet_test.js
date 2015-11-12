@@ -1,6 +1,6 @@
-var BotNet = require ('../src/BotNet.js');
-var Kathinka = require ('../src/Kathinka.js');
-var should = require('should');
+import BotNet from '../src/BotNet.js';
+import Kathinka from '../src/Kathinka.js';
+import should from 'should';
 
 describe("A BotNet", function() {
     it("Connects to a client", function() {

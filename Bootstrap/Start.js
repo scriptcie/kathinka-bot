@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-var buildKathinka = require('../src/Helpers/KathinkaFactory');
-var BotNet = require('../src/BotNet.js');
-var irc = require('irc');
-var Telegram = require('../src/Telegram.js');
-var Steam = require('../src/Steam.js');
-var Message = require('../src/Message.js');
+import buildKathinka from '../src/Helpers/KathinkaFactory';
+import BotNet from '../src/BotNet.js';
+import irc from 'irc';
+import Telegram from '../src/Telegram.js';
+import Steam from '../src/Steam.js';
+import Message from '../src/Message.js';
+import nconf from 'nconf';
 
-var nconf = require('nconf');
 nconf.argv()
    .env()
    .file({ file: __dirname + '/../config.json' });

@@ -1,5 +1,5 @@
-var SteamAPI = require('steam');
-var Message = require('./Message.js');
+import SteamAPI from 'steam';
+import Message from './Message.js';
 
 var Steam = function(config, bots) {
     this.client = new SteamAPI.SteamClient();

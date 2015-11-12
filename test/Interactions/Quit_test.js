@@ -1,5 +1,5 @@
-var Quit = require ('../../src/Interactions/Quit.js');
-var sinon = require('sinon');
+import Quit from '../../src/Interactions/Quit.js';
+import sinon from 'sinon';
 
 describe("Quit interaction", function() {
     var sender = "Mark";

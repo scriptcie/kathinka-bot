@@ -1,4 +1,4 @@
-var Actiepuntjes = require ('../../src/Interactions/Actiepuntjes.js');
+import Actiepuntjes from '../../src/Interactions/Actiepuntjes.js';
 
 describe("The Actiepuntjes interaction", function() {
 

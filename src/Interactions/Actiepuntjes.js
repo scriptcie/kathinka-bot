@@ -1,4 +1,4 @@
-var Message = require('../Message.js');
+import Message from '../Message.js';
 
 var Actiepuntjes = function(state) {
     this.state = state

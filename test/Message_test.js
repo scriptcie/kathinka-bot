@@ -1,4 +1,4 @@
-var Message = require ('../src/Message.js');
+import Message from '../src/Message.js';
 
 describe("Message", function() {
     var prefixes = [

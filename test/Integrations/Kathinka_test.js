@@ -1,5 +1,5 @@
-var buildKathinka = require('../../src/Helpers/KathinkaFactory');
-var Message = require('../../src/Message.js');
+import buildKathinka from '../../src/Helpers/KathinkaFactory';
+import Message from '../../src/Message.js';
 
 describe("A Kathinka bot with basic interactions", function() {
 

@@ -1,6 +1,6 @@
-var telegram = require('telegram-bot-api');
-var util = require('util');
-var Message = require('./Message.js');
+import telegram from 'telegram-bot-api';
+import util from 'util';
+import Message from './Message.js';
 
 var Telegram = function(config, bots) {
     this.api = new telegram({
