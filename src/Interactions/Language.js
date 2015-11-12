@@ -1,13 +1,13 @@
 import languagedetect from 'languagedetect';
 import Message from '../Message.js';
 
-var Language = function(state) {
-    this.state = state;
-    this.detector = new languagedetect();
-}
+export default class Language {
+    constructor(state) {
+        this.state = state;
+        this.detector = new languagedetect();
+    }
 
-Language.prototype = {
-    interact: function(message, from) {
+    interact(message, from) {
         message = Message.fromMessage(message, from);
         var list = this.detector.detect(message.contents);
 
@@ -19,7 +19,5 @@ Language.prototype = {
         }
 
         return undefined;
-    },
+    }
 }
-
-module.exports = Language;

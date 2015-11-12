@@ -1,12 +1,12 @@
 import Message from '../Message.js';
 
-var Properties = function(state) {
-    this.state = state;
-    this.data = state.properties;
-}
+export default class Properties {
+    constructor(state) {
+        this.state = state;
+        this.data = state.properties;
+    }
 
-Properties.prototype = {
-    interact: function(message, from) {
+    interact(message, from) {
         message = Message.fromMessage(message, from);
         var command = message.command();
         if (command !== null) {
@@ -14,9 +14,9 @@ Properties.prototype = {
         }
 
         return undefined;
-    },
+    }
 
-    handleCommand: function(command) {
+    handleCommand(command) {
         var properties = this.state.properties;
 
         // Handle properties from a protected list differently
@@ -58,7 +58,5 @@ Properties.prototype = {
         }
 
         return undefined;
-    },
+    }
 }
-
-module.exports = Properties

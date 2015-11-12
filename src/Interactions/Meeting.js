@@ -1,18 +1,18 @@
 import Message from '../Message.js';
 
-var Meeting = function(state, bus) {
-    this.state = state
-    this.data = state.properties;
-    this.started = false;
-    this.index = 0;
-    this.agenda = [];
-    this.lastActivity = 0;
-    this.bus = bus;
-    this.protocol = '';
-}
+export default class Meeting {
+    constructor(state, bus) {
+        this.state = state
+        this.data = state.properties;
+        this.started = false;
+        this.index = 0;
+        this.agenda = [];
+        this.lastActivity = 0;
+        this.bus = bus;
+        this.protocol = '';
+    }
 
-Meeting.prototype = {
-    interact: function(message, from) {
+    interact(message, from) {
         message = Message.fromMessage(message, from);
 
         var command = message.command();
@@ -28,9 +28,9 @@ Meeting.prototype = {
         }
 
         return response;
-    },
+    }
 
-    handleCommand: function(command, sender, protocol) {
+    handleCommand(command, sender, protocol) {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
@@ -56,9 +56,9 @@ Meeting.prototype = {
             return this.agenda;
         }
         return undefined;
-    },
+    }
 
-    setAgenda: function() {
+    setAgenda() {
         if ('agenda' in this.data) {
             this.agenda = ['1. Opening', '2. Vaststellen agenda'];
             var agendaData = this.data['agenda'];
@@ -74,9 +74,9 @@ Meeting.prototype = {
                        (index++) + '. Sluiting'];
             this.agenda.push.apply(this.agenda, end);
         }
-    },
+    }
 
-    goNext: function(force) {
+    goNext(force) {
         var time = (new Date()).getTime() / 1000;
         if (!this.started) {
             return;
@@ -106,7 +106,5 @@ Meeting.prototype = {
                 setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
             }
         }
-    },
+    }
 }
-
-module.exports = Meeting

@@ -1,15 +1,13 @@
 import Message from '../Message.js';
 
-var Logging = function(state) {
-    this.state = state;
-    this.shouldLog = false;
-    this.log = [];
+export default class Logging {
+    constructor(state) {
+        this.state = state;
+        this.shouldLog = false;
+        this.log = [];
+    }
 
-    // todo add some logStorage property
-}
-
-Logging.prototype = {
-    interact: function(message, from) {
+    interact(message, from) {
         message = Message.fromMessage(message, from);
         var command = message.command();
         if (command !== null) {
@@ -24,9 +22,9 @@ Logging.prototype = {
         }
 
         return undefined;
-    },
+    }
 
-    handleCommand: function(command, sender) {
+    handleCommand(command, sender) {
         var shouldStart = /^start logging$/;
         if (shouldStart.test(command)) {
             if (this.shouldLog === false) {
@@ -56,14 +54,12 @@ Logging.prototype = {
         }
 
         return undefined;
-    },
+    }
 
-    logMessage: function(message, from) {
+    logMessage(message, from) {
         this.log.push({
             message: message,
             from: from,
         });
-    },
+    }
 }
-
-module.exports = Logging;

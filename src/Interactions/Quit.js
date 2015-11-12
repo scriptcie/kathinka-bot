@@ -1,12 +1,11 @@
 import Message from '../Message.js';
 
-var Quit = function(client) {
-    // Meh lelijk, maar werkt voorlopig
-    this.client = client;
-}
+export default class Quit {
+    constructor(client) {
+        this.client = client;
+    }
 
-Quit.prototype = {
-    interact: function(message, from) {
+    interact(message, from) {
         message = Message.fromMessage(message, from);
         var command = message.command();
         if (command && /^af!?$/.test(command)) {
@@ -17,7 +16,5 @@ Quit.prototype = {
             });
         }
         return undefined;
-    },
+    }
 }
-
-module.exports = Quit;

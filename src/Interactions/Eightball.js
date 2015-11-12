@@ -3,33 +3,33 @@
 
 import Message from '../Message.js';
 
-var Eightball = function(state) {
-    this.state = state;
+export default class Eightball {
+    constructor(state) {
+        this.state = state;
 
-    this.eightball = {
-        'english': [
-            "It is certain", "It is decidedly so", "Without a doubt",
-            "Yes definitely", "You may rely on it", "As I see it, yes",
-            "Most likely", "Outlook good", "Yes", "Signs point to yes",
-            "Reply hazy try again", "Ask again later", "Better not tell you now",
-            "Cannot predict now", "Concentrate and ask again", "Don't count on it",
-            "My reply is no", "My sources say no", "Outlook not so good",
-            "Very doubtful",
-        ],
-        'dutch': [
-            "Het is zeker", "Het is beslist zo", "Zonder twijfel",
-            "Zeer zeker", "Je kunt erop vertrouwen", "Volgens mij wel",
-            "Zeer waarschijnlijk", "Goed vooruitzicht", "Ja", "Tekenen wijzen op ja",
-            "Reactie is wazig, probeer opnieuw", "Vraag later opnieuw", "Beter je nu niet te zeggen",
-            "Niet nu te voorspellen", "Concentreer en vraag opnieuw", "Reken er niet op",
-            "Mijn antwoord is nee", "Mijn bronnen zeggen nee", "Vooruitzicht is niet zo goed",
-            "Zeer twijfelachtig",
-        ],
-    };
-}
+        this.eightball = {
+            'english': [
+                "It is certain", "It is decidedly so", "Without a doubt",
+                "Yes definitely", "You may rely on it", "As I see it, yes",
+                "Most likely", "Outlook good", "Yes", "Signs point to yes",
+                "Reply hazy try again", "Ask again later", "Better not tell you now",
+                "Cannot predict now", "Concentrate and ask again", "Don't count on it",
+                "My reply is no", "My sources say no", "Outlook not so good",
+                "Very doubtful",
+            ],
+            'dutch': [
+                "Het is zeker", "Het is beslist zo", "Zonder twijfel",
+                "Zeer zeker", "Je kunt erop vertrouwen", "Volgens mij wel",
+                "Zeer waarschijnlijk", "Goed vooruitzicht", "Ja", "Tekenen wijzen op ja",
+                "Reactie is wazig, probeer opnieuw", "Vraag later opnieuw", "Beter je nu niet te zeggen",
+                "Niet nu te voorspellen", "Concentreer en vraag opnieuw", "Reken er niet op",
+                "Mijn antwoord is nee", "Mijn bronnen zeggen nee", "Vooruitzicht is niet zo goed",
+                "Zeer twijfelachtig",
+            ],
+        };
+    }
 
-Eightball.prototype = {
-    interact: function(message, sender) {
+    interact(message, sender) {
         // If the senders asks for some advice, then we give it some random advice
         message = Message.fromMessage(message, sender);
         if (message.question()) {
@@ -50,7 +50,5 @@ Eightball.prototype = {
         }
 
         return undefined;
-    },
-};
-
-module.exports = Eightball;
+    }
+}

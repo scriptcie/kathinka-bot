@@ -1,12 +1,12 @@
 import Message from '../Message.js';
 
-var Actiepuntjes = function(state) {
-    this.state = state
-    this.data = state.actiepuntjes;
-}
+export default class Actiepuntjes {
+    constructor(state) {
+        this.state = state
+        this.data = state.actiepuntjes;
+    }
 
-Actiepuntjes.prototype = {
-    interact: function(message, from) {
+  interact(message, from) {
         message = Message.fromMessage(message, from);
         var command = message.command();
         if (!command) {
@@ -28,9 +28,9 @@ Actiepuntjes.prototype = {
                 return this.save(matched[2], matched[3].trim())
             }
         }
-    },
+    }
 
-    displayAll: function() {
+    displayAll() {
         var response = [];
         var idx = 0;
         for(var name in this.data) {
@@ -40,17 +40,17 @@ Actiepuntjes.prototype = {
             });
         }
         return response;
-    },
+    }
 
-    save: function(name, ap) {
+    save(name, ap) {
         if (this.data[name] === undefined) {
             this.data[name] = [ap];
             return;
         }
         this.data[name].push(ap);
-    },
+    }
 
-    remove: function(ap) {
+    remove(ap) {
         var toInt = parseInt(ap);
 
         // Remove the ith APtje
@@ -59,9 +59,9 @@ Actiepuntjes.prototype = {
         }
 
         return this.removeBySubject(ap);
-    },
+    }
 
-    removeBySubject: function(ap) {
+    removeBySubject(ap) {
         for(var name in this.data){
             var idx = this.data[name].indexOf(ap);
             if (idx != -1) {
@@ -69,9 +69,9 @@ Actiepuntjes.prototype = {
                 return "Goed bezig " + name;
             }
         }
-    },
+    }
 
-    removeByIndex: function(idx) {
+    removeByIndex(idx) {
         for(var name in this.data){
             if(idx <= this.data[name].length) {
                 this.data[name].splice(idx - 1, 1);
@@ -80,7 +80,5 @@ Actiepuntjes.prototype = {
                 idx -= this.data[name].length;
             }
         }
-    },
+    }
 }
-
-module.exports = Actiepuntjes;
