@@ -1,4 +1,5 @@
 {
+    "extends": "eslint-config-es2015-react/base",
     "parser": "espree",
     "ecmaFeatures": {},
     "env": {
