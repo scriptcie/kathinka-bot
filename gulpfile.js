@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
+var babel = require('babel-core/register');
 
 // Remove ugly stack trace (this is an ugly solution to an ugly problem)
 console.oldError = console.error;
@@ -16,6 +17,9 @@ console.error = function() {
 gulp.task('mocha', function() {
     return gulp.src(['test/**/*.js'], { read: false })
         .pipe(mocha({
+            compilers: {
+                js: babel
+            },
             reporter: 'spec', // list ?
             globals: {
                 should: require('should'),
