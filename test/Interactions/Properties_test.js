@@ -29,7 +29,7 @@ describe("Properties interaction", function() {
         getset.interact("Kathinka set blaat [1, 2, 3, a, b, c]", sender);
         getset.data['blaat'].should.eql(['1', '2', '3', 'a', 'b', 'c']);
 
-        response = getset.interact("Kathinka get blaat", sender);
+        var response = getset.interact("Kathinka get blaat", sender);
         response.should.eql(['1', '2', '3', 'a', 'b', 'c']);
     });
 });
