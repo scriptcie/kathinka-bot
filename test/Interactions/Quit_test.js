@@ -2,20 +2,20 @@ import Quit from '../../src/Interactions/Quit.js';
 import sinon from 'sinon';
 
 describe("Quit interaction", function() {
-    var sender = "Mark";
+    let sender = "Mark";
 
     it("Stops running when asked to stop", sinon.test(function() {
-        var client = { disconnect: function(message, callback) {
+        let client = { disconnect: function(message, callback) {
             callback();
         }};
 
-        var quit = new Quit(client);
-        var clock = sinon.useFakeTimers();
+        let quit = new Quit(client);
+        let clock = sinon.useFakeTimers();
 
         // We want to check if Kathinka exits herself.
-        var subbedProcess = this.stub(process, 'exit').returns(undefined);
+        let subbedProcess = this.stub(process, 'exit').returns(undefined);
 
-        var response = quit.interact("Kathinka af!", sender);
+        let response = quit.interact("Kathinka af!", sender);
         (response === undefined).should.be.true;
 
         // The process should quit after some seconds such that we have time to tell
@@ -27,8 +27,8 @@ describe("Quit interaction", function() {
     }));
 
     it("Does not respond when not asked to stop", function() {
-        var quit = new Quit;
-        var response = quit.interact("Een bericht", sender);
+        let quit = new Quit;
+        let response = quit.interact("Een bericht", sender);
         (response === undefined).should.be.true;
     });
 });

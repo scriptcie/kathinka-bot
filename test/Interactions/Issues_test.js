@@ -5,7 +5,7 @@ import sinon from 'sinon';
 describe("Github integration with kathinka", function() {
 
     it("Shows a list of open issues", function() {
-        var messages = [
+        let messages = [
             'show issues',
             'waarom kijk je zo sip?',
             'wat is er aan de hand?',
@@ -14,8 +14,8 @@ describe("Github integration with kathinka", function() {
         ];
 
         messages.forEach(function(message) {
-            var bus = { add: sinon.spy() }
-            var api = {
+            let bus = { add: sinon.spy() }
+            let api = {
                 issues: function(callback) {
                     callback([
                         {
@@ -29,7 +29,7 @@ describe("Github integration with kathinka", function() {
                 },
             }
 
-            var issues = new Issues(api, bus);
+            let issues = new Issues(api, bus);
             issues.interact("Kathinka " + message, "Mark");
             bus.add.calledWith(
                 Message.fromMessage("Issue: #1: Mijn issue", "Mark")
@@ -39,10 +39,10 @@ describe("Github integration with kathinka", function() {
 
 
     it("Shows a list of someone's open issues", function() {
-        var username = "MarkRedeman";
+        let username = "MarkRedeman";
 
-        var bus = { add: sinon.spy() }
-        var api = {
+        let bus = { add: sinon.spy() }
+        let api = {
             issuesAssignedFor: function(username, callback) {
                 callback([
                     {
@@ -56,7 +56,7 @@ describe("Github integration with kathinka", function() {
             },
         }
 
-        var issues = new Issues(api, bus);
+        let issues = new Issues(api, bus);
         issues.interact("Kathinka wat heeft " + username + " jou aangedaan?");
         bus.add.calledWith(
             Message.fromMessage("Issue: #1: Issue voor mark")

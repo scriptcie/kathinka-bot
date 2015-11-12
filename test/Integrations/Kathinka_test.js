@@ -3,7 +3,7 @@ import Message from '../../src/Message.js';
 
 describe("A Kathinka bot with basic interactions", function() {
 
-    var kathinka = new buildKathinka();
+    let kathinka = new buildKathinka();
 
     it("Starts to do some logging", function() {
         kathinka.notify(
@@ -42,7 +42,7 @@ describe("A Kathinka bot with basic interactions", function() {
 
     it("Can answer questions in different languages", function() {
 
-        var message = new Message(Message.Type.Null, "Kathinka does this work?", "Mark");
+        let message = new Message(Message.Type.Null, "Kathinka does this work?", "Mark");
         kathinka.notify(
             message,
             "Mark", function(response) {
@@ -57,7 +57,7 @@ describe("A Kathinka bot with basic interactions", function() {
     });
 
     it("Can handle Message objects", function() {
-        var message = new Message(Message.Type.IRC,
+        let message = new Message(Message.Type.IRC,
                                   "Kathinka does this work?",
                                   "Mark");
         kathinka.notify(message, "Mark", function(response) {
@@ -66,10 +66,10 @@ describe("A Kathinka bot with basic interactions", function() {
     });
 
     it("Can handle send messages through the bus", function() {
-        var message = new Message(Message.Type.IRC,
+        let message = new Message(Message.Type.IRC,
                                   "Test",
                                   "Mark");
-        var stubbedInterface = {say: function(to, messages) {
+        let stubbedInterface = {say: function(to, messages) {
             messages[0].should.eql("Test");
             to.should.eql("Mark");
             }};

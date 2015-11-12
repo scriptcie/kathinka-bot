@@ -1,22 +1,22 @@
 import Properties from '../../src/Interactions/Properties.js';
 
 function someProperties() {
-    var state = {properties: {}};
+    let state = {properties: {}};
     return new Properties(state);
 }
 
 describe("Properties interaction", function() {
-    var sender = "Mark";
+    let sender = "Mark";
 
     it("Is empty when nothing happened", function() {
-        var getset = someProperties();
+        let getset = someProperties();
         getset.interact("", sender);
         getset.data.should.eql({});
     });
 
     it("Should get able to get after a set", function() {
-        var getset = someProperties();
-        var response = getset.interact("Kathinka set blaat 1 2 3 a b c", sender);
+        let getset = someProperties();
+        let response = getset.interact("Kathinka set blaat 1 2 3 a b c", sender);
         response = getset.interact("Kathinka get blaat", sender);
         response.should.equal("1 2 3 a b c");
 
@@ -25,11 +25,11 @@ describe("Properties interaction", function() {
     });
 
     it("Handles arrays", function() {
-        var getset = someProperties();
+        let getset = someProperties();
         getset.interact("Kathinka set blaat [1, 2, 3, a, b, c]", sender);
         getset.data['blaat'].should.eql(['1', '2', '3', 'a', 'b', 'c']);
 
-        var response = getset.interact("Kathinka get blaat", sender);
+        let response = getset.interact("Kathinka get blaat", sender);
         response.should.eql(['1', '2', '3', 'a', 'b', 'c']);
     });
 });

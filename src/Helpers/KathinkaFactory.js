@@ -15,11 +15,11 @@ import MessageBus from '../MessageBus.js';
 import fs from 'fs';
 import Github from './Github';
 
-var KathinkaFactory = function(client) {
+let KathinkaFactory = function(client) {
 
 
 
-    var dataStore;
+    let dataStore;
     try {
         dataStore = require('../../data.json');
     } catch(err) {
@@ -35,10 +35,10 @@ var KathinkaFactory = function(client) {
         fs.writeFile('data.json', JSON.stringify(dataStore));
     }, 60000);
 
-    var bus = new MessageBus({});
-    var github = new Github;
+    let bus = new MessageBus({});
+    let github = new Github;
 
-    var kathinka = new Kathinka([
+    let kathinka = new Kathinka([
         new SayMyName,
         new Language(dataStore),
         new Goodbye,

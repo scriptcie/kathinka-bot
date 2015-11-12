@@ -7,18 +7,18 @@ function someDetector() {
 }
 
 describe("The language detection interaction", function() {
-    var sender = "Mark";
+    let sender = "Mark";
 
     it("Can detect Dutch", function() {
-        var detector = someDetector();
-        var message = new Message(Message.Type.Null, "hoi numwis", sender);
+        let detector = someDetector();
+        let message = new Message(Message.Type.Null, "hoi numwis", sender);
         detector.interact(message, sender);
         detector.state.language.should.equal('dutch');
     });
 
     it("Can detect Dutch", function() {
-        var detector = someDetector();
-        var message = new Message(Message.Type.Null, "hoi numwis", sender);
+        let detector = someDetector();
+        let message = new Message(Message.Type.Null, "hoi numwis", sender);
         detector.interact(message, sender);
         detector.state.language.should.equal('dutch');
         message = new Message(Message.Type.Null, "hoe gaat het?", sender);
@@ -30,8 +30,8 @@ describe("The language detection interaction", function() {
     });
 
     it("Can detect English", function() {
-        var detector = someDetector();
-        var message = new Message(Message.Type.Null, "hey numwis", sender);
+        let detector = someDetector();
+        let message = new Message(Message.Type.Null, "hey numwis", sender);
         detector.interact(message, sender);
         detector.state.language.should.equal('english');
         message = new Message(Message.Type.Null, "how are you?", sender);

@@ -2,7 +2,7 @@ import telegram from 'telegram-bot-api';
 import util from 'util';
 import Message from './Message.js';
 
-var Telegram = function(config, bots) {
+let Telegram = function(config, bots) {
     this.api = new telegram({
         token: config.token,
         updates: {
@@ -11,7 +11,7 @@ var Telegram = function(config, bots) {
     });
 
     this.bots = bots;
-    var self = this;
+    let self = this;
 
     this.api.on('message', function(message) {
         console.log('Received message on Telegram: ' + message);
@@ -21,9 +21,9 @@ var Telegram = function(config, bots) {
 
 Telegram.prototype = {
     handle: function(from, to, message) {
-        var self = this;
-        for (var i = 0; i < this.bots.length; i++) {
-            var messageObj = new Message(Message.Type.Telegram, message, to);
+        let self = this;
+        for (let i = 0; i < this.bots.length; i++) {
+            let messageObj = new Message(Message.Type.Telegram, message, to);
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
@@ -35,8 +35,8 @@ Telegram.prototype = {
             return;
         }
 
-        var self = this;
-        var message = messages.shift();
+        let self = this;
+        let message = messages.shift();
         setTimeout(function() {
             self.api.sendMessage({chat_id: to, text: message}, function(err, data) {
                 console.log(err);

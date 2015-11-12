@@ -15,14 +15,14 @@ export default class Meeting {
     interact(message, from) {
         message = Message.fromMessage(message, from);
 
-        var command = message.command();
-        var response = undefined;
+        let command = message.command();
+        let response = undefined;
         if (command !== null) {
             response = this.handleCommand(command, from, message);
         }
 
         if (this.started && this.protocol.type === message.type) {
-            var self = this;
+            let self = this;
             this.lastActivity = (new Date()).getTime() / 1000;
             setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
         }
@@ -34,7 +34,7 @@ export default class Meeting {
         if ('agenda' in this.data &&
             (command === "start meeting" || command === "start vergadering")) {
             this.started = true;
-            var response = ['Staring meeting', 'Agenda:'];
+            let response = ['Staring meeting', 'Agenda:'];
             this.setAgenda();
             this.index = 0;
             this.protocol = protocol;
@@ -61,23 +61,23 @@ export default class Meeting {
     setAgenda() {
         if ('agenda' in this.data) {
             this.agenda = ['1. Opening', '2. Vaststellen agenda'];
-            var agendaData = this.data['agenda'];
-            var index = 3;
+            let agendaData = this.data['agenda'];
+            let index = 3;
             if (typeof agendaData === 'string') {
                 this.agenda.push((index++) + '. ' + agendaData);
             } else {
-                for (var i = 0; i < agendaData.length; i++) {
+                for (let i = 0; i < agendaData.length; i++) {
                     this.agenda.push('' + (index++) + '. ' + agendaData[i]);
                 }
             }
-            var end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
+            let end = [(index++) + '. W.v.t.t.k', (index++) + '. Rondvraag',
                        (index++) + '. Sluiting'];
             this.agenda.push.apply(this.agenda, end);
         }
     }
 
     goNext(force) {
-        var time = (new Date()).getTime() / 1000;
+        let time = (new Date()).getTime() / 1000;
         if (!this.started) {
             return;
         }
@@ -94,14 +94,14 @@ export default class Meeting {
             this.index++;
             if (this.index >= this.agenda.length) {
                 this.started = false;
-                var message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
+                let message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
                 this.bus.add(message);
             } else {
-                message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
+                let message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
                 this.bus.add(message);
 
                 // And restart the timeout
-                var self = this;
+                let self = this;
                 this.lastActivity = time;
                 setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
             }

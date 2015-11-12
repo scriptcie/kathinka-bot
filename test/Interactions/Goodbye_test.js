@@ -2,11 +2,11 @@ import Goodbye from '../../src/Interactions/Goodbye.js';
 import Message from '../../src/Message.js';
 
 describe("The goodbye interaction", function() {
-    var goodbye = new Goodbye;
-    var sender = "Mark";
+    let goodbye = new Goodbye;
+    let sender = "Mark";
 
     it("Tells a user goodbye when he or she leaves a channel", function() {
-        var messages = [
+        let messages = [
             ["leah", "leah Mark"],
             ["le'ah", "le'ah Mark"],
             ["sleap", "sleap Mark"],
@@ -24,14 +24,14 @@ describe("The goodbye interaction", function() {
         ];
 
         messages.forEach(function(message) {
-            var messageObj = new Message(Message.Type.Null, message[0], sender);
-            var response = goodbye.interact(messageObj, sender);
+            let messageObj = new Message(Message.Type.Null, message[0], sender);
+            let response = goodbye.interact(messageObj, sender);
             response.should.equal(message[1]);
         }, this);
     });
 
     it("Wont tell goodbye for an arbitrary message", function() {
-        var message = goodbye.interact("ik blijf nog even", sender);
+        let message = goodbye.interact("ik blijf nog even", sender);
         (message === undefined).should.be.true;
     });
 });

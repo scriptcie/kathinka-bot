@@ -7,7 +7,7 @@ export default class Quit {
 
     interact(message, from) {
         message = Message.fromMessage(message, from);
-        var command = message.command();
+        let command = message.command();
         if (command && /^af!?$/.test(command)) {
             this.client.disconnect("Is goed, doei!", function() {
                 setTimeout(function() {

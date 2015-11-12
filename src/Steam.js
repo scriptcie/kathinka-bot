@@ -1,7 +1,7 @@
 import SteamAPI from 'steam';
 import Message from './Message.js';
 
-var Steam = function(config, bots) {
+let Steam = function(config, bots) {
     this.client = new SteamAPI.SteamClient();
     this.user = new SteamAPI.SteamUser(this.client);
     this.friends = new SteamAPI.SteamFriends(this.client);
@@ -11,7 +11,7 @@ var Steam = function(config, bots) {
 
     this.client.connect();
 
-    var self = this;
+    let self = this;
 
     this.client.on('connected', function() {
         self.logOn();
@@ -48,9 +48,9 @@ var Steam = function(config, bots) {
 
 Steam.prototype = {
     handle: function(from, to, message) {
-        var self = this;
-        for (var i = 0; i < this.bots.length; i++) {
-            var messageObj = new Message(Message.Type.Steam, message, to);
+        let self = this;
+        for (let i = 0; i < this.bots.length; i++) {
+            let messageObj = new Message(Message.Type.Steam, message, to);
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
@@ -62,8 +62,8 @@ Steam.prototype = {
             return;
         }
 
-        var self = this;
-        var message = messages.shift();
+        let self = this;
+        let message = messages.shift();
         setTimeout(function() {
             self.friends.sendMessage(to, message, SteamAPI.EChatEntryType.ChatMsg);
             self.say(to, messages);

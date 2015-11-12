@@ -8,7 +8,7 @@ export default class Properties {
 
     interact(message, from) {
         message = Message.fromMessage(message, from);
-        var command = message.command();
+        let command = message.command();
         if (command !== null) {
             return this.handleCommand(command);
         }
@@ -17,13 +17,13 @@ export default class Properties {
     }
 
     handleCommand(command) {
-        var properties = this.state.properties;
+        let properties = this.state.properties;
 
         // Handle properties from a protected list differently
-        var protectedList = {'user': "users", 'property': "properties"};
-        var match = command.match(/^(set|get) (\w+) (.*)$/);
+        let protectedList = {'user': "users", 'property': "properties"};
+        let match = command.match(/^(set|get) (\w+) (.*)$/);
         if (match && match[2] in protectedList) {
-            var name = protectedList[match[2]];
+            let name = protectedList[match[2]];
             if (!(name in this.state)) {
                 this.state[name] = {};
             }
@@ -33,14 +33,14 @@ export default class Properties {
 
         match = command.match(/^set (\w+) (.+)$/);
         if (match) {
-            var data = match[2];
+            let data = match[2];
             if (data.length > 2 &&
                 data.substring(0, 1) == '[' &&
                 data.substring(data.length - 1, data.length) == ']') {
                 data = data.substring(1, data.length-1);
                 data = data.split(',');
-                var newdata = [];
-                for (var i = 0; i < data.length; i++) {
+                let newdata = [];
+                for (let i = 0; i < data.length; i++) {
                     newdata[i] = data[i].replace(/^\s+|\s+$/g, '');
                 }
                 properties[match[1]] = newdata;

@@ -1,11 +1,11 @@
-var EventEmitter = require('events').EventEmitter;
+let EventEmitter = require('events').EventEmitter;
 
-var MessageEvent = function() {};
+let MessageEvent = function() {};
 
 require('util').inherits(MessageEvent, EventEmitter);
 
-var MessageBus = function(interfaces) {
-    var self = this;
+let MessageBus = function(interfaces) {
+    let self = this;
     this.queue = [];
     this.interfaces = interfaces;
 
@@ -33,7 +33,7 @@ MessageBus.prototype.handle = function() {
 
     this.locked = true;
     while (this.queue.length > 0) {
-        var message = this.queue.shift();
+        let message = this.queue.shift();
         if (message.type in this.interfaces) {
             this.interfaces[message.type].say(message.to, [message.contents]);
         } else {

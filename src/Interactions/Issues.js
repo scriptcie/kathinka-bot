@@ -1,6 +1,6 @@
 import Message from './../Message.js';
 
-var AskForIssues = [
+let AskForIssues = [
     'show issues',
     'waarom kijk je zo sip?',
     'wat is er aan de hand?',
@@ -18,7 +18,7 @@ export default class Issues {
 
     interact(message, sender) {
         message = Message.fromMessage(message, sender);
-        var command = message.command();
+        let command = message.command();
         if (!command) {
             return;
         }
@@ -31,9 +31,9 @@ export default class Issues {
             return "Laat me even nadenken";
         }
 
-        var match = command.match(/^wat heeft (\w+) jou aangedaan\?$/);
+        let match = command.match(/^wat heeft (\w+) jou aangedaan\?$/);
         if (match !== null && match.length > 0) {
-            var username = match[1];
+            let username = match[1];
             this.api.issuesAssignedFor(
                 username,
                 this.showIssues.bind(this)
@@ -51,7 +51,7 @@ export default class Issues {
     }
 
     formatIssueMessage(issue) {
-        var message = "Issue: #" + issue.number + ': ' + issue.title;
+        let message = "Issue: #" + issue.number + ': ' + issue.title;
         return new Message(this.protocol.type, message, this.protocol.to);
     }
 }

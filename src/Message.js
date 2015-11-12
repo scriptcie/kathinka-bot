@@ -1,11 +1,11 @@
-var Message = function(type, contents, to) {
+let Message = function(type, contents, to) {
     this.type = type;
     this.contents = contents;
     this.to = to;
     this.priority = -1;
 }
 
-var MessageType = {
+let MessageType = {
     Null: 'Null',
     IRC: 'IRC',
     Telegram: 'Telegram',
@@ -14,7 +14,7 @@ var MessageType = {
 
 Message.prototype = {
     command: function() {
-        var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
+        let match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
 
         // Return the command
         if (match !== undefined && match !== null) {
@@ -29,11 +29,11 @@ Message.prototype = {
     },
 
     question: function() {
-        var command = this.command();
+        let command = this.command();
         if (!command) {
             return false;
         }
-        var match = command.match(/^(.*)\?$/)
+        let match = command.match(/^(.*)\?$/)
 
         // Return the question
         if (match !== undefined && match !== null) {

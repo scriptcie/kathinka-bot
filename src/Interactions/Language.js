@@ -9,9 +9,9 @@ export default class Language {
 
     interact(message, from) {
         message = Message.fromMessage(message, from);
-        var list = this.detector.detect(message.contents);
+        let list = this.detector.detect(message.contents);
 
-        for (var i = 0; i < list.length; i++) {
+        for (let i = 0; i < list.length; i++) {
             if (list[i][0] === 'english' || list[i][0] === 'dutch') {
                 this.state.language = list[i][0];
                 break;

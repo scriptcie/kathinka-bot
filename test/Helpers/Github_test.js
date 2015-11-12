@@ -5,7 +5,7 @@ describe("Github API", function() {
 
 
     it("It gets a list of issues from github and it converts it to an array of issues", function() {
-        var api = new API;
+        let api = new API;
 
         api.issues(function(issues) {
             issues.should.be.instanceof(Array);
@@ -13,7 +13,7 @@ describe("Github API", function() {
     });
 
     it("It gets a list of issues from github assigned by username", function() {
-        var api = new API;
+        let api = new API;
 
         api.issuesAssignedFor("MarkRedeman", function(issues) {
             issues.should.be.instanceof(Array);

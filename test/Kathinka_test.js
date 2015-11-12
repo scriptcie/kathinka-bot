@@ -3,7 +3,7 @@ import Kathinka from '../src/Kathinka.js';
 describe("Kathinka", function() {
 
     // 't is eigenlijk wel lelijk om zo hier een object te maken
-    var HelloWorldInteraction = function() {
+    let HelloWorldInteraction = function() {
 
     };
 
@@ -12,10 +12,10 @@ describe("Kathinka", function() {
     };
 
     it("Gets notified about messages from users and responds appropriately", function() {
-        var kathinka = new Kathinka([new HelloWorldInteraction]);
+        let kathinka = new Kathinka([new HelloWorldInteraction]);
 
-        var message = "Hallo Kathinka";
-        var from = "Mark";
+        let message = "Hallo Kathinka";
+        let from = "Mark";
 
         kathinka.notify(message, from, function(response) {
             response.should.eql(["Hallo Mark"]);

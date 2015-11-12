@@ -9,9 +9,9 @@ export default class Logging {
 
     interact(message, from) {
         message = Message.fromMessage(message, from);
-        var command = message.command();
+        let command = message.command();
         if (command !== null) {
-            var response = this.handleCommand(command, from);
+            let response = this.handleCommand(command, from);
             if (response !== undefined) {
                 return response;
             }
@@ -25,7 +25,7 @@ export default class Logging {
     }
 
     handleCommand(command, sender) {
-        var shouldStart = /^start logging$/;
+        let shouldStart = /^start logging$/;
         if (shouldStart.test(command)) {
             if (this.shouldLog === false) {
                 this.shouldLog = true;
@@ -35,7 +35,7 @@ export default class Logging {
             }
         }
 
-        var shouldStop = /^stop logging/;
+        let shouldStop = /^stop logging/;
         if (shouldStop.test(command)) {
             if (this.shouldLog === true) {
                 this.shouldLog = false;
@@ -45,9 +45,9 @@ export default class Logging {
             }
         }
 
-        var shouldShowLogs = /show logs/;
+        let shouldShowLogs = /show logs/;
         if (shouldShowLogs.test(command)) {
-            var logs = this.log.map(function(log) {
+            let logs = this.log.map(function(log) {
                 return log.from + " said: \"" + log.message + "\"";
             });
             return logs;

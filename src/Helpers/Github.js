@@ -1,6 +1,6 @@
-var GitHubApi = require("github");
+let GitHubApi = require("github");
 
-var Github = function() {
+let Github = function() {
     this.github = new GitHubApi({
         version: "3.0.0",
     });
@@ -14,7 +14,7 @@ var Github = function() {
  * @param  result
  * @return issue object
  */
-var convertToIssue = function(issue) {
+let convertToIssue = function(issue) {
     return {
         title:    issue.title,
         number:   issue.number,

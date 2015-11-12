@@ -6,17 +6,17 @@ function someLogger() {
 }
 
 describe("The logging interaction", function() {
-    var sender = "Mark";
+    let sender = "Mark";
 
     it("Does nothing when its not asked something", function() {
-        var logging = someLogger();
-        var response = logging.interact("Moi", sender);
+        let logging = someLogger();
+        let response = logging.interact("Moi", sender);
         (response === undefined).should.be.true;
     });
 
     it("Starts logging when asked to log a conversation", function() {
-        var logging = someLogger();
-        var response = logging.interact("Kathinka start logging", sender);
+        let logging = someLogger();
+        let response = logging.interact("Kathinka start logging", sender);
         response.should.equal("Started logging");
 
         logging.interact("Hello", sender);
@@ -30,32 +30,32 @@ describe("The logging interaction", function() {
     });
 
     it("Notifies if its already logging", function() {
-        var logging = someLogger();
+        let logging = someLogger();
         logging.interact("Kathinka start logging", sender);
-        var response = logging.interact("Kathinka start logging", sender);
+        let response = logging.interact("Kathinka start logging", sender);
         response.should.equal("I'm already logging");
     });
 
     it("Can be commanded to stop logging", function() {
-        var logging = someLogger();
+        let logging = someLogger();
         logging.interact("Kathinka start logging", sender);
-        var response = logging.interact("Kathinka stop logging", sender);
+        let response = logging.interact("Kathinka stop logging", sender);
         response.should.equal("Ok, Mark I've stopped logging");
     });
 
     it("Wont stop logging if its already stopped logging", function() {
-        var logging = someLogger();
-        var response = logging.interact("Kathinka stop logging", sender);
+        let logging = someLogger();
+        let response = logging.interact("Kathinka stop logging", sender);
         response.should.equal("I haven't been logging");
     });
 
     it("Shows its current log when asked for", function() {
-        var logging = someLogger();
+        let logging = someLogger();
         logging.interact("Kathinka start logging", sender);
         logging.interact("Hee hallo", sender);
         logging.interact("Moi", "Moi");
 
-        var response = logging.interact("Kathinka show logs", "Mark");
+        let response = logging.interact("Kathinka show logs", "Mark");
 
         response.should.eql([
             "Mark said: \"Hee hallo\"",
@@ -64,11 +64,11 @@ describe("The logging interaction", function() {
     });
 
     it("Logs messages that were interpreted as commands, but were not commands", function() {
-        var logging = someLogger();
+        let logging = someLogger();
         logging.interact("Kathinka start logging", sender);
         logging.interact("Kathinka kan je dit voor me loggen?", sender);
 
-        var response = logging.interact("Kathinka show logs", "Mark");
+        let response = logging.interact("Kathinka show logs", "Mark");
 
         response.should.eql([
             "Mark said: \"Kathinka kan je dit voor me loggen?\"",

@@ -34,11 +34,11 @@ export default class Eightball {
         message = Message.fromMessage(message, sender);
         if (message.question()) {
             // Response based on language
-            var language = "english";
+            let language = "english";
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
-            var idx = message.contents.split('')
+            let idx = message.contents.split('')
                 .map(function(i){
                     return i.charCodeAt(0);
                 })

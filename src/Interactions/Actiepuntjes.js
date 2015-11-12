@@ -8,12 +8,12 @@ export default class Actiepuntjes {
 
   interact(message, from) {
         message = Message.fromMessage(message, from);
-        var command = message.command();
+        let command = message.command();
         if (!command) {
             return;
         }
 
-        var matched = command.match(/([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
+        let matched = command.match(/([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
         if(matched) {
             switch(matched[2]){
             case "ls":
@@ -31,9 +31,9 @@ export default class Actiepuntjes {
     }
 
     displayAll() {
-        var response = [];
-        var idx = 0;
-        for(var name in this.data) {
+        let response = [];
+        let idx = 0;
+        for(let name in this.data) {
             this.data[name].forEach(function(a) {
                 ++idx;
                 response.push(idx + ". AP " + name + " " + a);
@@ -51,7 +51,7 @@ export default class Actiepuntjes {
     }
 
     remove(ap) {
-        var toInt = parseInt(ap);
+        let toInt = parseInt(ap);
 
         // Remove the ith APtje
         if(! isNaN(toInt) && toInt > 0) {
@@ -62,8 +62,8 @@ export default class Actiepuntjes {
     }
 
     removeBySubject(ap) {
-        for(var name in this.data){
-            var idx = this.data[name].indexOf(ap);
+        for(let name in this.data){
+            let idx = this.data[name].indexOf(ap);
             if (idx != -1) {
                 this.data[name].splice(idx, 1)
                 return "Goed bezig " + name;
@@ -72,7 +72,7 @@ export default class Actiepuntjes {
     }
 
     removeByIndex(idx) {
-        for(var name in this.data){
+        for(let name in this.data){
             if(idx <= this.data[name].length) {
                 this.data[name].splice(idx - 1, 1);
                 return "Goed bezig " + name;

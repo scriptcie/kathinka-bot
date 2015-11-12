@@ -3,7 +3,7 @@
 // and sends their responses to irc.
 import Message from './Message.js';
 
-var BotNet = function(irc, bots) {
+let BotNet = function(irc, bots) {
     this.irc = irc;
 
     // this.irc.addListener('message', function(from, to, message) {
@@ -38,9 +38,9 @@ var BotNet = function(irc, bots) {
 
 BotNet.prototype = {
     handle: function(from, to, message) {
-        var self = this;
-        for (var i = 0; i < this.bots.length; i++) {
-            var messageObj = new Message(Message.Type.IRC, message, to);
+        let self = this;
+        for (let i = 0; i < this.bots.length; i++) {
+            let messageObj = new Message(Message.Type.IRC, message, to);
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
@@ -51,8 +51,8 @@ BotNet.prototype = {
         if (messages === undefined || messages.length === 0) {
             return;
         }
-        var self = this;
-        var message = messages.shift();
+        let self = this;
+        let message = messages.shift();
         setTimeout(function() {
             self.irc.say(to, message);
             self.say(to, messages);
