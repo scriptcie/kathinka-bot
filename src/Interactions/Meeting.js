@@ -1,5 +1,7 @@
 import Message from '../Message.js';
 
+const WaitTime = 5 * 60 * 1000;
+
 export default class Meeting {
     constructor(state, bus) {
         this.state = state
@@ -22,9 +24,7 @@ export default class Meeting {
         }
 
         if (this.started && this.protocol.type === message.type) {
-            let self = this;
-            this.lastActivity = (new Date()).getTime() / 1000;
-            setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+            checkForSilence(this);
         }
 
         return response;
@@ -77,7 +77,6 @@ export default class Meeting {
     }
 
     goNext(force) {
-        let time = (new Date()).getTime() / 1000;
         if (!this.started) {
             return;
         }
@@ -86,11 +85,11 @@ export default class Meeting {
             this.index++;
             if (this.index >= this.agenda.length) {
                 this.started = false;
-                return "End of the meeting";
+                return new Message(this.protocol.type, "End of the meeting", this.protocol.to);
             } else {
                 return this.agenda[this.index];
             }
-        } else if (this.lastActivity + 60 * 5 - 1 <= time) {
+        } else if (this.lastActivity + WaitTime - 1000 <= (new Date()).getTime()) {
             this.index++;
             if (this.index >= this.agenda.length) {
                 this.started = false;
@@ -101,10 +100,15 @@ export default class Meeting {
                 this.bus.add(message);
 
                 // And restart the timeout
-                let self = this;
-                this.lastActivity = time;
-                setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+                checkForSilence(this);
             }
         }
     }
+}
+
+const checkForSilence = function(self) {
+    let time = (new Date()).getTime();
+    self.lastActivity = time;
+
+    setTimeout(function() {self.goNext();}, WaitTime);
 }

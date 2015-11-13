@@ -5,6 +5,16 @@ import sinon from 'sinon';
 
 describe("Meeting interaction", function() {
     let sender = "Mark";
+    var clock;
+
+    beforeEach(function() {
+        clock = sinon.useFakeTimers();
+    })
+
+    afterEach(function() {
+        // let clock = sinon.useFakeTimers();
+        clock.restore();
+    });
 
     it("Can't start a meeting when the agenda is not set", function() {
         let meeting = new Meeting({properties: {}});
