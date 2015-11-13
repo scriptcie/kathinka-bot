@@ -1,13 +1,49 @@
 let GitHubApi = require("github");
 
-let Github = function() {
-    this.github = new GitHubApi({
-        version: "3.0.0",
-    });
+export default class Github {
+    constructor() {
+        this.github = new GitHubApi({
+            version: "3.0.0",
+        });
 
-    this.user = "scriptcie";
-    this.repo = "kathinka-bot";
-};
+        this.user = "scriptcie";
+        this.repo = "kathinka-bot";
+    }
+
+    // Show all issues from the
+    issues(callback) {
+        return this.github.issues.repoIssues(
+             {
+                user:       this.user,
+                repo:       this.repo,
+                sort:       "updated",
+                direction:  "asc",
+            },
+            function(errro, response) {
+                callback(response.map(function(issue) {
+                    return convertToIssue(issue);
+                }));
+           }
+        );
+    }
+
+    issuesAssignedFor(username, callback) {
+        return this.github.issues.repoIssues(
+             {
+                user:       this.user,
+                repo:       this.repo,
+                sort:       "updated",
+                direction:  "asc",
+                assignee:   username,
+            },
+            function(error, response) {
+                callback(response.map(function(issue) {
+                    return convertToIssue(issue);
+                }));
+           }
+        );
+    }
+}
 
 /**
  * Converts a http response from the github api to an issue object
@@ -23,41 +59,3 @@ let convertToIssue = function(issue) {
         assignee: issue.assignee,
     }
 }
-
-Github.prototype = {
-    // Show all issues from the
-    issues: function(callback) {
-        return this.github.issues.repoIssues(
-             {
-                user:       this.user,
-                repo:       this.repo,
-                sort:       "updated",
-                direction:  "asc",
-            },
-            function(errro, response) {
-                callback(response.map(function(issue) {
-                    return convertToIssue(issue);
-                }));
-           }
-        );
-    },
-
-    issuesAssignedFor: function(username, callback) {
-        return this.github.issues.repoIssues(
-             {
-                user:       this.user,
-                repo:       this.repo,
-                sort:       "updated",
-                direction:  "asc",
-                assignee:   username,
-            },
-            function(error, response) {
-                callback(response.map(function(issue) {
-                    return convertToIssue(issue);
-                }));
-           }
-        );
-    },
-}
-
-module.exports = Github;
