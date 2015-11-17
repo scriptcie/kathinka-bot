@@ -19,7 +19,7 @@ describe("Quit interaction", function() {
         // The process should quit after some seconds such that we have time to tell
         // irc that we want to disconnect
         subbedProcess.calledOnce.should.be.false;
-        clock.tick(1000);
+        clock.tick(2000);
         subbedProcess.calledOnce.should.be.true;
         clock.restore();
     }));

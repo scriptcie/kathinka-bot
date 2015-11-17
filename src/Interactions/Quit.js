@@ -12,7 +12,7 @@ Quit.prototype = {
             this.bus.quit();
             setTimeout(function() {
                 process.exit(1);
-            }, 1000);
+            }, 2000);
         }
         return undefined;
     },
