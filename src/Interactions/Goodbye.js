@@ -12,7 +12,7 @@ Goodbye.prototype = {
     },
 
     tellsGoodbye: function(message) {
-        return (/^((le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?))$/)
+        return (/^((le'?ah)|(sl[ea][ea]p)|(later)|((wel)?te?rusten?))$/i)
             .test(message);
     },
 }

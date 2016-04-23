@@ -9,6 +9,7 @@ describe("The goodbye interaction", function() {
         var messages = [
             ["leah", "leah Mark"],
             ["le'ah", "le'ah Mark"],
+            ["Le'ah", "Le'ah Mark"],
             ["sleap", "sleap Mark"],
             ["slaap", "slaap Mark"],
             ["sleep", "sleep Mark"],
