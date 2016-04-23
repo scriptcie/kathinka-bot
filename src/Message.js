@@ -3,6 +3,11 @@ var Message = function(type, contents, to) {
     this.contents = contents;
     this.to = to;
     this.priority = -1;
+    this.private = false;
+
+    if (type === MessageType.Steam) {
+        this.private = true;
+    }
 }
 
 var MessageType = {
@@ -21,8 +26,8 @@ Message.prototype = {
             return match[2];
         }
 
-        if (this.type === MessageType.Steam) {
-            // Steam only has commands since it's private chat
+        if (this.private) {
+            // Private chats (steam, telegram, ...) are always commands
             return this.contents;
         }
         return null;

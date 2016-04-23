@@ -15,12 +15,12 @@ var Telegram = function(config, bots) {
 
     this.api.on('message', function(message) {
         console.log('Received message on Telegram: ' + message);
-        self.handle(message.from.first_name, message.chat.id, message.text || "");
+        self.handle(message.from.first_name, message.chat.id, message.text || "", message.chat.type === "private");
     });
 };
 
 Telegram.prototype = {
-    handle: function(from, to, message) {
+    handle: function(from, to, message, private) {
         var self = this;
         for (var i = 0; i < this.bots.length; i++) {
             var messageObj = new Message(Message.Type.Telegram, message, to);
