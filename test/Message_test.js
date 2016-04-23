@@ -61,4 +61,11 @@ describe("Message", function() {
         var command = message.command();
         command.should.equal("Hallo!");
     });
+
+    it("private messages are always commands", function() {
+        var message = new Message(Message.Type.Null, "hallo?", "Mark");
+        message.private = true;
+        var question = message.question();
+        question.should.equal("hallo");
+    });
 });
