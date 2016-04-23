@@ -14,7 +14,7 @@ var Telegram = function(config, bots) {
     var self = this;
 
     this.api.on('message', function(message) {
-        console.log('Received message on Telegram: ' + message);
+        console.log((new Date()) + "\tReceived message on Telegram: " + message);
         self.handle(message.from.first_name, message.chat.id, message.text || "", message.chat.type === "private");
     });
 };
@@ -40,8 +40,8 @@ Telegram.prototype = {
         var message = messages.shift();
         setTimeout(function() {
             self.api.sendMessage({chat_id: to, text: message}, function(err, data) {
-                console.log(err);
-                console.log(util.inspect(data, false, null));
+                console.log((new Date()) + err);
+                console.log((new Date()) + util.inspect(data, false, null));
             });
             self.say(to, messages);
         }, message.length * (25 + 25 * Math.random()));
