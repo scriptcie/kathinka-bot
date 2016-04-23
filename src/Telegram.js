@@ -24,6 +24,7 @@ Telegram.prototype = {
         var self = this;
         for (var i = 0; i < this.bots.length; i++) {
             var messageObj = new Message(Message.Type.Telegram, message, to);
+            messageObj.private = private;
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
