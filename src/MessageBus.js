@@ -37,7 +37,7 @@ MessageBus.prototype.handle = function() {
         if (message.type in this.interfaces) {
             this.interfaces[message.type].say(message.to, [message.contents]);
         } else {
-            console.log("No interface found for a message of type "+message.type);
+            console.log((new Date())+"\tNo interface found for a message of type "+message.type);
         }
     }
     this.locked = false;

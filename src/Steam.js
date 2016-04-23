@@ -19,13 +19,13 @@ var Steam = function(config, bots) {
 
     this.client.on('logOnResponse', function(response) {
         if (response.eresult == SteamAPI.EResult.OK) {
-            console.log('Logged in on Steam');
+            console.log((new Date()) + "\tLogged in on Steam");
             self.friends.setPersonaState(SteamAPI.EPersonaState.Online);
         }
     });
 
     this.client.on('error', function(error) {
-        console.log('Steam error: ' + error);
+        console.log((new Date()) + "\tSteam error: " + error);
         if (!self.user.loggedOn) {
             self.client.connect();
         }
@@ -41,7 +41,7 @@ var Steam = function(config, bots) {
     });
 
     this.friends.on('message', function(source, message) {
-        console.log('Received message on steam: ' + message);
+        console.log((new Date()) + "\tReceived message on steam: " + message);
         self.handle(self.friends.personaStates[source].player_name, source, message);
     });
 };

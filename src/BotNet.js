@@ -10,11 +10,11 @@ var BotNet = function(irc, bots) {
 
     // });
     this.irc.addListener('error', function(message) {
-        console.error('ERROR: %s: %s', message.command, message.args.join(' '));
+        console.error('%s\tERROR: %s: %s', new Date(), message.command, message.args.join(' '));
     });
 
     this.irc.addListener('message', function(from, to, message) {
-        console.log('IRC: %s => %s: %s', from, to, message);
+        console.log('%s\tIRC: %s => %s: %s', new Date(), from, to, message);
 
         // Private messages
         if (to === this.irc.nick) {
@@ -25,7 +25,7 @@ var BotNet = function(irc, bots) {
     }.bind(this));
 
     this.irc.addListener('join', function(channel, from) {
-        console.log('%s has joined %s', from, channel);
+        console.log('%s\t%s has joined %s', new Date(), from, channel);
 
         // Dit is kut, moet straks op een andere manier
         if (from !== this.irc.nick) {
