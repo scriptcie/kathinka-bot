@@ -46,7 +46,7 @@ Telegram.prototype = {
                 console.log((new Date()) + util.inspect(data, false, null));
             });
             self.say(to, messages);
-        }, message.length * (25 + 25 * Math.random()));
+        }, message.length * (125 + 125 * Math.random()));
     },
 
     quit: function() {
