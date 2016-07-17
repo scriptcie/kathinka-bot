@@ -38,8 +38,9 @@ Telegram.prototype = {
 
         var self = this;
         var message = messages.shift();
-        setTimeout(function() {
-            self.api.sendChatAction({chat_id: to, action:"typing"});
+        self.api.sendChatAction({chat_id: to, action:"typing"});
+
+      setTimeout(function() {
 
             self.api.sendMessage({chat_id: to, text: message}, function(err, data) {
                 console.log((new Date()) + err);
