@@ -9,7 +9,7 @@ var Message = require('../src/Message.js');
 var nconf = require('nconf');
 nconf.argv()
    .env()
-   .file({ file: __dirname + '/../config.json' });
+   .file({ file: 'config.json' });
 var kathinka = buildKathinka();
 
 var username = nconf.get('irc_username');
