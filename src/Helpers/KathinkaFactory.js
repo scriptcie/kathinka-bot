@@ -1,5 +1,6 @@
 var KathinkaFactory = function() {
     var Kathinka = require('../Kathinka.js');
+    var Broadcast = require('../Interactions/Broadcast.js');
     var Eightball = require('../Interactions/Eightball.js');
     var Goodbye = require('../Interactions/Goodbye.js');
     var Logging = require('../Interactions/Logging.js');
@@ -19,7 +20,7 @@ var KathinkaFactory = function() {
 
     var dataStore;
     try {
-        dataStore = require('../../data.json');
+        JSON.parse(fs.readFileSync('data.json', 'utf8'));
     } catch(err) {
         dataStore = {
             logging: {},
@@ -41,6 +42,7 @@ var KathinkaFactory = function() {
         new Language(dataStore),
         new Goodbye,
 
+        new Broadcast(dataStore, bus),
         new Eightball(dataStore),
         new Logging(dataStore),
         new Properties(dataStore),
