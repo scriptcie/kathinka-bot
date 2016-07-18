@@ -20,7 +20,7 @@ var KathinkaFactory = function() {
 
     var dataStore;
     try {
-        JSON.parse(fs.readFileSync('data.json', 'utf8'));
+        dataStore = JSON.parse(fs.readFileSync('data.json', 'utf8'));
     } catch(err) {
         dataStore = {
             logging: {},
