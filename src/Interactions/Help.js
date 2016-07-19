@@ -10,20 +10,25 @@ Help.prototype = {
 
         var commands = Command.commands;
         var command = new Command(
-            'help',
+            ['help', 'man'],
             'Display all possible commands that can be used.\n' +
                 'Use help command to get help about a certain command',
             message, function(matched) {
-                if (matched[1].length) {
+                var match = matched[1].trim();
+                if (match.length) {
                     for (var key in commands) {
                         commandList = key.split(',');
                         for (var i = 0; i < commandList.length; i++) {
                             var regex = commandList[i];
-                            if (matched[1].match(regex)) {
+                            var regexMatch = regex.match(
+                                new RegExp('^/?(.*?)/?([gimy]*)$'));
+                            regex = new RegExp(regexMatch[1], regexMatch[2]);
+                            if (match.match(regex)) {
                                 return commands[key].print();
                             }
                         }
                     }
+                    return match + ' not found. Use help without arguments to find all possible commands';
                 }
                 var out = '';
                 for (var key in commands) {
