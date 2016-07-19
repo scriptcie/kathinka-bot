@@ -58,7 +58,10 @@ Command.prototype = {
         for (var i = 0; i < this.regexes.length; i++) {
             var regex = this.regexes[i];
             if (this.subcommands.length) {
-                var newRegex = new RegExp(regex.source + "\\s+(.*)")
+                if (regex instanceof RegExp) {
+                    regex = regex.source;
+                }
+                var newRegex = new RegExp(regex + "\\s+(.*)");
                 var matched = command.match(newRegex);
                 if (matched) {
                     var ret = this.subcommands.handle(matched[matched.length-1]);
@@ -68,7 +71,11 @@ Command.prototype = {
                 }
             }
 
-            var matched = command.match(regex);
+            if (regex instanceof RegExp) {
+                regex = regex.source;
+            }
+            var newRegex = new RegExp(regex + '(.*)');
+            var matched = command.match(newRegex);
             if (matched && this.callback) {
                 return this.callback(matched);
             }
