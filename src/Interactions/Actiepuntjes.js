@@ -12,7 +12,7 @@ Actiepuntjes.prototype = {
 
         var commandList = new Command.List();
         var command = new Command(
-                /([Aa]ctiepunt[a-z]*|AP[a-z]*)/,
+            new RegExp(/(actiepunt[a-z]*|ap[a-z]*)/i),
             'Add actiepuntje. Usage: name description',
             message, function(matched) {
                 var matched = matched[matched.length-1].match(/(\S+)\s+(.*)/);

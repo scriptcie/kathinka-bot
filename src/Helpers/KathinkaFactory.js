@@ -11,6 +11,7 @@ var KathinkaFactory = function() {
     var Meeting = require('../Interactions/Meeting.js');
     var Language = require('../Interactions/Language.js');
     var Quit = require('../Interactions/Quit.js');
+    var Help = require('../Interactions/Help.js');
 
     var MessageBus = require('../MessageBus.js');
     var Github = require("./Github");
@@ -51,6 +52,7 @@ var KathinkaFactory = function() {
         new Actiepuntjes(dataStore),
 
         new Quit(bus),
+        new Help(),
     ], bus);
 
     return kathinka;
