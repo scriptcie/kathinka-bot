@@ -14,15 +14,15 @@ Help.prototype = {
             'Display all possible commands that can be used.\n' +
                 'Use help command to get help about a certain command',
             message, function(matched) {
-                var match = matched[1].trim();
+                var match = matched[2].trim();
                 if (match.length) {
                     for (var key in commands) {
                         commandList = key.split(',');
                         for (var i = 0; i < commandList.length; i++) {
                             var regex = commandList[i];
                             var regexMatch = regex.match(
-                                new RegExp('^/?(.*?)/?([gimy]*)$'));
-                            regex = new RegExp(regexMatch[1], regexMatch[2]);
+                                new RegExp('^\\^?/?(.*?)\\$?/?([gimy]*)$'));
+                            regex = new RegExp('^' + regexMatch[1] + '$', regexMatch[2]);
                             if (match.match(regex)) {
                                 return commands[key].print();
                             }

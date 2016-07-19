@@ -58,8 +58,8 @@ describe("The Help interaction", function() {
         var command = new Command('test', 'test command', message,
                                   function() {});
         var help = new Help();
-        var response = help.interact('Kathinka, help bla', sender);
-        response.should.be.equal('bla not found. Use help without arguments to find all possible commands');
+        var response = help.interact('Kathinka, help notacommand', sender);
+        response.should.be.equal('notacommand not found. Use help without arguments to find all possible commands');
     });
 
     it("can print help for a command using one possible regex", function() {

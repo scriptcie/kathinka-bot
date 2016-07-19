@@ -65,6 +65,12 @@ describe("A Kathinka bot with basic interactions", function() {
         });
     });
 
+    it("can help people", function() {
+        kathinka.notify("Kathinka help notacommand", "Mark", function(response) {
+            response.should.eql(["notacommand not found. Use help without arguments to find all possible commands"]);
+        });
+    });
+
     it("Can handle send messages through the bus", function() {
         var message = new Message(Message.Type.IRC,
                                   "Test",

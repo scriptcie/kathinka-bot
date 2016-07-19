@@ -66,7 +66,7 @@ Command.prototype = {
         for (var i = 0; i < this.regexes.length; i++) {
             var regex = this.regexes[i];
             if (this.subcommands.length) {
-                var newRegex = this.regexFromRegex(regex, "\\s+(.*)");
+                var newRegex = this.regexFromRegex(regex, "(.*)");
                 var matched = command.match(newRegex);
                 if (matched) {
                     var ret = this.subcommands.handle(matched[matched.length-1]);
@@ -93,7 +93,14 @@ Command.prototype = {
             if (regex.ignoreCase) flags += 'i';
             if (regex.multiline) flags += 'm';
         } else {
-            text = regex;
+            // Escape string
+            text = regex.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");;
+        }
+        if (text.length && text[0] != '^') {
+            text = '^' + text;
+        }
+        if (text.length && text.slice(-1) != '$') {
+            text += '(\\s+|$)';
         }
         return new RegExp(text + addition, flags);
     },
