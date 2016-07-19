@@ -15,7 +15,6 @@ describe("The Help interaction", function() {
         var message = new Message(Message.Type.Null, "", sender);
         var command = new Command('test', 'test command', message,
                                   function() {});
-        console.log(Command.commands);
         var help = new Help();
         var response = help.interact('Kathinka, help test', sender);
         response.should.be.equal('test: test command');
@@ -58,7 +57,6 @@ describe("The Help interaction", function() {
         var message = new Message(Message.Type.Null, "", sender);
         var command = new Command('test', 'test command', message,
                                   function() {});
-        console.log(Command.commands);
         var help = new Help();
         var response = help.interact('Kathinka, help bla', sender);
         response.should.be.equal('bla not found. Use help without arguments to find all possible commands');
@@ -68,7 +66,6 @@ describe("The Help interaction", function() {
         var message = new Message(Message.Type.Null, "", sender);
         var command = new Command(/test([0-9])/, 'test command', message,
                                   function() {});
-        console.log(Command.commands);
         var help = new Help();
         var response = help.interact('Kathinka, help test1', sender);
         response.should.be.equal('/test([0-9])/: test command');

@@ -66,10 +66,7 @@ Command.prototype = {
         for (var i = 0; i < this.regexes.length; i++) {
             var regex = this.regexes[i];
             if (this.subcommands.length) {
-                if (regex instanceof RegExp) {
-                    regex = regex.source;
-                }
-                var newRegex = new RegExp(regex + "\\s+(.*)");
+                var newRegex = this.regexFromRegex(regex, "\\s+(.*)");
                 var matched = command.match(newRegex);
                 if (matched) {
                     var ret = this.subcommands.handle(matched[matched.length-1]);
@@ -79,15 +76,26 @@ Command.prototype = {
                 }
             }
 
-            if (regex instanceof RegExp) {
-                regex = regex.source;
-            }
-            var newRegex = new RegExp(regex + '(.*)');
+            var newRegex = this.regexFromRegex(regex, '(.*)');
             var matched = command.match(newRegex);
             if (matched && this.callback) {
                 return this.callback(matched);
             }
         }
+    },
+
+    regexFromRegex: function(regex, addition) {
+        var text = '';
+        var flags = '';
+        if (regex instanceof RegExp) {
+            text = regex.source;
+            if (regex.global) flags += 'g';
+            if (regex.ignoreCase) flags += 'i';
+            if (regex.multiline) flags += 'm';
+        } else {
+            text = regex;
+        }
+        return new RegExp(text + addition, flags);
     },
 
     print: function() {
@@ -102,7 +110,9 @@ Command.prototype = {
             out = out.slice(0, -2);
             out += ']: ' + this.description;
         }
-        this.subcommands.print();
+        subout = this.subcommands.print();
+        subout = subout.replace(/\n/gm, '\n    ');
+        out += subout;
         return out;
     },
 }

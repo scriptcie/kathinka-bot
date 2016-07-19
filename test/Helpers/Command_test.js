@@ -57,6 +57,18 @@ describe("Command", function() {
         });
     });
 
+    it("can handle regex flags", function() {
+        prefixes.forEach(function(prefix) {
+            var message = "work";
+            var command = new Command(/WORK/i, '', message, function() {
+                return "works";
+            });
+            var response = command.handle();
+            (response === undefined).should.be.false;
+            response.should.equal("works");
+        });
+    });
+
     it("can handle subcommands", function() {
         prefixes.forEach(function(prefix) {
             var message = "work now";
