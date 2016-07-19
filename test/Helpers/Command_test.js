@@ -98,6 +98,17 @@ describe("Command", function() {
             response.should.equal("works");
         });
     });
+
+    it("only handles full commands", function() {
+        prefixes.forEach(function(prefix) {
+            var message = "atwork now";
+            var command = new Command(/(work)/, '', message, function() {
+                return "doesn't work";
+            });
+            var response = command.handle();
+            (response === undefined).should.be.true;
+        });
+    });
 });
 
 describe("CommandList", function() {
