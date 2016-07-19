@@ -41,6 +41,9 @@ BotNet.prototype = {
         var self = this;
         for (var i = 0; i < this.bots.length; i++) {
             var messageObj = new Message(Message.Type.IRC, message, to);
+            if (to === from) {
+                message.private = true;
+            }
             this.bots[i].notify(messageObj, from, function(messages) {
                 self.say(to, messages);
             });
