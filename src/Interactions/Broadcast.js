@@ -1,4 +1,5 @@
 var Message = require('../Message.js');
+var Command = require('./../Helpers/Command.js');
 
 var Broadcast = function(state, bus) {
     this.state = state;
@@ -30,22 +31,20 @@ Broadcast.prototype = {
             }
         }
 
-        var command = message.command();
-        if (!command) {
-            return undefined;
-        }
-
-        var matched = command.match(/broadcast\s+(.*)/);
-        if(matched) {
-            for (var type in this.data) {
-                for (var to in this.data[type]) {
-                    var broadcast =  new Message(type, matched[1], this.data[type][to]);
-                    this.bus.add(broadcast);
-                }
-            }
-            return "Message broadcasted";
-        }
-        return undefined;
+        var commandList = new Command.List();
+        commandList.add(
+            new Command(/broadcast\s+(.*)/,
+                        'Broadcast a message to all channels',
+                        message, function(matched) {
+                            for (var type in this.data) {
+                                for (var to in this.data[type]) {
+                                    var broadcast =  new Message(type, matched[1], this.data[type][to]);
+                                    this.bus.add(broadcast);
+                                }
+                            }
+                            return "Message broadcasted";
+                        }.bind(this)));
+        return commandList.handle();
     },
 }
 
