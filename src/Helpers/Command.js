@@ -26,6 +26,14 @@ CommandList.prototype = {
     length: function() {
         return this.command.length;
     },
+
+    print: function() {
+        var out = '';
+        this.commands.forEach(function (command) {
+            out += '\n' + command.print();
+        });
+        return out;
+    },
 }
 
 var Command = function(regexes, description, message, callback) {
@@ -81,7 +89,24 @@ Command.prototype = {
             }
         }
     },
+
+    print: function() {
+        var out = '';
+        if (this.regexes.length === 1) {
+            out += this.regexes[0] + ': ' + this.description;
+        } else if (this.regexes.length > 1) {
+            out += '[';
+            this.regexes.forEach(function (regex) {
+                out += regex + ', ';
+            });
+            out = out.slice(0, -2);
+            out += ']: ' + this.description;
+        }
+        this.subcommands.print();
+        return out;
+    },
 }
 
 module.exports = Command;
 module.exports.List = CommandList;
+module.exports.commands = commands;
