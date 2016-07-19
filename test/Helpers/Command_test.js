@@ -33,10 +33,22 @@ describe("Command", function() {
         });
     });
 
-    it("can handle strings", function() {
+    it("can handle strings as message", function() {
         prefixes.forEach(function(prefix) {
             var message = "work";
             var command = new Command(/work$/, '', message, function() {
+                return "works";
+            });
+            var response = command.handle();
+            (response === undefined).should.be.false;
+            response.should.equal("works");
+        });
+    });
+
+    it("can handle strings as regex", function() {
+        prefixes.forEach(function(prefix) {
+            var message = "work";
+            var command = new Command("work", '', message, function() {
                 return "works";
             });
             var response = command.handle();
