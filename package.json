@@ -18,12 +18,16 @@
   "dependencies": {
     "github": "^0.2.4",
     "irc": ">=0.3.12",
+    "istanbul": "^0.4.4",
     "languagedetect": "~1.1.1",
     "nconf": "^0.8.2",
     "steam": "~1.1.0",
     "telegram-bot-api": ">=0.3.2"
   },
   "scripts": {
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha test/{**/,/}*.js  -- --require should -R spec",
+    "precoveralls": "istanbul cover node_modules/mocha/bin/_mocha test/{**/,/}*.js  --report lcovonly -- --require should -R spec && npm i coveralls@2",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint src/ test/ Bootstrap/",
     "test": "npm run lint && mocha --recursive --require should"
   }

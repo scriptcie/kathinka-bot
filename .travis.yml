@@ -4,5 +4,8 @@ before_script:
   - npm install -g mocha
   - npm install -g eslint
 
+after_success:
+  - npm run coveralls
+
 node_js:
   - "5.0.0"
