@@ -69,7 +69,7 @@ Meeting.prototype = {
 
         commandList.add(
             new Command(['stop meeting', 'stop vergadering'],
-                        'Go to the next item on the agenda',
+                        'Stop the meeting',
                         message, function() {
 
                             if (this.started) {
