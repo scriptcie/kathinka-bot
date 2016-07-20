@@ -18,6 +18,21 @@ describe("The Broadcast interaction", function() {
         state.should.eql(expected);
     });
 
+    it("can have multiple channels on the same network", function() {
+        var bus = new MessageBus({});
+        var state = {}
+
+        var broadcast = new Broadcast(state, bus);
+        var message1 = new Message(Message.Type.Null, "Hallo", 'sender1');
+        broadcast.interact(message1, 'sender1');
+        var message2 = new Message(Message.Type.Null, "Hallo", 'sender2');
+        broadcast.interact(message2, 'sender2');
+
+        var expected = {channels: {}};
+        expected.channels[Message.Type.Null] = ['sender1', 'sender2'];
+        state.should.eql(expected);
+    });
+
     it("Sends a broadcast message to the bus", function(done) {
         var bus = new MessageBus({});
         var stubbedInterface = {say: function(to, messages) {
