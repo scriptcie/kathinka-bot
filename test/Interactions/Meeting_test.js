@@ -52,6 +52,22 @@ describe("Meeting interaction", function() {
         }
     });
 
+    it("Prints the agenda when asked for", function() {
+        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting.started.should.be.false;
+
+        var expected = ['1. Opening', '2. Vaststellen agenda',
+                        '3. test', '4. W.v.t.t.k',
+                        '5. Rondvraag', '6. Sluiting'];
+        var response = meeting.interact("Kathinka, agenda", sender);
+        (response === undefined).should.be.false;
+        response.length.should.equal(expected.length);
+
+        for (var i = 0; i < expected.length; i++) {
+            response[i].should.equal(expected[i]);
+        }
+    });
+
     it("Prints the agenda after starting with multiple elements", function() {
         var meeting = new Meeting({properties: {'agenda': ['test 1', 'test 2']}});
         meeting.started.should.be.false;
@@ -81,6 +97,26 @@ describe("Meeting interaction", function() {
         response = meeting.interact("Kathinka, next", sender);
         (response === undefined).should.be.false;
         response.should.equal("3. test");
+    });
+
+    it("Stops the meeting when done", function() {
+        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting.started.should.be.false;
+        
+        var expected = ['2. Vaststellen agenda',
+                        '3. test', '4. W.v.t.t.k',
+                        '5. Rondvraag', '6. Sluiting'];
+
+        meeting.interact("Kathinka, start meeting", sender);
+        for (var i = 0; i < expected.length; i++) {
+            var response = meeting.interact("Kathinka, next", sender);
+            (response === undefined).should.be.false;
+            response.should.equal(expected[i]);
+        }
+
+        var lastResponse = meeting.interact("Kathinka, next", sender);
+        (lastResponse === undefined).should.be.false;
+        lastResponse.should.equal("End of the meeting");
     });
 
     it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
