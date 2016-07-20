@@ -1,4 +1,4 @@
-# Kathinka bot  [![Coverage Status](https://coveralls.io/repos/github/scriptcie/kathinka-bot/badge.svg?branch=master)](https://coveralls.io/github/scriptcie/kathinka-bot?branch=master)
+# Kathinka bot  [![Build Status](https://travis-ci.org/scriptcie/kathinka-bot.svg?branch=master)](https://travis-ci.org/scriptcie/kathinka-bot) [![Coverage Status](https://coveralls.io/repos/github/scriptcie/kathinka-bot/badge.svg?branch=master)](https://coveralls.io/github/scriptcie/kathinka-bot?branch=master)
 Kathinka bot is a bot network that can do cool stuff.
 
 ## Installation
