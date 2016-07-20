@@ -5,6 +5,19 @@ var MessageBus = require ('../../src/MessageBus.js');
 describe("The Broadcast interaction", function() {
     var sender = "Mark";
 
+    it("adds channels to the state", function() {
+        var bus = new MessageBus({});
+        var state = {}
+
+        var broadcast = new Broadcast(state, bus);
+        var message = new Message(Message.Type.Null, "Hallo", sender);
+        broadcast.interact(message, sender);
+
+        var expected = {channels: {}};
+        expected.channels[Message.Type.Null] = [sender];
+        state.should.eql(expected);
+    });
+
     it("Sends a broadcast message to the bus", function(done) {
         var bus = new MessageBus({});
         var stubbedInterface = {say: function(to, messages) {
@@ -127,5 +140,25 @@ describe("The Broadcast interaction", function() {
         (response === undefined).should.be.false;
         response.should.equal("Message broadcasted");
     });
+
+    it("removes private channels", function() {
+        var bus = new MessageBus({});
+        var state = {channels: {}};
+        state.channels[Message.Type.IRC] = ['test1', 'test2'];
+
+        var broadcast = new Broadcast(state, bus);
+
+        // Feed some initial messages
+        var message1 = new Message(Message.Type.IRC, "Hallo", 'test1');
+        message1.private = true;
+        broadcast.interact(message1, sender);
+        var message2 = new Message(Message.Type.IRC, "Hallo", 'test2');
+        broadcast.interact(message2, sender);
+
+        var expected = {channels: {}};
+        expected.channels[Message.Type.IRC] = ['test2'];
+        state.should.eql(expected);
+    });
+
 
 });
