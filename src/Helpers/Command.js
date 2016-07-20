@@ -29,10 +29,6 @@ CommandList.prototype = {
         }
     },
 
-    length: function() {
-        return this.command.length;
-    },
-
     print: function() {
         var out = '';
         var indent = '';
@@ -74,23 +70,18 @@ Command.prototype = {
             }
         }
 
-        var matched;
-
         for (var i = 0; i < this.regexes.length; i++) {
             var regex = this.regexes[i];
-            if (this.subcommands.length) {
-                var newRegex = this.regexFromRegex(regex, "(.*)");
-                matched = command.match(newRegex);
-                if (matched) {
-                    var ret = this.subcommands.handle(matched[matched.length-1]);
-                    if (ret) {
-                        return ret;
-                    }
+            regex = this.regexFromRegex(regex, '(.*)');
+            var matched = command.match(regex);
+
+            if (matched) {
+                var ret = this.subcommands.handle(matched[matched.length-1]);
+                if (ret) {
+                    return ret;
                 }
             }
 
-            regex = this.regexFromRegex(regex, '(.*)');
-            matched = command.match(regex);
             if (matched && this.callback) {
                 return this.callback(matched);
             }
