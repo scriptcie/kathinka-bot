@@ -25,6 +25,6 @@
   },
   "scripts": {
     "lint": "eslint src/ test/ Bootstrap/",
-    "test": "npm run lint && mocha --recursive"
+    "test": "npm run lint && mocha --recursive --require should"
   }
 }
