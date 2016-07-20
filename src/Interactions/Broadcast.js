@@ -25,7 +25,7 @@ Broadcast.prototype = {
             }
         } else if (message.type in this.data) {
             // Remove private channels if they were already in there
-            var index = this.data[message.type].indexOf(5);
+            var index = this.data[message.type].indexOf(message.to);
             if (index > -1) {
                 this.data[message.type].splice(index, 1);
             }
