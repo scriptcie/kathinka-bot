@@ -32,13 +32,13 @@ Meeting.prototype = {
     },
 
     handleCommand: function(message, sender, protocol) {
-        var commandList = new Command.List();
-        if ('agenda' in this.data) {
-            commandList.add(
-                new Command(
-                    ['start meeting', 'start vergadering'],
-                    'Start a meeting if agenda is set using: set agenda [digitale anarchie, vodka]',
-                    message, function() {
+        var commandList = new Command.List('meeting', 'Kathinka can also lead a meeting');
+        commandList.add(
+            new Command(
+                ['start meeting', 'start vergadering'],
+                'Start a meeting if agenda is set using: set agenda [digitale anarchie, vodka]',
+                message, function() {
+                    if ('agenda' in this.data) {
                         this.started = true;
                         var response = ['Staring meeting', 'Agenda:'];
                         this.setAgenda();
@@ -46,32 +46,37 @@ Meeting.prototype = {
                         this.protocol = protocol;
                         response.push.apply(response, this.agenda);
                         return response;
-                    }.bind(this)));
+                    }
+                }.bind(this)));
 
-            commandList.add(
-                new Command(
-                    'agenda', 'Get the current agenda',
-                    message, function() {
+        commandList.add(
+            new Command(
+                'agenda', 'Get the current agenda',
+                message, function() {
+                    if ('agenda' in this.data) {
                         this.setAgenda();
                         return this.agenda;
-                    }.bind(this)));
-        }
+                    }
+                }.bind(this)));
 
-        if (this.started) {
-            commandList.add(
-                new Command('next', 'Go to the next item on the agenda',
-                            message, function() {
+        commandList.add(
+            new Command('next', 'Go to the next item on the agenda',
+                        message, function() {
+                            if (this.started) {
                                 return this.goNext(true);
-                            }.bind(this)));
+                            }
+                        }.bind(this)));
 
-            commandList.add(
-                new Command(['stop meeting', 'stop vergadering'],
-                            'Go to the next item on the agenda',
-                            message, function() {
+        commandList.add(
+            new Command(['stop meeting', 'stop vergadering'],
+                        'Go to the next item on the agenda',
+                        message, function() {
+
+                            if (this.started) {
                                 this.started = false;
                                 return "End of the meeting";
-                            }.bind(this)));
-        }
+                            }
+                        }.bind(this)));
 
         return commandList.handle();
     },

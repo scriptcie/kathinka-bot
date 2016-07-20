@@ -31,20 +31,19 @@ Broadcast.prototype = {
             }
         }
 
-        var commandList = new Command.List();
-        commandList.add(
-            new Command(/broadcast\s+(.*)/,
-                        'Broadcast a message to all channels',
-                        message, function(matched) {
-                            for (var type in this.data) {
-                                for (var to in this.data[type]) {
-                                    var broadcast =  new Message(type, matched[1], this.data[type][to]);
-                                    this.bus.add(broadcast);
-                                }
-                            }
-                            return "Message broadcasted";
-                        }.bind(this)));
-        return commandList.handle();
+        var command = new Command(
+                /broadcast\s+(.*)/,
+            'Broadcast a message to all channels',
+            message, function(matched) {
+                for (var type in this.data) {
+                    for (var to in this.data[type]) {
+                        var broadcast =  new Message(type, matched[1], this.data[type][to]);
+                        this.bus.add(broadcast);
+                    }
+                }
+                return "Message broadcasted";
+            }.bind(this));
+        return command.handle();
     },
 }
 

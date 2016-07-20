@@ -28,7 +28,7 @@ Logging.prototype = {
     },
 
     handleCommand: function(message, sender) {
-        var commandList = new Command.List();
+        var commandList = new Command.List('logging', 'Commands to manage the logger');
         commandList.add(
             new Command(/^start logging$/,
                         'Start logging',
