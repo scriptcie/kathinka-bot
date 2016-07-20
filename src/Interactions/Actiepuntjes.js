@@ -1,4 +1,5 @@
 var Message = require('../Message.js');
+var Command = require('../Helpers/Command.js');
 
 var Actiepuntjes = function(state) {
     this.state = state
@@ -8,26 +9,31 @@ var Actiepuntjes = function(state) {
 Actiepuntjes.prototype = {
     interact: function(message, from) {
         message = Message.fromMessage(message, from);
-        var command = message.command();
-        if (!command) {
-            return;
-        }
 
-        var matched = command.match(/([Aa]ctiepunt[a-z]*|AP[a-z]*)\s+(\S+)(.*)/);
-        if(matched) {
-            switch(matched[2]){
-            case "ls":
-                return this.displayAll();
+        var command = new Command(
+            new RegExp(/(actiepunt[a-z]*|ap[a-z]*)/i),
+            'Add actiepuntje. Usage: name description',
+            message, function(matched) {
+                matched = matched[matched.length-1].match(/(\S+)\s+(.*)/);
+                if (matched) {
+                    return this.save(matched[1], matched[2].trim());
+                }
+            }.bind(this));
 
-            case "rm":
-            case "voltooid":
-            case "gedaan":
-                return this.remove(matched[3].trim());
+        command.add(
+            new Command(['ls', 'list'], 'List all actiepuntjes',
+                        message, function() {
+                            return this.displayAll();
+                        }.bind(this)));
 
-            default:
-                return this.save(matched[2], matched[3].trim())
-            }
-        }
+        command.add(
+            new Command(['rm', 'voltooid', 'remove', 'gedaan'],
+                        'Remove an actiepuntje by subject or index',
+                        message, function(matched) {
+                            return this.remove(matched[matched.length-1].trim());
+                        }.bind(this)));
+
+        return command.handle();
     },
 
     displayAll: function() {

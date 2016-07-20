@@ -1,4 +1,5 @@
 var Message = require('../Message.js');
+var Command = require('./../Helpers/Command.js');
 
 var Logging = function(state) {
     this.state = state;
@@ -26,36 +27,43 @@ Logging.prototype = {
         return undefined;
     },
 
-    handleCommand: function(command, sender) {
-        var shouldStart = /^start logging$/;
-        if (shouldStart.test(command)) {
-            if (this.shouldLog === false) {
-                this.shouldLog = true;
-                return "Started logging";
-            } else {
-                return "I'm already logging";
-            }
-        }
+    handleCommand: function(message, sender) {
+        var commandList = new Command.List('logging', 'Commands to manage the logger');
+        commandList.add(
+            new Command(/^start logging$/,
+                        'Start logging',
+                        message, function() {
+                            if (this.shouldLog === false) {
+                                this.shouldLog = true;
+                                return "Started logging";
+                            } else {
+                                return "I'm already logging";
+                            }
+                        }.bind(this)));
 
-        var shouldStop = /^stop logging/;
-        if (shouldStop.test(command)) {
-            if (this.shouldLog === true) {
-                this.shouldLog = false;
-                return "Ok, " + sender + " I've stopped logging";
-            } else {
-                return "I haven't been logging";
-            }
-        }
+        commandList.add(
+            new Command(/^stop logging/,
+                        'Stop logging',
+                        message, function() {
+                            if (this.shouldLog === true) {
+                                this.shouldLog = false;
+                                return "Ok, " + sender + " I've stopped logging";
+                            } else {
+                                return "I haven't been logging";
+                            }
+                        }.bind(this)));
 
-        var shouldShowLogs = /show logs/;
-        if (shouldShowLogs.test(command)) {
-            var logs = this.log.map(function(log) {
-                return log.from + " said: \"" + log.message + "\"";
-            });
-            return logs;
-        }
+        commandList.add(
+            new Command(/show logs/,
+                        'Show the logs',
+                        message, function() {
+                            var logs = this.log.map(function(log) {
+                                return log.from + " said: \"" + log.message + "\"";
+                            });
+                            return logs;
+                        }.bind(this)));
 
-        return undefined;
+        return commandList.handle();
     },
 
     logMessage: function(message, from) {

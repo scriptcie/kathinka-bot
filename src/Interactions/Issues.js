@@ -1,4 +1,5 @@
 var Message = require('./../Message.js');
+var Command = require('./../Helpers/Command.js');
 
 var AskForIssues = [
     'show issues',
@@ -24,20 +25,28 @@ Issues.prototype = {
         // Save the current protocol type and to
         this.protocol = message;
 
-        if (AskForIssues.indexOf(command) >= 0) {
-            this.api.issues(this.showIssues.bind(this));
-            return "Laat me even nadenken";
-        }
+        var commandList = new Command.List('issues', 'Issues from Github');
+        commandList.add(
+            new Command(AskForIssues, 'Ask for issues',
+                        message, function() {
+                            this.api.issues(this.showIssues.bind(this));
+                            return "Laat me even nadenken";
+                        }.bind(this)));
 
-        var match = command.match(/^wat heeft (\w+) jou aangedaan\?$/);
-        if (match !== null && match.length > 0) {
-            var username = match[1];
-            this.api.issuesAssignedFor(
-                username,
-                this.showIssues.bind(this)
-            );
-            return "Laat me even nadenken";
-        }
+        commandList.add(
+            new Command(/^wat heeft (\w+) jou aangedaan\?$/,
+                        'Ask for issues of a specific user',
+                        message, function(match) {
+                            if (match !== null && match.length > 0) {
+                                var username = match[1];
+                                this.api.issuesAssignedFor(
+                                    username,
+                                    this.showIssues.bind(this)
+                                );
+                                return "Laat me even nadenken";
+                            }
+                        }.bind(this)));
+        return commandList.handle();
     },
 
     showIssues: function(issues) {

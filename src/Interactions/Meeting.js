@@ -1,4 +1,5 @@
 var Message = require('../Message.js');
+var Command = require('./../Helpers/Command.js');
 
 var Meeting = function(state, bus) {
     this.state = state
@@ -30,32 +31,54 @@ Meeting.prototype = {
         return response;
     },
 
-    handleCommand: function(command, sender, protocol) {
-        if ('agenda' in this.data &&
-            (command === "start meeting" || command === "start vergadering")) {
-            this.started = true;
-            var response = ['Staring meeting', 'Agenda:'];
-            this.setAgenda();
-            this.index = 0;
-            this.protocol = protocol;
-            response.push.apply(response, this.agenda);
-            return response;
-       }
+    handleCommand: function(message, sender, protocol) {
+        var commandList = new Command.List('meeting', 'Kathinka can also lead a meeting');
+        commandList.add(
+            new Command(
+                ['start meeting', 'start vergadering'],
+                'Start a meeting if agenda is set using: set agenda [digitale anarchie, vodka]',
+                message, function() {
+                    if ('agenda' in this.data) {
+                        this.started = true;
+                        var response = ['Staring meeting', 'Agenda:'];
+                        this.setAgenda();
+                        this.index = 0;
+                        this.protocol = protocol;
+                        response.push.apply(response, this.agenda);
+                        return response;
+                    }
+                }.bind(this)));
 
-        if (this.started && command === "next") {
-            return this.goNext(true);
-        }
+        commandList.add(
+            new Command(
+                'agenda', 'Get the current agenda',
+                message, function() {
+                    if ('agenda' in this.data) {
+                        this.setAgenda();
+                        return this.agenda;
+                    }
+                }.bind(this)));
 
-        if (command === "stop meeting" || command === "stop vergadering") {
-            this.started = false;
-            return "End of the meeting";
-        }
+        commandList.add(
+            new Command('next', 'Go to the next item on the agenda',
+                        message, function() {
+                            if (this.started) {
+                                return this.goNext(true);
+                            }
+                        }.bind(this)));
 
-        if ('agenda' in this.data && command === "agenda") {
-            this.setAgenda();
-            return this.agenda;
-        }
-        return undefined;
+        commandList.add(
+            new Command(['stop meeting', 'stop vergadering'],
+                        'Stop the meeting',
+                        message, function() {
+
+                            if (this.started) {
+                                this.started = false;
+                                return "End of the meeting";
+                            }
+                        }.bind(this)));
+
+        return commandList.handle();
     },
 
     setAgenda: function() {
