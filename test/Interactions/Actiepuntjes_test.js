@@ -40,4 +40,10 @@ describe("The Actiepuntjes interaction", function() {
         AP.data.should.eql({"plus": []});
     });
 
+    it("is case insensitive", function() {
+        var AP = new Actiepuntjes({actiepuntjes: {}});
+        AP.interact("kathinka ap plus fix actiepuntjes", "mark");
+        AP.data.should.eql({"plus": ["fix actiepuntjes"]});
+    });
+
 });
