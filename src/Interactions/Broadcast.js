@@ -39,8 +39,8 @@ Broadcast.prototype = {
         if(matched) {
             for (var type in this.data) {
                 for (var to in this.data[type]) {
-                    var message =  new Message(type, matched[1], this.data[type][to]);
-                    this.bus.add(message);
+                    var broadcast =  new Message(type, matched[1], this.data[type][to]);
+                    this.bus.add(broadcast);
                 }
             }
             return "Message broadcasted";

@@ -29,12 +29,12 @@ var botNet = new BotNet(client, [kathinka]);
 kathinka.bus.addInterface(Message.Type.IRC, botNet);
 
 var telegram = new Telegram({
-    token: nconf.get('telegram_token')
+    token: nconf.get('telegram_token'),
 }, [kathinka]);
 kathinka.bus.addInterface(Message.Type.Telegram, telegram);
 
 var steam = new Steam({
     username: nconf.get('steam_username'),
-    password: nconf.get('steam_password')
+    password: nconf.get('steam_password'),
 }, [kathinka]);
 kathinka.bus.addInterface(Message.Type.Steam, steam);
