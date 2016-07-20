@@ -95,4 +95,16 @@ describe("The Help interaction", function() {
         response.should.be.equal('test: test command\n    test2: test subcommand\n');
     });
 
+    it("can handle command lists", function() {
+        var message = new Message(Message.Type.Null, "", sender);
+        var commandList = new Command.List('test', 'test commands');
+        commandList.add(new Command('test1', 'test1 command', message,
+                                    function() {}));
+        commandList.add(new Command('test2', 'test2 command', message,
+                                function() {}));
+        var help = new Help();
+        var response = help.interact('Kathinka, help test', sender);
+        response.should.be.equal('test: test commands\n    test1: test1 command\n    test2: test2 command');
+    });
+
 });

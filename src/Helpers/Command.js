@@ -1,14 +1,19 @@
 var Message = require('./../Message.js');
 var commands = {};
 
-var CommandList = function(description) {
+var CommandList = function(name, description) {
     this.commands = [];
     this.description = description;
+    this.name = name;
+    if (name !== undefined) {
+        commands[name] = this;
+    }
 }
 
 CommandList.prototype = {
     add: function(command) {
         this.commands.push(command);
+        delete commands[command.regexes];
     },
 
     handle: function(message) {
@@ -30,8 +35,13 @@ CommandList.prototype = {
 
     print: function() {
         var out = '';
+        var indent = '';
+        if (this.description) {
+            out += this.name + ': ' + this.description;
+            indent = '    ';
+        }
         this.commands.forEach(function (command) {
-            out += '\n' + command.print();
+            out += '\n' + indent + command.print();
         });
         return out;
     },
@@ -53,7 +63,6 @@ var Command = function(regexes, description, message, callback) {
 Command.prototype = {
     add: function(command) {
         this.subcommands.add(command);
-        delete commands[command.regexes];
     },
 
     handle: function() {
