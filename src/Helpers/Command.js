@@ -1,8 +1,9 @@
 var Message = require('./../Message.js');
 var commands = {};
 
-var CommandList = function() {
+var CommandList = function(description) {
     this.commands = [];
+    this.description = description;
 }
 
 CommandList.prototype = {
@@ -52,6 +53,7 @@ var Command = function(regexes, description, message, callback) {
 Command.prototype = {
     add: function(command) {
         this.subcommands.add(command);
+        delete commands[command.regexes];
     },
 
     handle: function() {

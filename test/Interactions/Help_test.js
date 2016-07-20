@@ -71,4 +71,28 @@ describe("The Help interaction", function() {
         response.should.be.equal('/test([0-9])/: test command');
     });
 
+    it("can handle subcommands", function() {
+        var message = new Message(Message.Type.Null, "", sender);
+        var command = new Command('test', 'test command', message,
+                                  function() {});
+        command.add(new Command('test2', 'test subcommand', message,
+                                function() {}));
+        var help = new Help();
+        var response = help.interact('Kathinka, help test', sender);
+        response.should.be.equal('test: test command\n    test2: test subcommand');
+    });
+
+    it("can handle subcommands in help all", function() {
+        var message = new Message(Message.Type.Null, "", sender);
+        var command = new Command('test', 'test command', message,
+                                  function() {});
+        command.add(new Command('test2', 'test subcommand', message,
+                                function() {}));
+        var help = new Help();
+        var response = help.interact('Kathinka, help', sender);
+        // Filter help help
+        response = response.replace(/^(.*)help(.*)\n/img, '');
+        response.should.be.equal('test: test command\n    test2: test subcommand\n');
+    });
+
 });
