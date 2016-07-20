@@ -56,6 +56,15 @@ BotNet.prototype = {
         }
         var self = this;
         var message = messages.shift();
+
+        // Split messages on \n so we don't spam
+        splitMessage = message.split('\n');
+        if (splitMessage.length > 1) {
+            message = splitMessage.shift();
+            Array.prototype.push.apply(splitMessage, messages);
+            messages = splitMessage;
+        }
+
         setTimeout(function() {
             self.irc.say(to, message);
             self.say(to, messages);
