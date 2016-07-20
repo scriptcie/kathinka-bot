@@ -25,7 +25,7 @@ Issues.prototype = {
         // Save the current protocol type and to
         this.protocol = message;
 
-        var commandList = new Command.List();
+        var commandList = new Command.List('issues', 'Issues from Github');
         commandList.add(
             new Command(AskForIssues, 'Ask for issues',
                         message, function() {

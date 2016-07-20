@@ -10,7 +10,6 @@ Actiepuntjes.prototype = {
     interact: function(message, from) {
         message = Message.fromMessage(message, from);
 
-        var commandList = new Command.List();
         var command = new Command(
             new RegExp(/(actiepunt[a-z]*|ap[a-z]*)/i),
             'Add actiepuntje. Usage: name description',
@@ -34,7 +33,6 @@ Actiepuntjes.prototype = {
                             return this.remove(matched[matched.length-1].trim());
                         }.bind(this)));
 
-        commandList.add(command);
         return command.handle();
     },
 
