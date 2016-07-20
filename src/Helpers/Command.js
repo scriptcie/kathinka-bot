@@ -74,11 +74,13 @@ Command.prototype = {
             }
         }
 
+        var matched;
+
         for (var i = 0; i < this.regexes.length; i++) {
             var regex = this.regexes[i];
             if (this.subcommands.length) {
                 var newRegex = this.regexFromRegex(regex, "(.*)");
-                var matched = command.match(newRegex);
+                matched = command.match(newRegex);
                 if (matched) {
                     var ret = this.subcommands.handle(matched[matched.length-1]);
                     if (ret) {
@@ -87,8 +89,8 @@ Command.prototype = {
                 }
             }
 
-            var newRegex = this.regexFromRegex(regex, '(.*)');
-            var matched = command.match(newRegex);
+            regex = this.regexFromRegex(regex, '(.*)');
+            matched = command.match(regex);
             if (matched && this.callback) {
                 return this.callback(matched);
             }
@@ -105,7 +107,7 @@ Command.prototype = {
             if (regex.multiline) flags += 'm';
         } else {
             // Escape string
-            text = regex.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");;
+            text = regex.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
         }
         if (text.length && text[0] != '^') {
             text = '^' + text;
@@ -128,7 +130,7 @@ Command.prototype = {
             out = out.slice(0, -2);
             out += ']: ' + this.description;
         }
-        subout = this.subcommands.print();
+        var subout = this.subcommands.print();
         subout = subout.replace(/\n/gm, '\n    ');
         out += subout;
         return out;

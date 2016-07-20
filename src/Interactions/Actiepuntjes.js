@@ -14,7 +14,7 @@ Actiepuntjes.prototype = {
             new RegExp(/(actiepunt[a-z]*|ap[a-z]*)/i),
             'Add actiepuntje. Usage: name description',
             message, function(matched) {
-                var matched = matched[matched.length-1].match(/(\S+)\s+(.*)/);
+                matched = matched[matched.length-1].match(/(\S+)\s+(.*)/);
                 if (matched) {
                     return this.save(matched[1], matched[2].trim());
                 }

@@ -13,8 +13,8 @@ describe("The Help interaction", function() {
 
     it("can print help for a command", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command('test', 'test command', message,
-                                  function() {});
+        new Command('test', 'test command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, help test', sender);
         response.should.be.equal('test: test command');
@@ -22,10 +22,10 @@ describe("The Help interaction", function() {
 
     it("can print help for all commands", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command('test', 'test command', message,
-                                  function() {});
-        var command = new Command('test2', 'test2 command', message,
-                                  function() {});
+        new Command('test', 'test command', message,
+                    function() {});
+        new Command('test2', 'test2 command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, help', sender);
         // Filter help help
@@ -35,8 +35,8 @@ describe("The Help interaction", function() {
 
     it("can print man for a command", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command('test', 'test command', message,
-                                  function() {});
+        new Command('test', 'test command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, man test', sender);
         response.should.be.equal('test: test command');
@@ -44,19 +44,19 @@ describe("The Help interaction", function() {
 
     it("can print help for a command with multiple possible names", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command(['test2', 'test3'], 'test command', message,
-                                  function() {});
+        new Command(['test2', 'test3'], 'test command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, help test2', sender);
         response.should.be.equal('[test2, test3]: test command');
-        var response = help.interact('Kathinka, help test3', sender);
+        response = help.interact('Kathinka, help test3', sender);
         response.should.be.equal('[test2, test3]: test command');
     });
 
     it("gives some help when you ask help for a non-existing command", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command('test', 'test command', message,
-                                  function() {});
+        new Command('test', 'test command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, help notacommand', sender);
         response.should.be.equal('notacommand not found. Use help without arguments to find all possible commands');
@@ -64,8 +64,8 @@ describe("The Help interaction", function() {
 
     it("can print help for a command using one possible regex", function() {
         var message = new Message(Message.Type.Null, "", sender);
-        var command = new Command(/test([0-9])/, 'test command', message,
-                                  function() {});
+        new Command(/test([0-9])/, 'test command', message,
+                    function() {});
         var help = new Help();
         var response = help.interact('Kathinka, help test1', sender);
         response.should.be.equal('/test([0-9])/: test command');
@@ -85,9 +85,9 @@ describe("The Help interaction", function() {
     it("can handle subcommands in help all", function() {
         var message = new Message(Message.Type.Null, "", sender);
         var command = new Command('test', 'test command', message,
-                                  function() {});
+                    function() {});
         command.add(new Command('test2', 'test subcommand', message,
-                                function() {}));
+                                              function() {}));
         var help = new Help();
         var response = help.interact('Kathinka, help', sender);
         // Filter help help
@@ -101,7 +101,7 @@ describe("The Help interaction", function() {
         commandList.add(new Command('test1', 'test1 command', message,
                                     function() {}));
         commandList.add(new Command('test2', 'test2 command', message,
-                                function() {}));
+                                    function() {}));
         var help = new Help();
         var response = help.interact('Kathinka, help test', sender);
         response.should.be.equal('test: test commands\n    test1: test1 command\n    test2: test2 command');
