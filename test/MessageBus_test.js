@@ -95,12 +95,15 @@ describe("MessageBus", function() {
         var message = new Message(Message.Type.Null, 'test', 'Mark');
 
         var stubbedInterface = {say: function() {
-            if (!first) return;
+            if (!first) {
+                done();
+                return;
+            }
+
             first = false;
             bus.locked.should.be.true;
             bus.add(message);
             bus.queue.length.should.equal(1);
-            done();
         }};
 
         bus.addInterface(Message.Type.Null, stubbedInterface);
@@ -115,11 +118,16 @@ describe("MessageBus", function() {
         var message = new Message(Message.Type.Null, 'test', 'Mark');
 
         var stubbedInterface = {say: function() {
-            if (!first) return;
+            if (!first) {
+                if (bus.queue.length === 0) {
+                    done();
+                }
+                return;
+            }
+
             first = false;
             bus.add([message, message]);
             bus.queue.length.should.equal(2);
-            done();
         }};
 
         bus.addInterface(Message.Type.Null, stubbedInterface);
