@@ -18,6 +18,7 @@ describe("MessageBus", function() {
         var expected = {};
         expected[Message.Type.Null] = stubbedInterface;
         interfaces.should.eql(expected);
+        bus.interfaces.should.eql(expected);
     });
 
     it("can communicate through registered interfaces", function(done) {
@@ -47,5 +48,40 @@ describe("MessageBus", function() {
 
         console.log.calledOnce.should.be.true;
         console.log.calledWithMatch('No interface found for a message of type Null').should.be.true;
+    });
+
+    it("can forward quit calls", function(done) {
+        var interfaces = {};
+        var bus = new MessageBus(interfaces);
+
+        var stubbedInterface = {quit: function() {
+            done();
+        }};
+
+        bus.addInterface(Message.Type.Null, stubbedInterface);
+        bus.quit();
+    });
+
+    it("can handle quit callbacks", function(done) {
+        var interfaces = {};
+        var bus = new MessageBus(interfaces);
+
+        var callback = function() {
+            done();
+        }
+
+        bus.quit(callback);
+    });
+
+    it("removes interfaces after a quit", function() {
+        var interfaces = {};
+        var bus = new MessageBus(interfaces);
+
+        var stubbedInterface = {quit: function() {
+        }};
+
+        bus.addInterface(Message.Type.Null, stubbedInterface);
+        bus.quit();
+        bus.interfaces.should.eql({});
     });
 });
