@@ -11,9 +11,7 @@ var MessageBus = function(interfaces) {
 
     this.event = new MessageEvent();
     this.event.on('message', function() {
-        setImmediate(function() {
-            self.handle();
-        });
+        self.handle();
     });
 
     this.locked = false;

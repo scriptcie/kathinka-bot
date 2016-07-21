@@ -107,7 +107,7 @@ describe("MessageBus", function() {
         }};
 
         bus.addInterface(Message.Type.Null, stubbedInterface);
-        bus.add(message)
+        bus.add(message);
     });
 
     it("can handle message arrays", function(done) {
