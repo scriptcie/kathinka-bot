@@ -28,14 +28,8 @@ Kathinka.prototype = {
         this.interactions.forEach(function(interaction, index) {
             var response = null;
 
-            // Try giving both a Message object and a string to
-            // the message handlers
-            try {
-                response = interaction.interact(message, from);
-            }
-            catch(err) {
-                response = interaction.interact(message.contents, from);
-            }
+            // Pass message object to all interactions
+            response = interaction.interact(message, from);
 
             // We don't want to return empty responses
             if (response === undefined || response === null) {
