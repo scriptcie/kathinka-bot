@@ -54,9 +54,7 @@ Meeting.prototype = {
         commandList.add(
             new Command('next', 'Go to the next item on the agenda',
                         message, function() {
-                            if (this.started) {
-                                return this.goNext(true);
-                            }
+                            return this.goNext(true);
                         }.bind(this)));
 
         commandList.add(
@@ -104,7 +102,6 @@ Meeting.prototype = {
     },
 
     goNext: function(force) {
-        var time = (new Date()).getTime() / 1000;
         if (!this.started) {
             return;
         }
@@ -117,20 +114,23 @@ Meeting.prototype = {
             } else {
                 return this.agenda[this.index];
             }
-        } else if (this.lastActivity + 60 * 5 - 1 <= time) {
-            this.index++;
-            if (this.index >= this.agenda.length) {
-                this.started = false;
-                var message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
-                this.bus.add(message);
-            } else {
-                message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
-                this.bus.add(message);
+        } else {
+            var time = (new Date()).getTime() / 1000;
+            if (this.lastActivity + 60 * 5 - 1 <= time) {
+                this.index++;
+                if (this.index >= this.agenda.length) {
+                    this.started = false;
+                    var message = new Message(this.protocol.type, "End of the meeting", this.protocol.to);
+                    this.bus.add(message);
+                } else {
+                    message = new Message(this.protocol.type, this.agenda[this.index], this.protocol.to);
+                    this.bus.add(message);
 
-                // And restart the timeout
-                var self = this;
-                this.lastActivity = time;
-                setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+                    // And restart the timeout
+                    var self = this;
+                    this.lastActivity = time;
+                    setTimeout(function() {self.goNext();}, 60 * 5 * 1000);
+                }
             }
         }
     },
