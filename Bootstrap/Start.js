@@ -6,11 +6,13 @@ var Telegram = require('../src/Telegram.js');
 var Steam = require('../src/Steam.js');
 var Message = require('../src/Message.js');
 
+var fs = require('fs');
+
 var nconf = require('nconf');
 nconf.argv()
    .env()
    .file({ file: 'config.json' });
-var kathinka = buildKathinka();
+var kathinka = buildKathinka(fs);
 
 var username = nconf.get('irc_username');
 var password = nconf.get('irc_password');
