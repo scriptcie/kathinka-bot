@@ -1,9 +1,23 @@
 var buildKathinka = require('../../src/Helpers/KathinkaFactory');
 var Message = require('../../src/Message.js');
+var sinon = require('sinon');
+var fs = require('fs');
 
 describe("A Kathinka bot with basic interactions", function() {
 
-    var kathinka = new buildKathinka();
+    var kathinka;
+    var clock;
+
+    before(function() {
+        sinon.stub(fs, 'writeFile');
+        clock = sinon.useFakeTimers();
+        kathinka = new buildKathinka(fs);
+    });
+
+    after(function() {
+        fs.writeFile.restore();
+        clock.restore();
+    });
 
     it("Starts to do some logging", function() {
         kathinka.notify(
@@ -81,6 +95,16 @@ describe("A Kathinka bot with basic interactions", function() {
             }};
         kathinka.bus.addInterface(Message.Type.IRC, stubbedInterface);
         kathinka.bus.add(message);
+    });
+
+    it("periodically stores data", function() {
+        clock.tick(60000);
+
+        fs.writeFile.notCalled.should.be.false;
+        fs.writeFile.calledOnce.should.be.true;
+        fs.writeFile.calledWith('data.json',
+                                JSON.stringify(kathinka.interactions[1].state)
+                               ).should.be.true;
     });
 
 });

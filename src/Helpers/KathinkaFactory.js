@@ -1,4 +1,4 @@
-var KathinkaFactory = function() {
+var KathinkaFactory = function(fs) {
     var Kathinka = require('../Kathinka.js');
     var Broadcast = require('../Interactions/Broadcast.js');
     var Eightball = require('../Interactions/Eightball.js');
@@ -15,9 +15,6 @@ var KathinkaFactory = function() {
 
     var MessageBus = require('../MessageBus.js');
     var Github = require("./Github");
-
-
-    var fs = require('fs');
 
     var dataStore;
     try {
