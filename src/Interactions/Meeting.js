@@ -38,15 +38,7 @@ Meeting.prototype = {
                 ['start meeting', 'start vergadering'],
                 'Start a meeting if agenda is set using: set agenda [digitale anarchie, vodka]',
                 message, function() {
-                    if ('agenda' in this.data) {
-                        this.started = true;
-                        var response = ['Staring meeting', 'Agenda:'];
-                        this.setAgenda();
-                        this.index = 0;
-                        this.protocol = protocol;
-                        response.push.apply(response, this.agenda);
-                        return response;
-                    }
+                    return this.start(protocol);
                 }.bind(this)));
 
         commandList.add(
@@ -79,6 +71,18 @@ Meeting.prototype = {
                         }.bind(this)));
 
         return commandList.handle();
+    },
+
+    start: function(protocol) {
+        if ('agenda' in this.data) {
+            this.started = true;
+            var response = ['Staring meeting', 'Agenda:'];
+            this.setAgenda();
+            this.index = 0;
+            this.protocol = protocol;
+            response.push.apply(response, this.agenda);
+            return response;
+        }
     },
 
     setAgenda: function() {

@@ -5,9 +5,18 @@ var sinon = require('sinon');
 
 describe("Meeting interaction", function() {
     var sender = "Mark";
+    var meeting;
+
+    afterEach(function() {
+        //Make sure timers are destroyed
+        var clock = sinon.useFakeTimers();
+        meeting.started = false;
+        clock.tick(5 * 60 * 1000);
+        clock.restore();
+    });
 
     it("Can't start a meeting when the agenda is not set", function() {
-        var meeting = new Meeting({properties: {}});
+        meeting = new Meeting({properties: {}});
         var response = meeting.interact("Kathinka, start meeting", sender);
 
         (response === undefined).should.be.true;
@@ -15,7 +24,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Starts a meeting when the agenda is set", function() {
-        var meeting = new Meeting({properties: {'agenda': ['test']}});
+        meeting = new Meeting({properties: {'agenda': ['test']}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -24,7 +33,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Stops a meeting when one is started", function() {
-        var meeting = new Meeting({properties: {'agenda': ['test']}});
+        meeting = new Meeting({properties: {'agenda': ['test']}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -37,7 +46,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda after starting", function() {
-        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
@@ -53,7 +62,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda when asked for", function() {
-        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
 
         var expected = ['1. Opening', '2. Vaststellen agenda',
@@ -69,7 +78,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Prints the agenda after starting with multiple elements", function() {
-        var meeting = new Meeting({properties: {'agenda': ['test 1', 'test 2']}});
+        meeting = new Meeting({properties: {'agenda': ['test 1', 'test 2']}});
         meeting.started.should.be.false;
 
         var expected = ['Staring meeting', 'Agenda:', '1. Opening',
@@ -85,7 +94,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Goes to the next item after receiving next", function() {
-        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
 
         var response = meeting.interact("Kathinka, start meeting", sender);
@@ -100,7 +109,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Stops the meeting when done", function() {
-        var meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting = new Meeting({properties: {'agenda': 'test'}});
         meeting.started.should.be.false;
         
         var expected = ['2. Vaststellen agenda',
@@ -120,7 +129,7 @@ describe("Meeting interaction", function() {
     });
 
     it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
-        var meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
+        meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
         var clock = sinon.useFakeTimers();
         meeting.interact("Kathinka, start meeting", sender);
 
@@ -155,13 +164,28 @@ describe("Meeting interaction", function() {
         bus.addInterface(Message.Type.IRC, stubbedInterface);
 
         var clock = sinon.useFakeTimers();
-        var meeting = new Meeting({properties: {'agenda': 'test'}}, bus);
+        meeting = new Meeting({properties: {'agenda': 'test'}}, bus);
 
         var message = new Message(Message.Type.IRC, "Kathinka, start meeting", sender);
         meeting.interact(message, sender);
 
         clock.tick(5 * 60 * 1000);
         meeting.index.should.equal(1);
+        clock.restore();
+    }));
+
+    it("ends the meeting after the last timeout", sinon.test(function() {
+        var bus = new MessageBus({});
+
+        var clock = sinon.useFakeTimers();
+        meeting = new Meeting({properties: {'agenda': 'test'}}, bus);
+
+        var message = new Message(Message.Type.IRC, "Kathinka, start meeting", sender);
+        meeting.interact(message, sender);
+        meeting.index = 5;
+
+        clock.tick(5 * 60 * 1000);
+        meeting.started.should.be.false;
         clock.restore();
     }));
 });
