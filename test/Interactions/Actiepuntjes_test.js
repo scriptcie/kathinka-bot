@@ -46,4 +46,11 @@ describe("The Actiepuntjes interaction", function() {
         AP.data.should.eql({"plus": ["fix actiepuntjes"]});
     });
 
+    it("saves multiple actiepuntjes per person", function() {
+        var AP = new Actiepuntjes({actiepuntjes: {}});
+        AP.interact("kathinka AP plus fix actiepuntjes", "mark");
+        AP.interact("kathinka ap plus read mails", "mark");
+        AP.data.should.eql({"plus": ["fix actiepuntjes", "read mails"]});
+    });
+
 });
