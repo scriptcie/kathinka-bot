@@ -128,6 +128,16 @@ describe("Meeting interaction", function() {
         lastResponse.should.equal("End of the meeting");
     });
 
+    it("does nothing when calling next when a meeting is not started", function() {
+        meeting = new Meeting({properties: {'agenda': 'test'}});
+        meeting.started.should.be.false;
+        meeting.index.should.equal(0);
+
+        var response = meeting.interact("Kathinka, next", sender);
+        (response === undefined).should.be.true;
+        meeting.index.should.equal(0);
+    });
+
     it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
         meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
         var clock = sinon.useFakeTimers();
