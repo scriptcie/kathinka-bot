@@ -1,4 +1,5 @@
 var Kathinka = require ('../src/Kathinka.js');
+require('should');
 
 describe("Kathinka", function() {
 
