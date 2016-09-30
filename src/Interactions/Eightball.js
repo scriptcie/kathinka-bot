@@ -38,70 +38,15 @@ Eightball.prototype = {
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
-	    vraagwoord = message.contents.match(/(what)|(when)|(why)|(where)|(how)|(who)|(which)|(wat)|(wanneer)|(waarom)|(waar)|(hoe)|(wie)|(welke?)/i);
-	    if(!!vraagwoord){
-		vraagwoord = vraagwoord[0];
-		switch(vraagwoord) {
-			case "what":
-				return "That";
-				break;
-			case "when":
-				return new Date(Math.floor(Math.random()*(1475245914029)-(1475245914029)/2)).toLocaleString();
-				break;
-			case "why":
-				return "Because 3.";
-				break;
-			case "where":
-				lat = ((Math.random()*180 - 90));
-				lng = ((Math.random()*360 - 180));
-				return (lat +  ", " + lng) + " (http://maps.google.com?q=" + lat + "," + lng + ")";
-				break;
-			case "how":
-				return "Just... you know..";
-				break;
-			case "who":
-				return Math.random() > 0.5 ? "Me?" : "You?";
-				break;
-			case "which":
-				return Math.random() > 0.5 ? "The left one." : "The right one.";
-				break;
-			case "wat":
-				return "Dat.";
-				break;
-			case "wanneer":
-				return new Date(Math.floor(Math.random()*(1475245914029)-(1475245914029)/2)).toLocaleString();
-				break;
-			case "waarom":
-				return "Daarom";
-				break;
-			case "waar":
-				lat = ((Math.random()*180 - 90));
-				lng = ((Math.random()*360 - 180));
-				return (lat +  ", " + lng) + " (http://maps.google.com?q=" + lat + "," + lng + ")";
-				break;
-			case "hoe":
-				return "Gewoon...";
-				break;
-			case "wie":
-				return Math.random() > 0.5 ? "Ik?" : "Jij?";
-				break;
-			case "welk":
-			case "welke":
-				return Math.random() > 0.5 ? "De linker." : "De rechter.";
-				break;
+            var idx = message.contents.split('')
+                .map(function(i){
+                    return i.charCodeAt(0);
+                })
+                .reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue;}
+                       ) * 13 % this.eightball[language].length;
 
-		}
-	    }else{
-		    var idx = message.contents.split('')
-		        .map(function(i){
-		            return i.charCodeAt(0);
-		        })
-		        .reduce(function(previousValue, currentValue) {
-		            return previousValue + currentValue;}
-		               ) * 13 % this.eightball[language].length;
-
-		    return this.eightball[language][idx];
-	    }
+            return this.eightball[language][idx];
         }
 
         return undefined;
