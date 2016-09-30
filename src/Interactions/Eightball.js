@@ -52,8 +52,8 @@ Eightball.prototype = {
 				return "Because 3.";
 				break;
 			case "where":
-				lat = ((Math.random()*180 - 90);
-				lng = ((Math.random()*360 - 180);
+				lat = ((Math.random()*180 - 90));
+				lng = ((Math.random()*360 - 180));
 				return (lat +  ", " + lng) + "(http://maps.google.com?q=" + lat + "," + lng + ")";
 				break;
 			case "how":
@@ -75,8 +75,8 @@ Eightball.prototype = {
 				return "Daarom";
 				break;
 			case "waar":
-				lat = ((Math.random()*180 - 90);
-				lng = ((Math.random()*360 - 180);
+				lat = ((Math.random()*180 - 90));
+				lng = ((Math.random()*360 - 180));
 				return (lat +  ", " + lng) + "(http://maps.google.com?q=" + lat + "," + lng + ")";
 				break;
 			case "hoe":
