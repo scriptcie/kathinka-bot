@@ -38,7 +38,7 @@ Eightball.prototype = {
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
-	    vraagwoord = message.contents.match(/(what)|(when)|(why)|(where)|(how)|(who)|(which)|(wat)|(wanneer)|(waarom)|(waar)|(hoe)|(wie)|(welke?)/i);
+	    vraagwoord = message.contents.match(/(what)|(when)|(why)|(where)|(how)|(who)|(which)|(wat)|(wanneer)|(waarom)|(waar)|(hoe)|(wie)|(welke?) /i);
 	    if(!!vraagwoord){
 		vraagwoord = vraagwoord[0];
 		switch(vraagwoord) {
