@@ -19,7 +19,7 @@ var MessageType = {
 
 Message.prototype = {
     command: function() {
-        var match = this.contents.match(/^[Kk]athinka(-bot)?[,:]{0,1}\s+(.*)$/);
+        var match = this.contents.match(/^[Kk]athinka(-bot)?[0-9]*[,:]{0,1}\s+(.*)$/);
 
         // Return the command
         if (match !== undefined && match !== null) {
