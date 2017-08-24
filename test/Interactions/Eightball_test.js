@@ -73,7 +73,7 @@ describe("The eightball interaction", function() {
                 "De rechter.",
                          ];
         (messagelist.length).should.equal(answerlist.length);
-        for(let index = 0; index < messagelist.length; index = index + 1){
+        for(var index = 0; index < messagelist.length; index = index + 1){
         //let index = 0;
             let message = "Kathinka, " + messagelist[index];
             let response = eightball.interact(message, sender);
