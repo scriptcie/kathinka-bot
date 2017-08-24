@@ -59,11 +59,12 @@ Eightball.prototype = {
             let rng = PRNG((idx % 2147483647)/2147483647);
             let lat = (((PRNG(rng))*180 - 90));
             let lng = (((PRNG(PRNG(rng))*360 - 180)));
+
         switch(vraagwoord.toLowerCase()) {
             case "what":
                 return "That";
             case "when":
-                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString();
+                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString('en-GB', {timeZone : 'Europe/Amsterdam'});
             case "why":
                 return "Because 3.";
             case "where":
@@ -77,7 +78,7 @@ Eightball.prototype = {
             case "wat":
                 return "Dat.";
             case "wanneer":
-                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString();
+                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString('nl-NL', {timeZone : 'Europe/Amsterdam'});
             case "waarom":
                 return "Daarom";
             case "waar":
