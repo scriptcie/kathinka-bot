@@ -39,42 +39,45 @@ describe("The eightball interaction", function() {
             .should.equal(aResponse);
     });
 
-    it("Eightball can recognize more question words/types", function(){
-	var eightball = new Eightball({});
-	var sender = "Mark";
-	var messagelist = [
-		"What are you doing?",
-		"When are you done?",
-		"Why are you so awesome?",
-		"where are my shoes?",
-		"how do you know all this?",
-		"who takes the next drink?",
-		"which road should I take?",
-		"wat ben je aan het doen?",
-		"wanneer ben jij er?",
-		"waarom ben je zo ontzagwekkend?",
-		"waar zijn mijn schoenen?",
-		"hoe doe je dit allemaal?",
-		"Welke weg moet ik inslaan?"
-			];	
-	 var answerlist = [
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		""
-	 		];
-	(messagelist.length).should.equal(answerlist.length);
-	messagelist.forEach(function(message, index){
-        eightball.interact("Kathinka, " + message, sender)
-            .should.equal(answerlist[index]);
-	});
+    it(" can recognize more question words/types", function(){
+        var eightball = new Eightball({});
+        var sender = "Mark";
+        var messagelist = [
+                "What are you doing?",
+                "When are you done?",
+                "Why are you so awesome?",
+                "where are my shoes?",
+                "how do you know all this?",
+                "who takes the next drink?",
+                "which road should I take?",
+                "wat ben je aan het doen?",
+                "wanneer ben jij er?",
+                "waarom ben je zo ontzagwekkend?",
+                "waar zijn mijn schoenen?",
+                "hoe doe je dit allemaal?",
+                "Welke weg moet ik inslaan?",
+                        ];        
+         var answerlist = [
+                "That",
+                "3/29/1993, 1:24:55 PM",
+                "Because 3.",
+                "(-43.386939019432766, 178.70983782660068) (http://maps.google.com?q=-43.386939019432766,178.70983782660068)",
+                "Just... you know..",
+                "Me?",
+                "The right one.",
+                "Dat.",
+                "7/26/1959, 7:41:10 AM",
+                "Daarom",
+                "(84.79808211327745, -133.7674144194062) (http://maps.google.com?q=84.79808211327745,-133.7674144194062)",
+                "Gewoon...",
+                "De rechter.",
+                         ];
+        (messagelist.length).should.equal(answerlist.length);
+        for(let index = 0; index < messagelist.length; index = index + 1){
+        //let index = 0;
+            let message = "Kathinka, " + messagelist[index];
+            let response = eightball.interact(message, sender);
+            response.should.equal(answerlist[index]);
+        }
     });
 });

@@ -28,28 +28,13 @@ var Eightball = function(state) {
     };
 }
 
-function Random(seed) {
-	  this._seed = seed % 2147483647;
-	  if (this._seed <= 0) this._seed += 2147483646;
+
+var PRNG = function (seed) {
+    let x = seed;
+    for(let index = 0; index <= 100; index = index+1){
+    x = 3.99 * x * (1-x);}
+    return x;
 }
-
-/**
- *  * Returns a pseudo-random value between 1 and 2^32 - 2.
- *   */
-Random.prototype.next = function () {
-	  return this._seed = this._seed * 16807 % 2147483647;
-};
-
-
-/**
- *  * Returns a pseudo-random floating point number in range [0, 1).
- *   */
-Random.prototype.nextFloat = function (opt_minOrMax, opt_max) {
-	  // We know that result of next() will be 1 to 2147483646 (inclusive).
-	//   return (this.next() - 1) / 2147483646;
-	//   };
-	//
-	//
 
 Eightball.prototype = {
     interact: function(message, sender) {
@@ -61,78 +46,62 @@ Eightball.prototype = {
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
-	    vraagwoord = message.contents.match(/(what)|(when)|(why)|(where)|(how)|(who)|(which)|(wat)|(wanneer)|(waarom)|(waar)|(hoe)|(wie)|(welke?)/i);
-	    if(!!vraagwoord){
-		vraagwoord = vraagwoord[0];
-		    var idx = message.contents.split('')
-		        .map(function(i){
-		            return i.charCodeAt(0);
-		        })
-		        .reduce(function(previousValue, currentValue) {
-		            return previousValue + currentValue;}
-		               ) * 13 % this.eightball[language].length;
-		    var rng = Random(idx);
-		switch(vraagwoord) {
-			case "what":
-				return "That";
-				break;
-			case "when":
-				return new Date(Math.floor(rng.next()*(1475245914029)-(1475245914029)/2)).toLocaleString();
-				break;
-			case "why":
-				return "Because 3.";
-				break;
-			case "where":
-				lat = ((rng.next()*180 - 90));
-				lng = ((rng.next()*360 - 180));
-				return (lat +  ", " + lng) + " (http://maps.google.com?q=" + lat + "," + lng + ")";
-				break;
-			case "how":
-				return "Just... you know..";
-				break;
-			case "who":
-				return rng.next() > 0.5 ? "Me?" : "You?";
-				break;
-			case "which":
-				return rng.next() > 0.5 ? "The left one." : "The right one.";
-				break;
-			case "wat":
-				return "Dat.";
-				break;
-			case "wanneer":
-				return new Date(Math.floor(rng.next()*(1475245914029)-(1475245914029)/2)).toLocaleString();
-				break;
-			case "waarom":
-				return "Daarom";
-				break;
-			case "waar":
-				lat = ((rng.next()*180 - 90));
-				lng = ((rng.next()*360 - 180));
-				return (lat +  ", " + lng) + " (http://maps.google.com?q=" + lat + "," + lng + ")";
-				break;
-			case "hoe":
-				return "Gewoon...";
-				break;
-			case "wie":
-				return rng.next() > 0.5 ? "Ik?" : "Jij?";
-				break;
-			case "welk":
-			case "welke":
-				return rng.next() > 0.5 ? "De linker." : "De rechter.";
-				break;
+        let vraagwoord = message.contents.match(/([Ww]hat)|([Ww]hen)|([Ww]hy)|([Ww]here)|([Hh]ow)|([Ww]ho)|([Ww]hich)|([Ww]at)|([Ww]anneer)|([Ww]aarom)|([Ww]aar)|([Hh]oe)|([Ww]ie)|([Ww]elke?)/i);
+        if(vraagwoord){
+            vraagwoord = vraagwoord[0];
+            let idx = message.contents.split('')
+                .map(function(i){
+                    return i.charCodeAt(0);
+                })
+                .reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue;}
+                       ) * 13 % this.eightball[language].length;
+            let rng = PRNG((idx % 2147483647)/2147483647);
+            let lat = (((PRNG(rng))*180 - 90));
+            let lng = (((PRNG(PRNG(rng))*360 - 180)));
+        switch(vraagwoord.toLowerCase()) {
+            case "what":
+                return "That";
+            case "when":
+                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString();
+            case "why":
+                return "Because 3.";
+            case "where":
+                return "(" + lat +  ", " + lng + ")" + " (http://maps.google.com?q=" + lat + "," + lng + ")";
+            case "how":
+                return "Just... you know..";
+            case "who":
+                return rng > 0.5 ? "Me?" : "You?";
+            case "which":
+                return rng > 0.5 ? "The left one." : "The right one.";
+            case "wat":
+                return "Dat.";
+            case "wanneer":
+                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString();
+            case "waarom":
+                return "Daarom";
+            case "waar":
+                return "(" + lat +  ", " + lng + ")" + " (http://maps.google.com?q=" + lat + "," + lng + ")";
+            case "hoe":
+                return "Gewoon...";
+            case "wie":
+                return rng > 0.5 ? "Ik?" : "Jij?";
+            case "welk":
+            case "welke":
+                return rng > 0.5 ? "De linker." : "De rechter.";
 
-		}
-	    }else{
-		    var idx = message.contents.split('')
-		        .map(function(i){
-		            return i.charCodeAt(0);
-		        })
-		        .reduce(function(previousValue, currentValue) {
-		            return previousValue + currentValue;}
-		               ) * 13 % this.eightball[language].length;
+        }
+        }else{
+            var idx = message.contents.split('')
+                .map(function(i){
+                    return i.charCodeAt(0);
+                })
+                .reduce(function(previousValue, currentValue) {
+                    return previousValue + currentValue;}
+                       ) * 13 % this.eightball[language].length;
 
-		    return this.eightball[language][idx];
-	    }
+            return this.eightball[language][idx];
+        }
         }
 
         return undefined;
