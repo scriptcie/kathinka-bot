@@ -38,4 +38,43 @@ describe("The eightball interaction", function() {
         eightball.interact(message, sender)
             .should.equal(aResponse);
     });
+
+    it("Eightball can recognize more question words/types", function(){
+	var eightball = new Eightball({});
+	var sender = "Mark";
+	var messagelist = [
+		"What are you doing?",
+		"When are you done?",
+		"Why are you so awesome?",
+		"where are my shoes?",
+		"how do you know all this?",
+		"who takes the next drink?",
+		"which road should I take?",
+		"wat ben je aan het doen?",
+		"wanneer ben jij er?",
+		"waarom ben je zo ontzagwekkend?",
+		"waar zijn mijn schoenen?",
+		"hoe doe je dit allemaal?",
+		"Welke weg moet ik inslaan?"
+			];	
+	 var answerlist = [
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		""
+	 		];
+	(messagelist.length).should.equal(answerlist.length);
+	messagelist.forEach(function(message, index){
+        eightball.interact("Kathinka, " + message, sender)
+            .should.equal(answerlist[index]);
+	});
+    });
 });
