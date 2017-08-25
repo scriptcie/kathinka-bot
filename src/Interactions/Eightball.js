@@ -46,6 +46,7 @@ Eightball.prototype = {
             if (this.state.language !== undefined) {
                 language = this.state.language;
             }
+
         let vraagwoord = message.contents.match(/([Ww]hat)|([Ww]hen)|([Ww]hy)|([Ww]here)|([Hh]ow)|([Ww]ho)|([Ww]hich)|([Ww]at)|([Ww]anneer)|([Ww]aarom)|([Ww]aar)|([Hh]oe)|([Ww]ie)|([Ww]elke?)/i);
         if(vraagwoord){
             vraagwoord = vraagwoord[0];
