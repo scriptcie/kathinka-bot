@@ -56,6 +56,11 @@ describe("The eightball interaction", function() {
                 "waar zijn mijn schoenen?",
                 "hoe doe je dit allemaal?",
                 "Welke weg moet ik inslaan?",
+                "Wie heeft er honger?",
+                "Wie wil er nou nog gaan branchen?",
+                "Welk biertje ad jij eerst?",
+                "Who did not take the left path?",
+                "which branch is this again?",
                         ];        
          var answerlist = [
                 "That",
@@ -71,6 +76,11 @@ describe("The eightball interaction", function() {
                 "(84.79808211327745, -133.7674144194062) (http://maps.google.com?q=84.79808211327745,-133.7674144194062)",
                 "Gewoon...",
                 "De rechter.",
+                "Ik?",
+                "Jij?",
+                "De linker.",
+                "You?", 
+                "The left one.", 
                          ];
         (messagelist.length).should.equal(answerlist.length);
         for(var index = 0; index < messagelist.length; index = index + 1){
