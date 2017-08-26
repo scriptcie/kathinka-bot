@@ -31,7 +31,7 @@ describe("A Kathinka bot with basic interactions", function() {
         kathinka.notify(
             "Kathinka what is the meaning of life?",
             "Mark", function(response) {
-                response.should.eql(["Ask again later"]);
+                response.should.eql(["That"]);
         });
     });
 
