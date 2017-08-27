@@ -64,14 +64,14 @@ describe("The eightball interaction", function() {
                         ];        
          var answerlist = [
                 "That",
-                "3/29/1993, 1:24:55 PM",
+                "3/12/2033, 11:52:14 PM",
                 "Because 3.",
                 "(-43.386939019432766, 178.70983782660068) (http://maps.google.com?q=-43.386939019432766,178.70983782660068)",
                 "Just... you know..",
                 "Me?",
                 "The right one.",
                 "Dat.",
-                "7/26/1959, 7:41:10 AM",
+                "7/17/1987, 1:59:43 PM",
                 "Daarom",
                 "(84.79808211327745, -133.7674144194062) (http://maps.google.com?q=84.79808211327745,-133.7674144194062)",
                 "Gewoon...",
