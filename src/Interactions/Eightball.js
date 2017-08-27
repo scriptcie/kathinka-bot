@@ -65,7 +65,7 @@ Eightball.prototype = {
             case "what":
                 return "That";
             case "when":
-                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString('en-GB', {timeZone : 'Europe/Amsterdam'});
+                return new Date(Math.floor(rng*2000000000000)).toLocaleString('en-GB', {timeZone : 'Europe/Amsterdam'});
             case "why":
                 return "Because 3.";
             case "where":
@@ -79,7 +79,7 @@ Eightball.prototype = {
             case "wat":
                 return "Dat.";
             case "wanneer":
-                return new Date(Math.floor(rng*(1475245914029)-(1475245914029)/2)).toLocaleString('nl-NL', {timeZone : 'Europe/Amsterdam'});
+                return new Date(Math.floor(rng*2000000000000)).toLocaleString('nl-NL', {timeZone : 'Europe/Amsterdam'});
             case "waarom":
                 return "Daarom";
             case "waar":
