@@ -2,7 +2,7 @@ version: '2'
 
 services:
   kathinka-bot:
-    image: node:6
+    image: node:10.16.0
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
@@ -10,7 +10,7 @@ services:
     restart: "always"
 
   npm:
-    image: node:6
+    image: node:10.16.0
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
