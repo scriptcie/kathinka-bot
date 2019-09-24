@@ -2,13 +2,9 @@ var GitHubApi = require("@octokit/rest");
 
 var Github = function() {
     var token = process.env.GH_TOKEN;
-    console.log(token);
-    if (token !== undefined)
-        this.github = new GitHubApi({
-            auth: 'token ' + token,
-        });
-    else
-        this.github = new GitHubApi();
+    this.github = new GitHubApi(token ? {
+        auth: 'token ' + token,
+    } : null);
     this.user = "scriptcie";
     this.repo = "kathinka-bot";
 };
