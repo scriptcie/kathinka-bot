@@ -12,10 +12,10 @@
     "sinon-test": "^2.4.0",
     "browserify": "^11.2",
     "nyc": "^13.3.0",
-    "eslint": "^5.16.0"
+    "eslint": "^6.4.0"
   },
   "dependencies": {
-    "github": "^0.2.4",
+    "@octokit/rest": "^16.28.2",
     "irc": "^0.5.2",
     "languagedetect": "^1.1.1",
     "nconf": "^0.8.2",
