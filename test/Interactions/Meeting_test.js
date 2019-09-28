@@ -2,6 +2,8 @@ var Meeting = require ('../../src/Interactions/Meeting.js');
 var Message = require('../../src/Message.js');
 var MessageBus = require('../../src/MessageBus.js');
 var sinon = require('sinon');
+var sinonTest = require('sinon-test');
+var test = sinonTest(sinon);
 
 describe("Meeting interaction", function() {
     var sender = "Mark";
@@ -138,7 +140,7 @@ describe("Meeting interaction", function() {
         meeting.index.should.equal(0);
     });
 
-    it("Goes to the next item after 5 minutes of inactivity", sinon.test(function() {
+    it("Goes to the next item after 5 minutes of inactivity", test(function() {
         meeting = new Meeting({properties: {'agenda': 'test'}}, new MessageBus({}));
         var clock = sinon.useFakeTimers();
         meeting.interact("Kathinka, start meeting", sender);
@@ -165,7 +167,7 @@ describe("Meeting interaction", function() {
         clock.restore();
     }));
 
-    it("Gets a message after 5 minutes of inactivity", sinon.test(function() {
+    it("Gets a message after 5 minutes of inactivity", test(function() {
         var bus = new MessageBus({});
         var stubbedInterface = {say: function(to, messages) {
             messages[0].should.eql("2. Vaststellen agenda");
@@ -184,7 +186,7 @@ describe("Meeting interaction", function() {
         clock.restore();
     }));
 
-    it("ends the meeting after the last timeout", sinon.test(function() {
+    it("ends the meeting after the last timeout", test(function() {
         var bus = new MessageBus({});
 
         var clock = sinon.useFakeTimers();

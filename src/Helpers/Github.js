@@ -1,10 +1,10 @@
-var GitHubApi = require("github");
+var GitHubApi = require("@octokit/rest");
 
 var Github = function() {
-    this.github = new GitHubApi({
-        version: "3.0.0",
-    });
-
+    var token = process.env.GH_TOKEN;
+    this.github = new GitHubApi(token ? {
+        auth: 'token ' + token,
+    } : null);
     this.user = "scriptcie";
     this.repo = "kathinka-bot";
 };
@@ -26,37 +26,53 @@ var convertToIssue = function(issue) {
 
 Github.prototype = {
     // Show all issues from the
-    issues: function(callback) {
-        return this.github.issues.repoIssues(
-             {
-                user:       this.user,
+    async_issues: async function() {
+        const options = this.github.issues.listForRepo.endpoint.merge(
+            {
+                owner:      this.user,
                 repo:       this.repo,
                 sort:       "updated",
                 direction:  "asc",
-            },
-            function(errro, response) {
-                callback(response.map(function(issue) {
-                    return convertToIssue(issue);
-                }));
-           }
-        );
+            });
+        var issues = [];
+        for await (const response of this.github.paginate.iterator(options)) {
+            response.data.map(function(issue) {
+                issues.push(convertToIssue(issue));
+            });
+        }
+        return issues;
     },
 
-    issuesAssignedFor: function(username, callback) {
-        return this.github.issues.repoIssues(
-             {
-                user:       this.user,
+    issues: function(callback) {
+        this.async_issues().then(
+            function(issues) {
+                callback(issues);
+            });
+    },
+
+    async_issuesAssignedFor: async function(username) {
+        const options = this.github.issues.listForRepo.endpoint.merge(
+            {
+                owner:      this.user,
                 repo:       this.repo,
                 sort:       "updated",
                 direction:  "asc",
                 assignee:   username,
-            },
-            function(error, response) {
-                callback(response.map(function(issue) {
-                    return convertToIssue(issue);
-                }));
-           }
-        );
+            });
+        var issues = [];
+        for await (const response of this.github.paginate.iterator(options)) {
+            response.data.map(function(issue) {
+                issues.push(convertToIssue(issue));
+            });
+        }
+        return issues;
+    },
+
+    issuesAssignedFor: function(username, callback) {
+        this.async_issuesAssignedFor(username).then(
+            function(issues) {
+                callback(issues);
+            });
     },
 }
 

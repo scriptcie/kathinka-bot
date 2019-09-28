@@ -6,29 +6,29 @@
     "url": "git@github.com:scriptcie/kathinka-bot.git"
   },
   "devDependencies": {
-    "gulp": "~3.9",
-    "gulp-mocha": "~2.1",
-    "mocha": "~2.3",
-    "should": "~4.0.4",
-    "gulp-util": "~3.0.5",
-    "browserify": "~11.2",
-    "sinon": "~1.17",
-    "eslint": "~1.3.1"
+    "mocha": "^3.0.2",
+    "should": "^13.2.3",
+    "sinon": "^7.3.2",
+    "sinon-test": "^2.4.0",
+    "browserify": "^11.2",
+    "nyc": "^13.3.0",
+    "eslint": "^6.4.0"
   },
   "dependencies": {
-    "github": "^0.2.4",
-    "irc": ">=0.3.12",
-    "istanbul": "^0.4.4",
-    "languagedetect": "~1.1.1",
+    "@octokit/rest": "^16.28.2",
+    "irc": "^0.5.2",
+    "languagedetect": "^1.1.1",
     "nconf": "^0.8.2",
-    "steam": "~1.1.0",
-    "telegram-bot-api": ">=0.3.2"
+    "steam": "^1.1.0",
+    "telegram-bot-api": "^1.3.3"
   },
   "scripts": {
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha test/{**/,/}*.js  -- --require should -R spec",
-    "precoveralls": "istanbul cover node_modules/mocha/bin/_mocha test/{**/,/}*.js  --report lcovonly -- --require should -R spec && npm i coveralls@2",
+    "start": "node Bootstrap/Start.js",
+    "coverage": "nyc npm run test",
+    "precoveralls": "nyc --reporter=lcov npm run test && npm i coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint src/ test/ Bootstrap/",
-    "test": "npm run lint && mocha --recursive --require should"
+    "test": "npm install && npm run lint && npm run mocha",
+    "mocha": "mocha --recursive --require should"
   }
 }
