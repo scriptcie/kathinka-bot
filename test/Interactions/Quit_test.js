@@ -1,10 +1,12 @@
 var Quit = require ('../../src/Interactions/Quit.js');
 var sinon = require('sinon');
+var sinonTest = require('sinon-test');
+var test = sinonTest(sinon);
 
 describe("Quit interaction", function() {
     var sender = "Mark";
 
-    it("Stops running when asked to stop", sinon.test(function() {
+    it("Stops running when asked to stop", test(function() {
         var bus = { quit: function() {}};
 
         var quit = new Quit(bus);

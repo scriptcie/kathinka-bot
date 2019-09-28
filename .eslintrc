@@ -1,9 +1,9 @@
 {
-    "parser": "espree",
-    "ecmaFeatures": {},
     "env": {
         "node": true,
-        "es6": true,
+    },
+    "parserOptions": {
+        "ecmaVersion": 10,
     },
     "rules": {
         "no-alert": 0,
