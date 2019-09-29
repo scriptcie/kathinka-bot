@@ -28,8 +28,13 @@ var KathinkaFactory = function(fs) {
         };
     }
 
-    setInterval(function(){
-        fs.writeFile('data.json', JSON.stringify(dataStore));
+    setInterval(function() {
+        fs.writeFile('data.json', JSON.stringify(dataStore),
+                     function(err) {
+                         if(err) {
+                             return console.log(err);
+                         }
+                     });
     }, 60000);
 
     var bus = new MessageBus({});
