@@ -26,8 +26,12 @@ var Steam = function(config, bots) {
 
     this.client.on('error', function(error) {
         console.log((new Date()) + "\tSteam error: " + error);
-        if (!self.user.loggedOn) {
-            self.client.connect();
+        if (!self.client.connected || !self.client.loggedOn) {
+            self._reconnect = setTimeout(function() {
+                console.log((new Date()) + "\tTrying to reconnect");
+                delete self._reconnect;
+                self.client.connect();
+            }, 60000);
         }
     });
 
@@ -41,7 +45,7 @@ var Steam = function(config, bots) {
     });
 
     this.friends.on('message', function(source, message) {
-        console.log((new Date()) + "\tReceived message on steam: " + message);
+        console.log((new Date()) + "\tReceived message on Steam: " + message);
         self.handle(self.friends.personaStates[source].player_name, source, message);
     });
 };
@@ -78,6 +82,10 @@ Steam.prototype = {
     },
 
     quit: function() {
+        if (this._reconnect) {
+            clearTimeout(this._reconnect);
+            delete this._reconnect;
+        }
         this.client.disconnect();
     },
 };
