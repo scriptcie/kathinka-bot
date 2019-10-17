@@ -9,7 +9,6 @@ var Steam = function(config, bots) {
     this.config = config;
     this.bots = bots;
 
-    this.reconnect = null;
     this.connect();
 
     var self = this;
