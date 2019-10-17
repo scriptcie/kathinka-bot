@@ -9,7 +9,8 @@ var Steam = function(config, bots) {
     this.config = config;
     this.bots = bots;
 
-    this.client.connect();
+    this.reconnect = null;
+    this.connect();
 
     var self = this;
 
@@ -27,10 +28,8 @@ var Steam = function(config, bots) {
     this.client.on('error', function(error) {
         console.log((new Date()) + "\tSteam error: " + error);
         if (!self.client.connected || !self.client.loggedOn) {
-            self._reconnect = setTimeout(function() {
-                console.log((new Date()) + "\tTrying to reconnect");
-                delete self._reconnect;
-                self.client.connect();
+            self.reconnect = setTimeout(function() {
+                self.connect();
             }, 60000);
         }
     });
@@ -81,10 +80,16 @@ Steam.prototype = {
         });
     },
 
+    connect: function() {
+        console.log((new Date()) + "\tTrying to connect");
+        this.reconnect = null;
+        this.client.connect();
+    },
+
     quit: function() {
-        if (this._reconnect) {
-            clearTimeout(this._reconnect);
-            delete this._reconnect;
+        if (this.reconnect) {
+            clearTimeout(this.reconnect);
+            this.reconnect = null;
         }
         this.client.disconnect();
     },
