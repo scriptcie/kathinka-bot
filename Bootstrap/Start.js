@@ -16,7 +16,7 @@ var kathinka = buildKathinka(fs);
 
 var username = nconf.get('irc_username');
 var password = nconf.get('irc_password');
-var client = new irc.Client('irc.freenode.net', username, {
+var client = new irc.Client('irc.libera.chat', username, {
     debug: true,
     showErrors: true,
     autoRejoin: true,
