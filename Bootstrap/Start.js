@@ -35,8 +35,9 @@ var telegram = new Telegram({
 }, [kathinka]);
 kathinka.bus.addInterface(Message.Type.Telegram, telegram);
 
-var steam = new Steam({
-    username: nconf.get('steam_username'),
-    password: nconf.get('steam_password'),
-}, [kathinka]);
-kathinka.bus.addInterface(Message.Type.Steam, steam);
+// Steam no longer works because of 2FA. Disabling interface until someone wants to fix it.
+// var steam = new Steam({
+//    username: nconf.get('steam_username'),
+//    password: nconf.get('steam_password'),
+// }, [kathinka]);
+// kathinka.bus.addInterface(Message.Type.Steam, steam);
